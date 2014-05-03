@@ -3,39 +3,63 @@
 
 #include <QString>
 #include <QTextStream>
+#include <type_traits>
+
 using namespace std;
 
 class UTProfilerException{
 public:
-    UTProfilerException(const QString& message, const QString &f="na", unsigned int l=0):
-        info(message),file(f),line(l){}
+    UTProfilerException(const QString& message):info(message){}
     QString getInfo() const { return info; }
-#ifndef NDEBUG
-    // retourne le fichier dans lequel cettte exception a été levée.
-    QString getFile() const { return file; }
-    // retourne la ligne du fichier à laquelle cette exception a été levée.
-    unsigned int getLine() const { return line; }
-#endif
 private:
     QString info;
-    QString file;
-    unsigned int line;
-
 };
 
-enum Categorie {
+enum class Categorie {
 	/* Connaissances Scientifiques */ CS,  /* Techniques et Méthodes */ TM, 
-    /* Technologies et Sciences de l'Homme */ TSH, /* Stage et Projet */ SP
+    /* Technologies et Sciences de l'Homme */ TSH, /* Stage et Projet */ SP,
+    first=CS, last=SP
 };
 
 QTextStream& operator<<(QTextStream& f, const Categorie& s);
+
 Categorie StringToCategorie(const QString& s);
 QString CategorieToString(Categorie c);
 QTextStream& operator>>(QTextStream& f, Categorie& cat);
 
-enum Note { A, B, C, D, E, F, FX, RES, ABS, /* en cours */ EC  };
-enum Saison { Automne, Printemps };
-inline QTextStream& operator<<(QTextStream& f, const Saison& s) { if (s==Automne) f<<"A"; else f<<"P"; return f;}
+enum class Note { A, B, C, D, E, F, FX, RES, ABS, /* en cours */ EC, first=A, last=EC  };
+
+
+/*class NoteIterator {
+    Note value;
+    NoteIterator(Note val):value(val){}
+public:
+    static NoteIterator getFirst() { return NoteIterator(first); }
+    bool isDone() const { return value>last; }
+    Note operator*() const { return value; }
+    void next() { std::underlying_type<Note>::type(value)++; }
+};*/
+
+enum class Saison { Automne, Printemps, first=Automne, last=Printemps };
+inline QTextStream& operator<<(QTextStream& f, const Saison& s) { if (s==Saison::Automne) f<<"A"; else f<<"P"; return f;}
+
+template<typename EnumType>
+
+class EnumIterator {
+    static_assert(is_enum<EnumType>::value, "EnumType have to be an enum");
+    EnumType value;
+    EnumIterator(EnumType val):value(val){}
+public:
+    static EnumIterator getFirst() { return EnumIterator(EnumType::first); }
+    bool isDone() const { return value>EnumType::last; }
+    EnumType operator*() const { return value; }
+    void next(){value=(EnumType)(typename std::underlying_type<EnumType>::type(value)+1);}
+};
+
+typedef EnumIterator<Note> NoteIterator;
+typedef EnumIterator<Categorie> CategorieIterator;
+typedef EnumIterator<Saison> SaisonIterator;
+
 
 class Semestre {
 	Saison saison;
@@ -182,7 +206,7 @@ class Inscription {
 	Semestre semestre;
 	Note resultat;
 public:
-    Inscription(const UV& u, const Semestre& s, Note res=EC):uv(&u),semestre(s),resultat(res){}
+    Inscription(const UV& u, const Semestre& s, Note res=Note::EC):uv(&u),semestre(s),resultat(res){}
 	const UV& getUV() const { return *uv; }
 	Semestre getSemestre() const { return semestre; }
 	Note getResultat() const { return resultat; }

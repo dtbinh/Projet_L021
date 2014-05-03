@@ -13,13 +13,13 @@ QTextStream& operator<<(QTextStream& f, const UV& uv){
 QTextStream& operator>>(QTextStream& f, Categorie& cat){
     QString str;
 	f>>str;
-    if (str=="CS") cat=CS;
+    if (str=="CS") cat=Categorie::CS;
 	else
-    if (str=="TM") cat=TM;
+    if (str=="TM") cat=Categorie::TM;
 	else
-    if (str=="SP") cat=SP;
+    if (str=="SP") cat=Categorie::SP;
 	else
-    if (str=="TSH") cat=TSH;
+    if (str=="TSH") cat=Categorie::TSH;
 	else {
         throw UTProfilerException("erreur, lecture categorie");
 	}
@@ -27,13 +27,13 @@ QTextStream& operator>>(QTextStream& f, Categorie& cat){
 }
 
 Categorie StringToCategorie(const QString& str){
-    if (str=="CS") return CS;
+    if (str=="CS") return Categorie::CS;
     else
-    if (str=="TM") return TM;
+    if (str=="TM") return Categorie::TM;
     else
-    if (str=="SP") return SP;
+    if (str=="SP") return Categorie::SP;
     else
-    if (str=="TSH") return TSH;
+    if (str=="TSH") return Categorie::TSH;
     else {
         throw UTProfilerException(QString("erreur, StringToCategorie, categorie ")+str+" inexistante");
     }
@@ -41,25 +41,62 @@ Categorie StringToCategorie(const QString& str){
 
 QString CategorieToString(Categorie c){
     switch(c){
-    case CS: return "CS";
-    case TM: return "TM";
-    case SP: return "SP";
-    case TSH: return "TSH";
-    default: throw UTProfilerException("erreur, categorie non traitee",__FILE__,__LINE__);
+    case Categorie::CS: return "CS";
+    case Categorie::TM: return "TM";
+    case Categorie::SP: return "SP";
+    case Categorie::TSH: return "TSH";
+    default: throw UTProfilerException("erreur, categorie non traitee");
     }
 }
 
 QTextStream& operator<<(QTextStream& f, const Categorie& cat){
-    return f<<CategorieToString(cat);
+	switch(cat){
+    case Categorie::CS: f<<"CS"; break;
+    case Categorie::TM: f<<"TM"; break;
+    case Categorie::SP: f<<"SP"; break;
+    case Categorie::TSH: f<<"TSH"; break;
+	default: throw UTProfilerException("erreur, categorie non traitee");
+	}
+	return f;
 }
 
 UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),file(""),modification(false){
 }
 
 
+/* construction fichier... à enlever */
+bool isInFile(QString code, QString file){
+    QFile fin(file);
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier ")+file);
+    QTextStream flux(&fin);
+     while (!flux.atEnd()){
+        QString codeuv=flux.readLine();
+        if (code==codeuv) return true;
+    }
+    fin.close();
+    return false;
+}
+
 void UVManager::load(const QString& f){
     if (file!=f) this->~UVManager();
     file=f;
+
+    /*QFile fin(file);
+    if (!fin.open(QIODevice::ReadOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier ")+file);
+    QTextStream flux(&fin);
+    //QTextCodec *codec = QTextCodec::codecForName("Windows-1252");
+    //flux.setCodec(codec);
+    while (!flux.atEnd()){
+        QString code=flux.readLine();
+        QString titre=flux.readLine();
+        QString tmp=flux.readLine();
+        unsigned int nbCredits=tmp.toUInt();
+        QString tmpcat=flux.readLine();
+        Categorie cat=StringToCategorie(tmpcat);
+        ajouterUV(code,titre,nbCredits,cat);
+    }
+    fin.close(); // close file*/
+
 
     QFile fin(file);
     // If we can't open it, let's show an error message.
@@ -125,6 +162,11 @@ void UVManager::load(const QString& f){
                     // ...and next...
                     xml.readNext();
                 }
+
+                // construction fichier : à enlever
+                //if (isInFile(code,"../Ressources/automne.txt")) automne=true;
+                //if (isInFile(code,"../Ressources/printemps.txt")) printemps=true;
+
                 ajouterUV(code,titre,nbCredits,cat,automne,printemps);
 
             }
@@ -141,7 +183,42 @@ void UVManager::load(const QString& f){
 
 
 void UVManager::save(const QString& f){
+
+    /*QMessageBox msgBox;
+     msgBox.setText("Debut The document has been saved.");
+     msgBox.exec();*/
+
     file=f;
+    /*QFile fichier(file); // toutes les UVs existantes sont écrasées
+    if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier ")+file);
+
+    QTextStream fout(&fichier);
+	for(unsigned int i=0; i<nbUV; i++){
+		fout<<uvs[i]->getCode()<<"\n";
+		fout<<uvs[i]->getTitre()<<"\n";
+		fout<<uvs[i]->getNbCredits()<<"\n";
+		fout<<uvs[i]->getCategorie()<<"\n";
+	}
+    fichier.close();*/
+
+/*   QDomDocument doc( "UV_XML" );
+    QDomElement root = doc.createElement( "uvs" );
+    doc.appendChild( root );
+    for(unsigned int i=0; i<nbUV; i++){
+        QDomElement uv = doc.createElement("uv");
+        uv.setNodeValue(uvs[i]->getCode());
+        QDomElement code = doc.createElement( "code" ); code.setNodeValue(uvs[i]->getCode()); uv.appendChild(code);
+        QDomElement titre = doc.createElement( "titre" ); titre.setNodeValue(uvs[i]->getTitre()); uv.appendChild(titre);
+        root.appendChild(uv);
+    }
+
+    QFile file( "Z:/test.xml" );
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
+
+     QTextStream ts( &file );
+     ts << doc.toString();
+     file.close();*/
+
     QFile newfile( file);
     if (!newfile.open(QIODevice::WriteOnly | QIODevice::Text)) throw UTProfilerException(QString("erreur ouverture fichier xml"));
      QXmlStreamWriter stream(&newfile);
@@ -202,7 +279,7 @@ UV* UVManager::trouverUV(const QString& c)const{
 
 UV& UVManager::getUV(const QString& code){
 	UV* uv=trouverUV(code);
-    if (!uv) throw UTProfilerException("erreur, UVManager, UV inexistante",__FILE__,__LINE__);
+	if (!uv) throw UTProfilerException("erreur, UVManager, UV inexistante");
 	return *uv;
 }
 
