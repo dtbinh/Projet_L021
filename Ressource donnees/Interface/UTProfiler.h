@@ -15,6 +15,16 @@ private:
     QString info;
 };
 
+/*
+class Categorie{
+private:
+    Qstring code, nom;
+public :
+    Categorie(Qstring c, Qstring n):code(c),nom(n){}
+    QString GetCode()const {return code;}
+    QString GetNom()const {return nom;}
+};*/
+
 enum class Categorie {
 	/* Connaissances Scientifiques */ CS,  /* Techniques et Méthodes */ TM, 
     /* Technologies et Sciences de l'Homme */ TSH, /* Stage et Projet */ SP,
@@ -76,7 +86,7 @@ class UV {
     QString code;
     QString titre;
 	unsigned int nbCredits;
-	Categorie categorie;
+    Categorie categorie;
     bool automne;
     bool printemps;
 	UV(const UV& u);
