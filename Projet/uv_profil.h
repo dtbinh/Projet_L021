@@ -44,4 +44,41 @@ public :
     void Affichage(){cout<<"Dossier de "<<nom<<" "<<prenom<<" login : "<<login<<endl;}
 };
 
+class Categorie{
+    string code,nom;
+public :
+    Categorie(string c,string n):code(c),nom(n){}
+    string GetCode(){return code;}
+    string GetNom(){return nom;}
+};
+
+class Credit{
+    int nombre;
+    Categorie& cat;
+public :
+    Credit(int n,Categorie& categ):nombre(n),cat(categ){}
+    int GetNombre() const {return nombre;}
+    Categorie& GetCategorie() const {return cat;}
+};
+
+class UV{
+private :
+    string code,nom,description;
+    Credit cred;
+    Categorie cat;
+    UV* prerequis;
+    // Est ce vraiment necessaire? On l'a déja via les credits
+public :
+    UV(string c,string n, string d,const Credit& cre,const Categorie& categ,UV* p=0):code(c),nom(n),description(d),cred(cre),cat(categ),prerequis(p){}
+    string GetCode() const {return code;}
+    string GetNom() const {return nom;}
+    string GetDescription() const {return description;}
+    UV* GetPrerequis() const {return prerequis;}
+    Credit GetCred() const {return cred;}
+    Categorie GetCat() const {return cat;}
+    void AffichageUV();
+};
+
+
+
 #endif // UV_PROFIL_H
