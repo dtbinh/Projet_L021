@@ -31,7 +31,7 @@ public :
         }
         else if((nom.size()+prenom.size())>=8) {
             login=nom;
-            for (int i=0;i<8-nom.size();i++)
+            for (unsigned int i=0;i<8-nom.size();i++)
                 login=login+prenom.at(i);
             }
         else
@@ -52,7 +52,7 @@ public :
     string GetNom(){return nom;}
 };
 
-class Credit{
+class Credit{ //Permet de Décrire le nombre de crédit associé à une catégorie
     int nombre;
     Categorie& cat;
 public :
@@ -61,22 +61,27 @@ public :
     Categorie& GetCategorie() const {return cat;}
 };
 
+
 class UV{
 private :
     string code,nom,description;
-    Credit cred;
+    unsigned int nb_cred;
+    Credit** cred; // Une UV peut avoir plusieurs types de crédits, il faut donc faire un tableau alloué dynamiquement
     Categorie cat;
-    UV* prerequis;
-    // Est ce vraiment necessaire? On l'a déja via les credits
+    unsigned int nb_pre;
+    UV** prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
 public :
-    UV(string c,string n, string d,const Credit& cre,const Categorie& categ,UV* p=0):code(c),nom(n),description(d),cred(cre),cat(categ),prerequis(p){}
+    UV(string c,string n, string d,Credit* cre,const Categorie& categ,UV* p=0);
     string GetCode() const {return code;}
     string GetNom() const {return nom;}
     string GetDescription() const {return description;}
-    UV* GetPrerequis() const {return prerequis;}
-    Credit GetCred() const {return cred;}
     Categorie GetCat() const {return cat;}
+    void AjoutPrerequis(UV* u);
+    void RetirePrerequis(UV* u);
+    void AjoutCredits(Credit* c);//Exactement la meme que prerequis --> Template?
+    void RetireCredits(Credit* c);// Meme remarque
     void AffichageUV();
+    ~UV(){}//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
 
 

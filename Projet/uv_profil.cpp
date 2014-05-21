@@ -2,7 +2,74 @@
 
 void UV::AffichageUV(){
     cout<<code<<"---"<<nom<<"---"<<description<<endl;
-    cout<<" Credits : "<<cred.GetNombre()<<" "<<cat.GetCode()<<endl;
-    if (prerequis!=0)
-        cout<<"Prerequis : "<<prerequis->GetCode()<<endl;
+    cout<<"Categorie : "<<cat.GetCode()<<endl;
+    cout<<" Credits : ";
+    for(unsigned int i=0;i<nb_cred;i++)
+        cout<<cred[i]->GetNombre()<<" "<<cred[i]->GetCategorie().GetCode()<<"     ";
+    cout<<endl;
+    if (prerequis!=0){
+        cout<<"Prerequis : ";
+        for(unsigned int i=0;i<nb_pre;i++)
+        cout<<" "<<prerequis[i]->GetCode();
+    cout<<endl;
+    }
 }
+
+UV::UV(string c,string n, string d,Credit* cre,const Categorie& categ,UV* p)
+    :code(c),nom(n),description(d),cat(categ),nb_cred(1)
+{
+    if(p==0) nb_pre=0;
+    else {
+        nb_pre=1;
+        prerequis=new UV*[nb_pre];
+        prerequis[0]=p;
+    } //Initialisation prerequis
+    cred=new Credit*[nb_cred];
+    cred[0]=cre;
+}
+
+void UV::AjoutPrerequis(UV* u){
+    nb_pre++;
+    UV** new_prerequis=new UV*[nb_pre];
+    for(unsigned int i=0;i<nb_pre;i++)
+        new_prerequis[i]=prerequis[i];
+    new_prerequis[nb_pre-1]=u;
+    UV** old=prerequis;
+    prerequis=new_prerequis;
+    delete[] old;
+}
+
+void UV::RetirePrerequis(UV* u){
+    unsigned int i=0;
+    while(prerequis[i]!=u || i>nb_pre) i++;
+    if (i>nb_pre) cout<<"L'UV n'est pas un prerequis"<<endl; //Ajouter exception
+    else
+        for(i;i<nb_pre;i++)
+            prerequis[i]=prerequis[i+1];
+    nb_pre--;
+}
+
+void UV::AjoutCredits(Credit* c){
+    nb_cred++;
+    Credit** new_credits=new Credit*[nb_cred];
+    for(unsigned int i=0;i<nb_cred;i++)
+        new_credits[i]=cred[i];
+    new_credits[nb_cred-1]=c;
+    Credit** old=cred;
+    cred=new_credits;
+    delete[] old;
+}
+
+void UV::RetireCredits(Credit* c){
+    unsigned int i=0;
+    if(nb_cred==1) cout<<"Impossible d'enlever ces credits, ce sont les derniers"<<endl;
+    else{
+    while(cred[i]!=c || i>nb_cred) i++;
+    if (i>nb_cred) cout<<"L'UV n'a pas ce type de credits"<<endl; //Ajouter exception
+    else
+        for(i;i<nb_cred;i++)
+            cred[i]=cred[i+1];
+    nb_cred--;
+    }
+}
+
