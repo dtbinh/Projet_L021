@@ -1,5 +1,6 @@
 ﻿#ifndef UV_PROFIL_H
 #define UV_PROFIL_H
+
 #include <string>
 #include <iostream>
 
@@ -37,19 +38,19 @@ public :
         else
             login=nom+prenom;
     }
-    string GetNom() const {return nom;}
-    string GetPrenom() const {return prenom;}
-    string GetLogin() const {return login;}
+    string getNom() const {return nom;}
+    string getPrenom() const {return prenom;}
+    string getLogin() const {return login;}
     ~Dossier(){}
-    void Affichage(){cout<<"Dossier de "<<nom<<" "<<prenom<<" login : "<<login<<endl;}
+    void affichage(){cout<<"Dossier de "<<nom<<" "<<prenom<<" login : "<<login<<endl;}
 };
 
 class Categorie{
     string code,nom;
 public :
     Categorie(string c,string n):code(c),nom(n){}
-    string GetCode(){return code;}
-    string GetNom(){return nom;}
+    string getCode(){return code;}
+    string getNom(){return nom;}
 };
 
 class Credit{ //Permet de Décrire le nombre de crédit associé à une catégorie
@@ -57,8 +58,8 @@ class Credit{ //Permet de Décrire le nombre de crédit associé à une catégor
     Categorie& cat;
 public :
     Credit(int n,Categorie& categ):nombre(n),cat(categ){}
-    int GetNombre() const {return nombre;}
-    Categorie& GetCategorie() const {return cat;}
+    int getNombre() const {return nombre;}
+    Categorie& getCategorie() const {return cat;}
 };
 
 
@@ -72,15 +73,15 @@ private :
     UV** prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
 public :
     UV(string c,string n, string d,Credit* cre,const Categorie& categ,UV* p=0);
-    string GetCode() const {return code;}
-    string GetNom() const {return nom;}
-    string GetDescription() const {return description;}
-    Categorie GetCat() const {return cat;}
-    void AjoutPrerequis(UV* u);
-    void RetirePrerequis(UV* u);
-    void AjoutCredits(Credit* c);//Exactement la meme que prerequis --> Template?
-    void RetireCredits(Credit* c);// Meme remarque
-    void AffichageUV();
+    string getCode() const {return code;}
+    string getNom() const {return nom;}
+    string getDescription() const {return description;}
+    Categorie getCat() const {return cat;}
+    void ajoutPrerequis(UV* u);
+    void retirePrerequis(UV* u);
+    void ajoutCredits(Credit* c);//Exactement la meme que prerequis --> Template?
+    void retireCredits(Credit* c);// Meme remarque
+    void affichageUV();
     ~UV(){}//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
 

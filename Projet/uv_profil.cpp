@@ -1,16 +1,16 @@
 ﻿#include "uv_profil.h"
 
-void UV::AffichageUV(){
+void UV::affichageUV(){
     cout<<code<<"---"<<nom<<"---"<<description<<endl;
-    cout<<"Categorie : "<<cat.GetCode()<<endl;
+    cout<<"Categorie : "<<cat.getCode()<<endl;
     cout<<" Credits : ";
     for(unsigned int i=0;i<nb_cred;i++)
-        cout<<cred[i]->GetNombre()<<" "<<cred[i]->GetCategorie().GetCode()<<"     ";
+        cout<<cred[i]->getNombre()<<" "<<cred[i]->getCategorie().getCode()<<"     ";
     cout<<endl;
     if (prerequis!=0){
         cout<<"Prerequis : ";
         for(unsigned int i=0;i<nb_pre;i++)
-        cout<<" "<<prerequis[i]->GetCode();
+        cout<<" "<<prerequis[i]->getCode();
     cout<<endl;
     }
 }
@@ -28,7 +28,7 @@ UV::UV(string c,string n, string d,Credit* cre,const Categorie& categ,UV* p)
     cred[0]=cre;
 }
 
-void UV::AjoutPrerequis(UV* u){
+void UV::ajoutPrerequis(UV* u){
     nb_pre++;
     UV** new_prerequis=new UV*[nb_pre];
     for(unsigned int i=0;i<nb_pre;i++)
@@ -39,7 +39,7 @@ void UV::AjoutPrerequis(UV* u){
     delete[] old;
 }
 
-void UV::RetirePrerequis(UV* u){
+void UV::retirePrerequis(UV* u){
     unsigned int i=0;
     while(prerequis[i]!=u || i>nb_pre) i++;
     if (i>nb_pre) cout<<"L'UV n'est pas un prerequis"<<endl; //Ajouter exception
@@ -49,7 +49,7 @@ void UV::RetirePrerequis(UV* u){
     nb_pre--;
 }
 
-void UV::AjoutCredits(Credit* c){
+void UV::ajoutCredits(Credit* c){
     nb_cred++;
     Credit** new_credits=new Credit*[nb_cred];
     for(unsigned int i=0;i<nb_cred;i++)
@@ -60,7 +60,7 @@ void UV::AjoutCredits(Credit* c){
     delete[] old;
 }
 
-void UV::RetireCredits(Credit* c){
+void UV::retireCredits(Credit* c){
     unsigned int i=0;
     if(nb_cred==1) cout<<"Impossible d'enlever ces credits, ce sont les derniers"<<endl;
     else{
