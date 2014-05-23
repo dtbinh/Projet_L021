@@ -1,9 +1,12 @@
 
 SOURCES += \
     main.cpp \
-    uv_profil.cpp \
-    Formation.cpp
+    Formation.cpp \
+    Uv.cpp
 
 HEADERS += \
-    uv_profil.h \
-    Formation.h
+    Formation.h \
+    Dossier.h \
+    Categorie.h \
+    Credits.h \
+    Uv.h

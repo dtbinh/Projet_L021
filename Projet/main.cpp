@@ -1,5 +1,10 @@
-﻿#include "uv_profil.h"
+﻿#include <string>
+#include <iostream>
+#include "Uv.h"
 #include "Formation.h"
+#include "Dossier.h"
+#include "Categorie.h"
+#include "Credits.h"
 
 using namespace std;
 

@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include "Categorie.h"
+#include "Credits.h"
 
 using namespace std;
 
@@ -17,51 +19,6 @@ enum class Note{
 enum class Preference{
     Exigence,Refus,NSP
 };
-
-class Dossier{
-private:
-    string nom;
-    string prenom;
-    string login;
-public :
-    Dossier(string n,string p):nom(n),prenom(p){
-        if(nom.size()>=7){
-            login=prenom.at(0);
-            for(int j=0;j<7;j++)
-                login=login+nom.at(j);
-        }
-        else if((nom.size()+prenom.size())>=8) {
-            login=nom;
-            for (unsigned int i=0;i<8-nom.size();i++)
-                login=login+prenom.at(i);
-            }
-        else
-            login=nom+prenom;
-    }
-    string getNom() const {return nom;}
-    string getPrenom() const {return prenom;}
-    string getLogin() const {return login;}
-    ~Dossier(){}
-    void affichage(){cout<<"Dossier de "<<nom<<" "<<prenom<<" login : "<<login<<endl;}
-};
-
-class Categorie{
-    string code,nom;
-public :
-    Categorie(string c,string n):code(c),nom(n){}
-    string getCode(){return code;}
-    string getNom(){return nom;}
-};
-
-class Credit{ //Permet de Décrire le nombre de crédit associé à une catégorie
-    int nombre;
-    Categorie& cat;
-public :
-    Credit(int n,Categorie& categ):nombre(n),cat(categ){}
-    int getNombre() const {return nombre;}
-    Categorie& getCategorie() const {return cat;}
-};
-
 
 class UV{
 private :

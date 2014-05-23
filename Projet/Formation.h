@@ -1,8 +1,9 @@
-#ifndef FORMATION_H
+﻿#ifndef FORMATION_H
 #define FORMATION_H
 
 #include <vector>
-#include <uv_profil.h>
+#include <Uv.h>
+#include "Credits.h"
 
 class Formation {
 private:
