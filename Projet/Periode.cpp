@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Periode::Periode(string n, unsigned int a): nom(n), annee(a)
+Periode::Periode(string n, unsigned int a): code(""), nom(n), annee(a)
 {
     if (annee < 1970 || annee > 2069) {
         throw Exception("L'annee doit etre comprise entre 1970 et 2069.");

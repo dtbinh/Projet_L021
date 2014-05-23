@@ -25,8 +25,8 @@ int main()
         Categorie TM("TM","Techniques et Methodes");
         Categorie CS("CS","Connaissance Scientifique");
 
-        Credit CS_Classique(6,CS);
-        Credit TM_Classique(6,TM);
+        Credits CS_Classique(6,CS);
+        Credits TM_Classique(6,TM);
 
         UV NF01("NF01","Algorithmique","On apprend le Pascal",&TM_Classique,TM);
         UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",&CS_Classique,CS);
@@ -48,12 +48,12 @@ int main()
         cout << endl;
 
         /* Test Formations */
-        Credit CS_branche(30,CS);
-        Credit TM_branche(30,TM);
+        Credits CS_branche(30,CS);
+        Credits TM_branche(30,TM);
 
         Formation GI("GI", "Genie informatique");
-        GI.ajouterCredit(CS_branche);
-        GI.ajouterCredit(TM_branche);
+        GI.ajouterCredits(CS_branche);
+        GI.ajouterCredits(TM_branche);
         GI.ajouterUV(LO21);
         GI.ajouterUV(NF16);
         GI.ajouterUV(NF01);

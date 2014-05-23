@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void Formation::retirerCredit(const Credit& c)
+void Formation::retirerCredits(const Credits& c)
 {
-    vector<const Credit*>::iterator it = credits.begin();
+    vector<const Credits*>::iterator it = credits.begin();
     while (it != credits.end() && *it != &c) {
         ++it;
     }
@@ -43,7 +43,7 @@ void Formation::afficher()
     cout << code << "\t" << nom << endl;
 
     cout << "Credits : ";
-    for (vector<const Credit*>::iterator credit = credits.begin(); credit != credits.end(); ++credit)
+    for (vector<const Credits*>::iterator credit = credits.begin(); credit != credits.end(); ++credit)
     {
         cout << (*credit)->getNombre() << " " << (*credit)->getCategorie().getCode() << "  ";
     }

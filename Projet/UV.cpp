@@ -1,4 +1,4 @@
-﻿#include "Uv.h"
+﻿#include "UV.h"
 
 void UV::affichageUV(){
     cout<<code<<"---"<<nom<<"---"<<description<<endl;
@@ -15,7 +15,7 @@ void UV::affichageUV(){
     }
 }
 
-UV::UV(string c,string n, string d,Credit* cre,const Categorie& categ,UV* p)
+UV::UV(string c,string n, string d,Credits* cre,const Categorie& categ,UV* p)
     :code(c),nom(n),description(d),cat(categ),nb_cred(1)
 {
     if(p==0) nb_pre=0;
@@ -24,7 +24,7 @@ UV::UV(string c,string n, string d,Credit* cre,const Categorie& categ,UV* p)
         prerequis=new UV*[nb_pre];
         prerequis[0]=p;
     } //Initialisation prerequis
-    cred=new Credit*[nb_cred];
+    cred=new Credits*[nb_cred];
     cred[0]=cre;
 }
 
@@ -49,18 +49,18 @@ void UV::retirePrerequis(UV* u){
     nb_pre--;
 }
 
-void UV::ajoutCredits(Credit* c){
+void UV::ajoutCredits(Credits* c){
     nb_cred++;
-    Credit** new_credits=new Credit*[nb_cred];
+    Credits** new_credits=new Credits*[nb_cred];
     for(unsigned int i=0;i<nb_cred;i++)
         new_credits[i]=cred[i];
     new_credits[nb_cred-1]=c;
-    Credit** old=cred;
+    Credits** old=cred;
     cred=new_credits;
     delete[] old;
 }
 
-void UV::retireCredits(Credit* c){
+void UV::retireCredits(Credits* c){
     unsigned int i=0;
     if(nb_cred==1) cout<<"Impossible d'enlever ces credits, ce sont les derniers"<<endl;
     else{
