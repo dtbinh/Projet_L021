@@ -1,6 +1,11 @@
-﻿#include "uv_profil.h"
+﻿#include <string>
+#include <iostream>
+#include "Uv.h"
 #include "Formation.h"
 #include "Periode.h"
+#include "Dossier.h"
+#include "Categorie.h"
+#include "Credits.h"
 
 using namespace std;
 
@@ -8,7 +13,7 @@ int main()
 {
     try
     {
-        Dossier D1 ("szewe","nicolas");
+        Dossier D1("szewe","nicolas");
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 

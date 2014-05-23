@@ -1,9 +1,10 @@
-#ifndef FORMATION_H
+﻿#ifndef FORMATION_H
 #define FORMATION_H
 
 #include <iostream>
 #include <vector>
-#include <uv_profil.h>
+#include "UV.h"
+#include "Credits.h"
 
 class Formation
 {

@@ -1,12 +1,15 @@
 
 SOURCES += \
     main.cpp \
-    uv_profil.cpp \
     Formation.cpp \
-    Periode.cpp
+    Periode.cpp \
+    UV.cpp
 
 HEADERS += \
-    uv_profil.h \
+    Dossier.h \
+    Categorie.h \
+    Credits.h \
     Formation.h \
     Periode.h \
-    Exception.h
+    Exception.h \
+    UV.h
