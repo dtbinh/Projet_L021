@@ -60,6 +60,7 @@ int main()
         GI.afficher();
         cout << endl;
 
+        GI.retirerCredits(CS_branche);
         GI.retirerUV(NF01);
         GI.afficher();
         cout << endl;

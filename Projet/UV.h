@@ -8,15 +8,15 @@
 
 using namespace std;
 
-enum class Choix {
+enum Choix {
     Confirmer,Refuser,Retarder,Avancer
 };
 
-enum class Note{
+enum Note{
     A,B,C,D,E,F,FX,RES,ABS,EC
 };
 
-enum class Preference{
+enum Preference{
     Exigence,Refus,NSP
 };
 
