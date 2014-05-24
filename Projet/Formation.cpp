@@ -14,9 +14,9 @@ void Formation::afficher()
     cout << endl;
 
     cout << "Formations parentes : ";
-    for (unsigned int i = 0; i < formations_parentes.size(); i++)
+    for (unsigned int i = 0; i < formations_filles.size(); i++)
     {
-        cout << formations_parentes[i]->getCode() << " " << formations_parentes[i]->getNom() << "  ";
+        cout << formations_filles[i]->getCode() << " " << formations_filles[i]->getNom() << "  ";
     }
     cout << endl;
 

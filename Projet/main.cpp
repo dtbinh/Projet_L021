@@ -60,6 +60,8 @@ int main()
         GI.afficher();
         cout << endl;
 
+        Formation FDD("FDD", "Fouille de données");
+        GI.ajouterFormationFille(FDD);
         GI.retirerCredits(CS_branche);
         GI.retirerUV(NF01);
         GI.afficher();
