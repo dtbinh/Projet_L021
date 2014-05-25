@@ -11,6 +11,7 @@ Periode::Periode(string n, unsigned int a): code(""), nom(n), annee(a)
         throw Exception("Le nom doit faire au moins 1 caractere.");
     }
 
+    // Créé le code à partir du nom et de l'année
     ostringstream codetmp;
     codetmp << nom[0] << annee % 100;
     code = codetmp.str();

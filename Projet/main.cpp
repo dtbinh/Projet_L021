@@ -6,6 +6,7 @@
 #include "Dossier.h"
 #include "Categorie.h"
 #include "Credits.h"
+#include "Inscription.h"
 
 using namespace std;
 
@@ -54,9 +55,9 @@ int main()
         Formation GI("GI", "Genie informatique");
         GI.ajouterCredits(CS_branche);
         GI.ajouterCredits(TM_branche);
+        GI.ajouterUV(NF01);
         GI.ajouterUV(LO21);
         GI.ajouterUV(NF16);
-        GI.ajouterUV(NF01);
         GI.afficher();
         cout << endl;
 
@@ -73,8 +74,17 @@ int main()
 
         P14.afficher();
         A70.afficher();
+        cout << endl;
 
-        Periode A71("Automne", 2171); // Génère une Exception
+        //Periode A71("Automne", 2171); // Génère une Exception
+
+        /* Test Inscription */
+        Inscription GI02(P14, GI);
+        GI02.ajouterUV(NF16);
+        GI02.ajouterUV(LO21);
+        GI02.afficher();
+        GI02.retirerUV(NF16);
+        GI02.afficher();
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

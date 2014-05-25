@@ -11,6 +11,4 @@ public :
     string getNom(){return nom;}
 };
 
-
-
 #endif // CATEGORIE_H

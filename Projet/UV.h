@@ -12,7 +12,7 @@ enum Choix {
     Confirmer,Refuser,Retarder,Avancer
 };
 
-enum Note{
+enum Note {
     A,B,C,D,E,F,FX,RES,ABS,EC
 };
 
