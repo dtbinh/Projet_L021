@@ -1,6 +1,6 @@
 ﻿#include <string>
 #include <iostream>
-#include "Uv.h"
+#include "UV.h"
 #include "Formation.h"
 #include "Periode.h"
 #include "Dossier.h"
@@ -33,6 +33,10 @@ int main()
         UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",CS);
         UV NF92("NF92","Decouverte du Genie Informatique","Decouverte de tous ce que l'on peut faire en GI",TM);
         UV LO21("LO21","Programmation orienté objet","Une UV ou l'on apprend le C++",TM);
+        UV LO21P13(LO21);
+
+        cout<<"TEST CONSTRUCTEUR RECOPIE :"<<endl;
+        LO21P13.affichageUV();
 
         NF01.ajoutCredits(TM_Classique);
         NF16.ajoutCredits(CS_Classique);

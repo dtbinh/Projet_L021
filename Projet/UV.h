@@ -31,6 +31,7 @@ private :
 public :
     UV(const string& c,const string& n, const string& d,const Categorie& categ)
     : code(c), nom(n),description(d),cat(categ),cred(vector<const Credits*>()),prerequis(vector<const UV*>()) {}
+    UV(const UV& u);
     string getCode() const {return code;}
     string getNom() const {return nom;}
     string getDescription() const {return description;}
@@ -45,8 +46,13 @@ public :
 
     void affichageUV();
 
+    //UV& operator=(const UV& u);
+
     ~UV(){}//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
+
+
+
 
 
 
