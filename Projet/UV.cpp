@@ -4,17 +4,20 @@ void UV::affichageUV(){
     cout<<code<<"---"<<nom<<"---"<<description<<endl;
     cout<<"Categorie : "<<cat.getCode()<<endl;
     cout<<" Credits : ";
-    for(unsigned int i=0;i<nb_cred;i++)
+    for(unsigned int i=0;i<cred.size();i++)
         cout<<cred[i]->getNombre()<<" "<<cred[i]->getCategorie().getCode()<<"     ";
     cout<<endl;
-    if (prerequis!=0){
         cout<<"Prerequis : ";
-        for(unsigned int i=0;i<nb_pre;i++)
+        for(unsigned int i=0;i<prerequis.size();i++)
         cout<<" "<<prerequis[i]->getCode();
     cout<<endl;
-    }
+
 }
 
+
+
+
+/*
 UV::UV(string c,string n, string d,Credits* cre,const Categorie& categ,UV* p)
     :code(c),nom(n),description(d),cat(categ),nb_cred(1)
 {
@@ -72,4 +75,6 @@ void UV::retireCredits(Credits* c){
     nb_cred--;
     }
 }
+
+*/
 

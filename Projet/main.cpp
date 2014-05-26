@@ -29,18 +29,25 @@ int main()
         Credits CS_Classique(6,CS);
         Credits TM_Classique(6,TM);
 
-        UV NF01("NF01","Algorithmique","On apprend le Pascal",&TM_Classique,TM);
-        UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",&CS_Classique,CS);
-        UV NF92("NF92","Decouverte du Genie Informatique","Decouverte de tous ce que l'on peut faire en GI",&TM_Classique,TM);
-        UV LO21("LO21","Programmation orienté objet","Une UV ou l'on apprend le C++",&TM_Classique,TM,&NF01);
+        UV NF01("NF01","Algorithmique","On apprend le Pascal",TM);
+        UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",CS);
+        UV NF92("NF92","Decouverte du Genie Informatique","Decouverte de tous ce que l'on peut faire en GI",TM);
+        UV LO21("LO21","Programmation orienté objet","Une UV ou l'on apprend le C++",TM);
 
-        LO21.ajoutPrerequis(&NF92);
-        LO21.ajoutPrerequis(&NF16);
-        LO21.retirePrerequis(&NF92);
-        LO21.ajoutPrerequis(&NF92);
-        LO21.ajoutCredits(&CS_Classique);
-        LO21.retireCredits(&CS_Classique);
-        LO21.retireCredits(&TM_Classique);
+        NF01.ajoutCredits(TM_Classique);
+        NF16.ajoutCredits(CS_Classique);
+        NF92.ajoutCredits(TM_Classique);
+        LO21.ajoutCredits(TM_Classique);
+
+        LO21.ajoutPrerequis(NF01);
+        LO21.ajoutPrerequis(NF92);
+        LO21.ajoutPrerequis(NF16);
+        LO21.retirePrerequis(NF92);
+        LO21.ajoutPrerequis(NF92);
+        LO21.ajoutCredits(CS_Classique);
+        LO21.retireCredits(CS_Classique);
+        LO21.retireCredits(TM_Classique);
+
 
         NF01.affichageUV();
         NF16.affichageUV();

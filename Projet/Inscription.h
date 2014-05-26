@@ -1,4 +1,4 @@
-#ifndef INSCRIPTION_H
+﻿#ifndef INSCRIPTION_H
 #define INSCRIPTION_H
 
 #include <iostream>
@@ -18,7 +18,6 @@ private:
 
 public:
    Inscription(const Periode& p, const Formation& f): periode(p), formation(f), uvs(map<string, const UV*>()), notes(map<string, Note>()) {}
-
    const Periode& getPeriode() const { return periode; }
    const map<string, const UV*>& getUVs() const { return uvs; }
    const map<string, Note>& getNotes() const { return notes; }
