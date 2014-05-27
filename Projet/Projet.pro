@@ -4,7 +4,8 @@ SOURCES += \
     Formation.cpp \
     Periode.cpp \
     UV.cpp \
-    Inscription.cpp
+    Inscription.cpp \
+    UvManager.cpp
 
 HEADERS += \
     Dossier.h \
@@ -14,4 +15,5 @@ HEADERS += \
     Periode.h \
     Exception.h \
     UV.h \
-    Inscription.h
+    Inscription.h \
+    UvManager.h
