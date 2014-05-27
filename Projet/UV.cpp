@@ -25,8 +25,13 @@ UV::UV(const UV& u){
             prerequis.push_back(u.prerequis[i]);
 }
 
+
 UV::~UV(){
+    code="NULL";
+    nom="NULL";
+    description="NULL";
 
 }
+
 
 

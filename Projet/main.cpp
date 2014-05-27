@@ -48,16 +48,22 @@ int main()
         LO21.retireCredits(CS_Classique);
         LO21.retireCredits(TM_Classique);
 
-
-        UV LO21P13(LO21);
-        cout<<"TEST CONSTRUCTEUR RECOPIE :"<<endl;
-        LO21P13.affichageUV();
-
         NF01.affichageUV();
         NF16.affichageUV();
         NF92.affichageUV();
         LO21.affichageUV();
         cout << endl;
+
+
+        UV LO21P13(LO21);
+        cout<<"TEST CONSTRUCTEUR RECOPIE :"<<endl;
+        LO21P13.affichageUV();
+
+        /*
+        cout<<"TEST DESTRUCTEUR UV"<<endl;
+        LO21P13.~UV();
+        LO21P13.affichageUV();
+        */
 
         /* Test Formations */
         Credits CS_branche(30,CS);

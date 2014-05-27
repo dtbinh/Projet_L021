@@ -34,6 +34,7 @@ public :
     UV(const UV& u);
     string getCode() const {return code;}
     string getNom() const {return nom;}
+    void setCode(string c){code=c;}
     string getDescription() const {return description;}
     Categorie getCat() const {return cat;}
     const vector<const Credits*>& getCredits() const { return cred; }
