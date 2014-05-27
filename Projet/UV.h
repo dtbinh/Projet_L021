@@ -48,7 +48,7 @@ public :
 
     //UV& operator=(const UV& u);
 
-    ~UV(){}//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
+    ~UV();//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
 
 

@@ -15,15 +15,18 @@ void UV::affichageUV(){
 }
 
 UV::UV(const UV& u){
-    this->code=u.code;
-    this->nom=u.nom;
-    this->description=u.description;
-    this->cat=u.cat;
+    code=u.code;
+    nom=u.nom;
+    description=u.description;
+    cat=u.cat;
     for(unsigned int i=0;i<u.cred.size();i++)
-            this->cred[i]=u.cred[i];
+            cred.push_back(u.cred[i]);
     for(unsigned int i=0;i<u.prerequis.size();i++)
-            this->prerequis[i]=u.prerequis[i];
+            prerequis.push_back(u.prerequis[i]);
 }
 
+UV::~UV(){
+
+}
 
 
