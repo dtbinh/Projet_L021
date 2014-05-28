@@ -15,7 +15,7 @@ private:
     UVManager& operator=(const UVManager& um);
     UVManager();
     ~UVManager();
-    string file;
+    //string file;
     friend struct Handler;
     struct Handler{
         UVManager* instance;
@@ -26,36 +26,14 @@ private:
 
 public:
 
-    void load(const string& f);
-    void save(const string& f);
+    //void load(const string& f);
+    //void save(const string& f);
+    void affichage();
     static UVManager& getInstance();
     static void libererInstance();
-    void ajouterUV(const string& c, const string& t, unsigned int nbc, Categorie cat, bool a, bool p);
+    void ajouterUV(UV& u);
     const UV& getUV(const string& code) const;
     UV& getUV(const string& code);
-    class Iterator {
-        friend class UVManager;
-        UV** currentUV;
-        unsigned int nbRemain;
-        Iterator(UV** u, unsigned nb):currentUV(u),nbRemain(nb){}
-    public:
-        Iterator():nbRemain(0),currentUV(0){}
-        bool isDone() const { return nbRemain==0; }
-        void next() {
-            if (isDone())
-                throw Exception("error, next on an iterator which is done");
-            nbRemain--;
-            currentUV++;
-        }
-        UV& current() const {
-            if (isDone())
-                throw Exception("error, indirection on an iterator which is done");
-            return **currentUV;
-        }
-    };
-    Iterator getIterator() {
-        return Iterator(uvs,nbUV);
-    }
 
     class iterator {
         UV** current;
@@ -70,34 +48,5 @@ public:
     iterator begin() { return iterator(uvs); }
     iterator end() { return iterator(uvs+nbUV); }
 
-    class FilterIterator {
-        friend class UVManager;
-        UV** currentUV;
-        unsigned int nbRemain;
-        Categorie categorie;
-        FilterIterator(UV** u, unsigned nb, Categorie c):currentUV(u),nbRemain(nb),categorie(c){
-            while(nbRemain>0 && (*currentUV)->getCat().getNom()!=categorie.getNom()){
-                nbRemain--; currentUV++;
-            }
-        }
-    public:
-        FilterIterator():nbRemain(0),currentUV(0){}
-        bool isDone() const { return nbRemain==0; }
-        void next() {
-            if (isDone())
-                throw Exception("error, next on an iterator which is done");
-            do {
-                nbRemain--; currentUV++;
-            }while(nbRemain>0 && (*currentUV)->getCat().getNom()!=categorie.getNom());
-        }
-        UV& current() const {
-            if (isDone())
-                throw Exception("error, indirection on an iterator which is done");
-            return **currentUV;
-        }
-    };
-    FilterIterator getFilterIterator(Categorie c) {
-        return FilterIterator(uvs,nbUV,c);
-    }
 };
 #endif // UVMANAGER_H

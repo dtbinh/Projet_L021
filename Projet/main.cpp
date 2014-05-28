@@ -7,6 +7,8 @@
 #include "Categorie.h"
 #include "Credits.h"
 #include "Inscription.h"
+#include "UvManager.h"
+
 
 using namespace std;
 
@@ -102,6 +104,15 @@ int main()
         GI02.afficher();
         GI02.retirerUV(NF16);
         GI02.afficher();
+
+        //Test du manager
+        UVManager& m=UVManager::getInstance();
+        m.ajouterUV(LO21);
+        m.ajouterUV(NF01);
+        m.ajouterUV(NF16);
+        m.ajouterUV(NF92);
+        m.affichage();
+
 
     } catch(Exception &e) {
         cerr << e.what() << endl;
