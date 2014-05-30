@@ -58,13 +58,13 @@ public :
     /// \param categ La catégorie de l'UV
     /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
     ///
-    UV(const string& c,const string& n, const string& d,const Categorie& categ)
+    UV(const string& c="",const string& n="", const string& d="",const Categorie& categ=Categorie())
     : code(c), nom(n),description(d),cat(categ),cred(vector<const Credits*>()),prerequis(vector<const UV*>()) {}
 
     ///
     /// \fn UV(const UV& u)
     /// \param u Une référence vers l'UV à copier
-    ///\brief Constructeur de recopie de la classe UV
+    /// \brief Constructeur de recopie de la classe UV
     ///
     UV(const UV& u);
 
@@ -123,8 +123,8 @@ public :
     /// \param u Une référence sur l'UV a retirer en prérequis
     /// \brief Utilise remove sur le conteneur vecteur prerequis pour retirer l'uv des prérequis
     ///
-    void retirePrerequis(const UV& u) { if (prerequis.empty()) throw Exception("Objets vide, suppression impossible");
-        else prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
+    //void retirePrerequis(const UV& u) { if (prerequis.empty()) throw Exception("Objets vide, suppression impossible");
+    //    else prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
 
     ///
     /// \fn ajoutCredits
@@ -138,7 +138,7 @@ public :
     /// \param c Une rérence sur un objet de la classe crédit
     /// \brief Retire des crédits d'une UV
     ///
-    void retireCredits(const Credits& c) { if (cred.empty()) throw Exception("Objets vide, suppression impossible"); else cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
+    //void retireCredits(const Credits& c) { if (cred.empty()) throw Exception("Objets vide, suppression impossible"); else cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
 
     ///
     /// \fn affichageUV

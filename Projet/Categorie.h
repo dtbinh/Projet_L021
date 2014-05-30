@@ -33,13 +33,13 @@ public :
     /// \fn getCode
     /// \return retourne le code de la categorie
     ///
-    string getCode(){return code;}
+    string getCode() const {return code;}
 
     ///
     /// \fn getNom
     /// \return string retourne le nom de la categorie
     ///
-    string getNom(){return nom;}
+    string getNom() const {return nom;}
 };
 
 #endif // CATEGORIE_H

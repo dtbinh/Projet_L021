@@ -14,7 +14,7 @@
 class Credits { //Permet de Décrire le nombre de crédit associé à une catégorie
     string code;
     int nombre;
-    Categorie& cat;
+    const Categorie& cat;
 public :
     ///
     /// \fn Credits(int n,Categorie& categ)
@@ -24,17 +24,23 @@ public :
     ///
     Credits(string c,int n,Categorie& categ):code(c),nombre(n),cat(categ){}
 
+    ///
+    /// \fn getCode()
+    /// \return int Le code de crédits
+    ///
     string getCode()const {return code;}
-    ///\fn getNombre()
+
+    ///
+    /// \fn getNombre()
     /// \return int nombre de crédits
     ///
     int getNombre() const {return nombre;}
 
     ///
     /// \fn getCategorie
-    /// \return Categorie& référence vers la catégorie
+    /// \return const Categorie& référence vers la catégorie
     ///
-    Categorie& getCategorie() const {return cat;}
+    const Categorie& getCategorie() const {return cat;}
 };
 
 #endif // CREDIT_H

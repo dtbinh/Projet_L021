@@ -17,13 +17,13 @@ int main()
 {
     try
     {
-        Dossier D1("szewe","nicolas");
+        /*Dossier D1("szewe","nicolas");
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 
         D1.affichageDossier();
         D2.affichageDossier();
-        D3.affichageDossier();
+        D3.affichageDossier();*/
 
         /* Test Categorie, Credit et UV */
         Categorie TM("TM","Techniques et Methodes");
@@ -42,14 +42,14 @@ int main()
         NF92.ajoutCredits(TM_Classique);
         LO21.ajoutCredits(TM_Classique);
 
-        LO21.ajoutPrerequis(NF01);
+        /*LO21.ajoutPrerequis(NF01);
         LO21.ajoutPrerequis(NF92);
         LO21.ajoutPrerequis(NF16);
         LO21.retirePrerequis(NF92);
         LO21.ajoutPrerequis(NF92);
         LO21.ajoutCredits(CS_Classique);
         LO21.retireCredits(CS_Classique);
-        LO21.retireCredits(TM_Classique);
+        LO21.retireCredits(TM_Classique);*/
 
         NF01.affichageUV();
         NF16.affichageUV();
@@ -61,6 +61,7 @@ int main()
         UV LO21P13(LO21);
         cout<<"TEST CONSTRUCTEUR RECOPIE :"<<endl;
         LO21P13.affichageUV();
+        cout << endl;
 
         /*
         cout<<"TEST DESTRUCTEUR UV"<<endl;
@@ -73,9 +74,10 @@ int main()
         Credits TM_branche("TM_branche",30,TM);
 
         Formation GI("GI", "Genie informatique");
-        Formation GP("GP","Genie des procedes");
+        Formation GP("GP", "Genie des procedes");
         GI.ajouterCredits(CS_branche);
         GI.ajouterCredits(TM_branche);
+        GI.retirerUV(NF01);
         GI.ajouterUV(NF01);
         GI.ajouterUV(LO21);
         GI.ajouterUV(NF16);
@@ -83,7 +85,7 @@ int main()
         cout << endl;
 
         Formation FDD("FDD", "Fouille de données");
-        GI.ajouterFormationFille(FDD);
+        GI.ajouterSpecialite(FDD);
         GI.retirerCredits(CS_branche);
         GI.retirerUV(NF01);
         GI.afficher();
@@ -93,8 +95,8 @@ int main()
         Periode P14("Printemps", 2014);
         Periode A70("Automne", 1970);
 
-        P14.afficherPeriode();
-        A70.afficherPeriode();
+        P14.afficher();
+        A70.afficher();
         cout << endl;
 
         //Periode A71("Automne", 2171); // Génère une Exception
@@ -103,12 +105,12 @@ int main()
         Inscription GI02(P14, GI);
         GI02.ajouterUV(NF16);
         GI02.ajouterUV(LO21);
-        GI02.afficherInscription();
+        GI02.afficher();
         GI02.retirerUV(NF16);
-        GI02.afficherInscription();
+        GI02.afficher();
 
         //modification dossier avec formation et inscription
-        D1.ajoutFormation(GI);
+        /*D1.ajoutFormation(GI);
         D2.ajoutFormation(GP);
         D1.affichageDossier();
         D2.affichageDossier();
@@ -130,10 +132,7 @@ int main()
         m.ajouterUV(NF92);
         m.ajouterUV(NF01);
         m.ajouterUV(NF16);
-        m.affichage();
-
-
-
+        m.affichage();*/
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

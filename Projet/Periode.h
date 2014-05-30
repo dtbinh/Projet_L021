@@ -20,7 +20,7 @@ public:
     const std::string& getNom() const { return nom; }
     unsigned int getAnnee() const { return annee; }
 
-    void afficherPeriode();
+    void afficher();
 };
 
 #endif // PERIODE_H

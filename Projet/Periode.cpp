@@ -17,7 +17,7 @@ Periode::Periode(string n, unsigned int a): code(""), nom(n), annee(a)
     code = codetmp.str();
 }
 
-void Periode::afficherPeriode()
+void Periode::afficher()
 {
     cout << code << " (" << nom << " " << annee << ")" << endl;
 }

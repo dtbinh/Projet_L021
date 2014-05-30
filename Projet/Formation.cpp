@@ -13,10 +13,10 @@ void Formation::afficher()
     }
     cout << endl;
 
-    cout << "Formations parentes : ";
-    for (unsigned int i = 0; i < formations_filles.size(); i++)
+    cout << "Spécialités : ";
+    for (unsigned int i = 0; i < specialites.size(); i++)
     {
-        cout << formations_filles[i]->getCode() << " " << formations_filles[i]->getNom() << "  ";
+        cout << specialites[i]->getCode() << " " << specialites[i]->getNom() << "  ";
     }
     cout << endl;
 
