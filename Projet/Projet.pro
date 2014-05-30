@@ -5,7 +5,9 @@ SOURCES += \
     Periode.cpp \
     UV.cpp \
     Inscription.cpp \
-    UvManager.cpp
+    UvManager.cpp \
+    Dossier.cpp \
+    CreditManager.cpp
 
 HEADERS += \
     Dossier.h \
@@ -16,4 +18,5 @@ HEADERS += \
     Exception.h \
     UV.h \
     Inscription.h \
-    UvManager.h
+    UvManager.h \
+    CreditManager.h

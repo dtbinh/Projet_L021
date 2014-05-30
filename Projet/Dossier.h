@@ -9,6 +9,9 @@
 #ifndef DOSSIER_H
 #define DOSSIER_H
 
+#include "Formation.h"
+#include "Inscription.h"
+
 using namespace std;
 
 class Dossier{
@@ -16,6 +19,8 @@ private:
     string nom;
     string prenom;
     string login;
+    vector<const Formation*>formation;
+    vector<const Inscription*> inscription;
 public :
     ///
     /// \fn Dossier
@@ -23,7 +28,7 @@ public :
     /// \param p Prenom de l'étudiant
     /// \brief La fonction calcule automatiquement le login de l'étudiant
     ///
-    Dossier(string n,string p):nom(n),prenom(p){
+    Dossier(string n,string p):nom(n),prenom(p),formation(vector<const Formation*>()),inscription(vector<const Inscription*>()){
         if(nom.size()>=7){
             login=prenom.at(0);
             for(int j=0;j<7;j++)
@@ -62,7 +67,15 @@ public :
     /// \fn affichage
     /// \brief Simple fonction d'affichage
     ///
-    void affichage(){cout<<"Dossier de "<<nom<<" "<<prenom<<" login : "<<login<<endl;}
+    void affichageDossier();
+
+    void ajoutFormation(const Formation& f){ formation.push_back(&f); }
+    void retireFormation(const Formation& f) { if (formation.empty()) throw Exception("Objets vide, suppression impossible");
+        else formation.erase(remove(formation.begin(), formation.end(), &f), formation.end()); }
+
+    void ajoutInscription(const Inscription& f){ inscription.push_back(&f); }
+    void retireInscription(const Inscription& f) { if (inscription.empty()) throw Exception("Objets vide, suppression impossible");
+        else inscription.erase(remove(inscription.begin(), inscription.end(), &f), inscription.end()); }
 };
 
 #endif // DOSSIER_H

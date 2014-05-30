@@ -8,6 +8,7 @@
 #include "Credits.h"
 #include "Inscription.h"
 #include "UvManager.h"
+#include "CreditManager.h"
 
 
 using namespace std;
@@ -20,16 +21,16 @@ int main()
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 
-        D1.affichage();
-        D2.affichage();
-        D3.affichage();
+        D1.affichageDossier();
+        D2.affichageDossier();
+        D3.affichageDossier();
 
         /* Test Categorie, Credit et UV */
         Categorie TM("TM","Techniques et Methodes");
         Categorie CS("CS","Connaissance Scientifique");
 
-        Credits CS_Classique(6,CS);
-        Credits TM_Classique(6,TM);
+        Credits CS_Classique("CS_Classique",6,CS);
+        Credits TM_Classique("TM_CLassique",6,TM);
 
         UV NF01("NF01","Algorithmique","On apprend le Pascal",TM);
         UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",CS);
@@ -68,10 +69,11 @@ int main()
         */
 
         /* Test Formations */
-        Credits CS_branche(30,CS);
-        Credits TM_branche(30,TM);
+        Credits CS_branche("CS_branche",30,CS);
+        Credits TM_branche("TM_branche",30,TM);
 
         Formation GI("GI", "Genie informatique");
+        Formation GP("GP","Genie des procedes");
         GI.ajouterCredits(CS_branche);
         GI.ajouterCredits(TM_branche);
         GI.ajouterUV(NF01);
@@ -91,8 +93,8 @@ int main()
         Periode P14("Printemps", 2014);
         Periode A70("Automne", 1970);
 
-        P14.afficher();
-        A70.afficher();
+        P14.afficherPeriode();
+        A70.afficherPeriode();
         cout << endl;
 
         //Periode A71("Automne", 2171); // Génère une Exception
@@ -101,17 +103,36 @@ int main()
         Inscription GI02(P14, GI);
         GI02.ajouterUV(NF16);
         GI02.ajouterUV(LO21);
-        GI02.afficher();
+        GI02.afficherInscription();
         GI02.retirerUV(NF16);
-        GI02.afficher();
+        GI02.afficherInscription();
 
-        //Test du manager
+        //modification dossier avec formation et inscription
+        D1.ajoutFormation(GI);
+        D2.ajoutFormation(GP);
+        D1.affichageDossier();
+        D2.affichageDossier();
+        D1.ajoutInscription(GI02);
+        D1.affichageDossier();
+
+
+        //Test du Credit manager
+        CreditManager& m_Cred=CreditManager::getInstance();
+        m_Cred.ajouterCredit(CS_Classique);
+        m_Cred.ajouterCredit(TM_Classique);
+        m_Cred.ajouterCredit(CS_branche);
+        m_Cred.ajouterCredit(TM_branche);
+        m_Cred.affichage();
+
+        //Test du UV manager
         UVManager& m=UVManager::getInstance();
         m.ajouterUV(LO21);
+        m.ajouterUV(NF92);
         m.ajouterUV(NF01);
         m.ajouterUV(NF16);
-        m.ajouterUV(NF92);
         m.affichage();
+
+
 
 
     } catch(Exception &e) {

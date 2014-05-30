@@ -1,4 +1,4 @@
-#include "Periode.h"
+﻿#include "Periode.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ Periode::Periode(string n, unsigned int a): code(""), nom(n), annee(a)
     code = codetmp.str();
 }
 
-void Periode::afficher()
+void Periode::afficherPeriode()
 {
     cout << code << " (" << nom << " " << annee << ")" << endl;
 }

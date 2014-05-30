@@ -1,4 +1,4 @@
-#ifndef PERIODE_H
+﻿#ifndef PERIODE_H
 #define PERIODE_H
 
 #include <iostream>
@@ -20,7 +20,7 @@ public:
     const std::string& getNom() const { return nom; }
     unsigned int getAnnee() const { return annee; }
 
-    void afficher();
+    void afficherPeriode();
 };
 
 #endif // PERIODE_H

@@ -12,6 +12,7 @@
 #include "Categorie.h"
 
 class Credits { //Permet de Décrire le nombre de crédit associé à une catégorie
+    string code;
     int nombre;
     Categorie& cat;
 public :
@@ -21,8 +22,9 @@ public :
     /// \param categ Une reférence vers un objet catégorie
     /// \brief Constructeur nécessitant le nombre de crédits et la catégorie de ces crédits.
     ///
-    Credits(int n,Categorie& categ):nombre(n),cat(categ){}
+    Credits(string c,int n,Categorie& categ):code(c),nombre(n),cat(categ){}
 
+    string getCode()const {return code;}
     ///\fn getNombre()
     /// \return int nombre de crédits
     ///

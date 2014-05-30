@@ -1,4 +1,4 @@
-#include "Inscription.h"
+﻿#include "Inscription.h"
 
 using namespace std;
 
@@ -14,7 +14,7 @@ void Inscription::retirerUV(const UV& u)
     notes.erase(u.getCode());
 }
 
-void Inscription::afficher()
+void Inscription::afficherInscription ()
 {
     cout << periode.getCode() << " " << formation.getCode() << endl;
 

@@ -25,7 +25,7 @@ public:
    void ajouterUV(const UV& u);
    void retirerUV(const UV& u);
    
-   void afficher();
+   void afficherInscription() ;
 };
 
 #endif // INSCRIPTION_H
