@@ -1,7 +1,7 @@
 ﻿///
 /// \file Credits.h
-/// \brief Les UVs de l'UTC possédents des crédits
-/// \author Nicolas Szewe
+/// \brief Les UVs de l'UTC possédents des crédits. Permet de décrire le nombre de crédit associé à une catégorie.
+/// \author Nicolas Szewe, Erwan Normand
 /// \version 0.1
 /// \date 27 mai 2014
 ///
@@ -11,8 +11,8 @@
 
 #include "Categorie.h"
 
-class Credits { //Permet de Décrire le nombre de crédit associé à une catégorie
-    string code;
+class Credits {
+    std::string code;
     int nombre;
     const Categorie& cat;
 public :
@@ -22,25 +22,25 @@ public :
     /// \param categ Une reférence vers un objet catégorie
     /// \brief Constructeur nécessitant le nombre de crédits et la catégorie de ces crédits.
     ///
-    Credits(string c,int n,Categorie& categ):code(c),nombre(n),cat(categ){}
+    Credits(const std::string& c, int n, const Categorie& categ): code(c), nombre(n), cat(categ) {}
 
     ///
     /// \fn getCode()
-    /// \return int Le code de crédits
+    /// \return string code
     ///
-    string getCode()const {return code;}
+    const std::string& getCode() const { return code; }
 
     ///
     /// \fn getNombre()
     /// \return int nombre de crédits
     ///
-    int getNombre() const {return nombre;}
+    int getNombre() const { return nombre; }
 
     ///
     /// \fn getCategorie
     /// \return const Categorie& référence vers la catégorie
     ///
-    const Categorie& getCategorie() const {return cat;}
+    const Categorie& getCategorie() const { return cat; }
 };
 
 #endif // CREDIT_H

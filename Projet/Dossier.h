@@ -19,7 +19,7 @@ private:
     string nom;
     string prenom;
     string login;
-    vector<const Formation*>formation;
+    vector<const Formation*> formation;
     vector<const Inscription*> inscription;
 public :
     ///

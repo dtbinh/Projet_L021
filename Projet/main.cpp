@@ -4,7 +4,7 @@
 #include "Formation.h"
 #include "Periode.h"
 #include "Dossier.h"
-#include "Categorie.h"
+#include "CategorieManager.h"
 #include "Credits.h"
 #include "Inscription.h"
 #include "UvManager.h"
@@ -17,25 +17,28 @@ int main()
 {
     try
     {
-        /*Dossier D1("szewe","nicolas");
+        Dossier D1("szewe","nicolas");
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 
         D1.affichageDossier();
         D2.affichageDossier();
-        D3.affichageDossier();*/
+        D3.affichageDossier();
 
         /* Test Categorie, Credit et UV */
-        Categorie TM("TM","Techniques et Methodes");
-        Categorie CS("CS","Connaissance Scientifique");
+        //Categorie TM("TM","Techniques et Methodes");
+        //Categorie CS("CS","Connaissance Scientifique");
+        CategorieManager cm;
+        cm.ajouterCategorie("TM","Techniques et Methodes");
+        cm.ajouterCategorie("CS","Connaissance Scientifique");
 
-        Credits CS_Classique("CS_Classique",6,CS);
-        Credits TM_Classique("TM_CLassique",6,TM);
+        Credits CS_Classique("CS_Classique",6,cm.getCategorie("CS"));
+        Credits TM_Classique("TM_CLassique",6,cm.getCategorie("TM"));
 
-        UV NF01("NF01","Algorithmique","On apprend le Pascal",TM);
-        UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",CS);
-        UV NF92("NF92","Decouverte du Genie Informatique","Decouverte de tous ce que l'on peut faire en GI",TM);
-        UV LO21("LO21","Programmation orienté objet","Une UV ou l'on apprend le C++",TM);
+        UV NF01("NF01","Algorithmique","On apprend le Pascal",cm.getCategorie("TM"));
+        UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",cm.getCategorie("CS"));
+        UV NF92("NF92","Decouverte du Genie Informatique","Decouverte de tous ce que l'on peut faire en GI",cm.getCategorie("TM"));
+        UV LO21("LO21","Programmation orienté objet","Une UV ou l'on apprend le C++",cm.getCategorie("TM"));
 
         NF01.ajoutCredits(TM_Classique);
         NF16.ajoutCredits(CS_Classique);
@@ -70,8 +73,8 @@ int main()
         */
 
         /* Test Formations */
-        Credits CS_branche("CS_branche",30,CS);
-        Credits TM_branche("TM_branche",30,TM);
+        Credits CS_branche("CS_branche",30,cm.getCategorie("CS"));
+        Credits TM_branche("TM_branche",30,cm.getCategorie("TM"));
 
         Formation GI("GI", "Genie informatique");
         Formation GP("GP", "Genie des procedes");
@@ -107,6 +110,7 @@ int main()
         GI02.ajouterUV(LO21);
         GI02.afficher();
         GI02.retirerUV(NF16);
+        GI02.modifierNote(LO21, A);
         GI02.afficher();
 
         //modification dossier avec formation et inscription

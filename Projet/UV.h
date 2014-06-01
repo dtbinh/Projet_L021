@@ -30,7 +30,6 @@ enum Choix {
 /// \enum Note
 /// \brief Les différentes notes que peuvent obtenir les étudiants pour une UV
 ///
-
 enum Note {
     A,B,C,D,E,F,FX,RES,ABS,EC
 };
@@ -150,10 +149,5 @@ public :
 
     ~UV();//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
-
-
-
-
-
 
 #endif // UV_PROFIL_H

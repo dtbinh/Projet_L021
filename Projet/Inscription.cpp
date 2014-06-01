@@ -14,6 +14,11 @@ void Inscription::retirerUV(const UV& u)
     notes.erase(u.getCode());
 }
 
+void Inscription::modifierNote(const UV& u, const Note& n)
+{
+    notes[u.getCode()] = n;
+}
+
 void Inscription::afficher()
 {
     cout << periode.getCode() << " " << formation.getCode() << endl;

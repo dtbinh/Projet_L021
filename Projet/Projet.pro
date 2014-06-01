@@ -19,4 +19,5 @@ HEADERS += \
     UV.h \
     Inscription.h \
     UvManager.h \
-    CreditManager.h
+    CreditManager.h \
+    CategorieManager.h
