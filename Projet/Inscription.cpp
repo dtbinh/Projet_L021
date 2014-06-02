@@ -19,14 +19,14 @@ void Inscription::modifierNote(const UV& u, const Note& n)
     notes[u.getCode()] = n;
 }
 
-void Inscription::afficher()
+void Inscription::afficher() const
 {
     cout << periode.getCode() << " " << formation.getCode() << endl;
 
     cout << "UVs : ";
-    for (map<string,UV>::iterator it = uvs.begin(); it != uvs.end(); it++)
+    for (map<string,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)
     {
-        cout << it->second.getCode() << " " << notes[it->second.getCode()] << "  ";
+        cout << it->second.getCode() << " " << notes.find(it->second.getCode())->second << "  ";
     }
     cout << endl;
 }

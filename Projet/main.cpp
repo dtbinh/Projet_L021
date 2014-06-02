@@ -21,10 +21,6 @@ int main()
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 
-        D1.affichageDossier();
-        D2.affichageDossier();
-        D3.affichageDossier();
-
         /* Test Categorie, Credit et UV */
         //Categorie TM("TM","Techniques et Methodes");
         //Categorie CS("CS","Connaissance Scientifique");
@@ -45,25 +41,25 @@ int main()
         NF92.ajoutCredits(TM_Classique);
         LO21.ajoutCredits(TM_Classique);
 
-        /*LO21.ajoutPrerequis(NF01);
+        LO21.ajoutPrerequis(NF01);
         LO21.ajoutPrerequis(NF92);
         LO21.ajoutPrerequis(NF16);
         LO21.retirePrerequis(NF92);
         LO21.ajoutPrerequis(NF92);
         LO21.ajoutCredits(CS_Classique);
         LO21.retireCredits(CS_Classique);
-        LO21.retireCredits(TM_Classique);*/
+        LO21.retireCredits(TM_Classique);
 
-        NF01.affichageUV();
-        NF16.affichageUV();
-        NF92.affichageUV();
-        LO21.affichageUV();
+        NF01.affichage();
+        NF16.affichage();
+        NF92.affichage();
+        LO21.affichage();
         cout << endl;
 
 
         UV LO21P13(LO21);
         cout<<"TEST CONSTRUCTEUR RECOPIE :"<<endl;
-        LO21P13.affichageUV();
+        LO21P13.affichage();
         cout << endl;
 
         /*
@@ -113,15 +109,14 @@ int main()
         GI02.modifierNote(LO21, A);
         GI02.afficher();
 
-        //modification dossier avec formation et inscription
-        /*D1.ajoutFormation(GI);
+        D1.ajoutFormation(GI);
         D2.ajoutFormation(GP);
-        D1.affichageDossier();
-        D2.affichageDossier();
+        D1.affichage();
+        D2.affichage();
         D1.ajoutInscription(GI02);
-        D1.affichageDossier();
+        D1.affichage();
 
-
+        /*
         //Test du Credit manager
         CreditManager& m_Cred=CreditManager::getInstance();
         m_Cred.ajouterCredit(CS_Classique);
@@ -136,7 +131,9 @@ int main()
         m.ajouterUV(NF92);
         m.ajouterUV(NF01);
         m.ajouterUV(NF16);
-        m.affichage();*/
+        m.affichage();
+
+        */
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

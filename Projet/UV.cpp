@@ -1,6 +1,6 @@
 ﻿#include "UV.h"
 
-void UV::affichageUV(){
+void UV::affichage(){
     cout<<code<<"---"<<nom<<"---"<<description<<endl;
     cout<<"Categorie : "<<cat.getCode()<<endl;
     cout<<" Credits : ";

@@ -28,7 +28,7 @@ public:
    void retirerUV(const UV& u);
    void modifierNote(const UV& u, const Note& n);
    
-   void afficher();
+   void afficher() const;
 };
 
 #endif // INSCRIPTION_H

@@ -71,13 +71,13 @@ public :
     /// \fn getCode
     /// \return string Le code de l'UV
     ///
-    string getCode() const {return code;}
+    const string& getCode() const {return code;}
 
     ///
     /// \fn getNom
     /// \return string Le nom de l'UV
     ///
-    string getNom() const {return nom;}
+    const string& getNom() const {return nom;}
 
     ///
     /// \fn setCode
@@ -90,7 +90,7 @@ public :
     /// \fn getDescription
     /// \return string La description de l'UV
     ///
-    string getDescription() const {return description;}
+    const string& getDescription() const {return description;}
 
     ///
     /// \fn getCat
@@ -122,8 +122,8 @@ public :
     /// \param u Une référence sur l'UV a retirer en prérequis
     /// \brief Utilise remove sur le conteneur vecteur prerequis pour retirer l'uv des prérequis
     ///
-    //void retirePrerequis(const UV& u) { if (prerequis.empty()) throw Exception("Objets vide, suppression impossible");
-    //    else prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
+    void retirePrerequis(const UV& u) { if (prerequis.empty()) throw Exception("Objets vide, suppression impossible");
+        else prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
 
     ///
     /// \fn ajoutCredits
@@ -137,13 +137,13 @@ public :
     /// \param c Une rérence sur un objet de la classe crédit
     /// \brief Retire des crédits d'une UV
     ///
-    //void retireCredits(const Credits& c) { if (cred.empty()) throw Exception("Objets vide, suppression impossible"); else cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
+    void retireCredits(const Credits& c) { if (cred.empty()) throw Exception("Objets vide, suppression impossible"); else cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
 
     ///
     /// \fn affichageUV
     /// \brief Fonction d'affichage d'une UV
     ///
-    void affichageUV();
+    void affichage();
 
     //UV& operator=(const UV& u);
 
