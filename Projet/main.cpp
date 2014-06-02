@@ -31,10 +31,10 @@ int main()
         Credits CS_Classique("CS_Classique",6,cm.getCategorie("CS"));
         Credits TM_Classique("TM_CLassique",6,cm.getCategorie("TM"));
 
-        UV NF01("NF01","Algorithmique","On apprend le Pascal",cm.getCategorie("TM"));
-        UV NF16("NF16","Complexité et Structure de donnée","Tous est dans le titre",cm.getCategorie("CS"));
-        UV NF92("NF92","Decouverte du Genie Informatique","Decouverte de tous ce que l'on peut faire en GI",cm.getCategorie("TM"));
-        UV LO21("LO21","Programmation orienté objet","Une UV ou l'on apprend le C++",cm.getCategorie("TM"));
+        UV NF01("NF01","Algorithmique",cm.getCategorie("TM"));
+        UV NF16("NF16","Complexité et Structure de donnée",cm.getCategorie("CS"));
+        UV NF92("NF92","Decouverte du Genie Informatique",cm.getCategorie("TM"));
+        UV LO21("LO21","Programmation orienté objet",cm.getCategorie("TM"));
 
         NF01.ajoutCredits(TM_Classique);
         NF16.ajoutCredits(CS_Classique);

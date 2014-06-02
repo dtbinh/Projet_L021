@@ -1,7 +1,7 @@
 ﻿#include "UV.h"
 
 void UV::affichage(){
-    cout<<code<<"---"<<nom<<"---"<<description<<endl;
+    cout<<code<<"---"<<nom<<endl;
     cout<<"Categorie : "<<cat.getCode()<<endl;
     cout<<" Credits : ";
     for(unsigned int i=0;i<cred.size();i++)
@@ -17,7 +17,6 @@ void UV::affichage(){
 UV::UV(const UV& u){
     code=u.code;
     nom=u.nom;
-    description=u.description;
     cat=u.cat;
     for(unsigned int i=0;i<u.cred.size();i++)
             cred.push_back(u.cred[i]);
@@ -29,7 +28,6 @@ UV::UV(const UV& u){
 UV::~UV(){
     code="NULL";
     nom="NULL";
-    description="NULL";
 
 }
 

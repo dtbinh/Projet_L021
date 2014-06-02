@@ -44,7 +44,7 @@ enum Preference{
 
 class UV{
 private :
-    string code,nom,description;
+    string code,nom;
     Categorie cat;
     vector<const Credits*> cred; // Une UV peut avoir plusieurs types de crédits, il faut donc faire un tableau alloué dynamiquement
     vector<const UV*> prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
@@ -57,8 +57,8 @@ public :
     /// \param categ La catégorie de l'UV
     /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
     ///
-    UV(const string& c="",const string& n="", const string& d="",const Categorie& categ=Categorie())
-    : code(c), nom(n),description(d),cat(categ),cred(vector<const Credits*>()),prerequis(vector<const UV*>()) {}
+    UV(const string& c="",const string& n="",const Categorie& categ=Categorie())
+    : code(c), nom(n),cat(categ),cred(vector<const Credits*>()),prerequis(vector<const UV*>()) {}
 
     ///
     /// \fn UV(const UV& u)
@@ -85,12 +85,6 @@ public :
     /// \brief Fonction pour modifier le code d'une uv
     ///
     void setCode(string c){code=c;}
-
-    ///
-    /// \fn getDescription
-    /// \return string La description de l'UV
-    ///
-    const string& getDescription() const {return description;}
 
     ///
     /// \fn getCat
@@ -144,8 +138,6 @@ public :
     /// \brief Fonction d'affichage d'une UV
     ///
     void affichage();
-
-    //UV& operator=(const UV& u);
 
     ~UV();//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
