@@ -12,11 +12,10 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <algorithm>
 #include "Categorie.h"
 #include "Credits.h"
 #include "Exception.h"
-
-using namespace std;
 
 ///
 /// \enum Choix
@@ -44,11 +43,11 @@ enum Preference{
 
 class UV{
 private :
-    string code,nom;
+    std::string code,nom;
     Categorie cat;
-    vector<const Credits*> cred; // Une UV peut avoir plusieurs types de crédits, il faut donc faire un tableau alloué dynamiquement
-    vector<const UV*> prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
-public :
+    std::vector<const Credits*> cred; // Une UV peut avoir plusieurs types de crédits, il faut donc faire un tableau alloué dynamiquement
+    std::vector<const UV*> prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
+public:
     ///
     /// \fn UV(const string& c,const string& n, const string& d,const Categorie& categ)
     /// \param c Le code d'une UV
@@ -57,8 +56,8 @@ public :
     /// \param categ La catégorie de l'UV
     /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
     ///
-    UV(const string& c="",const string& n="",const Categorie& categ=Categorie())
-    : code(c), nom(n),cat(categ),cred(vector<const Credits*>()),prerequis(vector<const UV*>()) {}
+    UV(const std::string& c="",const std::string& n="",const Categorie& categ=Categorie())
+        : code(c), nom(n),cat(categ),cred(std::vector<const Credits*>()),prerequis(std::vector<const UV*>()) {}
 
     ///
     /// \fn UV(const UV& u)
@@ -71,38 +70,38 @@ public :
     /// \fn getCode
     /// \return string Le code de l'UV
     ///
-    const string& getCode() const {return code;}
+    const std::string& getCode() const {return code;}
 
     ///
     /// \fn getNom
     /// \return string Le nom de l'UV
     ///
-    const string& getNom() const {return nom;}
+    const std::string& getNom() const {return nom;}
 
     ///
     /// \fn setCode
     /// \param c Le nouveau code pour l'UV
     /// \brief Fonction pour modifier le code d'une uv
     ///
-    void setCode(string c){code=c;}
+    void setCode(std::string c){code=c;}
 
     ///
     /// \fn getCat
     /// \return Categorie La categorie auquel appartient l'UV
     ///
-    Categorie getCat() const {return cat;}
+    const Categorie& getCat() const {return cat;}
 
     ///
     /// \fn getCredits
     /// \return Les différents crédits que possédent l'UV
     ///
-    const vector<const Credits*>& getCredits() const { return cred; }
+    const std::vector<const Credits*>& getCredits() const { return cred; }
 
     ///
     /// \fn getPrerequis
     /// \return Les différents prérequis que possédent l'UV
     ///
-    const vector<const UV*>& getPrerequis() const { return prerequis ; }
+    const std::vector<const UV*>& getPrerequis() const { return prerequis ; }
 
     ///
     /// \fn ajoutPrerequis
@@ -116,8 +115,7 @@ public :
     /// \param u Une référence sur l'UV a retirer en prérequis
     /// \brief Utilise remove sur le conteneur vecteur prerequis pour retirer l'uv des prérequis
     ///
-    void retirePrerequis(const UV& u) { if (prerequis.empty()) throw Exception("Objets vide, suppression impossible");
-        else prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
+    void retirePrerequis(const UV& u) { prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
 
     ///
     /// \fn ajoutCredits
@@ -131,7 +129,7 @@ public :
     /// \param c Une rérence sur un objet de la classe crédit
     /// \brief Retire des crédits d'une UV
     ///
-    void retireCredits(const Credits& c) { if (cred.empty()) throw Exception("Objets vide, suppression impossible"); else cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
+    void retireCredits(const Credits& c) { cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
 
     ///
     /// \fn affichageUV

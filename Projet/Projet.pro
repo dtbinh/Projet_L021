@@ -20,4 +20,6 @@ HEADERS += \
     Inscription.h \
     UvManager.h \
     CreditManager.h \
-    CategorieManager.h
+    CategorieManager.h \
+    Manager.h \
+    Manager.h

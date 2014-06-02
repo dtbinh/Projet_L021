@@ -8,8 +8,12 @@
 #ifndef CATEGORIE_H
 #define CATEGORIE_H
 
-class Categorie {
+#include <string>
+
+class Categorie
+{
     std::string code, nom;
+
 public :
     ///
     /// \fn Categorie(string c,string n)
@@ -25,11 +29,15 @@ public :
     ///
     const std::string& getCode() const { return code; }
 
+    void setCode(const std::string& c) { code = c; }
+
     ///
     /// \fn getNom()
     /// \return const string& retourne le nom de la categorie
     ///
     const std::string& getNom() const { return nom; }
+
+    void setNom(const std::string& n) { nom = n; }
 };
 
 #endif // CATEGORIE_H

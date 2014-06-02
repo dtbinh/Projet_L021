@@ -2,7 +2,8 @@
 
 using namespace std;
 
-Dossier::Dossier(string n,string p):nom(n),prenom(p),formation(vector<const Formation*>()),inscription(vector<const Inscription*>()){
+void Dossier::setLogin()
+{
     if(nom.size()>=7){
         login=prenom.at(0);
         for(int j=0;j<7;j++)

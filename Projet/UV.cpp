@@ -1,5 +1,7 @@
 ﻿#include "UV.h"
 
+using namespace std;
+
 void UV::affichage(){
     cout<<code<<"---"<<nom<<endl;
     cout<<"Categorie : "<<cat.getCode()<<endl;

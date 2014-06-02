@@ -1,5 +1,6 @@
 ﻿#include "UvManager.h"
 
+using namespace std;
 
 UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),modification(false){
 }
