@@ -1,5 +1,4 @@
-﻿///
-/// \file Manager.h
+﻿/// \file Manager.h
 /// \brief Class template model of all the Managers
 /// \author Erwan Normand
 /// \date 02 juin 2014
