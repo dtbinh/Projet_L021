@@ -10,7 +10,6 @@
 #include "UvManager.h"
 #include "CreditManager.h"
 
-
 using namespace std;
 
 int main()
@@ -41,14 +40,14 @@ int main()
         NF92.ajoutCredits(TM_Classique);
         LO21.ajoutCredits(TM_Classique);
 
-        LO21.ajoutPrerequis(NF01);
+        /*LO21.ajoutPrerequis(NF01);
         LO21.ajoutPrerequis(NF92);
         LO21.ajoutPrerequis(NF16);
         LO21.retirePrerequis(NF92);
         LO21.ajoutPrerequis(NF92);
         LO21.ajoutCredits(CS_Classique);
         LO21.retireCredits(CS_Classique);
-        LO21.retireCredits(TM_Classique);
+        LO21.retireCredits(TM_Classique);*/
 
         NF01.affichage();
         NF16.affichage();

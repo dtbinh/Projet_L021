@@ -1,5 +1,6 @@
 ﻿#include "CreditManager.h"
 
+using namespace std;
 
 CreditManager::CreditManager():credit(0),nbCredit(0),nbMaxCredit(0),modification(false){
 }

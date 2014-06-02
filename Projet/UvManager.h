@@ -1,4 +1,5 @@
-﻿#ifndef UVMANAGER_H
+﻿
+#ifndef UVMANAGER_H
 #define UVMANAGER_H
 
 #include "UV.h"
@@ -10,7 +11,7 @@ private:
     unsigned int nbMaxUV;
     void addItem(UV* uv);
     bool modification;
-    UV* trouverUV(const string& c) const;
+    UV* trouverUV(const std::string& c) const;
     UVManager(const UVManager& um);
     UVManager& operator=(const UVManager& um);
     UVManager();
@@ -32,8 +33,8 @@ public:
     static UVManager& getInstance();
     static void libererInstance();
     void ajouterUV(UV& u);
-    const UV& getUV(const string& code) const;
-    UV& getUV(const string& code);
+    const UV& getUV(const std::string& code) const;
+    UV& getUV(const std::string& code);
 
     class iterator {
         UV** current;
