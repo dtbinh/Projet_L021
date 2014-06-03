@@ -8,11 +8,11 @@
 #ifndef CATEGORIE_H
 #define CATEGORIE_H
 
-#include <string>
+#include <QString>
 
 class Categorie
 {
-    std::string code, nom;
+    QString code, nom;
 
 public :
     ///
@@ -21,23 +21,23 @@ public :
     /// \param n Le nom de l'UV a crée
     /// \brief Constructeur nécessitant le nom et le code de l'UV
     ///
-    Categorie(const std::string& c = "", const std::string& n = ""): code(c), nom(n) {}
+    Categorie(const QString& c = "", const QString& n = ""): code(c), nom(n) {}
 
     ///
     /// \fn getCode()
-    /// \return const string& retourne le code de la categorie
+    /// \return const QString& retourne le code de la categorie
     ///
-    const std::string& getCode() const { return code; }
+    const QString& getCode() const { return code; }
 
-    void setCode(const std::string& c) { code = c; }
+    void setCode(const QString& c) { code = c; }
 
     ///
     /// \fn getNom()
-    /// \return const string& retourne le nom de la categorie
+    /// \return const QString& retourne le nom de la categorie
     ///
-    const std::string& getNom() const { return nom; }
+    const QString& getNom() const { return nom; }
 
-    void setNom(const std::string& n) { nom = n; }
+    void setNom(const QString& n) { nom = n; }
 };
 
 #endif // CATEGORIE_H

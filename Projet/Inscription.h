@@ -13,16 +13,16 @@ class Inscription
 private:
     const Periode& periode;
     const Formation& formation;
-    std::map<std::string,UV> uvs;
-    std::map<std::string,Note> notes;
+    std::map<QString,UV> uvs;
+    std::map<QString,Note> notes;
 
 public:
-   Inscription(const Periode& p, const Formation& f): periode(p), formation(f), uvs(std::map<std::string,UV>()), notes(std::map<std::string,Note>()) {}
+   Inscription(const Periode& p, const Formation& f): periode(p), formation(f), uvs(std::map<QString,UV>()), notes(std::map<QString,Note>()) {}
 
    const Periode& getPeriode() const { return periode; }
    const Formation& getFormation() const { return formation; }
-   const std::map<std::string,UV>& getUVs() const { return uvs; }
-   const std::map<std::string,Note>& getNotes() const { return notes; }
+   const std::map<QString,UV>& getUVs() const { return uvs; }
+   const std::map<QString,Note>& getNotes() const { return notes; }
 
    void ajouterUV(const UV& u);
    void retirerUV(const UV& u);

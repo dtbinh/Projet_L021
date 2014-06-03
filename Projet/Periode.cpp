@@ -1,8 +1,9 @@
 ﻿#include "Periode.h"
+#include <QTextStream>
 
 using namespace std;
 
-Periode::Periode(string n, unsigned int a): code(""), nom(n), annee(a)
+Periode::Periode(QString n, unsigned int a): code(""), nom(n), annee(a)
 {
     if (annee < 1970 || annee > 2069) {
         throw Exception("L'annee doit etre comprise entre 1970 et 2069.");
@@ -12,12 +13,10 @@ Periode::Periode(string n, unsigned int a): code(""), nom(n), annee(a)
     }
 
     // Créé le code à partir du nom et de l'année
-    ostringstream codetmp;
-    codetmp << nom[0] << annee % 100;
-    code = codetmp.str();
+    code=nom[0]+QString::number(annee % 100);
 }
 
 void Periode::afficher()
 {
-    cout << code << " (" << nom << " " << annee << ")" << endl;
+    cout << code.toStdString() << " (" << nom.toStdString() << " " << annee << ")" << endl;
 }

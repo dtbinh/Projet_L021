@@ -16,15 +16,15 @@ template<class T>
 class Manager
 {
 private:
-    std::map<std::string,T> tab;
+    std::map<QString,T> tab;
 
 public:
-    Manager(): tab(std::map<std::string,T>()) {}
+    Manager(): tab(std::map<QString,T>()) {}
 
-    const T& get(const std::string code) const { return tab.find(code)->second; }
+    const T& get(const QString code) const { return tab.find(code)->second; }
 
-    void ajouter(std::string code, const T& t) { tab[code] = t; }
-    void retirer(std::string code) { tab.erase(code); }
+    void ajouter(QString code, const T& t) { tab[code] = t; }
+    void retirer(QString code) { tab.erase(code); }
 };
 
 #endif // MANAGER_H

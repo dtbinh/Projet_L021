@@ -8,7 +8,7 @@
 #ifndef DOSSIER_H
 #define DOSSIER_H
 
-#include <string>
+#include <QString>
 #include <vector>
 #include <algorithm>
 #include "Formation.h"
@@ -17,9 +17,9 @@
 class Dossier
 {
 private:
-    std::string nom;
-    std::string prenom;
-    std::string login;
+    QString nom;
+    QString prenom;
+    QString login;
     std::vector<const Formation*> formation;
     std::vector<const Inscription*> inscription;
 
@@ -30,7 +30,7 @@ public :
     /// \param p Prenom de l'étudiant
     /// \brief La fonction calcule automatiquement le login de l'étudiant
     ///
-    Dossier(std::string n, std::string p): nom(n), prenom(p), formation(std::vector<const Formation*>()), inscription(std::vector<const Inscription*>()) {
+    Dossier(QString n, QString p): nom(n), prenom(p), formation(std::vector<const Formation*>()), inscription(std::vector<const Inscription*>()) {
         setLogin();
     }
 
@@ -40,23 +40,23 @@ public :
     /// \fn getNom
     /// \return string Nom de l'étudiant
     ///
-    const std::string& getNom() const { return nom; }
+    const QString& getNom() const { return nom; }
 
-    void setNom(const std::string& n) { nom = n; }
+    void setNom(const QString& n) { nom = n; }
 
     ///
     /// \fn getPrenom
     /// \return string Prenom de l'étudiant
     ///
-    const std::string& getPrenom() const { return prenom; }
+    const QString& getPrenom() const { return prenom; }
 
-    void setPrenom(const std::string& p) { prenom = p; }
+    void setPrenom(const QString& p) { prenom = p; }
 
     ///
     /// \fn getLogin
     /// \return string Login de l'étudiant
     ///
-    const std::string& getLogin() const { return login; }
+    const QString& getLogin() const { return login; }
 
     void setLogin();
 

@@ -1,6 +1,7 @@
-﻿#include <string>
+﻿#include <QString>
 #include <iostream>
 #include "UV.h"
+#include "qdir.h"
 #include "Formation.h"
 #include "Periode.h"
 #include "Dossier.h"
@@ -24,6 +25,7 @@ int main()
         //Categorie TM("TM","Techniques et Methodes");
         //Categorie CS("CS","Connaissance Scientifique");
         CategorieManager cm;
+        cm.load();
         cm.ajouterCategorie("TM","Techniques et Methodes");
         cm.ajouterCategorie("CS","Connaissance Scientifique");
 

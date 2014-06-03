@@ -21,12 +21,12 @@ void Inscription::modifierNote(const UV& u, const Note& n)
 
 void Inscription::afficher() const
 {
-    cout << periode.getCode() << " " << formation.getCode() << endl;
+    cout << periode.getCode().toStdString() << " " << formation.getCode().toStdString() << endl;
 
     cout << "UVs : ";
-    for (map<string,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)
+    for (map<QString,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)
     {
-        cout << it->second.getCode() << " " << notes.find(it->second.getCode())->second << "  ";
+        cout << it->second.getCode().toStdString() << " " << notes.find(it->second.getCode())->second << "  ";
     }
     cout << endl;
 }

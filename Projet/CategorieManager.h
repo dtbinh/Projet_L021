@@ -8,7 +8,7 @@
 #ifndef CATEGORIEMANAGER_H
 #define CATEGORIEMANAGER_H
 
-#include <string>
+#include <QString>
 #include <map>
 #include <algorithm>
 #include "Manager.h"
@@ -23,10 +23,12 @@ private:
 public:
     CategorieManager(): categories() {}
 
-    const Categorie& getCategorie(const std::string code) const { return categories.get(code); }
+    const Categorie& getCategorie(const QString code) const { return categories.get(code); }
 
-    void ajouterCategorie(std::string code, std::string nom) { categories.ajouter(code, Categorie(code, nom)); }
-    void retirerCategorie(std::string code) { categories.retirer(code); }
+    void load();
+
+    void ajouterCategorie(QString code, QString nom) { categories.ajouter(code, Categorie(code, nom)); }
+    void retirerCategorie(QString code) { categories.retirer(code); }
 };
 
 #endif // CATEGORIEMANAGER_H

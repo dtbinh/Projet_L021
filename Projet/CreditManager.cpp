@@ -24,7 +24,7 @@ void CreditManager::addItem(Credits* c){
 
 void CreditManager::ajouterCredit(Credits& c){
     if (trouverCredit(c.getCode())) {
-        throw Exception(string("erreur, CreditManager, Credit : ")+c.getCode()+string("deja existant"));
+        throw Exception(string("erreur, CreditManager, Credit : ")+c.getCode().toStdString()+string("deja existant"));
     }else{
         Credits* newcredit=new Credits(c);
         addItem(newcredit);
@@ -32,7 +32,7 @@ void CreditManager::ajouterCredit(Credits& c){
     }
 }
 
-Credits* CreditManager::trouverCredit(const string& c)const{
+Credits* CreditManager::trouverCredit(const QString& c)const{
     for(unsigned int i=0; i<nbCredit; i++)
         if (c==credit[i]->getCode()) return credit[i];
     return 0;
@@ -40,17 +40,17 @@ Credits* CreditManager::trouverCredit(const string& c)const{
 
 void CreditManager::affichage(){
     for(unsigned int i=0; i<nbCredit; i++)
-        cout<<"Manager Credit "<<i<<" : "<<credit[i]->getCode()<<endl;
+        cout<<"Manager Credit "<<i<<" : "<<credit[i]->getCode().toStdString()<<endl;
 }
 
-Credits& CreditManager::getCredit(const string& code){
+Credits& CreditManager::getCredit(const QString& code){
     Credits* c=trouverCredit(code);
     if (!c) throw Exception("erreur, CreditManager, Credit inexistant");
     return *c;
 }
 
 
-const Credits& CreditManager::getCredit(const string& code)const{
+const Credits& CreditManager::getCredit(const QString& code)const{
     return const_cast<CreditManager*>(this)->getCredit(code);
 }
 

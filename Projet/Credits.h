@@ -8,12 +8,12 @@
 #ifndef CREDIT_H
 #define CREDIT_H
 
-#include <string>
+#include <QString>
 #include "Categorie.h"
 
 class Credits
 {
-    std::string code;
+    QString code;
     int nombre;
     const Categorie& categorie;
 
@@ -24,15 +24,15 @@ public :
     /// \param categ Une reférence vers un objet catégorie
     /// \brief Constructeur nécessitant le nombre de crédits et la catégorie de ces crédits.
     ///
-    Credits(const std::string& c, int n, const Categorie& cat): code(c), nombre(n), categorie(cat) {}
+    Credits(const QString& c, int n, const Categorie& cat): code(c), nombre(n), categorie(cat) {}
 
     ///
     /// \fn getCode()
     /// \return string code
     ///
-    const std::string& getCode() const { return code; }
+    const QString& getCode() const { return code; }
 
-    void setCode(const std::string& c) { code = c; }
+    void setCode(const QString& c) { code = c; }
 
     ///
     /// \fn getNombre()

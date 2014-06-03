@@ -10,7 +10,7 @@ private:
     unsigned int nbMaxCredit;
     void addItem(Credits* c);
     bool modification;
-    Credits* trouverCredit(const std::string& c) const;
+    Credits* trouverCredit(const QString& c) const;
     CreditManager(const CreditManager& um);
     CreditManager& operator=(const CreditManager& um);
     CreditManager();
@@ -32,8 +32,8 @@ public:
     static CreditManager& getInstance();
     static void libererInstance();
     void ajouterCredit(Credits& c);
-    const Credits& getCredit(const std::string& code) const;
-    Credits& getCredit(const std::string& code);
+    const Credits& getCredit(const QString& code) const;
+    Credits& getCredit(const QString& code);
 
     class iterator {
         Credits** current;

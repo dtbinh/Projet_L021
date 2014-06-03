@@ -25,7 +25,7 @@ void UVManager::addItem(UV* uv){
 
 void UVManager::ajouterUV(UV& u){
     if (trouverUV(u.getCode())) {
-        throw Exception(string("erreur, UVManager, UV ")+u.getCode()+string("deja existante"));
+        throw Exception(string("erreur, UVManager, UV ")+u.getCode().toStdString()+string("deja existante"));
     }else{
         UV* newuv=new UV(u);
         addItem(newuv);
@@ -33,7 +33,7 @@ void UVManager::ajouterUV(UV& u){
     }
 }
 
-UV* UVManager::trouverUV(const string& c)const{
+UV* UVManager::trouverUV(const QString& c)const{
     for(unsigned int i=0; i<nbUV; i++)
         if (c==uvs[i]->getCode()) return uvs[i];
     return 0;
@@ -41,17 +41,17 @@ UV* UVManager::trouverUV(const string& c)const{
 
 void UVManager::affichage(){
     for(unsigned int i=0; i<nbUV; i++)
-        cout<<"Manager UV "<<i<<" : "<<uvs[i]->getCode()<<endl;
+        cout<<"Manager UV "<<i<<" : "<<uvs[i]->getCode().toStdString()<<endl;
 }
 
-UV& UVManager::getUV(const string& code){
+UV& UVManager::getUV(const QString& code){
     UV* uv=trouverUV(code);
     if (!uv) throw Exception("erreur, UVManager, UV inexistante");
     return *uv;
 }
 
 
-const UV& UVManager::getUV(const string& code)const{
+const UV& UVManager::getUV(const QString& code)const{
     return const_cast<UVManager*>(this)->getUV(code);
 }
 

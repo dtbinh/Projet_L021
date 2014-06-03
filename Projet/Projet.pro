@@ -1,3 +1,4 @@
+QT += xml
 
 SOURCES += \
     main.cpp \
@@ -7,7 +8,8 @@ SOURCES += \
     Inscription.cpp \
     UvManager.cpp \
     Dossier.cpp \
-    CreditManager.cpp
+    CreditManager.cpp \
+    CategorieManager.cpp
 
 HEADERS += \
     Dossier.h \

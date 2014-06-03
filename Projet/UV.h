@@ -9,7 +9,7 @@
 #ifndef UV_PROFIL_H
 #define UV_PROFIL_H
 
-#include <string>
+#include <QString>
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -43,7 +43,7 @@ enum Preference{
 
 class UV{
 private :
-    std::string code,nom;
+    QString code,nom;
     Categorie cat;
     std::vector<const Credits*> cred; // Une UV peut avoir plusieurs types de crédits, il faut donc faire un tableau alloué dynamiquement
     std::vector<const UV*> prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
@@ -56,7 +56,7 @@ public:
     /// \param categ La catégorie de l'UV
     /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
     ///
-    UV(const std::string& c="",const std::string& n="",const Categorie& categ=Categorie())
+    UV(const QString& c="",const QString& n="",const Categorie& categ=Categorie())
         : code(c), nom(n),cat(categ),cred(std::vector<const Credits*>()),prerequis(std::vector<const UV*>()) {}
 
     ///
@@ -70,20 +70,20 @@ public:
     /// \fn getCode
     /// \return string Le code de l'UV
     ///
-    const std::string& getCode() const {return code;}
+    const QString& getCode() const {return code;}
 
     ///
     /// \fn getNom
     /// \return string Le nom de l'UV
     ///
-    const std::string& getNom() const {return nom;}
+    const QString& getNom() const {return nom;}
 
     ///
     /// \fn setCode
     /// \param c Le nouveau code pour l'UV
     /// \brief Fonction pour modifier le code d'une uv
     ///
-    void setCode(std::string c){code=c;}
+    void setCode(QString c){code=c;}
 
     ///
     /// \fn getCat

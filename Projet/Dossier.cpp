@@ -19,9 +19,9 @@ void Dossier::setLogin()
 }
 
 void Dossier::affichage(){
-    cout<<"Dossier de "<<nom<<" "<<prenom<<" login : "<<login<<endl;
+    cout<<"Dossier de "<<nom.toStdString()<<" "<<prenom.toStdString()<<" login : "<<login.toStdString()<<endl;
     for(unsigned int i=0;i<formation.size();i++)
-        cout<<formation[i]->getCode()<<" "<<formation[i]->getNom()<<"     ";
+        cout<<formation[i]->getCode().toStdString()<<" "<<formation[i]->getNom().toStdString()<<"     ";
     cout<<endl;
         for(unsigned int i=0;i<inscription.size();i++){
            inscription[i]->afficher();

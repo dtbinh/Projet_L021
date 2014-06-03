@@ -11,12 +11,12 @@ private:
     unsigned int nbMaxUV;
     void addItem(UV* uv);
     bool modification;
-    UV* trouverUV(const std::string& c) const;
+    UV* trouverUV(const QString& c) const;
     UVManager(const UVManager& um);
     UVManager& operator=(const UVManager& um);
     UVManager();
     ~UVManager();
-    //string file;
+    //QString file;
     friend struct Handler;
     struct Handler{
         UVManager* instance;
@@ -27,14 +27,14 @@ private:
 
 public:
 
-    //void load(const string& f);
-    //void save(const string& f);
+    //void load(const QString& f);
+    //void save(const QString& f);
     void affichage();
     static UVManager& getInstance();
     static void libererInstance();
     void ajouterUV(UV& u);
-    const UV& getUV(const std::string& code) const;
-    UV& getUV(const std::string& code);
+    const UV& getUV(const QString& code) const;
+    UV& getUV(const QString& code);
 
     class iterator {
         UV** current;

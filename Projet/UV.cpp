@@ -3,15 +3,15 @@
 using namespace std;
 
 void UV::affichage(){
-    cout<<code<<"---"<<nom<<endl;
-    cout<<"Categorie : "<<cat.getCode()<<endl;
+    cout<<code.toStdString()<<"---"<<nom.toStdString()<<endl;
+    cout<<"Categorie : "<<cat.getCode().toStdString()<<endl;
     cout<<" Credits : ";
     for(unsigned int i=0;i<cred.size();i++)
-        cout<<cred[i]->getNombre()<<" "<<cred[i]->getCategorie().getCode()<<"     ";
+        cout<<cred[i]->getNombre()<<" "<<cred[i]->getCategorie().getCode().toStdString()<<"     ";
     cout<<endl;
         cout<<"Prerequis : ";
         for(unsigned int i=0;i<prerequis.size();i++)
-        cout<<" "<<prerequis[i]->getCode();
+        cout<<" "<<prerequis[i]->getCode().toStdString();
     cout<<endl;
 
 }
