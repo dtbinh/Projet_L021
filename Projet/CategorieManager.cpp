@@ -22,14 +22,19 @@ void CategorieManager::load(){
             QDomElement unElement = racine.firstChildElement();
             while(!unElement.isNull())
             {
+                QString tempNom,tempURL;
                 if(unElement.tagName() == "code")
                 {
-                    QString strNom = unElement.text();
+                    tempNom = unElement.text();
+                    cout<<tempNom.toStdString()<<"   "<<endl;
                 }
                 else if(unElement.tagName() == "nom")
                 {
-                    QString strURL = unElement.text();
+                    tempURL = unElement.text();
+                    cout<<tempURL.toStdString()<<endl;
+
                 }
+                this->ajouterCategorie(tempNom,tempURL);
 
                 unElement = unElement.nextSiblingElement();
             }

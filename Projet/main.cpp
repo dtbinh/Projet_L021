@@ -21,13 +21,8 @@ int main()
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 
-        /* Test Categorie, Credit et UV */
-        //Categorie TM("TM","Techniques et Methodes");
-        //Categorie CS("CS","Connaissance Scientifique");
         CategorieManager cm;
         cm.load();
-        cm.ajouterCategorie("TM","Techniques et Methodes");
-        cm.ajouterCategorie("CS","Connaissance Scientifique");
 
         Credits CS_Classique("CS_Classique",6,cm.getCategorie("CS"));
         Credits TM_Classique("TM_CLassique",6,cm.getCategorie("TM"));
