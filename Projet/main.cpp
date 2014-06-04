@@ -23,55 +23,27 @@ int main()
 
         CategorieManager cm;
         cm.load();
+        cm.getCategorie("TM")->affichage();
 
         CreditManager credman;
         credman.load(cm);
+        credman.getCredit("CS_Classique").affichage();
 
-        UV NF01("NF01","Algorithmique",*cm.getCategorie("TM"));
-        UV NF16("NF16","Complexité et Structure de donnée",*cm.getCategorie("CS"));
-        UV NF92("NF92","Decouverte du Genie Informatique",*cm.getCategorie("TM"));
-        UV LO21("LO21","Programmation orienté objet",*cm.getCategorie("TM"));
-
-        NF01.ajoutCredits(credman.getCredit("TM_Classique"));
-        NF16.ajoutCredits(credman.getCredit("CS_Classique"));
-        NF92.ajoutCredits(credman.getCredit("TM_Classique"));
-        LO21.ajoutCredits(credman.getCredit("TM_Classique"));
-
-        /*LO21.ajoutPrerequis(NF01);
-        LO21.ajoutPrerequis(NF92);
-        LO21.ajoutPrerequis(NF16);
-        LO21.retirePrerequis(NF92);
-        LO21.ajoutPrerequis(NF92);
-        LO21.ajoutCredits(CS_Classique);
-        LO21.retireCredits(CS_Classique);
-        LO21.retireCredits(TM_Classique);*/
-
-        NF01.affichage();
-        NF16.affichage();
-        NF92.affichage();
-        LO21.affichage();
-        cout << endl;
-
-
-        UV LO21P13(LO21);
-        cout<<"TEST CONSTRUCTEUR RECOPIE :"<<endl;
-        LO21P13.affichage();
-        cout << endl;
+        UvManager uvman;
+        uvman.load(credman,cm);
+        uvman.getUv("LO21")->affichage();
 
         Formation GI("GI", "Genie informatique");
         Formation GP("GP", "Genie des procedes");
         GI.ajouterCredits(credman.getCredit("CS_Branche"));
         GI.ajouterCredits(credman.getCredit("TM_Branche"));
-        GI.retirerUV(NF01);
-        GI.ajouterUV(NF01);
-        GI.ajouterUV(LO21);
-        GI.ajouterUV(NF16);
-        GI.afficher();
-        cout << endl;
+        GI.ajouterUV(*uvman.getUv("NF01"));
+        GI.retirerUV(*uvman.getUv("NF01"));
+        GI.ajouterUV(*uvman.getUv("LO21"));
+        GI.ajouterUV(*uvman.getUv("NF16"));
 
         Formation FDD("FDD", "Fouille de données");
         GI.ajouterSpecialite(FDD);
-        GI.retirerUV(NF01);
         GI.afficher();
         cout << endl;
 
@@ -87,16 +59,14 @@ int main()
 
         /* Test Inscription */
         Inscription GI02(P14, GI);
-        GI02.ajouterUV(NF16);
-        GI02.ajouterUV(LO21);
-        GI02.afficher();
-        GI02.retirerUV(NF16);
-        GI02.modifierNote(LO21, A);
+        GI02.ajouterUV(*uvman.getUv("NF16"));
+        GI02.ajouterUV(*uvman.getUv("LO21"));
+        GI02.retirerUV(*uvman.getUv("NF16"));
+        GI02.modifierNote(*uvman.getUv("LO21"), A);
         GI02.afficher();
 
         D1.ajoutFormation(GI);
         D2.ajoutFormation(GP);
-        D1.affichage();
         D2.affichage();
         D1.ajoutInscription(GI02);
         D1.affichage();
@@ -107,3 +77,4 @@ int main()
 
     return 0;
 }
+

@@ -25,7 +25,7 @@ private:
 public:
     CreditManager(): credits() {}
 
-    const Credits& getCredit(const QString code) const { return credits.get(code); }
+    Credits& getCredit(const QString code){ return credits.get(code); }
 
     void load(CategorieManager cm);
 

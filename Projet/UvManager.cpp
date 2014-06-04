@@ -1,67 +1,53 @@
-﻿#include "UvManager.h"
+﻿#include <fstream>
+#include <QtXml>
+#include "Exception.h"
+#include "UvManager.h"
 
 using namespace std;
 
-UVManager::UVManager():uvs(0),nbUV(0),nbMaxUV(0),modification(false){
-}
+void UvManager::load(CreditManager credman,CategorieManager cm){
+    QString file="uv_utc.xml";
+    QFile fichier(file);
+    if(!fichier.open(QFile::ReadOnly | QFile::Text)) throw Exception("Ouverture fichier impossible!");
+    // Ouverture du fichier XML en lecture seule et en mode texte
+    QDomDocument doc;
+    doc.setContent(&fichier, false);
+    QDomElement racine = doc.documentElement();//<xml>
+    racine = racine.firstChildElement();
+    while(!racine.isNull())
+    {
+        if(racine.tagName() == "uv")
+       {
+            QDomElement unElement = racine.firstChildElement();
+            QString strCode,cat,nom,cred;
 
-UVManager::~UVManager(){
-    //if (file!="") save(file);
-    for(unsigned int i=0; i<nbUV; i++) delete uvs[i];
-    delete[] uvs;
-}
-
-void UVManager::addItem(UV* uv){
-    if (nbUV==nbMaxUV){
-        UV** newtab=new UV*[nbMaxUV+10];
-        for(unsigned int i=0; i<nbUV; i++) newtab[i]=uvs[i];
-        nbMaxUV+=10;
-        UV** old=uvs;
-        uvs=newtab;
-        delete[] old;
+            while(!unElement.isNull())
+            {
+                if(unElement.tagName() == "code")
+                {
+                    strCode = unElement.text();
+                    //cout<<"Code : "<<strCode.toStdString()<<endl;
+                }
+                else if(unElement.tagName() == "nom")
+                {
+                    nom = unElement.text();
+                    //cout<<"Nom : "<<nom.toStdString()<<endl;
+                }
+                else if(unElement.tagName()=="credit")
+                {
+                    cred=unElement.text();
+                }
+                else if(unElement.tagName() == "categorie")
+                {
+                    cat=unElement.text();
+                }
+                unElement = unElement.nextSiblingElement();
+            }
+            const Credits& credit=credman.getCredit(cred);
+            const Categorie* categorie=cm.getCategorie(cat);
+            this->ajouterUv(strCode,nom,*categorie);
+            this->getUv(strCode)->ajoutCredits(credit);
     }
-    uvs[nbUV++]=uv;
-}
-
-void UVManager::ajouterUV(UV& u){
-    if (trouverUV(u.getCode())) {
-        throw Exception(string("erreur, UVManager, UV ")+u.getCode().toStdString()+string("deja existante"));
-    }else{
-        UV* newuv=new UV(u);
-        addItem(newuv);
-        modification=true;
-    }
-}
-
-UV* UVManager::trouverUV(const QString& c)const{
-    for(unsigned int i=0; i<nbUV; i++)
-        if (c==uvs[i]->getCode()) return uvs[i];
-    return 0;
-}
-
-void UVManager::affichage(){
-    for(unsigned int i=0; i<nbUV; i++)
-        cout<<"Manager UV "<<i<<" : "<<uvs[i]->getCode().toStdString()<<endl;
-}
-
-UV& UVManager::getUV(const QString& code){
-    UV* uv=trouverUV(code);
-    if (!uv) throw Exception("erreur, UVManager, UV inexistante");
-    return *uv;
-}
-
-
-const UV& UVManager::getUV(const QString& code)const{
-    return const_cast<UVManager*>(this)->getUV(code);
-}
-
-UVManager::Handler UVManager::handler=Handler();
-
-UVManager& UVManager::getInstance(){
-    if (!handler.instance) handler.instance = new UVManager;
-    return *handler.instance;
-}
-
-void UVManager::libererInstance(){
-    if (handler.instance) { delete handler.instance; handler.instance=0; }
+        racine = racine.nextSiblingElement();
+  }
 }

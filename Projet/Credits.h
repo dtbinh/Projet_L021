@@ -49,6 +49,10 @@ public :
     const Categorie* getCategorie() const { return categorie; }
 
     //void setCategorie(const Categorie& c) { categorie = c; }
+
+    void affichage() const {std::cout<<code.toStdString()<<" : "<<nombre<<std::endl;
+                                       //categorie->getCode().toStdString()<<std::endl;
+                    }
 };
 
 #endif // CREDIT_H

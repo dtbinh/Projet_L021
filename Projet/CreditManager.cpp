@@ -7,7 +7,7 @@ using namespace std;
 
 
 void CreditManager::load(CategorieManager cm){
-    QString file="uv_utc.xml";
+    QString file="credit_utc.xml";
     QFile fichier(file);
     if(!fichier.open(QFile::ReadOnly | QFile::Text)) throw Exception("Ouverture fichier impossible!");
     // Ouverture du fichier XML en lecture seule et en mode texte

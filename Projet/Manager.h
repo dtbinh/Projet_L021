@@ -21,7 +21,7 @@ private:
 public:
     Manager(): tab(std::map<QString,T>()) {}
 
-    const T& get(const QString code) const { return tab.find(code)->second; }
+    T& get(const QString code) { return tab.find(code)->second; }
 
     void ajouter(QString code, const T& t) { tab[code] = t; }
     void retirer(QString code) { tab.erase(code); }

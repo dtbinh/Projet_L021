@@ -38,6 +38,8 @@ public :
     const QString& getNom() const { return nom; }
 
     void setNom(const QString& n) { nom = n; }
+
+    void affichage()const {std::cout<<code.toStdString()<<" : "<<nom.toStdString()<<std::endl;}
 };
 
 #endif // CATEGORIE_H
