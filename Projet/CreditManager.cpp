@@ -1,66 +1,50 @@
-﻿#include "CreditManager.h"
+﻿#include <fstream>
+#include <QtXml>
+#include "CreditManager.h"
+#include "Exception.h"
 
 using namespace std;
 
-CreditManager::CreditManager():credit(0),nbCredit(0),nbMaxCredit(0),modification(false){
-}
 
-CreditManager::~CreditManager(){
-    for(unsigned int i=0; i<nbCredit; i++) delete credit[i];
-    delete[] credit;
-}
-
-void CreditManager::addItem(Credits* c){
-    if (nbCredit==nbMaxCredit){
-        Credits** newtab=new Credits*[nbMaxCredit+10];
-        for(unsigned int i=0; i<nbCredit; i++) newtab[i]=credit[i];
-        nbMaxCredit+=10;
-        Credits** old=credit;
-        credit=newtab;
-        delete[] old;
+void CreditManager::load(CategorieManager cm){
+    QString file="uv_utc.xml";
+    QFile fichier(file);
+    if(!fichier.open(QFile::ReadOnly | QFile::Text)) throw Exception("Ouverture fichier impossible!");
+    // Ouverture du fichier XML en lecture seule et en mode texte
+    QDomDocument doc;
+    doc.setContent(&fichier, false);
+    QDomElement racine = doc.documentElement();//<xml>
+    racine = racine.firstChildElement();//<credit>
+    while(!racine.isNull())
+    {
+        if(racine.tagName() == "credits")
+       {
+            QDomElement unElement = racine.firstChildElement();
+            QString strNom,cat;
+            int nombr;
+            while(!unElement.isNull())
+            {
+                if(unElement.tagName() == "code")
+                {
+                    strNom = unElement.text();
+                    //cout<<"Code : "<<strNom.toStdString()<<endl;
+                }
+                else if(unElement.tagName() == "nombre")
+                {
+                    QString nombretemp = unElement.text();
+                    nombr=nombretemp.toInt();
+                    //cout<<"Nombre : "<<nombr<<endl;
+                }
+                else if(unElement.tagName() == "categorie")
+                {
+                    cat=unElement.text();
+                }
+                unElement = unElement.nextSiblingElement();
+            }
+            const Categorie* categorie=cm.getCategorie(cat);
+            this->ajouterCredit(strNom,nombr,categorie);
     }
-    credit[nbCredit++]=c;
+        racine = racine.nextSiblingElement();
+  }
 }
 
-void CreditManager::ajouterCredit(Credits& c){
-    if (trouverCredit(c.getCode())) {
-        throw Exception(string("erreur, CreditManager, Credit : ")+c.getCode().toStdString()+string("deja existant"));
-    }else{
-        Credits* newcredit=new Credits(c);
-        addItem(newcredit);
-        modification=true;
-    }
-}
-
-Credits* CreditManager::trouverCredit(const QString& c)const{
-    for(unsigned int i=0; i<nbCredit; i++)
-        if (c==credit[i]->getCode()) return credit[i];
-    return 0;
-}
-
-void CreditManager::affichage(){
-    for(unsigned int i=0; i<nbCredit; i++)
-        cout<<"Manager Credit "<<i<<" : "<<credit[i]->getCode().toStdString()<<endl;
-}
-
-Credits& CreditManager::getCredit(const QString& code){
-    Credits* c=trouverCredit(code);
-    if (!c) throw Exception("erreur, CreditManager, Credit inexistant");
-    return *c;
-}
-
-
-const Credits& CreditManager::getCredit(const QString& code)const{
-    return const_cast<CreditManager*>(this)->getCredit(code);
-}
-
-CreditManager::Handler CreditManager::handler=Handler();
-
-CreditManager& CreditManager::getInstance(){
-    if (!handler.instance) handler.instance = new CreditManager;
-    return *handler.instance;
-}
-
-void CreditManager::libererInstance(){
-    if (handler.instance) { delete handler.instance; handler.instance=0; }
-}

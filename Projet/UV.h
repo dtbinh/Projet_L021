@@ -56,7 +56,7 @@ public:
     /// \param categ La catégorie de l'UV
     /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
     ///
-    UV(const QString& c="",const QString& n="",const Categorie& categ=Categorie())
+    UV(const QString& c="",const QString& n="",const Categorie categ=Categorie())
         : code(c), nom(n),cat(categ),cred(std::vector<const Credits*>()),prerequis(std::vector<const UV*>()) {}
 
     ///

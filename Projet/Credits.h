@@ -15,7 +15,7 @@ class Credits
 {
     QString code;
     int nombre;
-    const Categorie& categorie;
+    const Categorie* categorie;
 
 public :
     ///
@@ -24,7 +24,7 @@ public :
     /// \param categ Une reférence vers un objet catégorie
     /// \brief Constructeur nécessitant le nombre de crédits et la catégorie de ces crédits.
     ///
-    Credits(const QString& c, int n, const Categorie& cat): code(c), nombre(n), categorie(cat) {}
+    Credits(const QString& c ="", int n=0, const Categorie* cat=0): code(c), nombre(n), categorie(cat) {}
 
     ///
     /// \fn getCode()
@@ -46,7 +46,7 @@ public :
     /// \fn getCategorie
     /// \return const Categorie& référence vers la catégorie
     ///
-    const Categorie& getCategorie() const { return categorie; }
+    const Categorie* getCategorie() const { return categorie; }
 
     //void setCategorie(const Categorie& c) { categorie = c; }
 };

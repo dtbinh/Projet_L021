@@ -24,18 +24,18 @@ int main()
         CategorieManager cm;
         cm.load();
 
-        Credits CS_Classique("CS_Classique",6,cm.getCategorie("CS"));
-        Credits TM_Classique("TM_CLassique",6,cm.getCategorie("TM"));
+        CreditManager credman;
+        credman.load(cm);
 
-        UV NF01("NF01","Algorithmique",cm.getCategorie("TM"));
-        UV NF16("NF16","Complexité et Structure de donnée",cm.getCategorie("CS"));
-        UV NF92("NF92","Decouverte du Genie Informatique",cm.getCategorie("TM"));
-        UV LO21("LO21","Programmation orienté objet",cm.getCategorie("TM"));
+        UV NF01("NF01","Algorithmique",*cm.getCategorie("TM"));
+        UV NF16("NF16","Complexité et Structure de donnée",*cm.getCategorie("CS"));
+        UV NF92("NF92","Decouverte du Genie Informatique",*cm.getCategorie("TM"));
+        UV LO21("LO21","Programmation orienté objet",*cm.getCategorie("TM"));
 
-        NF01.ajoutCredits(TM_Classique);
-        NF16.ajoutCredits(CS_Classique);
-        NF92.ajoutCredits(TM_Classique);
-        LO21.ajoutCredits(TM_Classique);
+        NF01.ajoutCredits(credman.getCredit("TM_Classique"));
+        NF16.ajoutCredits(credman.getCredit("CS_Classique"));
+        NF92.ajoutCredits(credman.getCredit("TM_Classique"));
+        LO21.ajoutCredits(credman.getCredit("TM_Classique"));
 
         /*LO21.ajoutPrerequis(NF01);
         LO21.ajoutPrerequis(NF92);
@@ -58,20 +58,10 @@ int main()
         LO21P13.affichage();
         cout << endl;
 
-        /*
-        cout<<"TEST DESTRUCTEUR UV"<<endl;
-        LO21P13.~UV();
-        LO21P13.affichageUV();
-        */
-
-        /* Test Formations */
-        Credits CS_branche("CS_branche",30,cm.getCategorie("CS"));
-        Credits TM_branche("TM_branche",30,cm.getCategorie("TM"));
-
         Formation GI("GI", "Genie informatique");
         Formation GP("GP", "Genie des procedes");
-        GI.ajouterCredits(CS_branche);
-        GI.ajouterCredits(TM_branche);
+        GI.ajouterCredits(credman.getCredit("CS_Branche"));
+        GI.ajouterCredits(credman.getCredit("TM_Branche"));
         GI.retirerUV(NF01);
         GI.ajouterUV(NF01);
         GI.ajouterUV(LO21);
@@ -81,7 +71,6 @@ int main()
 
         Formation FDD("FDD", "Fouille de données");
         GI.ajouterSpecialite(FDD);
-        GI.retirerCredits(CS_branche);
         GI.retirerUV(NF01);
         GI.afficher();
         cout << endl;
@@ -111,25 +100,6 @@ int main()
         D2.affichage();
         D1.ajoutInscription(GI02);
         D1.affichage();
-
-        /*
-        //Test du Credit manager
-        CreditManager& m_Cred=CreditManager::getInstance();
-        m_Cred.ajouterCredit(CS_Classique);
-        m_Cred.ajouterCredit(TM_Classique);
-        m_Cred.ajouterCredit(CS_branche);
-        m_Cred.ajouterCredit(TM_branche);
-        m_Cred.affichage();
-
-        //Test du UV manager
-        UVManager& m=UVManager::getInstance();
-        m.ajouterUV(LO21);
-        m.ajouterUV(NF92);
-        m.ajouterUV(NF01);
-        m.ajouterUV(NF16);
-        m.affichage();
-
-        */
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

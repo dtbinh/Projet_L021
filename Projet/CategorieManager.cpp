@@ -19,47 +19,25 @@ void CategorieManager::load(){
     {
         if(racine.tagName() == "categorie")
         {
+            QString tempNom,tempURL;
             QDomElement unElement = racine.firstChildElement();
             while(!unElement.isNull())
             {
-                QString tempNom,tempURL;
                 if(unElement.tagName() == "code")
                 {
                     tempNom = unElement.text();
-                    cout<<tempNom.toStdString()<<"   "<<endl;
                 }
                 else if(unElement.tagName() == "nom")
                 {
                     tempURL = unElement.text();
-                    cout<<tempURL.toStdString()<<endl;
 
                 }
-                this->ajouterCategorie(tempNom,tempURL);
-
                 unElement = unElement.nextSiblingElement();
             }
-        }
-        /*if(racine.tagName() == "credit")
-        {
-            QDomElement unElement = racine.firstChildElement();
-            while(!unElement.isNull())
-            {
-                cout<<"COUCOU"<<endl;
-                if(unElement.tagName() == "code")
-                {
-                    QString strNom = unElement.text();
-                }
-                else if(unElement.tagName() == "nombre")
-                {
-                    QString strURL = unElement.text();
-                }
-                else if(unElement.tagName()=="Categorie"){}
-                unElement = unElement.nextSiblingElement();
-            }
+        this->ajouterCategorie(tempNom,tempURL);
+
         }
 
-        // On va à l'élément fils de <root> suivant*/
         racine = racine.nextSiblingElement();
     }
-
 }

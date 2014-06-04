@@ -1,52 +1,39 @@
-﻿#ifndef CREDITMANAGER_H
+﻿///
+/// \file CreditManager.h
+/// \brief Manager des Credit
+/// \author Nicolas Szewe
+/// \date 04 juin 2014
+///
+
+#ifndef CREDITMANAGER_H
 #define CREDITMANAGER_H
 
-#include "UV.h"
+#include <QString>
+#include <map>
+#include <algorithm>
+#include "Manager.h"
+#include "Categorie.h"
+#include "Credits.h"
+#include "CategorieManager.h"
 
-class CreditManager {
+class CreditManager
+{
+
 private:
-    Credits** credit;
-    unsigned int nbCredit;
-    unsigned int nbMaxCredit;
-    void addItem(Credits* c);
-    bool modification;
-    Credits* trouverCredit(const QString& c) const;
-    CreditManager(const CreditManager& um);
-    CreditManager& operator=(const CreditManager& um);
-    CreditManager();
-    ~CreditManager();
-    //string file;
-    friend struct Handler;
-    struct Handler{
-        CreditManager* instance;
-        Handler():instance(0){}
-        ~Handler(){ if (instance) delete instance; instance=0; }
-    };
-    static Handler handler;
+    Manager<Credits> credits;
 
 public:
+    CreditManager(): credits() {}
 
-    //void load(const string& f);
-    //void save(const string& f);
-    void affichage();
-    static CreditManager& getInstance();
-    static void libererInstance();
-    void ajouterCredit(Credits& c);
-    const Credits& getCredit(const QString& code) const;
-    Credits& getCredit(const QString& code);
+    const Credits& getCredit(const QString code) const { return credits.get(code); }
 
-    class iterator {
-        Credits** current;
-        iterator(Credits** c):current(c){}
-        friend class CreditManager;
-    public:
-        iterator():current(0){};
-        Credits& operator*() const { return **current; }
-        bool operator!=(iterator it) const { return current!=it.current; }
-        iterator& operator++(){ ++current; return *this; }
-    };
-    iterator begin() { return iterator(credit); }
-    iterator end() { return iterator(credit+nbCredit); }
+    void load(CategorieManager cm);
 
+    void ajouterCredit(QString code, int nombre,const Categorie* cat) { credits.ajouter(code, Credits(code, nombre,cat)); }
+    void retirerCredit(QString code) { credits.retirer(code); }
 };
+
 #endif // CREDITMANAGER_H
+
+
+

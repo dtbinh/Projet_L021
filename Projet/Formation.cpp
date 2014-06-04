@@ -9,7 +9,8 @@ void Formation::afficher()
     cout << "Credits : ";
     for (unsigned int i = 0; i < credits.size(); i++)
     {
-        cout << credits[i]->getNombre() << " " << credits[i]->getCategorie().getCode().toStdString() << "  ";
+        cout << credits[i]->getNombre() << " ";
+             //<< credits[i]->getCategorie()->getCode().toStdString() << "  ";
     }
     cout << endl;
 

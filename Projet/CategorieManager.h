@@ -23,7 +23,7 @@ private:
 public:
     CategorieManager(): categories() {}
 
-    const Categorie& getCategorie(const QString code) const { return categories.get(code); }
+    const Categorie* getCategorie(const QString code) const { return &categories.get(code); }
 
     void load();
 
