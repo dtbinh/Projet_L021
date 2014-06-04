@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xml>
+   
+    <credits>
+            <code>CS_Classique</code>
+            <nombre>6</nombre>
+            <categorie>CS</categorie>
+    </credits>
+
+    <credits>
+            <code>TM_Classique</code>
+            <nombre>6</nombre>
+            <categorie>TM</categorie>
+    </credits>
+
+    <credits>
+            <code>TM_Demi</code>
+            <nombre>3</nombre>
+            <categorie>TM</categorie>
+    </credits>
+
+    <credits>
+            <code>TM_4</code>
+            <nombre>4</nombre>
+            <categorie>TM</categorie>
+    </credits>
+
+    <credits>
+            <code>TM_5</code>
+            <nombre>5</nombre>
+            <categorie>TM</categorie>
+    </credits>
+
+    <credits>
+            <code>TM_2</code>
+            <nombre>2</nombre>
+            <categorie>TM</categorie>
+    </credits>
+
+    <credits>
+            <code>TSH_Classique</code>
+            <nombre>4</nombre>
+            <categorie>TSH</categorie>
+
+    </credits>
+    
+    <credits>
+            <code>TSH_Double</code>
+            <nombre>8</nombre>
+            <categorie>TSH</categorie>
+    </credits>
+            
+    <credits>
+            <code>TSH_Demi</code>
+            <nombre>2</nombre>
+            <categorie>TSH</categorie>
+            
+    </credits>
+
+    <credits>
+            <code>CS_Demi</code>
+            <nombre>3</nombre>
+            <categorie>CS</categorie>
+    </credits>
+
+    <credits>
+            <code>CS_4</code>
+            <nombre>4</nombre>
+            <categorie>CS</categorie>
+    </credits>
+
+    <credits>
+            <code>SP_TC</code>
+            <nombre>6</nombre>
+            <categorie>SP</categorie>
+    </credits>
+    
+    <credits>
+            <code>CS_Branche</code>
+            <nombre>30</nombre>
+            <categorie>CS</categorie>
+    </credits>
+    
+    <credits>
+            <code>TM_Branche</code>
+            <nombre>30</nombre>
+            <categorie>TM</categorie>
+    </credits>
+
+</xml>
