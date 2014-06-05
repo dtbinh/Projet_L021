@@ -21,7 +21,8 @@ public :
     /// \param n Le nom de l'UV a crée
     /// \brief Constructeur nécessitant le nom et le code de l'UV
     ///
-    Categorie(const QString& c = "", const QString& n = ""): code(c), nom(n) {}
+    Categorie(const QString& c , const QString& n): code(c), nom(n) {}
+    Categorie(){}
 
     ///
     /// \fn getCode()

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-void UvManager::load(CreditManager credman,CategorieManager cm){
+void UvManager::load(CreditManager credman,CategorieManager cm,FormationManager forman){
     QString file="uv_utc.xml";
     QFile fichier(file);
     if(!fichier.open(QFile::ReadOnly | QFile::Text)) throw Exception("Ouverture fichier impossible!");
@@ -19,7 +19,7 @@ void UvManager::load(CreditManager credman,CategorieManager cm){
         if(racine.tagName() == "uv")
        {
             QDomElement unElement = racine.firstChildElement();
-            QString strCode,cat,nom,cred;
+            QString strCode,cat,nom,cred,forma;
 
             while(!unElement.isNull())
             {
@@ -41,12 +41,18 @@ void UvManager::load(CreditManager credman,CategorieManager cm){
                 {
                     cat=unElement.text();
                 }
+                else if(unElement.tagName() == "branche")
+                {
+                    forma=unElement.text();
+                    //cout<<forma.toStdString()<<endl;
+                }
                 unElement = unElement.nextSiblingElement();
             }
             const Credits& credit=credman.getCredit(cred);
             const Categorie* categorie=cm.getCategorie(cat);
             this->ajouterUv(strCode,nom,*categorie);
             this->getUv(strCode)->ajoutCredits(credit);
+            //forman.getFormation(forma)->ajouterUV(*this->getUv(strCode));
     }
         racine = racine.nextSiblingElement();
   }

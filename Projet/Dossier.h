@@ -20,8 +20,9 @@ private:
     QString nom;
     QString prenom;
     QString login;
-    std::vector<const Formation*> formation;
-    std::vector<const Inscription*> inscription;
+    std::map<QString,const Formation*> formation;
+    std::map<QString,const Inscription*> inscription;
+
 
 public :
     ///
@@ -30,7 +31,7 @@ public :
     /// \param p Prenom de l'étudiant
     /// \brief La fonction calcule automatiquement le login de l'étudiant
     ///
-    Dossier(QString n, QString p): nom(n), prenom(p), formation(std::vector<const Formation*>()), inscription(std::vector<const Inscription*>()) {
+    Dossier(QString n, QString p): nom(n), prenom(p), formation(std::map<QString,const Formation*>()), inscription(std::map<QString,const Inscription*>()) {
         setLogin();
     }
 
@@ -58,13 +59,15 @@ public :
     ///
     const QString& getLogin() const { return login; }
 
+
+
     void setLogin();
 
-    void ajoutFormation(const Formation& f){ formation.push_back(&f); }
-    void retireFormation(const Formation& f) { formation.erase(remove(formation.begin(), formation.end(), &f), formation.end()); }
+    void ajoutFormation(const Formation& f);
+    void retireFormation(QString code) { formation.erase(code); }
 
-    void ajoutInscription(const Inscription& f){ inscription.push_back(&f); }
-    void retireInscription(const Inscription& f) { inscription.erase(remove(inscription.begin(), inscription.end(), &f), inscription.end()); }
+    void ajoutInscription(const Inscription& f);
+    void retireInscription(QString code) { inscription.erase(code); }
 
     ///
     /// \fn affichage

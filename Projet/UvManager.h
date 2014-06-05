@@ -14,6 +14,7 @@
 #include "Manager.h"
 #include "CreditManager.h"
 #include "CategorieManager.h"
+#include "FormationManager.h"
 #include "UV.h"
 
 class UvManager
@@ -25,8 +26,8 @@ private:
 public:
     UvManager(): uvs() {}
     UV* getUv(const QString code)  { return &uvs.get(code); }
-    void load(CreditManager credman,CategorieManager cm);
-    void ajouterUv(QString code, QString nom,const Categorie cat) { uvs.ajouter(code, UV(code, nom,cat)); }
+    void load(CreditManager credman,CategorieManager cm,FormationManager forman);
+    void ajouterUv(QString code, QString nom,const Categorie& cat) { uvs.ajouter(code, UV(code, nom,cat)); }
     void retirerUv(QString code) { uvs.retirer(code); }
 };
 
