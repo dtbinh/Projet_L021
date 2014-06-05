@@ -10,7 +10,8 @@ SOURCES += \
     Dossier.cpp \
     CreditManager.cpp \
     CategorieManager.cpp \
-    PeriodeManager.cpp
+    PeriodeManager.cpp \
+    FormationManager.cpp
 
 HEADERS += \
     Dossier.h \
@@ -26,4 +27,5 @@ HEADERS += \
     CategorieManager.h \
     Manager.h \
     Manager.h \
-    PeriodeManager.h
+    PeriodeManager.h \
+    FormationManager.h

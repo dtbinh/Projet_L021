@@ -1,13 +1,13 @@
 ﻿#include <QString>
 #include <iostream>
 #include "qdir.h"
-#include "Formation.h"
 #include "Dossier.h"
 #include "Inscription.h"
 #include "CategorieManager.h"
 #include "UvManager.h"
 #include "CreditManager.h"
 #include "PeriodeManager.h"
+#include "FormationManager.h"
 
 using namespace std;
 
@@ -37,31 +37,27 @@ int main()
         periodeman.getPeriode("P14")->afficher();
         cout<<endl;
 
-        Formation GI("GI", "Genie informatique");
-        Formation GP("GP", "Genie des procedes");
-        GI.ajouterCredits(credman.getCredit("CS_Branche"));
-        GI.ajouterCredits(credman.getCredit("TM_Branche"));
-        GI.ajouterUV(*uvman.getUv("NF01"));
-        GI.retirerUV(*uvman.getUv("NF01"));
-        GI.ajouterUV(*uvman.getUv("LO21"));
-        GI.ajouterUV(*uvman.getUv("NF16"));
+        FormationManager forman;
+        forman.load(credman);
+        forman.getFormation("GI")->ajouterUV(*uvman.getUv("NF01"));
+        forman.getFormation("GI")->retirerUV(*uvman.getUv("NF01"));
+        forman.getFormation("GI")->ajouterUV(*uvman.getUv("LO21"));
+        forman.getFormation("GI")->ajouterUV(*uvman.getUv("NF16"));
+        forman.getFormation("GI")->afficher();
+        cout<<endl;
 
-        Formation FDD("FDD", "Fouille de données");
-        GI.ajouterSpecialite(FDD);
-        GI.afficher();
-        cout << endl;
 
 
         /* Test Inscription */
-        Inscription GI02(*periodeman.getPeriode("P14"), GI);
+        Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));
         GI02.ajouterUV(*uvman.getUv("NF16"));
         GI02.ajouterUV(*uvman.getUv("LO21"));
         GI02.retirerUV(*uvman.getUv("NF16"));
         GI02.modifierNote(*uvman.getUv("LO21"), A);
         GI02.afficher();
 
-        D1.ajoutFormation(GI);
-        D2.ajoutFormation(GP);
+        D1.ajoutFormation(*forman.getFormation("GI"));
+        D2.ajoutFormation(*forman.getFormation("GP"));
         D2.affichage();
         D1.ajoutInscription(GI02);
         D1.affichage();

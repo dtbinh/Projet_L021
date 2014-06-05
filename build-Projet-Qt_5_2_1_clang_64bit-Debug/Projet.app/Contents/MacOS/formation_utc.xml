@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xml>
+
+    <formation>
+        <code>FDD</code>
+        <nom>Fouille de Données</nom>
+    </formation>
+    
+	<formation>
+		<code>GI</code>
+		<nom>Genie Informatique</nom>
+        <credits>CS_Branche</credits>
+        <credits>TM_Branche</credits>
+        <specialites>FDD</specialites>
+	</formation>
+	
+	<formation>
+		<code>GP</code>
+		<nom>Genie des Procédes</nom>
+	</formation>
+	
+	<formation>
+		<code>GB</code>
+		<nom>Genie Biologique</nom>
+	</formation>
+	
+	<formation>
+		<code>GM</code>
+		<nom>Genie Mécaniques</nom>
+	</formation>
+	
+	<formation>
+		<code>GSM</code>
+		<nom>Genie des Systèmes Mécaniques</nom>
+	</formation>
+	
+	<formation>
+		<code>GSU</code>
+		<nom>Genie des Systèmes Urbains</nom>
+	</formation>
+	
+	<formation>
+		<code>TC</code>
+		<nom>Tronc Commum</nom>
+	</formation>
+	
+	<formation>
+		<code>HUTECH</code>
+		<nom>Humanités et Technologie</nom>
+	</formation>
+    
+
+</xml>

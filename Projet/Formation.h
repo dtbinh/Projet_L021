@@ -18,7 +18,7 @@ private:
 
 public:
     Formation(const QString& c, const QString& n) : code(c), nom(n), credits(std::vector<const Credits*>()), specialites(std::vector<const Formation*>()), uvs(std::vector<const UV*>()) {}
-
+    Formation(){}
     const QString& getCode() const { return code; }
     const QString& getNom() const { return nom; }
     const std::vector<const Credits*>& getCredits() const { return credits; }
