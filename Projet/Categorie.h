@@ -27,7 +27,8 @@ public:
     /// \param c Le code de la Categorie a créer.
     /// \param n Le nom de la Categorie a créer.
     ///
-    Categorie(const QString& c = "", const QString& n = ""): code(c), nom(n) {}
+    Categorie(const QString& c , const QString& n): code(c), nom(n) {}
+    Categorie(){}
 
     ///
     /// \fn getCode()

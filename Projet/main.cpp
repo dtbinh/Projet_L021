@@ -29,8 +29,6 @@ int main()
         credman.getCredits("CS_Classique").afficher();
         cout << endl;
 
-
-
         /*UvManager uvman;
         uvman.load(credman,cm);
         uvman.getUv("LO21")->affichage();*/
@@ -49,7 +47,10 @@ int main()
         forman.getFormation("GI").afficher();
         cout<<endl;*/
 
-
+        /*PeriodeManager periodeman;
+        periodeman.load();
+        periodeman.getPeriode("P14").afficher();
+        cout<<endl;*/
 
         /* Test Inscription */
         /*Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));
@@ -57,13 +58,14 @@ int main()
         GI02.ajouterUV(*uvman.getUv("LO21"));
         GI02.retirerUV(*uvman.getUv("NF16"));
         GI02.modifierNote(*uvman.getUv("LO21"), A);
-        GI02.afficher();
+        GI02.afficher();*/
 
-        D1.ajoutFormation(*forman.getFormation("GI"));
+        /*D1.ajoutFormation(*forman.getFormation("GI"));
         D2.ajoutFormation(*forman.getFormation("GP"));
         D2.affichage();
         D1.ajoutInscription(GI02);
         D1.affichage();*/
+
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

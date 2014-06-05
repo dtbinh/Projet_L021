@@ -11,7 +11,7 @@ void Dossier::setLogin()
     }
     else if((nom.size()+prenom.size())>=8) {
         login=nom;
-        for (unsigned int i=0;i<8-nom.size();i++)
+        for (int i=0;i<8-nom.size();i++)
             login=login+prenom.at(i);
         }
     else
@@ -20,13 +20,24 @@ void Dossier::setLogin()
 
 void Dossier::affichage(){
     cout<<"Dossier de "<<nom.toStdString()<<" "<<prenom.toStdString()<<" login : "<<login.toStdString()<<endl;
-    for(unsigned int i=0;i<formation.size();i++)
-        cout<<formation[i]->getCode().toStdString()<<" "<<formation[i]->getNom().toStdString()<<"     ";
+    for (map<QString,const Formation*>::const_iterator it = formation.begin(); it != formation.end(); it++)
+    {
+        cout << it->second->getCode().toStdString() << " "<< it->second->getNom().toStdString() << " ";
+    }
     cout<<endl;
-        for(unsigned int i=0;i<inscription.size();i++){
-           inscription[i]->afficher();
-        }
+    for (map<QString,const Inscription*>::const_iterator it = inscription.begin(); it != inscription.end(); it++)
+    {
+        it->second->afficher();
+    }
     cout<<endl;
-
 }
+
+void Dossier::ajoutFormation(const Formation &f){
+     formation[f.getCode()]=&f;
+}
+
+void Dossier::ajoutInscription(const Inscription &f){
+    inscription[f.getPeriode().getCode()]=&f;
+}
+
 

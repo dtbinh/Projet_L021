@@ -27,3 +27,4 @@ void Formation::afficher()
     }
     cout << endl;
 }
+
