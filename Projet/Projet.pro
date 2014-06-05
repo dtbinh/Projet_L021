@@ -9,7 +9,8 @@ SOURCES += \
     UvManager.cpp \
     Dossier.cpp \
     CreditManager.cpp \
-    CategorieManager.cpp
+    CategorieManager.cpp \
+    PeriodeManager.cpp
 
 HEADERS += \
     Dossier.h \
@@ -24,4 +25,5 @@ HEADERS += \
     CreditManager.h \
     CategorieManager.h \
     Manager.h \
-    Manager.h
+    Manager.h \
+    PeriodeManager.h

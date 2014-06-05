@@ -16,6 +16,7 @@ Periode::Periode(QString n, unsigned int a): code(""), nom(n), annee(a)
     code=nom[0]+QString::number(annee % 100);
 }
 
+
 void Periode::afficher()
 {
     cout << code.toStdString() << " (" << nom.toStdString() << " " << annee << ")" << endl;

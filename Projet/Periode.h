@@ -15,7 +15,7 @@ private:
 
 public:
     Periode(QString n, unsigned int a);
-
+    Periode(){}
     const QString& getCode() const { return code; }
     const QString& getNom() const { return nom; }
     unsigned int getAnnee() const { return annee; }

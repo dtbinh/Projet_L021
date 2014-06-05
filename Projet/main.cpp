@@ -1,15 +1,13 @@
 ﻿#include <QString>
 #include <iostream>
-#include "UV.h"
 #include "qdir.h"
 #include "Formation.h"
-#include "Periode.h"
 #include "Dossier.h"
-#include "CategorieManager.h"
-#include "Credits.h"
 #include "Inscription.h"
+#include "CategorieManager.h"
 #include "UvManager.h"
 #include "CreditManager.h"
+#include "PeriodeManager.h"
 
 using namespace std;
 
@@ -28,10 +26,16 @@ int main()
         CreditManager credman;
         credman.load(cm);
         credman.getCredit("CS_Classique").affichage();
+        cout<<endl;
 
         UvManager uvman;
         uvman.load(credman,cm);
         uvman.getUv("LO21")->affichage();
+
+        PeriodeManager periodeman;
+        periodeman.load();
+        periodeman.getPeriode("P14")->afficher();
+        cout<<endl;
 
         Formation GI("GI", "Genie informatique");
         Formation GP("GP", "Genie des procedes");
@@ -47,18 +51,9 @@ int main()
         GI.afficher();
         cout << endl;
 
-        /* Test Periode */
-        Periode P14("Printemps", 2014);
-        Periode A70("Automne", 1970);
-
-        P14.afficher();
-        A70.afficher();
-        cout << endl;
-
-        //Periode A71("Automne", 2171); // Génère une Exception
 
         /* Test Inscription */
-        Inscription GI02(P14, GI);
+        Inscription GI02(*periodeman.getPeriode("P14"), GI);
         GI02.ajouterUV(*uvman.getUv("NF16"));
         GI02.ajouterUV(*uvman.getUv("LO21"));
         GI02.retirerUV(*uvman.getUv("NF16"));
