@@ -1,7 +1,7 @@
-﻿///
+///
 /// \file FormationManager.h
-/// \brief Manager des Formations de l'UTC
-/// \author Nicolas Szewe
+/// \brief Manager des Formations.
+/// \author Nicolas Szewe, Erwan Normand
 /// \date 05 juin 2014
 ///
 
@@ -9,26 +9,25 @@
 #define FORMATIONMANAGER_H
 
 #include <QString>
-#include <map>
-#include <algorithm>
+#include <QtXml>
+#include <fstream>
+#include "AbstractManager.h"
 #include "Manager.h"
-#include "CreditManager.h"
-#include "CategorieManager.h"
-#include "UvManager.h"
 #include "Formation.h"
 
-class FormationManager
+class FormationManager : public AbstractManager
 {
-
 private:
     Manager<Formation> formations;
 
 public:
     FormationManager(): formations() {}
-    Formation* getFormation(const QString code) { return &formations.get(code); }
-    void load(CreditManager cm);
-    void ajouterFormation(QString code, QString nom) { formations.ajouter(code, Formation(code, nom)); }
-    void retirerFormation(QString code) { formations.retirer(code); }
+
+    //void load(CreditManager credman); //cpp non fonctionnel
+
+    const Formation& getFormation(const QString& code) { return formations.get(code); }
+    void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }
+    void retirerFormation(const QString& code) { formations.retirer(code); }
 };
 
 #endif // FORMATIONMANAGER_H

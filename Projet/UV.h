@@ -1,8 +1,7 @@
 ﻿///
 /// \file UV.h
-/// \brief Classe décrivant les matières de l'UTC
-/// \author Nicolas Szewe
-/// \version 0.1
+/// \brief Les UVs sont les matières de l'UTC.
+/// \author Nicolas Szewe, Erwan Normand
 /// \date 27 mai 2014
 ///
 
@@ -15,7 +14,6 @@
 #include <algorithm>
 #include "Categorie.h"
 #include "Credits.h"
-#include "Exception.h"
 
 ///
 /// \enum Choix
@@ -41,12 +39,14 @@ enum Preference{
     Exigence,Refus,NSP
 };
 
-class UV{
+class UV
+{
 private :
-    QString code,nom;
-    Categorie cat;
-    std::vector<const Credits*> cred; // Une UV peut avoir plusieurs types de crédits, il faut donc faire un tableau alloué dynamiquement
-    std::vector<const UV*> prerequis; // On peut avoir plusieurs prérequis, il faut faire un tableau de pointeurs
+    QString code, nom;
+    const Categorie* categorie;
+    std::vector<const Credits*> cred;
+    std::vector<const UV*> prerequis;
+
 public:
     ///
     /// \fn UV(const string& c,const string& n, const string& d,const Categorie& categ)
@@ -56,8 +56,8 @@ public:
     /// \param categ La catégorie de l'UV
     /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
     ///
-    UV(const QString& c="",const QString& n="",const Categorie categ=Categorie())
-        : code(c), nom(n),cat(categ),cred(std::vector<const Credits*>()),prerequis(std::vector<const UV*>()) {}
+    UV(const QString& c = "", const QString& n = "", const Categorie& cat = Categorie())
+        : code(c), nom(n), categorie(&cat), cred(), prerequis() {}
 
     ///
     /// \fn UV(const UV& u)
@@ -70,26 +70,33 @@ public:
     /// \fn getCode
     /// \return string Le code de l'UV
     ///
-    const QString& getCode() const {return code;}
+    const QString& getCode() const { return code; }
 
     ///
     /// \fn getNom
     /// \return string Le nom de l'UV
     ///
-    const QString& getNom() const {return nom;}
+    const QString& getNom() const { return nom; }
 
     ///
     /// \fn setCode
     /// \param c Le nouveau code pour l'UV
     /// \brief Fonction pour modifier le code d'une uv
     ///
-    void setCode(QString c){code=c;}
+    void setCode(const QString& c) { code = c; }
 
     ///
-    /// \fn getCat
+    /// \fn getCategorie
     /// \return Categorie La categorie auquel appartient l'UV
     ///
-    const Categorie& getCat() const {return cat;}
+    const Categorie& getCategorie() const { return *categorie; }
+
+    ///
+    /// \fn setCategorie(const Categorie& cat)
+    /// \param cat Le nouveau code pour l'UV
+    /// \brief Modifie la catégorie de l'UV.
+    ///
+    void setCategorie(const Categorie& cat) { categorie = &cat; }
 
     ///
     /// \fn getCredits
@@ -108,7 +115,7 @@ public:
     /// \param u Une référence sur l'UV a ajouter en prérequis
     /// \brief Un simple push_back dans le conteneur vecteur Prerequis pour ajouter l'UV dans les prérequis
     ///
-    void ajoutPrerequis(const UV& u){ prerequis.push_back(&u); }
+    void ajoutPrerequis(const UV& u) { prerequis.push_back(&u); }
 
     ///
     /// \fn retirePrerequis

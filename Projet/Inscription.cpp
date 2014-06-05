@@ -1,4 +1,4 @@
-﻿#include "Inscription.h"
+#include "Inscription.h"
 
 using namespace std;
 
@@ -21,7 +21,7 @@ void Inscription::modifierNote(const UV& u, const Note& n)
 
 void Inscription::afficher() const
 {
-    cout << periode.getCode().toStdString() << " " << formation.getCode().toStdString() << endl;
+    cout << periode->getCode().toStdString() << " " << formation->getCode().toStdString() << endl;
 
     cout << "UVs : ";
     for (map<QString,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)

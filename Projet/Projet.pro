@@ -4,14 +4,15 @@ SOURCES += \
     main.cpp \
     Formation.cpp \
     Periode.cpp \
-    UV.cpp \
     Inscription.cpp \
-    UvManager.cpp \
     Dossier.cpp \
-    CreditManager.cpp \
+    CreditsManager.cpp \
     CategorieManager.cpp \
     PeriodeManager.cpp \
-    FormationManager.cpp
+    FormationManager.cpp \
+    AbstractManager.cpp \
+    UV.cpp \
+    UVManager.cpp
 
 HEADERS += \
     Dossier.h \
@@ -20,12 +21,12 @@ HEADERS += \
     Formation.h \
     Periode.h \
     Exception.h \
-    UV.h \
     Inscription.h \
-    UvManager.h \
-    CreditManager.h \
+    CreditsManager.h \
     CategorieManager.h \
     Manager.h \
-    Manager.h \
     PeriodeManager.h \
-    FormationManager.h
+    FormationManager.h \
+    AbstractManager.h \
+    UV.h \
+    UVManager.h

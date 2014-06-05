@@ -1,19 +1,14 @@
-﻿#include <fstream>
-#include <QtXml>
-#include "Exception.h"
 #include "UvManager.h"
 
 using namespace std;
 
-void UvManager::load(CreditManager credman,CategorieManager cm){
-    QString file="uv_utc.xml";
-    QFile fichier(file);
-    if(!fichier.open(QFile::ReadOnly | QFile::Text)) throw Exception("Ouverture fichier impossible!");
-    // Ouverture du fichier XML en lecture seule et en mode texte
-    QDomDocument doc;
-    doc.setContent(&fichier, false);
-    QDomElement racine = doc.documentElement();//<xml>
+void UVManager::load(CreditManager credman,CategorieManager cm)
+{
+    QDomDocument doc = load_xml("uv_utc.xml");
+
+    QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
+
     while(!racine.isNull())
     {
         if(racine.tagName() == "uv")
@@ -26,12 +21,10 @@ void UvManager::load(CreditManager credman,CategorieManager cm){
                 if(unElement.tagName() == "code")
                 {
                     strCode = unElement.text();
-                    //cout<<"Code : "<<strCode.toStdString()<<endl;
                 }
                 else if(unElement.tagName() == "nom")
                 {
                     nom = unElement.text();
-                    //cout<<"Nom : "<<nom.toStdString()<<endl;
                 }
                 else if(unElement.tagName()=="credit")
                 {
@@ -43,11 +36,13 @@ void UvManager::load(CreditManager credman,CategorieManager cm){
                 }
                 unElement = unElement.nextSiblingElement();
             }
-            const Credits& credit=credman.getCredit(cred);
-            const Categorie* categorie=cm.getCategorie(cat);
-            this->ajouterUv(strCode,nom,*categorie);
-            this->getUv(strCode)->ajoutCredits(credit);
-    }
+
+            Credits credits = credman.getCredits(cred);
+            Categorie categorie = cm.getCategorie(cat);
+            this->ajouterUV(strCode, nom, categorie);
+            //this->getUV(strCode).ajoutCredits(credits);
+        }
+
         racine = racine.nextSiblingElement();
   }
 }

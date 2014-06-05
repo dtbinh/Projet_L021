@@ -1,6 +1,6 @@
 ﻿///
 /// \file Dossier.h
-/// \brief Un dossier représente le parcours d'un étudiant
+/// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Nicolas Szewe, Erwan Normand
 /// \date 02 juin 2014
 ///

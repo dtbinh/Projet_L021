@@ -1,11 +1,11 @@
-﻿#include <QString>
 #include <iostream>
-#include "qdir.h"
+#include <QString>
+#include "Exception.h"
+#include "CreditsManager.h"
+#include "CategorieManager.h"
 #include "Dossier.h"
 #include "Inscription.h"
-#include "CategorieManager.h"
-#include "UvManager.h"
-#include "CreditManager.h"
+#include "UVManager.h"
 #include "PeriodeManager.h"
 #include "FormationManager.h"
 
@@ -19,37 +19,40 @@ int main()
         Dossier D2("germain","audrey");
         Dossier D3("chan","li");
 
-        CategorieManager cm;
-        cm.load();
-        cm.getCategorie("TM")->affichage();
+        CategorieManager catman;
+        catman.load();
+        catman.getCategorie("TM").afficher();
+        cout << endl;
 
         CreditManager credman;
-        credman.load(cm);
-        credman.getCredit("CS_Classique").affichage();
-        cout<<endl;
+        credman.load(catman);
+        credman.getCredits("CS_Classique").afficher();
+        cout << endl;
 
-        UvManager uvman;
+
+
+        /*UvManager uvman;
         uvman.load(credman,cm);
-        uvman.getUv("LO21")->affichage();
+        uvman.getUv("LO21")->affichage();*/
 
-        PeriodeManager periodeman;
+        /*PeriodeManager periodeman;
         periodeman.load();
-        periodeman.getPeriode("P14")->afficher();
-        cout<<endl;
+        periodeman.getPeriode("P14").afficher();
+        cout<<endl;*/
 
-        FormationManager forman;
+        /*FormationManager forman;
         forman.load(credman);
-        forman.getFormation("GI")->ajouterUV(*uvman.getUv("NF01"));
-        forman.getFormation("GI")->retirerUV(*uvman.getUv("NF01"));
-        forman.getFormation("GI")->ajouterUV(*uvman.getUv("LO21"));
-        forman.getFormation("GI")->ajouterUV(*uvman.getUv("NF16"));
-        forman.getFormation("GI")->afficher();
-        cout<<endl;
+        forman.getFormation("GI").ajouterUV(*uvman.getUv("NF01"));
+        forman.getFormation("GI").retirerUV(*uvman.getUv("NF01"));
+        forman.getFormation("GI").ajouterUV(*uvman.getUv("LO21"));
+        forman.getFormation("GI").ajouterUV(*uvman.getUv("NF16"));
+        forman.getFormation("GI").afficher();
+        cout<<endl;*/
 
 
 
         /* Test Inscription */
-        Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));
+        /*Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));
         GI02.ajouterUV(*uvman.getUv("NF16"));
         GI02.ajouterUV(*uvman.getUv("LO21"));
         GI02.retirerUV(*uvman.getUv("NF16"));
@@ -60,7 +63,7 @@ int main()
         D2.ajoutFormation(*forman.getFormation("GP"));
         D2.affichage();
         D1.ajoutInscription(GI02);
-        D1.affichage();
+        D1.affichage();*/
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

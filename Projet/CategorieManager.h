@@ -1,34 +1,33 @@
 ﻿///
 /// \file CategorieManager.h
-/// \brief Manager des Categories
+/// \brief Manager des Categories.
 /// \author Erwan Normand
-/// \date 01 juin 2014
+/// \date 05 juin 2014
 ///
 
 #ifndef CATEGORIEMANAGER_H
 #define CATEGORIEMANAGER_H
 
 #include <QString>
-#include <map>
-#include <algorithm>
+#include <QtXml>
+#include <fstream>
+#include "AbstractManager.h"
 #include "Manager.h"
 #include "Categorie.h"
 
-class CategorieManager
+class CategorieManager : public AbstractManager
 {
-
 private:
     Manager<Categorie> categories;
 
 public:
-    CategorieManager(): categories() {}
-
-    Categorie* getCategorie(const QString code)  { return &categories.get(code); }
+    CategorieManager(): categories(Manager<Categorie>()) {}
 
     void load();
 
-    void ajouterCategorie(QString code, QString nom) { categories.ajouter(code, Categorie(code, nom)); }
-    void retirerCategorie(QString code) { categories.retirer(code); }
+    const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
+    void ajouterCategorie(const QString& code, const QString& nom) { categories.ajouter(code, Categorie(code, nom)); }
+    void retirerCategorie(const QString& code) { categories.retirer(code); }
 };
 
 #endif // CATEGORIEMANAGER_H

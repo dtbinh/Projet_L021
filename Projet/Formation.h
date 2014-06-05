@@ -1,4 +1,11 @@
-﻿#ifndef FORMATION_H
+﻿///
+/// \file Formation.h
+/// \brief Un etudiant peut suivre différentes formations.
+/// \author Erwan Normand
+/// \date 05 juin 2014
+///
+
+#ifndef FORMATION_H
 #define FORMATION_H
 
 #include <iostream>
@@ -13,12 +20,12 @@ private:
     QString code;
     QString nom;
     std::vector<const Credits*> credits;
-    std::vector<const Formation*> specialites; //Les formations filles
+    std::vector<const Formation*> specialites;
     std::vector<const UV*> uvs;
 
 public:
-    Formation(const QString& c, const QString& n) : code(c), nom(n), credits(std::vector<const Credits*>()), specialites(std::vector<const Formation*>()), uvs(std::vector<const UV*>()) {}
-    Formation(){}
+    Formation(const QString& c = "", const QString& n = "") : code(c), nom(n), credits(), specialites(), uvs() {}
+
     const QString& getCode() const { return code; }
     const QString& getNom() const { return nom; }
     const std::vector<const Credits*>& getCredits() const { return credits; }

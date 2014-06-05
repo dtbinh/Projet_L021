@@ -1,7 +1,7 @@
-﻿///
+///
 /// \file PeriodeManager.h
 /// \brief Manager des Periodes
-/// \author Nicolas
+/// \author Nicolas Szewe, Erwan Normand
 /// \date 05 juin 2014
 ///
 
@@ -9,28 +9,24 @@
 #define PERIODEMANAGER_H
 
 #include <QString>
-#include <map>
-#include <algorithm>
+#include <QtXml>
+#include "AbstractManager.h"
 #include "Manager.h"
 #include "Periode.h"
 
-class PeriodeManager
+class PeriodeManager : public AbstractManager
 {
-
 private:
     Manager<Periode> periodes;
 
 public:
     PeriodeManager(): periodes() {}
 
-    Periode* getPeriode(const QString code)  { return &periodes.get(code); }
-
     void load();
 
-    void ajouterPeriode(QString nom,unsigned int annee) {   const Periode& temp=Periode(nom,annee);
-                                                            QString code=temp.getCode();
-                                                            periodes.ajouter(code,temp); }
-    void retirerPeriode(QString code) { periodes.retirer(code); }
+    const Periode& getPeriode(const QString& code) const { return periodes.get(code); }
+    void ajouterPeriode(const QString& nom, unsigned int annee) { Periode p(nom, annee); periodes.ajouter(p.getCode(), p); }
+    void retirerPeriode(const QString& code) { periodes.retirer(code); }
 };
 
 #endif // PERIODEMANAGER_H

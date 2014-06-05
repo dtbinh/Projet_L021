@@ -1,45 +1,61 @@
-﻿///
+///
 /// \file Categorie.h
-/// \brief Les UVs de l'UTC sont décrit en catégorie
+/// \brief Les UVs de l'UTC sont décrites en catégories.
 /// \author Nicolas Szewe, Erwan Normand
-/// \date 27 mai 2014
+/// \date 05 juin 2014
 ///
 
 #ifndef CATEGORIE_H
 #define CATEGORIE_H
 
+#include <iostream>
 #include <QString>
 
+///
+/// \class Categorie
+/// \brief Categorie correspond à un nom et à un code comme identifiant.
+///
 class Categorie
 {
+private:
     QString code, nom;
 
-public :
+public:
     ///
-    /// \fn Categorie(string c,string n)
-    /// \param c Le code de l'UV a crée
-    /// \param n Le nom de l'UV a crée
-    /// \brief Constructeur nécessitant le nom et le code de l'UV
+    /// \fn Categorie(const QString& c, const QString& n)
+    /// \brief Constructeur.
+    /// \param c Le code de la Categorie a créer.
+    /// \param n Le nom de la Categorie a créer.
     ///
     Categorie(const QString& c = "", const QString& n = ""): code(c), nom(n) {}
 
     ///
     /// \fn getCode()
-    /// \return const QString& retourne le code de la categorie
+    /// \brief Retourne le code de la Categorie.
+    /// \return const QString& Le code.
     ///
     const QString& getCode() const { return code; }
 
+    ///
+    /// \fn setCode(const QString& c)
+    /// \brief Modifie le code de la Categorie.
+    ///
     void setCode(const QString& c) { code = c; }
 
     ///
     /// \fn getNom()
-    /// \return const QString& retourne le nom de la categorie
+    /// \brief Retourne le nom de la Categorie.
+    /// \return const QString& Le nom.
     ///
     const QString& getNom() const { return nom; }
 
+    ///
+    /// \fn setNom(const QString& n)
+    /// \brief Modifie le nom de la Categorie.
+    ///
     void setNom(const QString& n) { nom = n; }
 
-    void affichage()const {std::cout<<code.toStdString()<<" : "<<nom.toStdString()<<std::endl;}
+    void afficher() const { std::cout << code.toStdString() << " : " << nom.toStdString() << std::endl; }
 };
 
 #endif // CATEGORIE_H

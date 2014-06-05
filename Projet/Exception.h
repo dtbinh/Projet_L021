@@ -1,4 +1,11 @@
-﻿#ifndef EXCEPTION_H
+///
+/// \file Exception.h
+/// \brief Implémentation concrète de l'exception.
+/// \author Erwan Normand
+/// \date 05 juin 2014
+///
+
+#ifndef EXCEPTION_H
 #define EXCEPTION_H
 
 #include <iostream>

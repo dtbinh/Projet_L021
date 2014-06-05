@@ -1,10 +1,11 @@
-﻿#include "UV.h"
+#include "UV.h"
 
 using namespace std;
 
-void UV::affichage(){
+void UV::affichage()
+{
     cout<<code.toStdString()<<"---"<<nom.toStdString()<<endl;
-    cout<<"Categorie : "<<cat.getCode().toStdString()<<endl;
+    cout<<"Categorie : "<<categorie->getCode().toStdString()<<endl;
     cout<<"Credits : ";
     for(unsigned int i=0;i<cred.size();i++)
         cout<<cred[i]->getNombre()<<" ";
@@ -17,21 +18,24 @@ void UV::affichage(){
     cout<<endl;
 }
 
-UV::UV(const UV& u){
-    code=u.code;
-    nom=u.nom;
-    cat=u.cat;
-    for(unsigned int i=0;i<u.cred.size();i++)
+UV::UV(const UV& u)
+{
+    code = u.code;
+    nom = u.nom;
+    categorie = u.categorie;
+    for(unsigned int i = 0; i < u.cred.size(); i++) {
             cred.push_back(u.cred[i]);
-    for(unsigned int i=0;i<u.prerequis.size();i++)
+    }
+    for(unsigned int i = 0; i < u.prerequis.size(); i++) {
             prerequis.push_back(u.prerequis[i]);
+    }
 }
 
 
-UV::~UV(){
+UV::~UV()
+{
     code="NULL";
     nom="NULL";
-
 }
 
 

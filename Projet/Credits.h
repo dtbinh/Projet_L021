@@ -1,58 +1,76 @@
-﻿///
+///
 /// \file Credits.h
-/// \brief Les UVs de l'UTC possédents des crédits. Permet de décrire le nombre de crédit associé à une catégorie.
+/// \brief Les catégories de l'UTC possèdent des crédits.
 /// \author Nicolas Szewe, Erwan Normand
-/// \date 27 mai 2014
+/// \date 05 juin 2014
 ///
 
 #ifndef CREDIT_H
 #define CREDIT_H
 
+#include <iostream>
 #include <QString>
 #include "Categorie.h"
 
+///
+/// \class Credits
+/// \brief Credits correspond à un nombre de crédits dans une catégorie.
+///
 class Credits
 {
-    QString code;
+    QString nom;
     int nombre;
     const Categorie* categorie;
 
 public :
     ///
-    /// \fn Credits(int n,Categorie& categ)
-    /// \param n Le nombre de credits
-    /// \param categ Une reférence vers un objet catégorie
-    /// \brief Constructeur nécessitant le nombre de crédits et la catégorie de ces crédits.
+    /// \fn Credits(const QString c, int n, const Categorie& c)
+    /// \brief Constructeur.
+    /// \param n Le nombre de crédits.
+    /// \param cat Une référence d'une Categorie.
     ///
-    Credits(const QString& c ="", int n=0, const Categorie* cat=0): code(c), nombre(n), categorie(cat) {}
+    Credits(const QString& n = "", int nb = 0, const Categorie& c = Categorie()): nom(n), nombre(nb), categorie(&c) {}
 
     ///
-    /// \fn getCode()
-    /// \return string code
+    /// \fn setNom()
+    /// \brief Retourne le nom des crédits.
+    /// \return const QString& Le nom.
     ///
-    const QString& getCode() const { return code; }
+    const QString& getNom() const { return nom; }
 
-    void setCode(const QString& c) { code = c; }
+    ///
+    /// \fn setNom(const QString& n)
+    /// \brief Modifie le nom des crédits.
+    ///
+    void setNom(const QString& n) { nom = n; }
 
     ///
     /// \fn getNombre()
-    /// \return int nombre de crédits
+    /// \brief Retourne le nombre de crédits.
+    /// \return int Le nombre.
     ///
     int getNombre() const { return nombre; }
 
-    void setNombre(int n) { nombre = n; }
+    ///
+    /// \fn setNombre(int nb)
+    /// \brief Modifie le nombre des crédits.
+    ///
+    void setNombre(int nb) { nombre = nb; }
 
     ///
-    /// \fn getCategorie
-    /// \return const Categorie& référence vers la catégorie
+    /// \fn getCategorie()
+    /// \brief Retourne une référence constante de la catégorie.
+    /// \return const Categorie& La catégorie.
     ///
-    const Categorie* getCategorie() const { return categorie; }
+    const Categorie& getCategorie() const { return *categorie; }
 
-    //void setCategorie(const Categorie& c) { categorie = c; }
+    ///
+    /// \fn setCategorie(const Categorie& c)
+    /// \brief Modifie la catégorie des crédits.
+    ///
+    void setCategorie(const Categorie& c) { categorie = &c; }
 
-    void affichage() const {std::cout<<code.toStdString()<<" : "<<nombre<<std::endl;
-                                       //categorie->getCode().toStdString()<<std::endl;
-                    }
+    void afficher() const { std::cout << nom.toStdString() << " : " << nombre << " " << categorie->getCode().toStdString() << std::endl; }
 };
 
 #endif // CREDIT_H
