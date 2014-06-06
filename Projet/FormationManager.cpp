@@ -4,7 +4,7 @@ using namespace std;
 
 /*void FormationManager::load(CreditManager credman)
 {
-    QDomDocument doc = load_xml("formation_utc.xml");
+    QDomDocument doc = formations.load_xml("formation_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();

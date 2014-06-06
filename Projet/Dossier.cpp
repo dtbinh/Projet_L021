@@ -1,4 +1,4 @@
-﻿#include "Dossier.h"
+#include "Dossier.h"
 
 using namespace std;
 
@@ -18,8 +18,9 @@ void Dossier::setLogin()
         login=nom+prenom;
 }
 
-void Dossier::affichage(){
-    cout<<"Dossier de "<<nom.toStdString()<<" "<<prenom.toStdString()<<" login : "<<login.toStdString()<<endl;
+void Dossier::afficher()
+{
+    cout << "Dossier de "<<nom.toStdString()<<" "<<prenom.toStdString()<<" login : "<<login.toStdString()<<endl;
     for (map<QString,const Formation*>::const_iterator it = formation.begin(); it != formation.end(); it++)
     {
         cout << it->second->getCode().toStdString() << " "<< it->second->getNom().toStdString() << " ";
@@ -29,14 +30,15 @@ void Dossier::affichage(){
     {
         it->second->afficher();
     }
-    cout<<endl;
 }
 
-void Dossier::ajoutFormation(const Formation &f){
+void Dossier::ajouterFormation(const Formation &f)
+{
      formation[f.getCode()]=&f;
 }
 
-void Dossier::ajoutInscription(const Inscription &f){
+void Dossier::ajouterInscription(const Inscription &f)
+{
     inscription[f.getPeriode().getCode()]=&f;
 }
 

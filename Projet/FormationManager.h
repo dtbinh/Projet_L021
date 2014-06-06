@@ -10,12 +10,10 @@
 
 #include <QString>
 #include <QtXml>
-#include <fstream>
-#include "AbstractManager.h"
 #include "Manager.h"
 #include "Formation.h"
 
-class FormationManager : public AbstractManager
+class FormationManager
 {
 private:
     Manager<Formation> formations;
@@ -25,7 +23,8 @@ public:
 
     //void load(CreditManager credman); //cpp non fonctionnel
 
-    const Formation& getFormation(const QString& code) { return formations.get(code); }
+    Formation& getFormation(const QString& code) { return formations.get(code); }
+    const Formation& getFormation(const QString& code) const { return formations.get(code); }
     void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }
     void retirerFormation(const QString& code) { formations.retirer(code); }
 };

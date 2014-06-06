@@ -1,15 +1,15 @@
-#include "CategorieManager.h"
+#include "DossierManager.h"
 
 using namespace std;
 
-void CategorieManager::load()
+void DossierManager::load()
 {
-    QDomDocument doc = categories.load_xml("categorie_utc.xml");
+    QDomDocument doc = dossiers.load_xml("dossier.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
-    while(!racine.isNull())
+    /*while(!racine.isNull())
     {
         if(racine.tagName() == "categorie")
         {
@@ -33,5 +33,6 @@ void CategorieManager::load()
         }
 
         racine = racine.nextSiblingElement();
-    }
+    }*/
 }
+

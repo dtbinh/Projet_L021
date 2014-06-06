@@ -10,11 +10,10 @@
 
 #include <QString>
 #include <QtXml>
-#include "AbstractManager.h"
 #include "Manager.h"
 #include "Periode.h"
 
-class PeriodeManager : public AbstractManager
+class PeriodeManager
 {
 private:
     Manager<Periode> periodes;
@@ -24,10 +23,10 @@ public:
 
     void load();
 
+    Periode& getPeriode(const QString& code) { return periodes.get(code); }
     const Periode& getPeriode(const QString& code) const { return periodes.get(code); }
     void ajouterPeriode(const QString& nom, unsigned int annee) { Periode p(nom, annee); periodes.ajouter(p.getCode(), p); }
     void retirerPeriode(const QString& code) { periodes.retirer(code); }
 };
 
 #endif // PERIODEMANAGER_H
-

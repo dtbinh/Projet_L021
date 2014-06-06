@@ -4,7 +4,7 @@ using namespace std;
 
 void UVManager::load(CreditManager credman, CategorieManager catman, FormationManager forman)
 {
-    QDomDocument doc = load_xml("uv_utc.xml");
+    QDomDocument doc = uvs.load_xml("uv_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();

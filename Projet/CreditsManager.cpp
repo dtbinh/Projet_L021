@@ -4,7 +4,7 @@ using namespace std;
 
 void CreditManager::load(const CategorieManager& catman)
 {
-    QDomDocument doc = load_xml("credit_utc.xml");
+    QDomDocument doc = credits.load_xml("credit_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();

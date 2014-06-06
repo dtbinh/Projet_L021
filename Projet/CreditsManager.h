@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file CreditManager.h
 /// \brief Manager des Credits.
 /// \author Nicolas Szewe, Erwan Normand
@@ -10,14 +10,12 @@
 
 #include <QString>
 #include <QtXml>
-#include <fstream>
-#include "AbstractManager.h"
 #include "Manager.h"
 #include "CategorieManager.h"
 #include "Categorie.h"
 #include "Credits.h"
 
-class CreditManager : public AbstractManager
+class CreditManager
 {
 private:
     Manager<Credits> credits;
@@ -27,12 +25,10 @@ public:
 
     void load(const CategorieManager& catman);
 
+    Credits& getCredits(const QString& code) { return credits.get(code); }
     const Credits& getCredits(const QString& code) const { return credits.get(code); }
     void ajouterCredits(const QString& code, int nombre, const Categorie& cat) { credits.ajouter(code, Credits(code, nombre, cat)); }
     void retirerCredits(const QString& code) { credits.retirer(code); }
 };
 
 #endif // CREDITMANAGER_H
-
-
-

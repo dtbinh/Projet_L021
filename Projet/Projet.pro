@@ -10,9 +10,9 @@ SOURCES += \
     CategorieManager.cpp \
     PeriodeManager.cpp \
     FormationManager.cpp \
-    AbstractManager.cpp \
     UV.cpp \
-    UVManager.cpp
+    UVManager.cpp \
+    DossierManager.cpp
 
 HEADERS += \
     Dossier.h \
@@ -27,6 +27,6 @@ HEADERS += \
     Manager.h \
     PeriodeManager.h \
     FormationManager.h \
-    AbstractManager.h \
     UV.h \
-    UVManager.h
+    UVManager.h \
+    DossierManager.h

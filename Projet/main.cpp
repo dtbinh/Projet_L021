@@ -3,7 +3,7 @@
 #include "Exception.h"
 #include "CreditsManager.h"
 #include "CategorieManager.h"
-#include "Dossier.h"
+#include "DossierManager.h"
 #include "Inscription.h"
 #include "UVManager.h"
 #include "PeriodeManager.h"
@@ -15,9 +15,11 @@ int main()
 {
     try
     {
-        Dossier D1("szewe","nicolas");
-        Dossier D2("germain","audrey");
-        Dossier D3("chan","li");
+        DossierManager dosman;
+        dosman.ajouterDossier("szewe", "nicolas");
+        dosman.ajouterDossier("normand", "erwan");
+        dosman.getDossier("enormand").afficher();
+        cout << endl;
 
         CategorieManager catman;
         catman.load();

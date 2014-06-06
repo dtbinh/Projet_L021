@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file CategorieManager.h
 /// \brief Manager des Categories.
 /// \author Erwan Normand
@@ -10,12 +10,10 @@
 
 #include <QString>
 #include <QtXml>
-#include <fstream>
-#include "AbstractManager.h"
 #include "Manager.h"
 #include "Categorie.h"
 
-class CategorieManager : public AbstractManager
+class CategorieManager
 {
 private:
     Manager<Categorie> categories;
@@ -25,11 +23,10 @@ public:
 
     void load();
 
+    Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
     void ajouterCategorie(const QString& code, const QString& nom) { categories.ajouter(code, Categorie(code, nom)); }
     void retirerCategorie(const QString& code) { categories.retirer(code); }
 };
 
 #endif // CATEGORIEMANAGER_H
-
-

@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Dossier.h
 /// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Nicolas Szewe, Erwan Normand
@@ -31,7 +31,7 @@ public :
     /// \param p Prenom de l'étudiant
     /// \brief La fonction calcule automatiquement le login de l'étudiant
     ///
-    Dossier(QString n, QString p): nom(n), prenom(p), formation(std::map<QString,const Formation*>()), inscription(std::map<QString,const Inscription*>()) {
+    Dossier(const QString& n = "", const QString& p = ""): nom(n), prenom(p), formation(), inscription() {
         setLogin();
     }
 
@@ -59,21 +59,19 @@ public :
     ///
     const QString& getLogin() const { return login; }
 
-
-
     void setLogin();
 
-    void ajoutFormation(const Formation& f);
-    void retireFormation(QString code) { formation.erase(code); }
+    void ajouterFormation(const Formation& f);
+    void retirerFormation(const QString& code) { formation.erase(code); }
 
-    void ajoutInscription(const Inscription& f);
-    void retireInscription(QString code) { inscription.erase(code); }
+    void ajouterInscription(const Inscription& f);
+    void retirerInscription(const QString& code) { inscription.erase(code); }
 
     ///
     /// \fn affichage
     /// \brief Simple fonction d'affichage
     ///
-    void affichage();
+    void afficher();
 };
 
 #endif // DOSSIER_H

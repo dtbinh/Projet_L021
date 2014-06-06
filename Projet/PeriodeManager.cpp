@@ -4,7 +4,7 @@ using namespace std;
 
 void PeriodeManager::load()
 {
-    QDomDocument doc = load_xml("periode_utc.xml");
+    QDomDocument doc = periodes.load_xml("periode_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
