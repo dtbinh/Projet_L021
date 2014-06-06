@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <QString>
 #include "Exception.h"
 #include "CreditsManager.h"
@@ -26,10 +26,13 @@ int main()
         catman.getCategorie("TM").afficher();
         cout << endl;
 
-        CreditManager credman;
+        CreditsManager credman;
         credman.load(catman);
         credman.getCredits("CS_Classique").afficher();
         cout << endl;
+
+        //FormationManager forman;
+        //forman.load(credman);
 
         /*UvManager uvman;
         uvman.load(credman,cm);
@@ -40,8 +43,7 @@ int main()
         periodeman.getPeriode("P14").afficher();
         cout<<endl;*/
 
-        /*FormationManager forman;
-        forman.load(credman);
+        /*
         forman.getFormation("GI").ajouterUV(*uvman.getUv("NF01"));
         forman.getFormation("GI").retirerUV(*uvman.getUv("NF01"));
         forman.getFormation("GI").ajouterUV(*uvman.getUv("LO21"));

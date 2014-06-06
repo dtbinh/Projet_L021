@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file FormationManager.h
 /// \brief Manager des Formations.
 /// \author Nicolas Szewe, Erwan Normand
@@ -12,6 +12,7 @@
 #include <QtXml>
 #include "Manager.h"
 #include "Formation.h"
+#include "CreditsManager.h"
 
 class FormationManager
 {
@@ -21,7 +22,7 @@ private:
 public:
     FormationManager(): formations() {}
 
-    //void load(CreditManager credman); //cpp non fonctionnel
+    void load(CreditsManager credman);
 
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }

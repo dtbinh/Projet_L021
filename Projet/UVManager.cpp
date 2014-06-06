@@ -1,8 +1,8 @@
-#include "UVManager.h"
+﻿#include "UVManager.h"
 
 using namespace std;
 
-void UVManager::load(CreditManager credman, CategorieManager catman, FormationManager forman)
+void UVManager::load(CreditsManager credman, CategorieManager catman, FormationManager forman)
 {
     QDomDocument doc = uvs.load_xml("uv_utc.xml");
 
