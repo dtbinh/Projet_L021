@@ -2,7 +2,7 @@
 /// \file Manager.h
 /// \brief Classe template pour tous les managers d'objets.
 /// \author Erwan Normand
-/// \date 02 juin 2014
+/// \date 06juin 2014
 ///
 
 #ifndef MANAGER_H

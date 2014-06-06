@@ -2,7 +2,7 @@
 /// \file Exception.h
 /// \brief Implémentation concrète de l'exception.
 /// \author Erwan Normand
-/// \date 05 juin 2014
+/// \date 06 juin 2014
 ///
 
 #ifndef EXCEPTION_H
