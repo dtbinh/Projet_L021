@@ -42,7 +42,7 @@ void UVManager::load(CreditsManager credman, CategorieManager catman, FormationM
                 unElement = unElement.nextSiblingElement();
             }
 
-            Credits credit=credman.getCredits(cred);
+            //Credits credit=credman.getCredits(cred);
             Categorie categorie=catman.getCategorie(cat);
             this->ajouterUV(strCode,nom,categorie);
             //this->getUV(strCode).ajoutCredits(credit); //bug mystrérieux ici

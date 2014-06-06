@@ -4,6 +4,7 @@ using namespace std;
 
 void FormationManager::load(CreditsManager credman)
 {
+    QString tempCred="NULL"; QString tempSpec="NULL";
     QDomDocument doc = formations.load_xml("formation_utc.xml");
 
     QDomElement racine = doc.documentElement();
@@ -13,7 +14,7 @@ void FormationManager::load(CreditsManager credman)
     {
         if(racine.tagName() == "formation")
         {
-            QString tempCode,tempNom,tempCred,tempSpec;
+            QString tempCode,tempNom;
             QDomElement unElement = racine.firstChildElement();
 
             while(!unElement.isNull())
@@ -36,12 +37,15 @@ void FormationManager::load(CreditsManager credman)
                 }
                 unElement = unElement.nextSiblingElement();
             }
-
-            Credits& credit=credman.getCredits(tempCred);
-            Formation specialite=this->getFormation(tempSpec);
             this->ajouterFormation(tempCode,tempNom);
-            this->getFormation(tempCode).ajouterCredits(credit);
-            this->getFormation(tempCode).ajouterSpecialite(specialite);
+            if (tempCred!="NULL"){
+                this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempCred));
+                tempCred="NULL";
+            }
+            if (tempSpec!="NULL"){
+                this->getFormation(tempCode).ajouterSpecialite(this->getFormation(tempSpec));
+                tempSpec="NULL";
+            }
             //Probleme, il faut faire un tableau de credits car la on ajoute que un des credits données.
             //Meme probleme pour specialité
         }

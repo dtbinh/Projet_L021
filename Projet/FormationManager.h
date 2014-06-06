@@ -11,6 +11,7 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Exception.h"
 #include "Formation.h"
 #include "CreditsManager.h"
 
