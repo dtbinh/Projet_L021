@@ -26,10 +26,12 @@ int main()
         catman.getCategorie("TM").afficher();
         cout << endl;
 
-        CreditManager credman;
+        catman.getCategorie("QZD").afficher();
+
+        /*CreditManager credman;
         credman.load(catman);
         credman.getCredits("CS_Classique").afficher();
-        cout << endl;
+        cout << endl;*/
 
         /*UvManager uvman;
         uvman.load(credman,cm);

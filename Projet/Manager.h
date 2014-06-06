@@ -24,12 +24,32 @@ public:
 
     QDomDocument load_xml(const QString& file);
 
-    T& get(const QString& code) { return tab.find(code)->second; }
-    const T& get(const QString& code) const { return tab.find(code)->second; }
+    T& get(const QString& code);
+    const T& get(const QString& code) const;
 
     void ajouter(const QString& code, const T& t) { tab[code] = t; }
     void retirer(const QString& code) { tab.erase(code); }
 };
+
+template<class T>
+T& Manager<T>::get(const QString& code)
+{
+    typename std::map<QString,T>::iterator it = tab.find(code);
+    if (it == tab.end()) {
+        throw Exception("L'objet " + code + " n'existe pas.");
+    }
+    return it->second;
+}
+
+template<class T>
+const T& Manager<T>::get(const QString& code) const
+{
+    typename std::map<QString,T>::const_iterator it = tab.find(code);
+    if (it == tab.end()) {
+        throw Exception("L'objet " + code + " n'existe pas.");
+    }
+    return it->second;
+}
 
 template<class T>
 QDomDocument Manager<T>::load_xml(const QString& file)
