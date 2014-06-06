@@ -35,23 +35,16 @@ int main()
         forman.load(credman);
         forman.getFormation("GI").afficher();
 
-        /*UVManager uvman;
-        uvman.load(credman,catman,forman);
-        //uvman.getUV("LO21").affichage();
-        */
 
-        /*PeriodeManager periodeman;
+        UVManager uvman;
+        uvman.load(credman,catman,forman);
+        uvman.getUV("LO21").affichage();
+
+        PeriodeManager periodeman;
         periodeman.load();
         periodeman.getPeriode("P14").afficher();
-        cout<<endl;$/
+        cout<<endl;
 
-        /*
-        forman.getFormation("GI").ajouterUV(*uvman.getUv("NF01"));
-        forman.getFormation("GI").retirerUV(*uvman.getUv("NF01"));
-        forman.getFormation("GI").ajouterUV(*uvman.getUv("LO21"));
-        forman.getFormation("GI").ajouterUV(*uvman.getUv("NF16"));
-        forman.getFormation("GI").afficher();
-        cout<<endl;*/
 
         /* Test Inscription */
         /*Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));

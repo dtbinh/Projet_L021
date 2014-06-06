@@ -1909,7 +1909,7 @@
     <uv>
         <code>TM_ClassiqueI05</code>
         <nom>Fabrication Assistee Par Ordinateur Et Machines A Commande Numerique (Apprentissage)</nom>
-        <credit>TM_3</credit>
+        <credit>TM_Demi</credit>
         <categorie>TM</categorie>
 
 
@@ -1957,7 +1957,7 @@
     <uv>
         <code>TN30</code>
         <nom>Xao En Milieu Professionnel</nom>
-        <credit>TM_3</credit>
+        <credit>TM_Demi</credit>
         <categorie>TM</categorie>
 
 

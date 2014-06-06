@@ -37,16 +37,13 @@ void UVManager::load(CreditsManager credman, CategorieManager catman, FormationM
                 else if(unElement.tagName() == "branche")
                 {
                     forma=unElement.text();
-                    //cout<<forma.toStdString()<<endl;
+                    cout<<forma.toStdString()<<endl;
                 }
                 unElement = unElement.nextSiblingElement();
             }
-
-            //Credits credit=credman.getCredits(cred);
-            Categorie categorie=catman.getCategorie(cat);
-            this->ajouterUV(strCode,nom,categorie);
-            //this->getUV(strCode).ajoutCredits(credit); //bug mystrérieux ici
-            //forman.getFormation(forma)->ajouterUV(*this->getUv(strCode));
+            this->ajouterUV(strCode,nom,catman.getCategorie(cat));
+            this->getUV(strCode).ajoutCredits(credman.getCredits(cred));
+            //forman.getFormation(forma).ajouterUV(*this->getUV(strCode));
         }
         racine = racine.nextSiblingElement();
   }
