@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <QString>
 #include "Exception.h"
 #include "CreditsManager.h"
@@ -40,11 +40,11 @@ int main()
         uvman.load(credman,catman,forman);
         uvman.getUV("LO21").affichage();
 
-        PeriodeManager periodeman;
+        /*PeriodeManager periodeman;
         periodeman.load();
         periodeman.getPeriode("P14").afficher();
         cout<<endl;
-
+        */
 
         /* Test Inscription */
         /*Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));

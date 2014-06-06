@@ -37,7 +37,7 @@ void UVManager::load(CreditsManager credman, CategorieManager catman, FormationM
                 else if(unElement.tagName() == "branche")
                 {
                     forma=unElement.text();
-                    cout<<forma.toStdString()<<endl;
+                    //cout<<forma.toStdString()<<endl;
                 }
                 unElement = unElement.nextSiblingElement();
             }
