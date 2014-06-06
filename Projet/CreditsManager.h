@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file CreditManager.h
 /// \brief Manager des Credits.
 /// \author Nicolas Szewe, Erwan Normand
@@ -15,13 +15,13 @@
 #include "Categorie.h"
 #include "Credits.h"
 
-class CreditManager
+class CreditsManager
 {
 private:
     Manager<Credits> credits;
 
 public:
-    CreditManager(): credits() {}
+    CreditsManager(): credits() {}
 
     void load(const CategorieManager& catman);
 

@@ -1,8 +1,8 @@
-#include "CreditsManager.h"
+﻿#include "CreditsManager.h"
 
 using namespace std;
 
-void CreditManager::load(const CategorieManager& catman)
+void CreditsManager::load(const CategorieManager& catman)
 {
     QDomDocument doc = credits.load_xml("credit_utc.xml");
 

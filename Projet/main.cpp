@@ -26,34 +26,31 @@ int main()
         catman.getCategorie("TM").afficher();
         cout << endl;
 
-        catman.getCategorie("QZD").afficher();
-
-        /*CreditManager credman;
+        CreditsManager credman;
         credman.load(catman);
         credman.getCredits("CS_Classique").afficher();
-        cout << endl;*/
+        cout << endl;
 
-        /*UvManager uvman;
-        uvman.load(credman,cm);
-        uvman.getUv("LO21")->affichage();*/
+        FormationManager forman;
+        forman.load(credman);
+        forman.getFormation("GI").afficher();
+
+        /*UVManager uvman;
+        uvman.load(credman,catman,forman);
+        //uvman.getUV("LO21").affichage();
+        */
 
         /*PeriodeManager periodeman;
         periodeman.load();
         periodeman.getPeriode("P14").afficher();
-        cout<<endl;*/
+        cout<<endl;$/
 
-        /*FormationManager forman;
-        forman.load(credman);
+        /*
         forman.getFormation("GI").ajouterUV(*uvman.getUv("NF01"));
         forman.getFormation("GI").retirerUV(*uvman.getUv("NF01"));
         forman.getFormation("GI").ajouterUV(*uvman.getUv("LO21"));
         forman.getFormation("GI").ajouterUV(*uvman.getUv("NF16"));
         forman.getFormation("GI").afficher();
-        cout<<endl;*/
-
-        /*PeriodeManager periodeman;
-        periodeman.load();
-        periodeman.getPeriode("P14").afficher();
         cout<<endl;*/
 
         /* Test Inscription */

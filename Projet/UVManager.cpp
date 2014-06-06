@@ -1,8 +1,8 @@
-#include "UVManager.h"
+﻿#include "UVManager.h"
 
 using namespace std;
 
-void UVManager::load(CreditManager credman, CategorieManager catman, FormationManager forman)
+void UVManager::load(CreditsManager credman, CategorieManager catman, FormationManager forman)
 {
     QDomDocument doc = uvs.load_xml("uv_utc.xml");
 
@@ -42,7 +42,7 @@ void UVManager::load(CreditManager credman, CategorieManager catman, FormationMa
                 unElement = unElement.nextSiblingElement();
             }
 
-            Credits credit=credman.getCredits(cred);
+            //Credits credit=credman.getCredits(cred);
             Categorie categorie=catman.getCategorie(cat);
             this->ajouterUV(strCode,nom,categorie);
             //this->getUV(strCode).ajoutCredits(credit); //bug mystrérieux ici

@@ -1,4 +1,4 @@
-#include "PeriodeManager.h"
+﻿#include "PeriodeManager.h"
 
 using namespace std;
 
