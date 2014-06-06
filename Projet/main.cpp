@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <QString>
 #include "Exception.h"
 #include "CreditsManager.h"

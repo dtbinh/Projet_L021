@@ -9,17 +9,17 @@
 #define EXCEPTION_H
 
 #include <iostream>
-#include <string>
+#include <QString>
 
 class Exception : public std::exception
 {
 protected :
-    std::string info;
+    QString info;
 
 public:
-    Exception(const std::string& i = "") throw() : info(i) {}
+    Exception(const QString& i = "") throw() : info(i) {}
     ~Exception() throw() {}
-    const char* what() const throw() { return info.c_str(); }
+    const char* what() const throw() { return info.toStdString().c_str(); }
 };
 
 #endif // EXCEPTION_H
