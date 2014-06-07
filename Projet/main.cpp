@@ -16,10 +16,9 @@ int main()
     try
     {
         DossierManager dosman;
-        dosman.ajouterDossier("szewe", "nicolas");
-        dosman.ajouterDossier("normand", "erwan");
+        QString fichier="enormand.xml";
+        dosman.load(fichier);
         dosman.getDossier("enormand").afficher();
-        cout << endl;
 
         CategorieManager catman;
         catman.load();
@@ -32,16 +31,9 @@ int main()
 
         UVManager uvman;
         uvman.load(credman,catman,forman);
-        uvman.getUV("LO21").affichage();
-        cout << endl;
-
-        forman.getFormation("GI").afficher();
-        cout << endl;
 
         PeriodeManager periodeman;
         periodeman.load();
-        periodeman.getPeriode("P2014").afficher();
-        cout<<endl;
 
         /*Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));

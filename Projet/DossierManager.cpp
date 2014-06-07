@@ -1,38 +1,38 @@
-#include "DossierManager.h"
+﻿#include "DossierManager.h"
 
 using namespace std;
 
-void DossierManager::load()
+void DossierManager::load(QString& fichier)
 {
-    QDomDocument doc = dossiers.load_xml("dossier.xml");
+    QDomDocument doc = dossiers.load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
-    /*while(!racine.isNull())
+    while(!racine.isNull())
     {
-        if(racine.tagName() == "categorie")
+        if(racine.tagName() == "dossier")
         {
-            QString tempNom, tempURL;
+            QString tempNom, tempPrenom;
             QDomElement unElement = racine.firstChildElement();
 
             while(!unElement.isNull())
             {
-                if(unElement.tagName() == "code")
+                if(unElement.tagName() == "nom")
                 {
                     tempNom = unElement.text();
                 }
-                else if(unElement.tagName() == "nom")
+                else if(unElement.tagName() == "prenom")
                 {
-                    tempURL = unElement.text();
+                    tempPrenom = unElement.text();
                 }
                 unElement = unElement.nextSiblingElement();
             }
 
-            this->ajouterCategorie(tempNom,tempURL);
+            this->ajouterDossier(tempNom,tempPrenom);
         }
 
         racine = racine.nextSiblingElement();
-    }*/
+    }
 }
 
