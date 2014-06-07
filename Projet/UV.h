@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file UV.h
 /// \brief Les UVs sont les matières de l'UTC.
 /// \author Nicolas Szewe, Erwan Normand
@@ -21,14 +21,6 @@
 ///
 enum Choix {
     Confirmer,Refuser,Retarder,Avancer
-};
-
-///
-/// \enum Note
-/// \brief Les différentes notes que peuvent obtenir les étudiants pour une UV
-///
-enum Note {
-    A,B,C,D,E,F,FX,RES,ABS,EC
 };
 
 ///

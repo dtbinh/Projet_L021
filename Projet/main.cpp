@@ -8,6 +8,7 @@
 #include "UVManager.h"
 #include "PeriodeManager.h"
 #include "FormationManager.h"
+#include "NoteManager.h"
 
 using namespace std;
 
@@ -15,6 +16,13 @@ int main()
 {
     try
     {
+
+        NoteManager notman;
+        //load à faire :)
+        notman.ajouterNote("A", "Excellent");
+        notman.getNote("A").afficher();
+        cout << endl;
+
         CategorieManager catman;
         catman.load();
 
@@ -30,25 +38,25 @@ int main()
         PeriodeManager periodeman;
         periodeman.load();
 
+
         DossierManager dosman;
         QString fichier="enormand.xml";
         dosman.load(fichier,forman);
         dosman.getDossier("enormand").afficher();
+        cout<<endl;
         QString fichier2="agermain.xml";
         dosman.load(fichier2,forman);
         dosman.getDossier("agermain").afficher();
+        cout<<endl;
 
-        /*Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
+        Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
         GI02.ajouterUV(uvman.getUV("LO21"));
         GI02.retirerUV(uvman.getUV("NF16"));
-        GI02.modifierNote(uvman.getUV("LO21"), A);
-        GI02.afficher();
+        GI02.modifierNote(uvman.getUV("LO21"), notman.getNote("A"));
 
-
-        dosman.getDossier("szewenic").ajouterInscription(GI02);
-        */
-
+        dosman.getDossier("enormand").ajouterInscription(GI02);
+        dosman.getDossier("enormand").afficher();
 
     } catch(Exception &e) {
         cerr << e.what() << endl;
