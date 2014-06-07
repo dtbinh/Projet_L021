@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file PeriodeManager.h
 /// \brief Manager des Periodes
 /// \author Nicolas Szewe, Erwan Normand

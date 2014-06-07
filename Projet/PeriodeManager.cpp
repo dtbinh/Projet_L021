@@ -26,11 +26,10 @@ void PeriodeManager::load()
                 else if(unElement.tagName() == "annee")
                 {
                     QString temp = unElement.text();
-                    annee=temp.toInt();
+                    annee=temp.toUInt();
                 }
                 unElement = unElement.nextSiblingElement();
             }
-            cout << tempNom.toStdString() << " " << annee << endl;
             this->ajouterPeriode(tempNom,annee);
         }
 

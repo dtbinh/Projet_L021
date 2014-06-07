@@ -42,25 +42,23 @@ int main()
         forman.getFormation("GI").afficher();
         cout << endl;
 
-        /*PeriodeManager periodeman;
+        PeriodeManager periodeman;
         periodeman.load();
-        periodeman.getPeriode("P14").afficher();
+        periodeman.getPeriode("P2014").afficher();
         cout<<endl;
-        */
 
-        /* Test Inscription */
-        /*Inscription GI02(*periodeman.getPeriode("P14"), *forman.getFormation("GI"));
-        GI02.ajouterUV(*uvman.getUv("NF16"));
-        GI02.ajouterUV(*uvman.getUv("LO21"));
-        GI02.retirerUV(*uvman.getUv("NF16"));
-        GI02.modifierNote(*uvman.getUv("LO21"), A);
-        GI02.afficher();*/
+        Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
+        GI02.ajouterUV(uvman.getUV("NF16"));
+        GI02.ajouterUV(uvman.getUV("LO21"));
+        GI02.retirerUV(uvman.getUV("NF16"));
+        GI02.modifierNote(uvman.getUV("LO21"), A);
+        GI02.afficher();
 
-       /* D1.ajoutFormation(*forman.getFormation("GI"));
-        D2.ajoutFormation(*forman.getFormation("GP"));
-        D2.affichage();
-        D1.ajoutInscription(GI02);
-        D1.affichage(); */
+        dosman.getDossier("szewenic").ajouterFormation((forman.getFormation("GI")));
+        dosman.getDossier("enormand").ajouterFormation(forman.getFormation("TC"));
+        dosman.getDossier("enormand").afficher();
+        dosman.getDossier("szewenic").ajouterInscription(GI02);
+        dosman.getDossier("szewenic").afficher();
 
 
     } catch(Exception &e) {
