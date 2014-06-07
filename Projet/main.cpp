@@ -42,7 +42,6 @@ int main()
         forman.getFormation("GI").afficher();
         cout << endl;
 
-
         /*PeriodeManager periodeman;
         periodeman.load();
         periodeman.getPeriode("P14").afficher();
@@ -57,11 +56,11 @@ int main()
         GI02.modifierNote(*uvman.getUv("LO21"), A);
         GI02.afficher();*/
 
-        /*D1.ajoutFormation(*forman.getFormation("GI"));
+       /* D1.ajoutFormation(*forman.getFormation("GI"));
         D2.ajoutFormation(*forman.getFormation("GP"));
         D2.affichage();
         D1.ajoutInscription(GI02);
-        D1.affichage();*/
+        D1.affichage(); */
 
 
     } catch(Exception &e) {

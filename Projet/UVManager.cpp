@@ -2,8 +2,9 @@
 
 using namespace std;
 
-void UVManager::load(const CreditsManager& credman,const CategorieManager& catman,const FormationManager& forman)
+void UVManager::load(const CreditsManager& credman,const CategorieManager& catman,FormationManager& forman)
 {
+    std::vector<const Formation*> tempformations;
     QDomDocument doc = uvs.load_xml("uv_utc.xml");
 
     QDomElement racine = doc.documentElement();
@@ -37,6 +38,7 @@ void UVManager::load(const CreditsManager& credman,const CategorieManager& catma
                 else if(unElement.tagName() == "branche")
                 {
                     forma=unElement.text();
+                    tempformations.push_back(&forman.getFormation(forma));
                 }
                 unElement = unElement.nextSiblingElement();
             }
@@ -46,7 +48,11 @@ void UVManager::load(const CreditsManager& credman,const CategorieManager& catma
                 // Doit on l'ajouter aux formations ou on considere ça "à part" avec les mineurs?
             }
             else {
-                //forman.getFormation(forma).ajouterUV(this->getUV(strCode));
+                for (unsigned int i = 0; i < tempformations.size(); i++)
+                {
+                    forman.getFormation(tempformations[i]->getCode()).ajouterUV(this->getUV(strCode));
+                }
+                tempformations.clear();
             }
         }
         racine = racine.nextSiblingElement();
