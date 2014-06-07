@@ -1,29 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <xml>
-    
-    <categorie>
-            <code>TM</code>
-            <nom>Technique et Méthodes</nom>
-            
-    </categorie>
-            
-    <categorie>
-            <code>CS</code>
-            <nom>Connaissances Scientifiques</nom>
-    
-    </categorie>
-
-    <categorie>
-            <code>TSH</code>
-            <nom>Technlogie des Sciences Humaines</nom>
-    
-    </categorie>
-
-    <categorie>
-            <code>SP</code>
-            <nom>Stages Professionnel</nom>
-            
-    </categorie>
-
+  <categorie>
+    <code>CS</code>
+    <nom>Connaissances Scientifiques</nom>
+  </categorie>
+  <categorie>
+    <code>SP</code>
+    <nom>Stages Professionnel</nom>
+  </categorie>
+  <categorie>
+    <code>TM</code>
+    <nom>Technique et Methodes</nom>
+  </categorie>
+  <categorie>
+    <code>TSH</code>
+    <nom>Technlogie des Sciences Humaines</nom>
+  </categorie>
 </xml>

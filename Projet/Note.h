@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file Note.h
 /// \brief Les cours des inscriptions obtiennent une note à l'issue de la période.
 /// \author Erwan Normand
@@ -19,6 +19,9 @@ private:
 
 public:
     Note(const QString& n = "EC", const QString& m = ""): note(n), mention(m) {}
+
+    void setNote(QString n){ note=n;}
+    void setMention(QString m){mention=m;}
 
     const QString& getNote() const { return note; }
     const QString& getMention() const { return mention; }

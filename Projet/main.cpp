@@ -18,10 +18,7 @@ int main()
     {
 
         NoteManager notman;
-        //load à faire :)
-        notman.ajouterNote("A", "Excellent");
-        notman.getNote("A").afficher();
-        cout << endl;
+        notman.load();
 
         CategorieManager catman;
         catman.load();
@@ -37,7 +34,6 @@ int main()
 
         PeriodeManager periodeman;
         periodeman.load();
-
 
         DossierManager dosman;
         QString fichier="enormand.xml";
@@ -57,6 +53,10 @@ int main()
 
         dosman.getDossier("enormand").ajouterInscription(GI02);
         dosman.getDossier("enormand").afficher();
+
+        notman.save();
+        catman.save();
+        credman.save();
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

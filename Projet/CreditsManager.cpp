@@ -43,3 +43,34 @@ void CreditsManager::load(const CategorieManager& catman)
     }
 }
 
+void CreditsManager::save(){
+    QDomDocument doc = credits.save_xml();
+    QDomElement root = doc.createElement("xml");
+    doc.appendChild(root);
+
+    for (map<QString,Credits>::const_iterator it = credits.begin(); it != credits.end(); it++)
+    {
+        QDomElement credits = doc.createElement("credits");
+        root.appendChild(credits);
+        QDomElement nom = doc.createElement("nom");
+        credits.appendChild(nom);
+        QDomText nomText = doc.createTextNode(it->second.getNom());
+        nom.appendChild(nomText);
+        QDomElement nombre = doc.createElement("nombre");
+        credits.appendChild(nombre);
+        QString tempNombre=QString::number(it->second.getNombre());
+        QDomText nombreText = doc.createTextNode(tempNombre);
+        nombre.appendChild(nombreText);
+        QDomElement categorie = doc.createElement("categorie");
+        credits.appendChild(categorie);
+        QDomText categorieText = doc.createTextNode(it->second.getCategorie().getCode());
+        categorie.appendChild(categorieText);
+    }
+    QFile file( "credit_utc.xml" );
+    file.open(QIODevice::WriteOnly);
+    QTextStream ts(&file);
+    int indent = 2;
+    doc.save(ts, indent);
+}
+
+

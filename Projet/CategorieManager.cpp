@@ -1,4 +1,4 @@
-#include "CategorieManager.h"
+﻿#include "CategorieManager.h"
 
 using namespace std;
 
@@ -35,3 +35,29 @@ void CategorieManager::load()
         racine = racine.nextSiblingElement();
     }
 }
+
+void CategorieManager::save(){
+    QDomDocument doc = categories.save_xml();
+    QDomElement root = doc.createElement("xml");
+    doc.appendChild(root);
+
+    for (map<QString,Categorie>::const_iterator it = categories.begin(); it != categories.end(); it++)
+    {
+        QDomElement categorie = doc.createElement("categorie");
+        root.appendChild(categorie);
+        QDomElement code = doc.createElement("code");
+        categorie.appendChild(code);
+        QDomText codeText = doc.createTextNode(it->second.getCode());
+        code.appendChild(codeText);
+        QDomElement nom = doc.createElement("nom");
+        categorie.appendChild(nom);
+        QDomText nomText = doc.createTextNode(it->second.getNom());
+        nom.appendChild(nomText);
+    }
+    QFile file( "categorie_utc.xml" );
+    file.open(QIODevice::WriteOnly);
+    QTextStream ts(&file);
+    int indent = 2;
+    doc.save(ts, indent);
+}
+

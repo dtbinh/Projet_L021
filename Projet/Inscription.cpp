@@ -1,4 +1,4 @@
-#include "Inscription.h"
+﻿#include "Inscription.h"
 
 using namespace std;
 

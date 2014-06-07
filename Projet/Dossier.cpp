@@ -1,4 +1,4 @@
-#include "Dossier.h"
+﻿#include "Dossier.h"
 
 using namespace std;
 
@@ -19,7 +19,7 @@ void Dossier::setLogin()
 }
 
 void Dossier::afficher()
-{
+{    
     cout << "Dossier de "<<nom.toStdString()<<" "<<prenom.toStdString()<<" login : "<<login.toStdString()<<endl;
     for (map<QString,const Formation*>::const_iterator it = formation.begin(); it != formation.end(); it++)
     {

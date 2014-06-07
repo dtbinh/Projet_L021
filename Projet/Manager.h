@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file Manager.h
 /// \brief Classe template pour tous les managers d'objets.
 /// \author Erwan Normand
@@ -23,9 +23,13 @@ public:
     Manager(): tab() {}
 
     QDomDocument load_xml(const QString& file);
+    QDomDocument save_xml();
 
     T& get(const QString& code);
     const T& get(const QString& code) const;
+
+    typename std::map<QString,T>::const_iterator begin(){return tab.begin();}
+    typename std::map<QString,T>::const_iterator end(){return tab.end();}
 
     void ajouter(const QString& code, const T& t) { tab[code] = t; }
     void retirer(const QString& code) { tab.erase(code); }
@@ -64,5 +68,14 @@ QDomDocument Manager<T>::load_xml(const QString& file)
 
     return doc;
 }
+
+template<class T>
+QDomDocument Manager<T>::save_xml(){
+    QDomDocument doc;
+    QDomNode xmlNode = doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\"");
+    doc.insertBefore(xmlNode, doc.firstChild());
+    return doc;
+}
+
 
 #endif // MANAGER_H
