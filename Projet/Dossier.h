@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Dossier.h
 /// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Nicolas Szewe, Erwan Normand
@@ -20,8 +20,8 @@ private:
     QString nom;
     QString prenom;
     QString login;
-    std::map<QString,const Formation*> formation;
-    std::map<QString,const Inscription*> inscription;
+    std::vector<const Formation*> formations;
+    std::vector<const Inscription*> inscriptions;
 
 public :
     ///
@@ -30,7 +30,7 @@ public :
     /// \param p Prenom de l'étudiant
     /// \brief La fonction calcule automatiquement le login de l'étudiant
     ///
-    Dossier(const QString& n = "", const QString& p = ""): nom(n), prenom(p), formation(), inscription() {
+    Dossier(const QString& n = "", const QString& p = ""): nom(n), prenom(p), formations(), inscriptions() {
         setLogin();
     }
 
@@ -52,8 +52,7 @@ public :
 
     void setPrenom(const QString& p) { prenom = p; }
 
-    const std::map<QString,const Formation*> getFormations() const { return formation; }
-
+    const std::vector<const Formation*>& getFormations() const { return formations; }
 
     ///
     /// \fn getLogin
@@ -63,11 +62,11 @@ public :
 
     void setLogin();
 
-    void ajouterFormation(const Formation& f);
-    void retirerFormation(const QString& code) { formation.erase(code); }
+    void ajouterFormation(const Formation& f) { formations.push_back(&f); }
+    void retirerFormation(const Formation& f) { formations.erase(remove(formations.begin(), formations.end(), &f), formations.end()); }
 
-    void ajouterInscription(const Inscription& f);
-    void retirerInscription(const QString& code) { inscription.erase(code); }
+    void ajouterInscription(const Inscription& i) { inscriptions.push_back(&i); }
+    void retirerInscription(const Inscription& i) { inscriptions.erase(remove(inscriptions.begin(), inscriptions.end(), &i), inscriptions.end()); }
 
     ///
     /// \fn affichage

@@ -1,6 +1,6 @@
 ///
 /// \file Credits.h
-/// \brief Les catégories de l'UTC possèdent des crédits.
+/// \brief Les UVs et les formations possèdent des crédits ECTS dans différentes catégories. Les crédits des formations sont à valider, ceux des UVs en rapportent.
 /// \author Nicolas Szewe, Erwan Normand
 /// \date 05 juin 2014
 ///

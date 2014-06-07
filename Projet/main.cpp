@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <QString>
 #include "Exception.h"
 #include "CreditsManager.h"
@@ -16,9 +16,9 @@ int main()
 {
     try
     {
-
         NoteManager notman;
-        notman.load();
+        notman.ajouterNote("A", "Excellent"); //Besoin d'ajouter le fichier note_utc.xml au repo
+        //notman.load();
 
         CategorieManager catman;
         catman.load();
@@ -39,14 +39,14 @@ int main()
         //set annee et set nom à définir
 
         DossierManager dosman;
-        QString fichier="enormand.xml";
+        /*QString fichier="enormand.xml";
         dosman.load(fichier,forman);
         dosman.getDossier("enormand").afficher();
         cout<<endl;
         QString fichier2="agermain.xml";
         dosman.load(fichier2,forman);
         dosman.getDossier("agermain").afficher();
-        cout<<endl;
+        cout<<endl;*/
 
         Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
@@ -54,8 +54,8 @@ int main()
         GI02.retirerUV(uvman.getUV("NF16"));
         GI02.modifierNote(uvman.getUV("LO21"), notman.getNote("A"));
 
-        dosman.getDossier("enormand").ajouterInscription(GI02);
-        dosman.getDossier("enormand").afficher();
+        //dosman.getDossier("enormand").ajouterInscription(GI02);
+        //dosman.getDossier("enormand").afficher();
 
         notman.save();
         catman.save();
@@ -63,8 +63,8 @@ int main()
         forman.save();
         uvman.save();
         periodeman.save();
-        QString templogin="enormand";
-        dosman.save(fichier,templogin);
+        //QString templogin="enormand";
+        //dosman.save(fichier,templogin);
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

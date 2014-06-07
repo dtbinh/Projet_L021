@@ -1,4 +1,4 @@
-﻿#include "DossierManager.h"
+#include "DossierManager.h"
 
 using namespace std;
 
@@ -68,6 +68,3 @@ void DossierManager::save(QString& fichier,QString& login){
     int indent = 2;
     doc.save(ts, indent);
 }
-
-
-
