@@ -23,6 +23,8 @@ private:
     std::vector<const Formation*> formations;
     std::vector<const Inscription*> inscriptions;
 
+    void setLogin();
+
 public :
     ///
     /// \fn Dossier
@@ -34,7 +36,7 @@ public :
         setLogin();
     }
 
-    ~Dossier(){}
+    ~Dossier() {}
 
     ///
     /// \fn getNom
@@ -42,7 +44,7 @@ public :
     ///
     const QString& getNom() const { return nom; }
 
-    void setNom(const QString& n) { nom = n; }
+    void setNom(const QString& n) { nom = n; setLogin(); }
 
     ///
     /// \fn getPrenom
@@ -50,7 +52,7 @@ public :
     ///
     const QString& getPrenom() const { return prenom; }
 
-    void setPrenom(const QString& p) { prenom = p; }
+    void setPrenom(const QString& p) { prenom = p; setLogin(); }
 
     const std::vector<const Formation*>& getFormations() const { return formations; }
 
@@ -59,8 +61,6 @@ public :
     /// \return string Login de l'étudiant
     ///
     const QString& getLogin() const { return login; }
-
-    void setLogin();
 
     void ajouterFormation(const Formation& f) { formations.push_back(&f); }
     void retirerFormation(const Formation& f) { formations.erase(remove(formations.begin(), formations.end(), &f), formations.end()); }
