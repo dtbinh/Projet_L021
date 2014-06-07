@@ -23,13 +23,9 @@ int main()
 
         CategorieManager catman;
         catman.load();
-        catman.getCategorie("TM").afficher();
-        cout << endl;
 
         CreditsManager credman;
         credman.load(catman);
-        credman.getCredits("CS_Classique").afficher();
-        cout << endl;
 
         FormationManager forman;
         forman.load(credman);
@@ -47,7 +43,7 @@ int main()
         periodeman.getPeriode("P2014").afficher();
         cout<<endl;
 
-        Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
+        /*Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
         GI02.ajouterUV(uvman.getUV("LO21"));
         GI02.retirerUV(uvman.getUV("NF16"));
@@ -59,6 +55,7 @@ int main()
         dosman.getDossier("enormand").afficher();
         dosman.getDossier("szewenic").ajouterInscription(GI02);
         dosman.getDossier("szewenic").afficher();
+        */
 
 
     } catch(Exception &e) {
