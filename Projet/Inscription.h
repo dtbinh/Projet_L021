@@ -14,6 +14,7 @@
 #include "Periode.h"
 #include "Formation.h"
 #include "UV.h"
+#include "Note.h"
 
 class Inscription
 {
@@ -24,7 +25,7 @@ private:
     std::map<QString,Note> notes;
 
 public:
-   Inscription(const Periode& p, const Formation& f): periode(&p), formation(&f), uvs(), notes() {}
+   Inscription(const Periode& p, const Formation& f): periode(&p), formation(&f), uvs() {}
 
    const Periode& getPeriode() const { return *periode; }
    const Formation& getFormation() const { return *formation; }
@@ -36,7 +37,7 @@ public:
 
    void ajouterUV(const UV& u);
    void retirerUV(const UV& u);
-   void modifierNote(const UV& u, const Note& n);
+   void modifierNote(const UV& u, const Note& n) { notes[u.getCode()] = n; }
    
    void afficher() const;
 };

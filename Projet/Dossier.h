@@ -23,7 +23,6 @@ private:
     std::map<QString,const Formation*> formation;
     std::map<QString,const Inscription*> inscription;
 
-
 public :
     ///
     /// \fn Dossier

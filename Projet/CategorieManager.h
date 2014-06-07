@@ -19,7 +19,7 @@ private:
     Manager<Categorie> categories;
 
 public:
-    CategorieManager(): categories(Manager<Categorie>()) {}
+    CategorieManager(): categories() {}
 
     void load();
 

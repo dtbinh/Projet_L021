@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <QString>
 #include "Exception.h"
 #include "CreditsManager.h"
@@ -8,6 +8,7 @@
 #include "UVManager.h"
 #include "PeriodeManager.h"
 #include "FormationManager.h"
+#include "NoteManager.h"
 
 using namespace std;
 
@@ -15,6 +16,11 @@ int main()
 {
     try
     {
+        NoteManager notman;
+        notman.ajouterNote("A", "Excellent");
+        notman.getNote("A").afficher();
+        cout << endl;
+
         DossierManager dosman;
         dosman.ajouterDossier("szewe", "nicolas");
         dosman.ajouterDossier("normand", "erwan");
@@ -51,15 +57,16 @@ int main()
         GI02.ajouterUV(uvman.getUV("NF16"));
         GI02.ajouterUV(uvman.getUV("LO21"));
         GI02.retirerUV(uvman.getUV("NF16"));
-        GI02.modifierNote(uvman.getUV("LO21"), A);
+        GI02.modifierNote(uvman.getUV("LO21"), notman.getNote("A"));
         GI02.afficher();
+        cout << endl;
 
         dosman.getDossier("szewenic").ajouterFormation((forman.getFormation("GI")));
         dosman.getDossier("enormand").ajouterFormation(forman.getFormation("TC"));
         dosman.getDossier("enormand").afficher();
         dosman.getDossier("szewenic").ajouterInscription(GI02);
         dosman.getDossier("szewenic").afficher();
-
+        cout << endl;
 
     } catch(Exception &e) {
         cerr << e.what() << endl;
