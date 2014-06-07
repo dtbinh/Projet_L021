@@ -24,7 +24,7 @@ private:
 public:
     UVManager(): uvs() {}
 
-    void load(CreditsManager credman, CategorieManager catman, FormationManager forman);
+    void load(const CreditsManager& credman,const CategorieManager& catman,const FormationManager& forman);
 
     UV& getUV(const QString& code) { return uvs.get(code); }
     const UV& getUV(const QString& code) const { return uvs.get(code); }

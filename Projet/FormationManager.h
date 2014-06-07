@@ -23,7 +23,7 @@ private:
 public:
     FormationManager(): formations() {}
 
-    void load(CreditsManager credman);
+    void load(const CreditsManager& credman);
 
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }

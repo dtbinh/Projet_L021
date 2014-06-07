@@ -2,8 +2,10 @@
 
 using namespace std;
 
-void FormationManager::load(CreditsManager credman)
+void FormationManager::load(const CreditsManager& credman)
 {
+    std::vector<const Credits*> tempcredits;
+    std::vector<const Formation*> tempspecialites;
     QString tempCred="NULL"; QString tempSpec="NULL";
     QDomDocument doc = formations.load_xml("formation_utc.xml");
 
@@ -30,24 +32,33 @@ void FormationManager::load(CreditsManager credman)
                 else if(unElement.tagName() == "credits")
                 {
                     tempCred = unElement.text();
+                    tempcredits.push_back(&credman.getCredits(tempCred));
                 }
                 else if(unElement.tagName() == "specialites")
                 {
                     tempSpec = unElement.text();
+                    tempspecialites.push_back(&this->getFormation(tempSpec));
                 }
                 unElement = unElement.nextSiblingElement();
             }
+
             this->ajouterFormation(tempCode,tempNom);
             if (tempCred!="NULL"){
-                this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempCred));
+                for (unsigned int i = 0; i < tempcredits.size(); i++)
+                {
+                    this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempcredits[i]->getNom()));
+                }
                 tempCred="NULL";
+                tempcredits.clear();
             }
             if (tempSpec!="NULL"){
-                this->getFormation(tempCode).ajouterSpecialite(this->getFormation(tempSpec));
+                for (unsigned int i = 0; i < tempspecialites.size(); i++)
+                {
+                    this->getFormation(tempCode).ajouterSpecialite(this->getFormation(tempspecialites[i]->getCode()));
+                }
                 tempSpec="NULL";
+                tempspecialites.clear();
             }
-            //Probleme, il faut faire un tableau de credits car la on ajoute que un des credits données.
-            //Meme probleme pour specialité
         }
 
         racine = racine.nextSiblingElement();

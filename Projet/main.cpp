@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <QString>
 #include "Exception.h"
 #include "CreditsManager.h"
@@ -33,13 +33,15 @@ int main()
 
         FormationManager forman;
         forman.load(credman);
-        forman.getFormation("GI").afficher();
-        cout << endl;
 
         UVManager uvman;
         uvman.load(credman,catman,forman);
         uvman.getUV("LO21").affichage();
         cout << endl;
+
+        forman.getFormation("GI").afficher();
+        cout << endl;
+
 
         /*PeriodeManager periodeman;
         periodeman.load();

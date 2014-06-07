@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void UVManager::load(CreditsManager credman, CategorieManager catman, FormationManager forman)
+void UVManager::load(const CreditsManager& credman,const CategorieManager& catman,const FormationManager& forman)
 {
     QDomDocument doc = uvs.load_xml("uv_utc.xml");
 
@@ -37,13 +37,17 @@ void UVManager::load(CreditsManager credman, CategorieManager catman, FormationM
                 else if(unElement.tagName() == "branche")
                 {
                     forma=unElement.text();
-                    //cout<<forma.toStdString()<<endl;
                 }
                 unElement = unElement.nextSiblingElement();
             }
             this->ajouterUV(strCode,nom,catman.getCategorie(cat));
             this->getUV(strCode).ajoutCredits(credman.getCredits(cred));
-            //forman.getFormation(forma).ajouterUV(*this->getUV(strCode));
+            if(cat=="TSH"){
+                // Doit on l'ajouter aux formations ou on considere ça "à part" avec les mineurs?
+            }
+            else {
+                //forman.getFormation(forma).ajouterUV(this->getUV(strCode));
+            }
         }
         racine = racine.nextSiblingElement();
   }

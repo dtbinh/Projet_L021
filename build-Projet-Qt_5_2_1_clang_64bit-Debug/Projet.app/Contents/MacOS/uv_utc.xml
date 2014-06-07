@@ -1401,6 +1401,7 @@
         <nom>Physiologie Des Systèmes Intégrés</nom>
         <credit>CS_Classique</credit>
         <categorie>CS</categorie>
+        <branche>GB</branche><printemps/></uv>
 
 
     </uv>
@@ -1409,6 +1410,8 @@
         <nom>Génie Cellulaire</nom>
         <credit>CS_Classique</credit>
         <categorie>CS</categorie>
+        <branche>GB</branche><printemps/></uv>
+
 
 
     </uv>
@@ -1417,6 +1420,7 @@
         <nom>Organes Artificiels Et Biorheologie</nom>
         <credit>TM_Classique</credit>
         <categorie>TM</categorie>
+        <branche>GB</branche><printemps/></uv>
 
 
     </uv>
@@ -1425,9 +1429,8 @@
         <nom>Modélisation Des Systèmes Biomécaniques</nom>
         <credit>TM_5</credit>
         <categorie>TM</categorie>
+        <branche>GB</branche><printemps/></uv>
 
-
-    <branche>GSM</branche><printemps/></uv>
     <uv>
         <code>BT06</code>
         <nom>Analyse Des Produits Biologiques Et Alimentaires</nom>
@@ -1441,14 +1444,15 @@
         <nom>Risques Biologiques Et Sécurité Alimentaire</nom>
         <credit>TM_5</credit>
         <categorie>TM</categorie>
-        
+        <branche>GP</branche><branche>GB</branche><printemps/></uv>
+
     </uv>
     <uv>
         <code>BT21</code>
         <nom>Biotechnologies Moleculaires Et Genie Genetique</nom>
         <credit>TM_Classique</credit>
         <categorie>TM</categorie>
-
+        <branche>GB</branche><printemps/></uv>
 
     </uv>
     <uv>
@@ -1456,6 +1460,7 @@
         <nom>Les Agroressources</nom>
         <credit>TM_Classique</credit>
         <categorie>TM</categorie>
+        <branche>GP</branche><branche>GB</branche><printemps/></uv>
 
 
     </uv>

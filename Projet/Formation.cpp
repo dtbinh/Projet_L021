@@ -18,6 +18,7 @@ void Formation::afficher()
     for (unsigned int i = 0; i < specialites.size(); i++)
     {
         cout << specialites[i]->getCode().toStdString() << " " << specialites[i]->getNom().toStdString() << "  ";
+        cout<<endl;
     }
     cout << endl;
 

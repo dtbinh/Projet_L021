@@ -69,11 +69,23 @@
             <nombre>4</nombre>
             <categorie>CS</categorie>
     </credits>
+    
+    <credits>
+        <code>SP_StageBranche</code>
+        <nombre>30</nombre>
+        <categorie>SP</categorie>
+    </credits>
 
     <credits>
             <code>SP_TC</code>
             <nombre>6</nombre>
             <categorie>SP</categorie>
+    </credits>
+    
+    <credits>
+        <code>SP_Branche</code>
+        <nombre>60</nombre>
+        <categorie>SP</categorie>
     </credits>
     
     <credits>
@@ -86,6 +98,30 @@
             <code>TM_Branche</code>
             <nombre>30</nombre>
             <categorie>TM</categorie>
+    </credits>
+    
+    <credits>
+        <code>TSH_Branche</code>
+        <nombre>24</nombre>
+        <categorie>TSH</categorie>
+    </credits>
+    
+    <credits>
+        <code>CS_TC</code>
+        <nombre>48</nombre>
+        <categorie>CS</categorie>
+    </credits>
+    
+    <credits>
+        <code>TM_TC</code>
+        <nombre>24</nombre>
+        <categorie>TM</categorie>
+    </credits>
+    
+    <credits>
+        <code>TSH_TC</code>
+        <nombre>24</nombre>
+        <categorie>TSH</categorie>
     </credits>
 
 </xml>
