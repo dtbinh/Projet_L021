@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file Dossier.h
 /// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Nicolas Szewe, Erwan Normand
@@ -51,6 +51,9 @@ public :
     const QString& getPrenom() const { return prenom; }
 
     void setPrenom(const QString& p) { prenom = p; }
+
+    const std::map<QString,const Formation*> getFormations() const { return formation; }
+
 
     ///
     /// \fn getLogin

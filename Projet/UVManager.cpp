@@ -58,3 +58,45 @@ void UVManager::load(const CreditsManager& credman,const CategorieManager& catma
         racine = racine.nextSiblingElement();
   }
 }
+
+void UVManager::save(){
+    QDomDocument doc = uvs.save_xml();
+    QDomElement root = doc.createElement("xml");
+    doc.appendChild(root);
+
+    for (map<QString,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)
+    {
+        QDomElement uv = doc.createElement("uv");
+        root.appendChild(uv);
+        QDomElement code = doc.createElement("code");
+        uv.appendChild(code);
+        QDomText codeText = doc.createTextNode(it->second.getCode());
+        code.appendChild(codeText);
+        QDomElement nom = doc.createElement("nom");
+        uv.appendChild(nom);
+        QDomText nomText = doc.createTextNode(it->second.getNom());
+        nom.appendChild(nomText);
+        std::vector<const Credits*> tempcredits= it->second.getCredits();
+        for(unsigned int i=0;i<tempcredits.size();++i){
+            QDomElement credits = doc.createElement("credit");
+            uv.appendChild(credits);
+            QDomText creditText = doc.createTextNode(tempcredits[i]->getNom());
+            credits.appendChild(creditText);
+        }
+        QDomElement categorie = doc.createElement("categorie");
+        uv.appendChild(categorie);
+        QDomText categorieText = doc.createTextNode(it->second.getCategorie().getCode());
+        categorie.appendChild(categorieText);
+
+        /*Ici si on garde le schéma, ca va être méga galere pour écrire les formations à laquelle appartiennet les uvs. c'est pour ca
+         que je pense qu'il faut qu'on change. Les uvs appartiennent à des formations.  Ce chargement n'est pas fonctionnelle de ce fait
+         C'est pour ça que j'ai crée un nouveau fichier pour le moment. */
+
+    }
+    QFile file( "uv.xml" );
+    file.open(QIODevice::WriteOnly);
+    QTextStream ts(&file);
+    int indent = 2;
+    doc.save(ts, indent);
+}
+

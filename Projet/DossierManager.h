@@ -23,6 +23,7 @@ public:
     DossierManager(): dossiers() {}
 
     void load(QString& fichier,const FormationManager& forman);
+    void save(QString& fichier,QString& login);
 
     Dossier& getDossier(const QString& login) { return dossiers.get(login); }
     const Dossier& getDossier(const QString& login) const { return dossiers.get(login); }

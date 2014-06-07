@@ -52,7 +52,7 @@ void CreditsManager::save(){
     {
         QDomElement credits = doc.createElement("credits");
         root.appendChild(credits);
-        QDomElement nom = doc.createElement("nom");
+        QDomElement nom = doc.createElement("code");
         credits.appendChild(nom);
         QDomText nomText = doc.createTextNode(it->second.getNom());
         nom.appendChild(nomText);

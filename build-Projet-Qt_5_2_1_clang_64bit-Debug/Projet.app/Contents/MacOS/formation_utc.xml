@@ -1,251 +1,167 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
+<?xml version="1.0" encoding="UTF-8"?>
 <xml>
-    
-    <formation>
-        <code>MPI</code>
-        <nom>Management de Projet Innovant</nom>
-    </formation>
-
-    <formation>
-        <code>IAA</code>
-        <nom>Innovation Aliments et Agroressources</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>BB</code>
-        <nom>Biomatériaux et Biomécanique</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>BM</code>
-        <nom>Biomédicale</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>CIB</code>
-        <nom>Conception et Innovation de Bioproduits</nom>
-    </formation>
-    
-    <formation>
-		<code>GB</code>
-		<nom>Genie Biologique</nom>
-        <credits>CS_Branche</credits>
-        <credits>TM_Branche</credits>
-        <credits>TSH_Branche</credits>
-        <credits>SP_Branche</credits>
-        <specialites>IAA</specialites>
-        <specialites>BB</specialites>
-        <specialites>BM</specialites>
-        <specialites>CIB</specialites>
-        <specialites>MPI</specialites>
-	</formation>
-    
-    
-    <formation>
-        <code>FDD</code>
-        <nom>Fouille de Données</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>ADEL</code>
-        <nom>Aide à la Décision en Logistique</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>ICSI</code>
-        <nom>Ingénierie des Connaissances et des Supports d'Information</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>SRI</code>
-        <nom>Systèmes et Réseaux Informatiques</nom>
-    </formation>
-    
-    <formation>
-        <code>STRIE</code>
-        <nom>Systèmes Temps-Réel et Informatique Embarquées</nom>
-    </formation>
-    
-	<formation>
-		<code>GI</code>
-		<nom>Genie Informatique</nom>
-        <credits>CS_Branche</credits>
-        <credits>TM_Branche</credits>
-        <credits>TSH_Branche</credits>
-        <credits>SP_Branche</credits>
-        <specialites>FDD</specialites>
-        <specialites>ADEL</specialites>
-        <specialites>ICSI</specialites>
-        <specialites>SRI</specialites>
-        <specialites>STRIE</specialites>
-        <specialites>MPI</specialites>
-	</formation>
-    
-    <formation>
-        <code>AI</code>
-        <nom>Agro Industrie</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>CPI</code>
-        <nom>Conduite des Procédes Industriels</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>QSE</code>
-        <nom>Qualité,Sécurité,Environnement</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>TE</code>
-        <nom>Thermique Energetique</nom>
-    </formation>
-    
-    <formation>
-		<code>GP</code>
-		<nom>Genie des Procédes</nom>
-        <credits>CS_Branche</credits>
-        <credits>TM_Branche</credits>
-        <credits>TSH_Branche</credits>
-        <credits>SP_Branche</credits>
-        <specialites>AI</specialites>
-        <specialites>CPI</specialites>
-        <specialites>QSE</specialites>
-        <specialites>TE</specialites>
-        <specialites>MPI</specialites>
-	</formation>
-    
-    <formation>
-        <code>AVI</code>
-        <nom>Acoustique et Vibrations Industrielles</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>FQI</code>
-        <nom>Fiabilité et Qualité Industrielle</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>IDI</code>
-        <nom>Ingénierie du Design Industriel</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>MARS</code>
-        <nom>Mécatronique,Actionneurs,Robotisation et Systèmes</nom>
-    </formation>
-    
-    <formation>
-        <code>MIT</code>
-        <nom>Matériaux et Innovation Technologique</nom>
-    </formation>
-    
-    <formation>
-		<code>GM</code>
-		<nom>Genie Mécanique</nom>
-        <credits>CS_Branche</credits>
-        <credits>TM_Branche</credits>
-        <credits>TSH_Branche</credits>
-        <credits>SP_Branche</credits>
-        <specialites>AVI</specialites>
-        <specialites>FQI</specialites>
-        <specialites>IDI</specialites>
-        <specialites>MARS</specialites>
-        <specialites>MIT</specialites>
-        <specialites>MPI</specialites>
-	</formation>
-	
-    <formation>
-        <code>CMI</code>
-        <nom>Conception Mécanique Intégrée</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>MOPS</code>
-        <nom>Modélisation et Optimisation des Produits et Structures</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>PIL</code>
-        <nom>Production Intégrée et Logistique</nom>
-    </formation>
-    
-    <formation>
-		<code>GSM</code>
-		<nom>Genie des Systèmes Mécanique</nom>
-        <credits>CS_Branche</credits>
-        <credits>TM_Branche</credits>
-        <credits>TSH_Branche</credits>
-        <credits>SP_Branche</credits>
-        <specialites>CMI</specialites>
-        <specialites>MOPS</specialites>
-        <specialites>PIL</specialites>
-        <specialites>MPI</specialites>
-	</formation>
-    
-    <formation>
-        <code>AIE</code>
-        <nom>Aménagement et Ingénierie Environnementale</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>SR</code>
-        <nom>Systèmes et Réseaux pour l'environnment construit'</nom>
-    </formation>
-    
-    
-    <formation>
-        <code>STI</code>
-        <nom>Systèmes Techniques Intégrés</nom>
-    </formation>
-    
-    <formation>
-		<code>GSU</code>
-		<nom>Genie des Systèmes Urbains</nom>
-        <credits>CS_Branche</credits>
-        <credits>TM_Branche</credits>
-        <credits>TSH_Branche</credits>
-        <credits>SP_Branche</credits>
-        <specialites>AIE</specialites>
-        <specialites>SR</specialites>
-        <specialites>STI</specialites>
-        <specialites>MPI</specialites>
-	</formation>
-
-	
-	<formation>
-		<code>TC</code>
-		<nom>Tronc Commun</nom>
-        <credits>CS_TC</credits>
-        <credits>TM_TC</credits>
-        <credits>TSH_TC</credits>
-        <credits>SP_TC</credits>
-	</formation>
-	
-	<formation>
-		<code>HUTECH</code>
-		<nom>Humanités et Technologie</nom>
-        <credits>CS_TC</credits>
-        <credits>TM_TC</credits>
-        <credits>TSH_TC</credits>
-        <credits>SP_TC</credits>
-	</formation>
-    
-
+  <formation>
+    <code>ADEL</code>
+    <nom>Aide à la Décision en Logistique</nom>
+  </formation>
+  <formation>
+    <code>AI</code>
+    <nom>Agro Industrie</nom>
+  </formation>
+  <formation>
+    <code>AIE</code>
+    <nom>Aménagement et Ingénierie Environnementale</nom>
+  </formation>
+  <formation>
+    <code>AVI</code>
+    <nom>Acoustique et Vibrations Industrielles</nom>
+  </formation>
+  <formation>
+    <code>BB</code>
+    <nom>Biomatériaux et Biomécanique</nom>
+  </formation>
+  <formation>
+    <code>BM</code>
+    <nom>Biomédicale</nom>
+  </formation>
+  <formation>
+    <code>CIB</code>
+    <nom>Conception et Innovation de Bioproduits</nom>
+  </formation>
+  <formation>
+    <code>CMI</code>
+    <nom>Conception Mécanique Intégrée</nom>
+  </formation>
+  <formation>
+    <code>CPI</code>
+    <nom>Conduite des Procédes Industriels</nom>
+  </formation>
+  <formation>
+    <code>FDD</code>
+    <nom>Fouille de Données</nom>
+  </formation>
+  <formation>
+    <code>FQI</code>
+    <nom>Fiabilité et Qualité Industrielle</nom>
+  </formation>
+  <formation>
+    <code>GB</code>
+    <nom>Genie Biologique</nom>
+    <credits>CS_Branche</credits>
+    <credits>TM_Branche</credits>
+    <credits>TSH_Branche</credits>
+    <credits>SP_Branche</credits>
+  </formation>
+  <formation>
+    <code>GI</code>
+    <nom>Genie Informatique</nom>
+    <credits>CS_Branche</credits>
+    <credits>TM_Branche</credits>
+    <credits>TSH_Branche</credits>
+    <credits>SP_Branche</credits>
+  </formation>
+  <formation>
+    <code>GM</code>
+    <nom>Genie Mécanique</nom>
+    <credits>CS_Branche</credits>
+    <credits>TM_Branche</credits>
+    <credits>TSH_Branche</credits>
+    <credits>SP_Branche</credits>
+  </formation>
+  <formation>
+    <code>GP</code>
+    <nom>Genie des Procédes</nom>
+    <credits>CS_Branche</credits>
+    <credits>TM_Branche</credits>
+    <credits>TSH_Branche</credits>
+    <credits>SP_Branche</credits>
+  </formation>
+  <formation>
+    <code>GSM</code>
+    <nom>Genie des Systèmes Mécanique</nom>
+    <credits>CS_Branche</credits>
+    <credits>TM_Branche</credits>
+    <credits>TSH_Branche</credits>
+    <credits>SP_Branche</credits>
+  </formation>
+  <formation>
+    <code>GSU</code>
+    <nom>Genie des Systèmes Urbains</nom>
+    <credits>CS_Branche</credits>
+    <credits>TM_Branche</credits>
+    <credits>TSH_Branche</credits>
+    <credits>SP_Branche</credits>
+  </formation>
+  <formation>
+    <code>HUTECH</code>
+    <nom>Humanités et Technologie</nom>
+    <credits>CS_TC</credits>
+    <credits>TM_TC</credits>
+    <credits>TSH_TC</credits>
+    <credits>SP_TC</credits>
+  </formation>
+  <formation>
+    <code>IAA</code>
+    <nom>Innovation Aliments et Agroressources</nom>
+  </formation>
+  <formation>
+    <code>ICSI</code>
+    <nom>Ingénierie des Connaissances et des Supports d'Information</nom>
+  </formation>
+  <formation>
+    <code>IDI</code>
+    <nom>Ingénierie du Design Industriel</nom>
+  </formation>
+  <formation>
+    <code>MARS</code>
+    <nom>Mécatronique,Actionneurs,Robotisation et Systèmes</nom>
+  </formation>
+  <formation>
+    <code>MIT</code>
+    <nom>Matériaux et Innovation Technologique</nom>
+  </formation>
+  <formation>
+    <code>MOPS</code>
+    <nom>Modélisation et Optimisation des Produits et Structures</nom>
+  </formation>
+  <formation>
+    <code>MPI</code>
+    <nom>Management de Projet Innovant</nom>
+  </formation>
+  <formation>
+    <code>PIL</code>
+    <nom>Production Intégrée et Logistique</nom>
+  </formation>
+  <formation>
+    <code>QSE</code>
+    <nom>Qualité,Sécurité,Environnement</nom>
+  </formation>
+  <formation>
+    <code>SR</code>
+    <nom>Systèmes et Réseaux pour l'environnment construit'</nom>
+  </formation>
+  <formation>
+    <code>SRI</code>
+    <nom>Systèmes et Réseaux Informatiques</nom>
+  </formation>
+  <formation>
+    <code>STI</code>
+    <nom>Systèmes Techniques Intégrés</nom>
+  </formation>
+  <formation>
+    <code>STRIE</code>
+    <nom>Systèmes Temps-Réel et Informatique Embarquées</nom>
+  </formation>
+  <formation>
+    <code>TC</code>
+    <nom>Tronc Commun</nom>
+    <credits>CS_TC</credits>
+    <credits>TM_TC</credits>
+    <credits>TSH_TC</credits>
+    <credits>SP_TC</credits>
+  </formation>
+  <formation>
+    <code>TE</code>
+    <nom>Thermique Energetique</nom>
+  </formation>
 </xml>

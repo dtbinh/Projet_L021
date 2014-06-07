@@ -1,102 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
   <credits>
-    <nom>CS_4</nom>
+    <code>CS_4</code>
     <nombre>4</nombre>
     <categorie>CS</categorie>
   </credits>
   <credits>
-    <nom>CS_Branche</nom>
+    <code>CS_Branche</code>
     <nombre>30</nombre>
     <categorie>CS</categorie>
   </credits>
   <credits>
-    <nom>CS_Classique</nom>
+    <code>CS_Classique</code>
     <nombre>6</nombre>
     <categorie>CS</categorie>
   </credits>
   <credits>
-    <nom>CS_Demi</nom>
+    <code>CS_Demi</code>
     <nombre>3</nombre>
     <categorie>CS</categorie>
   </credits>
   <credits>
-    <nom>CS_TC</nom>
+    <code>CS_TC</code>
     <nombre>48</nombre>
     <categorie>CS</categorie>
   </credits>
   <credits>
-    <nom>SP_Branche</nom>
+    <code>SP_Branche</code>
     <nombre>60</nombre>
     <categorie>SP</categorie>
   </credits>
   <credits>
-    <nom>SP_StageBranche</nom>
+    <code>SP_StageBranche</code>
     <nombre>30</nombre>
     <categorie>SP</categorie>
   </credits>
   <credits>
-    <nom>SP_TC</nom>
+    <code>SP_TC</code>
     <nombre>6</nombre>
     <categorie>SP</categorie>
   </credits>
   <credits>
-    <nom>TM_2</nom>
+    <code>TM_2</code>
     <nombre>2</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TM_4</nom>
+    <code>TM_4</code>
     <nombre>4</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TM_5</nom>
+    <code>TM_5</code>
     <nombre>5</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TM_Branche</nom>
+    <code>TM_Branche</code>
     <nombre>30</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TM_Classique</nom>
+    <code>TM_Classique</code>
     <nombre>6</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TM_Demi</nom>
+    <code>TM_Demi</code>
     <nombre>3</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TM_TC</nom>
+    <code>TM_TC</code>
     <nombre>24</nombre>
     <categorie>TM</categorie>
   </credits>
   <credits>
-    <nom>TSH_Branche</nom>
+    <code>TSH_Branche</code>
     <nombre>24</nombre>
     <categorie>TSH</categorie>
   </credits>
   <credits>
-    <nom>TSH_Classique</nom>
+    <code>TSH_Classique</code>
     <nombre>4</nombre>
     <categorie>TSH</categorie>
   </credits>
   <credits>
-    <nom>TSH_Demi</nom>
+    <code>TSH_Demi</code>
     <nombre>2</nombre>
     <categorie>TSH</categorie>
   </credits>
   <credits>
-    <nom>TSH_Double</nom>
+    <code>TSH_Double</code>
     <nombre>8</nombre>
     <categorie>TSH</categorie>
   </credits>
   <credits>
-    <nom>TSH_TC</nom>
+    <code>TSH_TC</code>
     <nombre>24</nombre>
     <categorie>TSH</categorie>
   </credits>

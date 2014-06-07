@@ -28,12 +28,15 @@ int main()
 
         FormationManager forman;
         forman.load(credman);
+        //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
+        //set formation , set credits et set uvs à définir
 
         UVManager uvman;
         uvman.load(credman,catman,forman);
 
         PeriodeManager periodeman;
         periodeman.load();
+        //set annee et set nom à définir
 
         DossierManager dosman;
         QString fichier="enormand.xml";
@@ -57,6 +60,11 @@ int main()
         notman.save();
         catman.save();
         credman.save();
+        forman.save();
+        uvman.save();
+        periodeman.save();
+        QString templogin="enormand";
+        dosman.save(fichier,templogin);
 
     } catch(Exception &e) {
         cerr << e.what() << endl;
