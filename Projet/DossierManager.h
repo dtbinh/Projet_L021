@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file DossierManager.h
 /// \brief Manager des Dossiers
 /// \author Erwan Normand
@@ -21,7 +21,7 @@ private:
 public:
     DossierManager(): dossiers() {}
 
-    void load();
+    void load(QString& fichier);
 
     Dossier& getDossier(const QString& login) { return dossiers.get(login); }
     const Dossier& getDossier(const QString& login) const { return dossiers.get(login); }

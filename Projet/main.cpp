@@ -17,41 +17,32 @@ int main()
     try
     {
         NoteManager notman;
+        //load à faire :)
         notman.ajouterNote("A", "Excellent");
         notman.getNote("A").afficher();
         cout << endl;
 
         DossierManager dosman;
-        dosman.ajouterDossier("szewe", "nicolas");
+        //QString fichier="enormand.xml";
+        //dosman.load(fichier);
         dosman.ajouterDossier("normand", "erwan");
+        dosman.ajouterDossier("szewe", "nicolas");
         dosman.getDossier("enormand").afficher();
-        cout << endl;
 
         CategorieManager catman;
         catman.load();
-        catman.getCategorie("TM").afficher();
-        cout << endl;
 
         CreditsManager credman;
         credman.load(catman);
-        credman.getCredits("CS_Classique").afficher();
-        cout << endl;
 
         FormationManager forman;
         forman.load(credman);
 
         UVManager uvman;
         uvman.load(credman,catman,forman);
-        uvman.getUV("LO21").affichage();
-        cout << endl;
-
-        forman.getFormation("GI").afficher();
-        cout << endl;
 
         PeriodeManager periodeman;
         periodeman.load();
-        periodeman.getPeriode("P2014").afficher();
-        cout<<endl;
 
         Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
@@ -66,7 +57,6 @@ int main()
         dosman.getDossier("enormand").afficher();
         dosman.getDossier("szewenic").ajouterInscription(GI02);
         dosman.getDossier("szewenic").afficher();
-        cout << endl;
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

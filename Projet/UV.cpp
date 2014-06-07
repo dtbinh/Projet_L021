@@ -1,4 +1,4 @@
-#include "UV.h"
+﻿#include "UV.h"
 
 using namespace std;
 
@@ -8,8 +8,7 @@ void UV::affichage()
     cout<<"Categorie : "<<categorie->getCode().toStdString()<<endl;
     cout<<"Credits : ";
     for(unsigned int i=0;i<cred.size();i++)
-        cout<<cred[i]->getNombre()<<" ";
-           //<<cred[i]->getCategorie()->getCode().toStdString()<<"     ";
+        cout<<cred[i]->getNombre()<<" "<<cred[i]->getCategorie().getCode().toStdString()<<"     ";
     cout<<endl;
         /*cout<<"Prerequis : ";
         for(unsigned int i=0;i<prerequis.size();i++)
