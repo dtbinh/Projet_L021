@@ -231,7 +231,7 @@
 	
 	<formation>
 		<code>TC</code>
-		<nom>Tronc Commum</nom>
+		<nom>Tronc Commun</nom>
         <credits>CS_TC</credits>
         <credits>TM_TC</credits>
         <credits>TSH_TC</credits>

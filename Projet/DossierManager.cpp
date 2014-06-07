@@ -2,8 +2,10 @@
 
 using namespace std;
 
-void DossierManager::load(QString& fichier)
+void DossierManager::load(QString& fichier,const FormationManager& forman)
 {
+    std::vector<const Formation*> tempformations;
+    QString tempForma="NULL";
     QDomDocument doc = dossiers.load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
@@ -26,12 +28,22 @@ void DossierManager::load(QString& fichier)
                 {
                     tempPrenom = unElement.text();
                 }
+                else if(unElement.tagName() == "formation"){
+                    tempForma = unElement.text();
+                    tempformations.push_back(&forman.getFormation(tempForma));
+                }
                 unElement = unElement.nextSiblingElement();
             }
-
-            this->ajouterDossier(tempNom,tempPrenom);
+            QString login=this->ajouterDossier(tempNom,tempPrenom);
+            if (tempForma!="NULL"){
+                for (unsigned int i = 0; i < tempformations.size(); i++)
+                {
+                    this->getDossier(login).ajouterFormation(*tempformations[i]);
+                }
+                tempformations.clear();
+                tempForma="NULL";
+            }
         }
-
         racine = racine.nextSiblingElement();
     }
 }

@@ -15,11 +15,6 @@ int main()
 {
     try
     {
-        DossierManager dosman;
-        QString fichier="enormand.xml";
-        dosman.load(fichier);
-        dosman.getDossier("enormand").afficher();
-
         CategorieManager catman;
         catman.load();
 
@@ -35,6 +30,14 @@ int main()
         PeriodeManager periodeman;
         periodeman.load();
 
+        DossierManager dosman;
+        QString fichier="enormand.xml";
+        dosman.load(fichier,forman);
+        dosman.getDossier("enormand").afficher();
+        QString fichier2="agermain.xml";
+        dosman.load(fichier2,forman);
+        dosman.getDossier("agermain").afficher();
+
         /*Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
         GI02.ajouterUV(uvman.getUV("LO21"));
@@ -42,11 +45,8 @@ int main()
         GI02.modifierNote(uvman.getUV("LO21"), A);
         GI02.afficher();
 
-        dosman.getDossier("szewenic").ajouterFormation((forman.getFormation("GI")));
-        dosman.getDossier("enormand").ajouterFormation(forman.getFormation("TC"));
-        dosman.getDossier("enormand").afficher();
+
         dosman.getDossier("szewenic").ajouterInscription(GI02);
-        dosman.getDossier("szewenic").afficher();
         */
 
 

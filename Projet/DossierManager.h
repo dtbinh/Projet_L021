@@ -11,6 +11,7 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "FormationManager.h"
 #include "Dossier.h"
 
 class DossierManager
@@ -21,11 +22,11 @@ private:
 public:
     DossierManager(): dossiers() {}
 
-    void load(QString& fichier);
+    void load(QString& fichier,const FormationManager& forman);
 
     Dossier& getDossier(const QString& login) { return dossiers.get(login); }
     const Dossier& getDossier(const QString& login) const { return dossiers.get(login); }
-    void ajouterDossier(const QString& nom, const QString& prenom) { Dossier d(nom, prenom); dossiers.ajouter(d.getLogin(), d); }
+    const QString& ajouterDossier(const QString& nom, const QString& prenom) { Dossier d(nom, prenom); dossiers.ajouter(d.getLogin(), d); return d.getLogin();}
     void retirerDossier(const QString& login) { dossiers.retirer(login); }
 };
 
