@@ -1,10 +1,10 @@
-﻿#include "CategorieManager.h"
+#include "CategorieManager.h"
 
 using namespace std;
 
 void CategorieManager::load()
 {
-    QDomDocument doc = categories.load_xml("categorie_utc.xml");
+    QDomDocument doc = load_xml("categorie_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -36,8 +36,9 @@ void CategorieManager::load()
     }
 }
 
-void CategorieManager::save(){
-    QDomDocument doc = categories.save_xml();
+void CategorieManager::save()
+{
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 
@@ -60,4 +61,3 @@ void CategorieManager::save(){
     int indent = 2;
     doc.save(ts, indent);
 }
-

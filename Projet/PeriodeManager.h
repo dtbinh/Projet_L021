@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file PeriodeManager.h
 /// \brief Manager des Periodes
 /// \author Nicolas Szewe, Erwan Normand
@@ -11,12 +11,13 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "Periode.h"
 
-class PeriodeManager
+class PeriodeManager : public Manager
 {
 private:
-    Manager<Periode> periodes;
+    Factory<Periode> periodes;
 
 public:
     PeriodeManager(): periodes() {}

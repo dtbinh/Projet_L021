@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file DossierManager.h
 /// \brief Manager des Dossiers
 /// \author Erwan Normand
@@ -11,13 +11,14 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "FormationManager.h"
 #include "Dossier.h"
 
-class DossierManager
+class DossierManager : public Manager
 {
 private:
-    Manager<Dossier> dossiers;
+    Factory<Dossier> dossiers;
 
 public:
     DossierManager(): dossiers() {}

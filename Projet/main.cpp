@@ -1,6 +1,9 @@
 #include <iostream>
 #include <QString>
+#include "Application.h"
 #include "Exception.h"
+#include "Manager.h"
+#include "Factory.h"
 #include "CreditsManager.h"
 #include "CategorieManager.h"
 #include "DossierManager.h"

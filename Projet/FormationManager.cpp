@@ -1,4 +1,4 @@
-﻿#include "FormationManager.h"
+#include "FormationManager.h"
 
 using namespace std;
 
@@ -7,7 +7,7 @@ void FormationManager::load(const CreditsManager& credman)
     std::vector<const Credits*> tempcredits;
     std::vector<const Formation*> tempspecialites;
     QString tempCred="NULL"; QString tempSpec="NULL";
-    QDomDocument doc = formations.load_xml("formation_utc.xml");
+    QDomDocument doc = load_xml("formation_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -65,8 +65,9 @@ void FormationManager::load(const CreditsManager& credman)
     }
 }
 
-void FormationManager::save(){
-    QDomDocument doc = formations.save_xml();
+void FormationManager::save()
+{
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 
