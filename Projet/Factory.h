@@ -25,8 +25,10 @@ public:
     T& get(const QString& code);
     const T& get(const QString& code) const;
 
-    typename std::map<QString,T>::const_iterator begin() { return tab.begin(); }
-    typename std::map<QString,T>::const_iterator end() { return tab.end(); }
+    typename std::map<QString,T>::const_iterator begin() const { return tab.begin(); }
+    typename std::map<QString,T>::const_iterator end() const { return tab.end(); }
+    typename std::map<QString,T>::iterator begin() { return tab.begin(); }
+    typename std::map<QString,T>::iterator end() { return tab.end(); }
 
     void ajouter(const QString& code, const T& t = T()) { tab[code] = t; }
     void retirer(const QString& code) { tab.erase(code); }

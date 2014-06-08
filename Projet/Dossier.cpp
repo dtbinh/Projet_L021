@@ -30,8 +30,8 @@ void Dossier::afficher()
     }
     cout << endl;
 
-    for (map<QString,Inscription>::const_iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
+    for (map<QString,Inscription>::iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
     {
-        //it->second.afficher(); // Impossible, la méthode afficher de Inscription doit être const.
+        it->second.afficher(); // La méthode afficher de Inscription doit être const pour utiliser des const_iterator
     }
 }
