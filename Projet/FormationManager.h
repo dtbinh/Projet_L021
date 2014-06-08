@@ -11,15 +11,16 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "Exception.h"
 #include "Formation.h"
 #include "CreditsManager.h"
 #include "UVManager.h"
 
-class FormationManager
+class FormationManager : public Manager
 {
 private:
-    Manager<Formation> formations;
+    Factory<Formation> formations;
 
 public:
     FormationManager(): formations() {}

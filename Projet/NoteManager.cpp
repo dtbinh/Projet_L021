@@ -1,10 +1,10 @@
-﻿#include "NoteManager.h"
+#include "NoteManager.h"
 
 using namespace std;
 
 void NoteManager::load()
 {
-    QDomDocument doc = notes.load_xml("note_utc.xml");
+    QDomDocument doc = load_xml("note_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -39,7 +39,7 @@ void NoteManager::load()
 
 void NoteManager::save(){
 
-    QDomDocument doc = notes.save_xml();
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 

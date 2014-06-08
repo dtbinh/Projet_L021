@@ -1,10 +1,10 @@
-﻿#include "CreditsManager.h"
+#include "CreditsManager.h"
 
 using namespace std;
 
 void CreditsManager::load(const CategorieManager& catman)
 {
-    QDomDocument doc = credits.load_xml("credit_utc.xml");
+    QDomDocument doc = load_xml("credit_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -43,8 +43,9 @@ void CreditsManager::load(const CategorieManager& catman)
     }
 }
 
-void CreditsManager::save(){
-    QDomDocument doc = credits.save_xml();
+void CreditsManager::save()
+{
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 

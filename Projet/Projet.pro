@@ -13,7 +13,8 @@ SOURCES += \
     UV.cpp \
     UVManager.cpp \
     DossierManager.cpp \
-    NoteManager.cpp
+    NoteManager.cpp \
+    Manager.cpp \
 
 HEADERS += \
     Dossier.h \
@@ -25,11 +26,12 @@ HEADERS += \
     Inscription.h \
     CreditsManager.h \
     CategorieManager.h \
-    Manager.h \
     PeriodeManager.h \
     FormationManager.h \
     UV.h \
     UVManager.h \
     DossierManager.h \
     Note.h \
-    NoteManager.h
+    NoteManager.h \
+    Factory.h \
+    Manager.h \

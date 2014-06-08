@@ -6,7 +6,7 @@ void DossierManager::load(QString& fichier,const FormationManager& forman)
 {
     std::vector<const Formation*> tempformations;
     QString tempForma="NULL";
-    QDomDocument doc = dossiers.load_xml(fichier);
+    QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -48,8 +48,9 @@ void DossierManager::load(QString& fichier,const FormationManager& forman)
     }
 }
 
-void DossierManager::save(QString& fichier,QString& login){
-    QDomDocument doc = dossiers.save_xml();
+void DossierManager::save(QString& fichier,QString& login)
+{
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
     QDomElement dossier = doc.createElement("dossier");

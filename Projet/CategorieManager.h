@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file CategorieManager.h
 /// \brief Manager des Categories.
 /// \author Erwan Normand
@@ -11,12 +11,13 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "Categorie.h"
 
-class CategorieManager
+class CategorieManager : public Manager
 {
 private:
-    Manager<Categorie> categories;
+    Factory<Categorie> categories;
 
 public:
     CategorieManager(): categories() {}

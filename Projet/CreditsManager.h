@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file CreditManager.h
 /// \brief Manager des Credits.
 /// \author Nicolas Szewe, Erwan Normand
@@ -11,14 +11,15 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "CategorieManager.h"
 #include "Categorie.h"
 #include "Credits.h"
 
-class CreditsManager
+class CreditsManager : public Manager
 {
 private:
-    Manager<Credits> credits;
+    Factory<Credits> credits;
 
 public:
     CreditsManager(): credits() {}

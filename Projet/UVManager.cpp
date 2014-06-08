@@ -4,8 +4,7 @@ using namespace std;
 
 void UVManager::load(const CreditsManager& credman,const CategorieManager& catman)
 {
-    QDomDocument doc = uvs.load_xml("uv_utc.xml");
-
+    QDomDocument doc = load_xml("uv_utc.xml");
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
@@ -46,8 +45,9 @@ void UVManager::load(const CreditsManager& credman,const CategorieManager& catma
   }
 }
 
-void UVManager::save(){
-    QDomDocument doc = uvs.save_xml();
+void UVManager::save()
+{
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 
@@ -82,4 +82,3 @@ void UVManager::save(){
     int indent = 2;
     doc.save(ts, indent);
 }
-

@@ -11,14 +11,15 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "CreditsManager.h"
 #include "CategorieManager.h"
 #include "UV.h"
 
-class UVManager
+class UVManager : public Manager
 {
 private:
-    Manager<UV> uvs;
+    Factory<UV> uvs;
 
 public:
     UVManager(): uvs() {}

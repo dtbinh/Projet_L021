@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file NoteManager.h
 /// \brief Manager des Notes.
 /// \author Erwan Normand
@@ -11,13 +11,14 @@
 #include <QString>
 #include <QtXml>
 #include "Manager.h"
+#include "Factory.h"
 #include "Note.h"
 #include "Exception.h"
 
-class NoteManager
+class NoteManager : public Manager
 {
 private:
-    Manager<Note> notes;
+    Factory<Note> notes;
 
 public:
     NoteManager(): notes() {}

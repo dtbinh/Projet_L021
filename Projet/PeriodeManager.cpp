@@ -1,10 +1,10 @@
-﻿#include "PeriodeManager.h"
+#include "PeriodeManager.h"
 
 using namespace std;
 
 void PeriodeManager::load()
 {
-    QDomDocument doc = periodes.load_xml("periode_utc.xml");
+    QDomDocument doc = load_xml("periode_utc.xml");
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -37,8 +37,9 @@ void PeriodeManager::load()
     }
 }
 
-void PeriodeManager::save(){
-    QDomDocument doc = periodes.save_xml();
+void PeriodeManager::save()
+{
+    QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 
@@ -61,5 +62,3 @@ void PeriodeManager::save(){
     int indent = 2;
     doc.save(ts, indent);
 }
-
-

@@ -1,81 +1,16 @@
-﻿///
-/// \file Manager.h
-/// \brief Classe template pour tous les managers d'objets.
-/// \author Erwan Normand
-/// \date 06juin 2014
-///
+﻿#ifndef COMPOSANT_H
+#define COMPOSANT_H
 
-#ifndef MANAGER_H
-#define MANAGER_H
-
+#include <QString>
 #include <QtXml>
-#include <map>
-#include <algorithm>
 #include "Exception.h"
 
-template<class T>
 class Manager
 {
-private:
-    std::map<QString,T> tab;
-
 public:
-    Manager(): tab() {}
-
+    Manager() {}
     QDomDocument load_xml(const QString& file);
     QDomDocument save_xml();
-
-    T& get(const QString& code);
-    const T& get(const QString& code) const;
-
-    typename std::map<QString,T>::const_iterator begin(){return tab.begin();}
-    typename std::map<QString,T>::const_iterator end(){return tab.end();}
-
-    void ajouter(const QString& code, const T& t) { tab[code] = t; }
-    void retirer(const QString& code) { tab.erase(code); }
 };
 
-template<class T>
-T& Manager<T>::get(const QString& code)
-{
-    typename std::map<QString,T>::iterator it = tab.find(code);
-    if (it == tab.end()) {
-        throw Exception("L'objet " + code + " n'existe pas.");
-    }
-    return it->second;
-}
-
-template<class T>
-const T& Manager<T>::get(const QString& code) const
-{
-    typename std::map<QString,T>::const_iterator it = tab.find(code);
-    if (it == tab.end()) {
-        throw Exception("L'objet " + code + " n'existe pas.");
-    }
-    return it->second;
-}
-
-template<class T>
-QDomDocument Manager<T>::load_xml(const QString& file)
-{
-    QFile fichier(file);
-    if (!fichier.open(QFile::ReadOnly | QFile::Text)) {
-        throw Exception("Impossible d'ouvrir le fichier.");
-    }
-
-    QDomDocument doc;
-    doc.setContent(&fichier, false);
-
-    return doc;
-}
-
-template<class T>
-QDomDocument Manager<T>::save_xml(){
-    QDomDocument doc;
-    QDomNode xmlNode = doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\"");
-    doc.insertBefore(xmlNode, doc.firstChild());
-    return doc;
-}
-
-
-#endif // MANAGER_H
+#endif // COMPOSANT_H
