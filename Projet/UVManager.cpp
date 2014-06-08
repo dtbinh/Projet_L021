@@ -1,12 +1,10 @@
-#include "UVManager.h"
+﻿#include "UVManager.h"
 
 using namespace std;
 
-void UVManager::load(const CreditsManager& credman,const CategorieManager& catman,FormationManager& forman)
+void UVManager::load(const CreditsManager& credman,const CategorieManager& catman)
 {
-    std::vector<const Formation*> tempformations;
     QDomDocument doc = load_xml("uv_utc.xml");
-
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
@@ -35,24 +33,12 @@ void UVManager::load(const CreditsManager& credman,const CategorieManager& catma
                 {
                     cat=unElement.text();
                 }
-                else if(unElement.tagName() == "branche")
-                {
-                    forma=unElement.text();
-                    tempformations.push_back(&forman.getFormation(forma));
-                }
+
                 unElement = unElement.nextSiblingElement();
             }
             this->ajouterUV(strCode,nom,catman.getCategorie(cat));
             this->getUV(strCode).ajoutCredits(credman.getCredits(cred));
             if(cat=="TSH"){
-                // Doit on l'ajouter aux formations ou on considere ça "à part" avec les mineurs?
-            }
-            else {
-                for (unsigned int i = 0; i < tempformations.size(); i++)
-                {
-                    forman.getFormation(tempformations[i]->getCode()).ajouterUV(this->getUV(strCode));
-                }
-                tempformations.clear();
             }
         }
         racine = racine.nextSiblingElement();
@@ -89,12 +75,8 @@ void UVManager::save()
         QDomText categorieText = doc.createTextNode(it->second.getCategorie().getCode());
         categorie.appendChild(categorieText);
 
-        /*Ici si on garde le schéma, ca va être méga galere pour écrire les formations à laquelle appartiennet les uvs. c'est pour ca
-         que je pense qu'il faut qu'on change. Les uvs appartiennent à des formations.  Ce chargement n'est pas fonctionnelle de ce fait
-         C'est pour ça que j'ai crée un nouveau fichier pour le moment. */
-
     }
-    QFile file( "uv.xml" );
+    QFile file( "uv_utc.xml" );
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;

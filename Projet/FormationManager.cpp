@@ -1,13 +1,62 @@
-#include "FormationManager.h"
+﻿#include "FormationManager.h"
 
 using namespace std;
 
-void FormationManager::load(const CreditsManager& credman)
+void FormationManager::load(const CreditsManager& credman,QString& fichier)
 {
     std::vector<const Credits*> tempcredits;
+    QString tempCred="NULL";
+    QDomDocument doc = load_xml(fichier);
+
+    QDomElement racine = doc.documentElement();
+    racine = racine.firstChildElement();
+
+    while(!racine.isNull())
+    {
+        if(racine.tagName() == "formation")
+        {
+            QString tempCode,tempNom;
+            QDomElement unElement = racine.firstChildElement();
+
+            while(!unElement.isNull())
+            {
+                if(unElement.tagName() == "code")
+                {
+                    tempCode = unElement.text();
+                }
+                else if(unElement.tagName() == "nom")
+                {
+                    tempNom = unElement.text();
+                }
+                else if(unElement.tagName() == "credits")
+                {
+                    tempCred = unElement.text();
+                    tempcredits.push_back(&credman.getCredits(tempCred));
+                }
+                unElement = unElement.nextSiblingElement();
+            }
+            this->ajouterFormation(tempCode,tempNom);
+            if (tempCred!="NULL"){
+                for (unsigned int i = 0; i < tempcredits.size(); i++)
+                {
+                    this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempcredits[i]->getNom()));
+                }
+                tempCred="NULL";
+                tempcredits.clear();
+            }
+        }
+
+        racine = racine.nextSiblingElement();
+    }
+}
+
+void FormationManager::load(const CreditsManager& credman,const UVManager& uvman,QString& fichier,const FormationManager& filman)
+{
+    std::vector<const Credits*> tempcredits;
+    std::vector<const UV*> tempuvs;
     std::vector<const Formation*> tempspecialites;
-    QString tempCred="NULL"; QString tempSpec="NULL";
-    QDomDocument doc = load_xml("formation_utc.xml");
+    QString tempCred="NULL"; QString tempSpec="NULL"; QString tempUvs="NULL";
+    QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -37,11 +86,15 @@ void FormationManager::load(const CreditsManager& credman)
                 else if(unElement.tagName() == "specialites")
                 {
                     tempSpec = unElement.text();
-                    tempspecialites.push_back(&this->getFormation(tempSpec));
+                    tempspecialites.push_back(&filman.getFormation(tempSpec));
+                }
+                else if(unElement.tagName() == "uvs")
+                {
+                    tempUvs=unElement.text();
+                    tempuvs.push_back(&uvman.getUV(tempUvs));
                 }
                 unElement = unElement.nextSiblingElement();
             }
-
             this->ajouterFormation(tempCode,tempNom);
             if (tempCred!="NULL"){
                 for (unsigned int i = 0; i < tempcredits.size(); i++)
@@ -54,10 +107,18 @@ void FormationManager::load(const CreditsManager& credman)
             if (tempSpec!="NULL"){
                 for (unsigned int i = 0; i < tempspecialites.size(); i++)
                 {
-                    this->getFormation(tempCode).ajouterSpecialite(this->getFormation(tempspecialites[i]->getCode()));
+                    this->getFormation(tempCode).ajouterSpecialite(filman.getFormation(tempspecialites[i]->getCode()));
                 }
                 tempSpec="NULL";
                 tempspecialites.clear();
+            }
+            if (tempUvs!="NULL"){
+                for (unsigned int i = 0; i < tempuvs.size(); i++)
+                {
+                    this->getFormation(tempCode).ajouterUV(uvman.getUV(tempuvs[i]->getCode()));
+                }
+                tempUvs="NULL";
+                tempuvs.clear();
             }
         }
 
@@ -65,8 +126,7 @@ void FormationManager::load(const CreditsManager& credman)
     }
 }
 
-void FormationManager::save()
-{
+void FormationManager::save(QString& fichier){
     QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
@@ -92,22 +152,20 @@ void FormationManager::save()
         }
         std::vector<const Formation*> tempspecialite= it->second.getSpecialites();
         for(unsigned int i=0;i<tempspecialite.size();++i){
-            QDomElement specialite = doc.createElement("specialite");
+            QDomElement specialite = doc.createElement("specialites");
             formation.appendChild(specialite);
             QDomText specialiteText = doc.createTextNode(tempspecialite[i]->getCode());
             specialite.appendChild(specialiteText);
         }
-
-        //Les uvs doivent ils apparaitre dans le fichier de formation. On avait dit que non mais j'ai un doute
-        /*std::vector<const UV*> tempUV= it->second.getUVs();
+        std::vector<const UV*> tempUV= it->second.getUVs();
         for(unsigned int i=0;i<tempUV.size();++i){
             QDomElement uv = doc.createElement("uvs");
             formation.appendChild(uv);
             QDomText UVText = doc.createTextNode(tempUV[i]->getCode());
             uv.appendChild(UVText);
-        }*/
+        }
     }
-    QFile file( "formation_utc.xml" );
+    QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;
