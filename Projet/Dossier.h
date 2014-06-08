@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Dossier.h
 /// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Nicolas Szewe, Erwan Normand
@@ -11,6 +11,7 @@
 #include <QString>
 #include <vector>
 #include <algorithm>
+#include "Factory.h"
 #include "Formation.h"
 #include "Inscription.h"
 
@@ -20,8 +21,8 @@ private:
     QString nom;
     QString prenom;
     QString login;
-    std::vector<const Formation*> formations;
-    std::vector<const Inscription*> inscriptions;
+    Factory<Formation> formations;
+    Factory<Inscription> inscriptions;
 
     void setLogin();
 
@@ -54,22 +55,28 @@ public :
 
     void setPrenom(const QString& p) { prenom = p; setLogin(); }
 
-    const std::vector<const Formation*>& getFormations() const { return formations; }
-
-    const std::vector<const Inscription*>& getInscriptions() const { return inscriptions; }
-
-
     ///
     /// \fn getLogin
     /// \return string Login de l'étudiant
     ///
     const QString& getLogin() const { return login; }
 
-    void ajouterFormation(const Formation& f) { formations.push_back(&f); }
-    void retirerFormation(const Formation& f) { formations.erase(remove(formations.begin(), formations.end(), &f), formations.end()); }
 
-    void ajouterInscription(const Inscription& i) { inscriptions.push_back(&i); }
-    void retirerInscription(const Inscription& i) { inscriptions.erase(remove(inscriptions.begin(), inscriptions.end(), &i), inscriptions.end()); }
+    const Factory<Formation>& getFormations() const { return formations; }
+
+    Formation& getFormation(const QString& code) { return formations.get(code); }
+    const Formation& getFormation(const QString& code) const { return formations.get(code); }
+    void ajouterFormation(const Formation& f) { formations.ajouter(f.getCode(), f); }
+    void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }
+    void retirerFormation(const QString& code) { formations.retirer(code); }
+
+
+    const Factory<Inscription>& getInscriptions() const { return inscriptions; }
+
+    Inscription& getInscription(const QString& code) { return inscriptions.get(code); }
+    const Inscription& getInscription(const QString& code) const { return inscriptions.get(code); }
+    void ajouterInscription(const QString& code, const Periode& periode, const Formation& formation) { inscriptions.ajouter(code, Inscription(code, periode, formation)); }
+    void retirerInscription(const QString& code) { inscriptions.retirer(code); }
 
     ///
     /// \fn affichage

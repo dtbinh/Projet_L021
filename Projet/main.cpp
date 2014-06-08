@@ -33,8 +33,8 @@ int main()
 
         FormationManager forman;
         FormationManager filman;
-        QString tempfi="filiere_utc.xml";
-        QString temp="formation_utc.xml";
+        QString tempfi = "filiere_utc.xml"; // Fichier à pousser dans le repo
+        QString temp = "formation_utc.xml";
         filman.load(credman,tempfi);
         forman.load(credman,uvman,temp,filman);
         //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
@@ -50,12 +50,12 @@ int main()
         QString fichier2="agermain.xml";
         dosman.load(fichier2,forman,periodeman);
 
-        Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
-        GI02.ajouterUV(uvman.getUV("NF16"));
-        GI02.ajouterUV(uvman.getUV("LO21"));
-        GI02.modifierNote(uvman.getUV("LO21"), notman.getNote("A"));
-
-        dosman.getDossier("enormand").ajouterInscription(GI02);
+        dosman.getDossier("enormand").ajouterInscription("GI02", periodeman.getPeriode("P2014"), forman.getFormation("GI"));
+        dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF16"));
+        dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("LO21"));
+        dosman.getDossier("enormand").getInscription("GI02").retirerUV("NF16");
+        dosman.getDossier("enormand").getInscription("GI02").modifierNote("LO21", notman.getNote("A"));
+        dosman.getDossier("enormand").afficher();
 
         notman.save();
         catman.save();

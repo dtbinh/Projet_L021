@@ -103,14 +103,14 @@ void DossierManager::save(QString& fichier,QString& login)
     dossier.appendChild(prenom);
      QDomText prenomText = doc.createTextNode(this->getDossier(login).getPrenom());
     prenom.appendChild(prenomText);
-    std::vector<const Formation*> tempformation= this->getDossier(login).getFormations();
+    const Factory<const Formation> tempformation= this->getDossier(login).getFormations();
     for(unsigned int i=0;i<tempformation.size();++i){
         QDomElement formation = doc.createElement("formations");
         dossier.appendChild(formation);
         QDomText formationText = doc.createTextNode(tempformation[i]->getCode());
         formation.appendChild(formationText);
     }
-    std::vector<const Inscription*> tempinscription= this->getDossier(login).getInscriptions();
+    const Factory<const Inscription> tempinscription= this->getDossier(login).getInscriptions();
     for(unsigned int i=0;i<tempinscription.size();++i){
         QDomElement inscription = doc.createElement("inscription");
         dossier.appendChild(inscription);

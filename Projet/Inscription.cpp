@@ -1,22 +1,29 @@
-﻿#include "Inscription.h"
+#include "Inscription.h"
 
 using namespace std;
 
-void Inscription::ajouterUV(const UV& u)
+void Inscription::ajouterUV(const UV& uv)
 {
-    uvs[u.getCode()] = u;
-    notes[u.getCode()];
+    uvs.ajouter(uv.getCode(), uv);
+    notes[uv.getCode()];
 }
 
-void Inscription::retirerUV(const UV& u)
+void Inscription::ajouterUV(const QString& code, const QString& nom, const Categorie& cat)
 {
-    uvs.erase(u.getCode());
-    notes.erase(u.getCode());
+    uvs.ajouter(code, UV(code, nom, cat));
+    notes[code];
 }
 
-void Inscription::afficher() const
+void Inscription::retirerUV(const QString& code)
 {
-    cout << periode->getCode().toStdString() << " " << formation->getCode().toStdString() << endl;
+    uvs.retirer(code);
+    notes.erase(code);
+}
+
+void Inscription::afficher()
+{
+    cout << code.toStdString() << " " << periode->getCode().toStdString() << endl;
+    //<< " " << formation->getCode().toStdString() << endl;
 
     cout << "UVs : ";
     for (map<QString,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)

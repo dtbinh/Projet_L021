@@ -1,4 +1,4 @@
-﻿#include "UV.h"
+#include "UV.h"
 
 using namespace std;
 
@@ -36,6 +36,3 @@ UV::~UV()
     code="NULL";
     nom="NULL";
 }
-
-
-
