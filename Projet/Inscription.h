@@ -35,6 +35,7 @@ public:
    const Periode& getPeriode() const { return *periode; }
    const Formation& getFormation() const { return *formation; }
    const Factory<UV>& getUVs() const { return uvs; }
+   const std::map<QString,Note>& getNotes() const { return notes; }
 
    void setCode(const QString& c) { code = c; }
    void setPeriode(const Periode& p) { periode = &p; }

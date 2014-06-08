@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <QString>
 //#include "Application.h"
 #include "Exception.h"
@@ -32,11 +32,12 @@ int main()
         uvman.load(credman,catman);
 
         FormationManager forman;
-        FormationManager filman;
+        forman.ajouterFormation("GI", "Génie Informatique");
+        //FormationManager filman;
         QString tempfi = "filiere_utc.xml"; // Fichier à pousser dans le repo
         QString temp = "formation_utc.xml";
-        filman.load(credman,tempfi);
-        forman.load(credman,uvman,temp,filman);
+        //filman.load(credman,tempfi);
+        //forman.load(credman,uvman,temp,filman);
         //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
         //set formation , set credits et set uvs à définir
 
@@ -54,14 +55,15 @@ int main()
         dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF16"));
         dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("LO21"));
         dosman.getDossier("enormand").getInscription("GI02").retirerUV("NF16");
+        dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF17"));
         dosman.getDossier("enormand").getInscription("GI02").modifierNote("LO21", notman.getNote("A"));
         dosman.getDossier("enormand").afficher();
 
         notman.save();
         catman.save();
         credman.save();
-        forman.save(temp);
-        filman.save(tempfi);
+        //forman.save(temp);
+        //filman.save(tempfi);
         uvman.save();
         periodeman.save();
         QString templogin="enormand";

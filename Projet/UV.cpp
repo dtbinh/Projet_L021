@@ -30,7 +30,6 @@ UV::UV(const UV& u)
     }
 }
 
-
 UV::~UV()
 {
     code="NULL";
