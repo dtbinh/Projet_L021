@@ -52,7 +52,6 @@ int main()
         cout<<endl;
         /*QString fichier2 = "agermain.xml";
         dosman.load(fichier2,forman);
-        dosman.getDossier("agermain").afficher();
         cout<<endl;*/
 
         dosman.getDossier("enormand").ajouterInscription("GI02", periodeman.getPeriode("P2014"), forman.getFormation("GI"));
@@ -69,8 +68,10 @@ int main()
         //filman.save(tempfi);
         uvman.save();
         periodeman.save();
-        //QString templogin="enormand";
-        //dosman.save(fichier,templogin);
+        QString templogin="enormand";
+        QString templogin2="agermain";
+        dosman.save(fichier,templogin);
+        dosman.save(fichier2,templogin2);
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

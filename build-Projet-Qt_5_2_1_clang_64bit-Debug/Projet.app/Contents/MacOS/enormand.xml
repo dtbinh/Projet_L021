@@ -3,5 +3,12 @@
   <dossier>
     <nom>normand</nom>
     <prenom>erwan</prenom>
+    <formation>GI</formation>
+    <inscription>P2014<formation>GI</formation>
+      <uv>LO21<note>A</note>
+      </uv>
+      <uv>NF16<note>EC</note>
+      </uv>
+    </inscription>
   </dossier>
 </xml>
