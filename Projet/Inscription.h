@@ -2,7 +2,7 @@
 /// \file Inscription.h
 /// \brief Un étudiant s'inscrit à des UVs à chaque période de ses formations
 /// \author Erwan Normand
-/// \date 05 juin 2014
+/// \date 08 juin 2014
 ///
 
 #ifndef INSCRIPTION_H
@@ -11,35 +11,44 @@
 #include <iostream>
 #include <map>
 #include <algorithm>
+#include <QString>
+#include "Factory.h"
 #include "Periode.h"
 #include "Formation.h"
 #include "UV.h"
 #include "Note.h"
+#include "Categorie.h"
 
 class Inscription
 {
 private:
+    QString code;
     const Periode* periode;
     const Formation* formation;
-    std::map<QString,UV> uvs;
+    Factory<UV> uvs;
     std::map<QString,Note> notes;
 
 public:
-   Inscription(const Periode& p, const Formation& f): periode(&p), formation(&f), uvs() {}
+   Inscription(const QString& c = "", const Periode& p = Periode(), const Formation& f = Formation()): code(c), periode(&p), formation(&f), uvs(), notes() {}
 
+   const QString& getCode() const { return code; }
    const Periode& getPeriode() const { return *periode; }
    const Formation& getFormation() const { return *formation; }
-   const std::map<QString,UV>& getUVs() const { return uvs; }
-   const std::map<QString,Note>& getNotes() const { return notes; }
+   const Factory<UV>& getUVs() const { return uvs; }
 
+   void setCode(const QString& c) { code = c; }
    void setPeriode(const Periode& p) { periode = &p; }
    void setFormation(const Formation& f) { formation = &f; }
 
-   void ajouterUV(const UV& u);
-   void retirerUV(const UV& u);
-   void modifierNote(const UV& u, const Note& n) { notes[u.getCode()] = n; }
+   UV& getUV(const QString& code) { return uvs.get(code); }
+   const UV& getUV(const QString& code) const { return uvs.get(code); }
+   void ajouterUV(const UV& uv);
+   void ajouterUV(const QString& code, const QString& nom, const Categorie& cat);
+   void retirerUV(const QString& code);
+
+   void modifierNote(const QString& code, const Note& n) { notes[uvs.get(code).getCode()] = n; }
    
-   void afficher() const;
+   void afficher();
 };
 
 #endif // INSCRIPTION_H

@@ -51,11 +51,11 @@ int main()
         dosman.getDossier("agermain").afficher();
         cout<<endl;*/
 
-        Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
+        Inscription GI02("GI02", periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
         GI02.ajouterUV(uvman.getUV("LO21"));
-        GI02.retirerUV(uvman.getUV("NF16"));
-        GI02.modifierNote(uvman.getUV("LO21"), notman.getNote("A"));
+        GI02.retirerUV("NF16");
+        GI02.modifierNote("LO21", notman.getNote("A"));
 
         //dosman.getDossier("enormand").ajouterInscription(GI02);
         //dosman.getDossier("enormand").afficher();
