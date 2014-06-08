@@ -49,21 +49,15 @@ int main()
         DossierManager dosman;
         QString fichier="enormand.xml";
         dosman.load(fichier,forman);
-        dosman.getDossier("enormand").afficher();
-        cout<<endl;
         QString fichier2="agermain.xml";
         dosman.load(fichier2,forman);
-        dosman.getDossier("agermain").afficher();
-        cout<<endl;
 
         Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));
         GI02.ajouterUV(uvman.getUV("LO21"));
-        GI02.retirerUV(uvman.getUV("NF16"));
         GI02.modifierNote(uvman.getUV("LO21"), notman.getNote("A"));
 
         dosman.getDossier("enormand").ajouterInscription(GI02);
-        dosman.getDossier("enormand").afficher();
 
         notman.save();
         catman.save();
@@ -72,8 +66,10 @@ int main()
         filman.save(tempfi);
         uvman.save();
         periodeman.save();
-        //QString templogin="enormand";
-        //dosman.save(fichier,templogin);
+        QString templogin="enormand";
+        QString templogin2="agermain";
+        dosman.save(fichier,templogin);
+        dosman.save(fichier2,templogin2);
 
     } catch(Exception &e) {
         cerr << e.what() << endl;

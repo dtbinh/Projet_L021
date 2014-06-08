@@ -1,4 +1,4 @@
-#include "DossierManager.h"
+﻿#include "DossierManager.h"
 
 using namespace std;
 
@@ -33,6 +33,11 @@ void DossierManager::load(QString& fichier,const FormationManager& forman)
                     tempformations.push_back(&forman.getFormation(tempForma));
                 }
                 unElement = unElement.nextSiblingElement();
+                /*else if(unElement.tagName() == "inscription"){
+                    tempInscri=unElement.text();
+                    tempinscriptions.push_back()
+                }
+                */
             }
             QString login=this->ajouterDossier(tempNom,tempPrenom);
             if (tempForma!="NULL"){
@@ -63,6 +68,36 @@ void DossierManager::save(QString& fichier,QString& login)
     dossier.appendChild(prenom);
      QDomText prenomText = doc.createTextNode(this->getDossier(login).getPrenom());
     prenom.appendChild(prenomText);
+    std::vector<const Formation*> tempformation= this->getDossier(login).getFormations();
+    for(unsigned int i=0;i<tempformation.size();++i){
+        QDomElement formation = doc.createElement("formation");
+        dossier.appendChild(formation);
+        QDomText formationText = doc.createTextNode(tempformation[i]->getCode());
+        formation.appendChild(formationText);
+    }
+    std::vector<const Inscription*> tempinscription= this->getDossier(login).getInscriptions();
+    for(unsigned int i=0;i<tempinscription.size();++i){
+        QDomElement inscription = doc.createElement("inscription");
+        dossier.appendChild(inscription);
+        QDomText inscriptionText = doc.createTextNode(tempinscription[i]->getPeriode().getCode());
+        inscription.appendChild(inscriptionText);
+        QDomElement formation = doc.createElement("formation");
+        inscription.appendChild(formation);
+        QDomText formationText=doc.createTextNode(tempinscription[i]->getFormation().getCode());
+        formation.appendChild(formationText);
+        std::map<QString, UV> tempUV= tempinscription[i]->getUVs();
+        for (map<QString,UV>::const_iterator it = tempUV.begin(); it != tempUV.end(); it++)
+        {
+            QDomElement uv= doc.createElement("uv");
+            inscription.appendChild(uv);
+            QDomText uvText=doc.createTextNode(it->second.getCode());
+            uv.appendChild(uvText);
+            QDomElement note=doc.createElement("note");
+            uv.appendChild(note);
+            QDomText notetext=doc.createTextNode(tempinscription[i]->getNotes().find(it->second.getCode())->second.getNote());
+            note.appendChild(notetext);
+         }
+    }
     QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
