@@ -40,17 +40,15 @@ int main()
         //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
         //set formation , set credits et set uvs à définir
 
-
-
         PeriodeManager periodeman;
         periodeman.load();
         //set annee et set nom à définir
 
         DossierManager dosman;
         QString fichier="enormand.xml";
-        dosman.load(fichier,forman);
+        dosman.load(fichier,forman,periodeman);
         QString fichier2="agermain.xml";
-        dosman.load(fichier2,forman);
+        dosman.load(fichier2,forman,periodeman);
 
         Inscription GI02(periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         GI02.ajouterUV(uvman.getUV("NF16"));

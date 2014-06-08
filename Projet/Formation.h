@@ -42,7 +42,7 @@ public:
     void ajouterUV(const UV& u) { uvs.push_back(&u); }
     void retirerUV(const UV& u) { uvs.erase(remove(uvs.begin(), uvs.end(), &u), uvs.end()); }
 
-    void afficher();
+    void afficher() const;
 };
 
 #endif // FORMATION_H

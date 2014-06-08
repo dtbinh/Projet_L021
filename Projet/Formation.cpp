@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void Formation::afficher()
+void Formation::afficher() const
 {
     cout << code.toStdString() << " " << nom.toStdString() << endl;
 

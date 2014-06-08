@@ -2,10 +2,11 @@
 
 using namespace std;
 
-void DossierManager::load(QString& fichier,const FormationManager& forman)
+void DossierManager::load(QString& fichier,const FormationManager& forman,const PeriodeManager& periodeman)
 {
     std::vector<const Formation*> tempformations;
-    QString tempForma="NULL";
+    std::vector<const Inscription*> tempinscriptions;
+    QString tempForma="NULL"; QString tempInscri="NULL";
     QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
@@ -15,7 +16,7 @@ void DossierManager::load(QString& fichier,const FormationManager& forman)
     {
         if(racine.tagName() == "dossier")
         {
-            QString tempNom, tempPrenom;
+            QString tempNom, tempPrenom,tempFormation,tempUv,tempNote;
             QDomElement unElement = racine.firstChildElement();
 
             while(!unElement.isNull())
@@ -28,26 +29,60 @@ void DossierManager::load(QString& fichier,const FormationManager& forman)
                 {
                     tempPrenom = unElement.text();
                 }
-                else if(unElement.tagName() == "formation"){
+                else if(unElement.tagName() == "formations"){
                     tempForma = unElement.text();
                     tempformations.push_back(&forman.getFormation(tempForma));
                 }
-                unElement = unElement.nextSiblingElement();
-                /*else if(unElement.tagName() == "inscription"){
-                    tempInscri=unElement.text();
-                    tempinscriptions.push_back()
+                else if(unElement.tagName() == "inscription"){
+                    QDomElement filsElement = unElement.firstChildElement();
+                    while(!filsElement.isNull())
+                    {
+                    if(filsElement.tagName()=="code"){
+                        tempInscri=filsElement.text();
+                        cout<<tempInscri.toStdString()<<endl;
+                    }
+                    else if(filsElement.tagName() =="formation"){
+                        tempFormation=filsElement.text();
+                        //cout<<"Formation : " <<tempFormation.toStdString()<<endl;
+                    }
+                    else if(filsElement.tagName() == "uv"){
+                        QDomElement filsUV=filsElement.firstChildElement();
+                        while(!filsUV.isNull()){
+                            if(filsUV.tagName()=="codeUV"){
+                                tempUv=filsUV.text();
+                                cout<<tempUv.toStdString()<<endl;
+                            }
+                            if(filsUV.tagName()=="note"){
+                                tempNote=filsUV.text();
+                                cout<<tempNote.toStdString()<<endl;
+                            }
+                            filsUV=filsUV.nextSiblingElement();
+                        }
+                    }
+                    filsElement= filsElement.nextSiblingElement();
+                    }
+                    //Inscription temp(periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
+                    //tempinscriptions.push_back(&temp);
                 }
-                */
+                unElement = unElement.nextSiblingElement();
+
             }
             QString login=this->ajouterDossier(tempNom,tempPrenom);
             if (tempForma!="NULL"){
                 for (unsigned int i = 0; i < tempformations.size(); i++)
                 {
-                    this->getDossier(login).ajouterFormation(*tempformations[i]);
+                   // this->getDossier(login).ajouterFormation(*tempformations[i]);
                 }
                 tempformations.clear();
                 tempForma="NULL";
             }
+            if (tempInscri!="NULL"){
+                for(unsigned int i=0; i < tempinscriptions.size(); i++){
+                    //this->getDossier(login).ajouterInscription(*tempinscriptions[i]);
+                }
+                tempinscriptions.clear();
+                tempInscri="NULL";
+             }
         }
         racine = racine.nextSiblingElement();
     }
@@ -70,7 +105,7 @@ void DossierManager::save(QString& fichier,QString& login)
     prenom.appendChild(prenomText);
     std::vector<const Formation*> tempformation= this->getDossier(login).getFormations();
     for(unsigned int i=0;i<tempformation.size();++i){
-        QDomElement formation = doc.createElement("formation");
+        QDomElement formation = doc.createElement("formations");
         dossier.appendChild(formation);
         QDomText formationText = doc.createTextNode(tempformation[i]->getCode());
         formation.appendChild(formationText);
@@ -79,8 +114,10 @@ void DossierManager::save(QString& fichier,QString& login)
     for(unsigned int i=0;i<tempinscription.size();++i){
         QDomElement inscription = doc.createElement("inscription");
         dossier.appendChild(inscription);
+        QDomElement codeinscription=doc.createElement("code");
+        inscription.appendChild(codeinscription);
         QDomText inscriptionText = doc.createTextNode(tempinscription[i]->getPeriode().getCode());
-        inscription.appendChild(inscriptionText);
+        codeinscription.appendChild(inscriptionText);
         QDomElement formation = doc.createElement("formation");
         inscription.appendChild(formation);
         QDomText formationText=doc.createTextNode(tempinscription[i]->getFormation().getCode());
@@ -90,8 +127,10 @@ void DossierManager::save(QString& fichier,QString& login)
         {
             QDomElement uv= doc.createElement("uv");
             inscription.appendChild(uv);
+            QDomElement codeuv=doc.createElement("codeUV");
+            uv.appendChild(codeuv);
             QDomText uvText=doc.createTextNode(it->second.getCode());
-            uv.appendChild(uvText);
+            codeuv.appendChild(uvText);
             QDomElement note=doc.createElement("note");
             uv.appendChild(note);
             QDomText notetext=doc.createTextNode(tempinscription[i]->getNotes().find(it->second.getCode())->second.getNote());
