@@ -14,6 +14,7 @@
 #include "Exception.h"
 #include "Formation.h"
 #include "CreditsManager.h"
+#include "UVManager.h"
 
 class FormationManager
 {
@@ -23,8 +24,9 @@ private:
 public:
     FormationManager(): formations() {}
 
-    void load(const CreditsManager& credman);
-    void save();
+    void load(const CreditsManager& credman,QString& fichier);
+    void load(const CreditsManager& credman,const UVManager& uvman,QString& fichier,const FormationManager& filman);
+    void save(QString& fichier);
 
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }

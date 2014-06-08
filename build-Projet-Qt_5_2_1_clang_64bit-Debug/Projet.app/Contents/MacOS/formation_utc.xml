@@ -1,56 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xml>
   <formation>
-    <code>ADEL</code>
-    <nom>Aide à la Décision en Logistique</nom>
-  </formation>
-  <formation>
-    <code>AI</code>
-    <nom>Agro Industrie</nom>
-  </formation>
-  <formation>
-    <code>AIE</code>
-    <nom>Aménagement et Ingénierie Environnementale</nom>
-  </formation>
-  <formation>
-    <code>AVI</code>
-    <nom>Acoustique et Vibrations Industrielles</nom>
-  </formation>
-  <formation>
-    <code>BB</code>
-    <nom>Biomatériaux et Biomécanique</nom>
-  </formation>
-  <formation>
-    <code>BM</code>
-    <nom>Biomédicale</nom>
-  </formation>
-  <formation>
-    <code>CIB</code>
-    <nom>Conception et Innovation de Bioproduits</nom>
-  </formation>
-  <formation>
-    <code>CMI</code>
-    <nom>Conception Mécanique Intégrée</nom>
-  </formation>
-  <formation>
-    <code>CPI</code>
-    <nom>Conduite des Procédes Industriels</nom>
-  </formation>
-  <formation>
-    <code>FDD</code>
-    <nom>Fouille de Données</nom>
-  </formation>
-  <formation>
-    <code>FQI</code>
-    <nom>Fiabilité et Qualité Industrielle</nom>
-  </formation>
-  <formation>
     <code>GB</code>
     <nom>Genie Biologique</nom>
     <credits>CS_Branche</credits>
     <credits>TM_Branche</credits>
     <credits>TSH_Branche</credits>
     <credits>SP_Branche</credits>
+    <specialites>IAA</specialites>
+    <specialites>BB</specialites>
+    <specialites>BM</specialites>
+    <specialites>CIB</specialites>
+    <specialites>MPI</specialites>
+    <uvs>BL30</uvs>
   </formation>
   <formation>
     <code>GI</code>
@@ -59,6 +21,33 @@
     <credits>TM_Branche</credits>
     <credits>TSH_Branche</credits>
     <credits>SP_Branche</credits>
+    <specialites>FDD</specialites>
+    <specialites>ADEL</specialites>
+    <specialites>ICSI</specialites>
+    <specialites>SRI</specialites>
+    <specialites>STRIE</specialites>
+    <specialites>MPI</specialites>
+    <uvs>IA02</uvs>
+    <uvs>MT10</uvs>
+    <uvs>MT12</uvs>
+    <uvs>NF16</uvs>
+    <uvs>RO03</uvs>
+    <uvs>SR02</uvs>
+    <uvs>SY02</uvs>
+    <uvs>SY14</uvs>
+    <uvs>FQ01</uvs>
+    <uvs>GE37</uvs>
+    <uvs>LO21</uvs>
+    <uvs>LO22</uvs>
+    <uvs>NF17</uvs>
+    <uvs>PR</uvs>
+    <uvs>TX</uvs>
+    <uvs>API06</uvs>
+    <uvs>API07</uvs>
+    <uvs>API08</uvs>
+    <uvs>API09</uvs>
+    <uvs>API10</uvs>
+    <uvs>BI01</uvs>
   </formation>
   <formation>
     <code>GM</code>
@@ -67,6 +56,37 @@
     <credits>TM_Branche</credits>
     <credits>TSH_Branche</credits>
     <credits>SP_Branche</credits>
+    <specialites>AVI</specialites>
+    <specialites>FQI</specialites>
+    <specialites>IDI</specialites>
+    <specialites>MARS</specialites>
+    <specialites>MIT</specialites>
+    <specialites>MPI</specialites>
+    <uvs>EL01</uvs>
+    <uvs>EN21</uvs>
+    <uvs>MQ01</uvs>
+    <uvs>MQ03</uvs>
+    <uvs>MQ17</uvs>
+    <uvs>MQ18</uvs>
+    <uvs>MT12</uvs>
+    <uvs>NF04</uvs>
+    <uvs>SY02</uvs>
+    <uvs>SY04</uvs>
+    <uvs>TF01</uvs>
+    <uvs>EL02</uvs>
+    <uvs>FQ01</uvs>
+    <uvs>GE37</uvs>
+    <uvs>LO01</uvs>
+    <uvs>NF02</uvs>
+    <uvs>NF15</uvs>
+    <uvs>NF22</uvs>
+    <uvs>PR</uvs>
+    <uvs>PS09</uvs>
+    <uvs>TN02</uvs>
+    <uvs>TN08</uvs>
+    <uvs>TN20</uvs>
+    <uvs>TN22</uvs>
+    <uvs>TX</uvs>
   </formation>
   <formation>
     <code>GP</code>
@@ -75,6 +95,27 @@
     <credits>TM_Branche</credits>
     <credits>TSH_Branche</credits>
     <credits>SP_Branche</credits>
+    <specialites>AI</specialites>
+    <specialites>CPI</specialites>
+    <specialites>QSE</specialites>
+    <specialites>TE</specialites>
+    <specialites>MPI</specialites>
+    <uvs>CM15</uvs>
+    <uvs>MQ01</uvs>
+    <uvs>NF04</uvs>
+    <uvs>RR01</uvs>
+    <uvs>SY02</uvs>
+    <uvs>TF01</uvs>
+    <uvs>TF06</uvs>
+    <uvs>BT02</uvs>
+    <uvs>CM70</uvs>
+    <uvs>FQ01</uvs>
+    <uvs>NF22</uvs>
+    <uvs>PR</uvs>
+    <uvs>TF14</uvs>
+    <uvs>TS01</uvs>
+    <uvs>TX</uvs>
+    <uvs>BA04</uvs>
   </formation>
   <formation>
     <code>GSM</code>
@@ -83,6 +124,32 @@
     <credits>TM_Branche</credits>
     <credits>TSH_Branche</credits>
     <credits>SP_Branche</credits>
+    <specialites>CMI</specialites>
+    <specialites>MOPS</specialites>
+    <specialites>PIL</specialites>
+    <specialites>MPI</specialites>
+    <uvs>EN21</uvs>
+    <uvs>MQ01</uvs>
+    <uvs>MQ03</uvs>
+    <uvs>MQ17</uvs>
+    <uvs>MQ18</uvs>
+    <uvs>MT12</uvs>
+    <uvs>NF04</uvs>
+    <uvs>SY02</uvs>
+    <uvs>SY04</uvs>
+    <uvs>TF01</uvs>
+    <uvs>DD02</uvs>
+    <uvs>FQ01</uvs>
+    <uvs>GE37</uvs>
+    <uvs>LO01</uvs>
+    <uvs>NF02</uvs>
+    <uvs>NF22</uvs>
+    <uvs>NX17</uvs>
+    <uvs>PR</uvs>
+    <uvs>TN02</uvs>
+    <uvs>TN20</uvs>
+    <uvs>TN22</uvs>
+    <uvs>TX</uvs>
   </formation>
   <formation>
     <code>GSU</code>
@@ -91,6 +158,31 @@
     <credits>TM_Branche</credits>
     <credits>TSH_Branche</credits>
     <credits>SP_Branche</credits>
+    <specialites>AIE</specialites>
+    <specialites>SR</specialites>
+    <specialites>STI</specialites>
+    <specialites>MPI</specialites>
+    <uvs>MQ01</uvs>
+    <uvs>NF04</uvs>
+    <uvs>RO03</uvs>
+    <uvs>SY02</uvs>
+    <uvs>TF06</uvs>
+    <uvs>BA07</uvs>
+    <uvs>FQ01</uvs>
+    <uvs>GE37</uvs>
+    <uvs>LO01</uvs>
+    <uvs>NX17</uvs>
+    <uvs>PR</uvs>
+    <uvs>PS09</uvs>
+    <uvs>TX</uvs>
+    <uvs>UB04</uvs>
+    <uvs>UR03</uvs>
+    <uvs>UR05</uvs>
+    <uvs>AP</uvs>
+    <uvs>BA01</uvs>
+    <uvs>BA02</uvs>
+    <uvs>BA04</uvs>
+    <uvs>BA09</uvs>
   </formation>
   <formation>
     <code>HUTECH</code>
@@ -99,58 +191,30 @@
     <credits>TM_TC</credits>
     <credits>TSH_TC</credits>
     <credits>SP_TC</credits>
-  </formation>
-  <formation>
-    <code>IAA</code>
-    <nom>Innovation Aliments et Agroressources</nom>
-  </formation>
-  <formation>
-    <code>ICSI</code>
-    <nom>Ingénierie des Connaissances et des Supports d'Information</nom>
-  </formation>
-  <formation>
-    <code>IDI</code>
-    <nom>Ingénierie du Design Industriel</nom>
-  </formation>
-  <formation>
-    <code>MARS</code>
-    <nom>Mécatronique,Actionneurs,Robotisation et Systèmes</nom>
-  </formation>
-  <formation>
-    <code>MIT</code>
-    <nom>Matériaux et Innovation Technologique</nom>
-  </formation>
-  <formation>
-    <code>MOPS</code>
-    <nom>Modélisation et Optimisation des Produits et Structures</nom>
-  </formation>
-  <formation>
-    <code>MPI</code>
-    <nom>Management de Projet Innovant</nom>
-  </formation>
-  <formation>
-    <code>PIL</code>
-    <nom>Production Intégrée et Logistique</nom>
-  </formation>
-  <formation>
-    <code>QSE</code>
-    <nom>Qualité,Sécurité,Environnement</nom>
-  </formation>
-  <formation>
-    <code>SR</code>
-    <nom>Systèmes et Réseaux pour l'environnment construit'</nom>
-  </formation>
-  <formation>
-    <code>SRI</code>
-    <nom>Systèmes et Réseaux Informatiques</nom>
-  </formation>
-  <formation>
-    <code>STI</code>
-    <nom>Systèmes Techniques Intégrés</nom>
-  </formation>
-  <formation>
-    <code>STRIE</code>
-    <nom>Systèmes Temps-Réel et Informatique Embarquées</nom>
+    <uvs>BL01</uvs>
+    <uvs>IA02</uvs>
+    <uvs>MT22</uvs>
+    <uvs>MT90</uvs>
+    <uvs>NF16</uvs>
+    <uvs>PS91</uvs>
+    <uvs>PS93</uvs>
+    <uvs>PS94</uvs>
+    <uvs>BA07</uvs>
+    <uvs>C2I1</uvs>
+    <uvs>LO01</uvs>
+    <uvs>LO21</uvs>
+    <uvs>NF01</uvs>
+    <uvs>NF17</uvs>
+    <uvs>NF92</uvs>
+    <uvs>PR</uvs>
+    <uvs>PS90</uvs>
+    <uvs>TN01</uvs>
+    <uvs>TN04</uvs>
+    <uvs>UR03</uvs>
+    <uvs>UR05</uvs>
+    <uvs>MT34</uvs>
+    <uvs>MT37</uvs>
+    <uvs>MT38</uvs>
   </formation>
   <formation>
     <code>TC</code>
@@ -159,9 +223,82 @@
     <credits>TM_TC</credits>
     <credits>TSH_TC</credits>
     <credits>SP_TC</credits>
-  </formation>
-  <formation>
-    <code>TE</code>
-    <nom>Thermique Energetique</nom>
+    <uvs>BL01</uvs>
+    <uvs>BL10</uvs>
+    <uvs>BL22</uvs>
+    <uvs>CM01</uvs>
+    <uvs>CM11</uvs>
+    <uvs>CM12</uvs>
+    <uvs>CM13</uvs>
+    <uvs>CM15</uvs>
+    <uvs>EL01</uvs>
+    <uvs>EN21</uvs>
+    <uvs>IA02</uvs>
+    <uvs>MQ01</uvs>
+    <uvs>MQ03</uvs>
+    <uvs>MQ17</uvs>
+    <uvs>MQ18</uvs>
+    <uvs>MT10</uvs>
+    <uvs>MT12</uvs>
+    <uvs>MT22</uvs>
+    <uvs>MT23</uvs>
+    <uvs>MT90</uvs>
+    <uvs>MT91</uvs>
+    <uvs>NF04</uvs>
+    <uvs>NF16</uvs>
+    <uvs>PS04</uvs>
+    <uvs>PS91</uvs>
+    <uvs>PS92</uvs>
+    <uvs>PS93</uvs>
+    <uvs>PS94</uvs>
+    <uvs>RO03</uvs>
+    <uvs>RR01</uvs>
+    <uvs>SR02</uvs>
+    <uvs>SY01</uvs>
+    <uvs>SY02</uvs>
+    <uvs>SY04</uvs>
+    <uvs>SY14</uvs>
+    <uvs>TF01</uvs>
+    <uvs>TF06</uvs>
+    <uvs>TN06</uvs>
+    <uvs>BA07</uvs>
+    <uvs>BL09</uvs>
+    <uvs>BM01</uvs>
+    <uvs>BT02</uvs>
+    <uvs>C2I1</uvs>
+    <uvs>CM70</uvs>
+    <uvs>DD02</uvs>
+    <uvs>EL02</uvs>
+    <uvs>FQ01</uvs>
+    <uvs>GE37</uvs>
+    <uvs>LO01</uvs>
+    <uvs>LO21</uvs>
+    <uvs>LO22</uvs>
+    <uvs>MT94</uvs>
+    <uvs>NF01</uvs>
+    <uvs>NF02</uvs>
+    <uvs>NF15</uvs>
+    <uvs>NF17</uvs>
+    <uvs>NF22</uvs>
+    <uvs>NF92</uvs>
+    <uvs>NP90</uvs>
+    <uvs>NX17</uvs>
+    <uvs>PR</uvs>
+    <uvs>PS09</uvs>
+    <uvs>PS90</uvs>
+    <uvs>TF14</uvs>
+    <uvs>TN01</uvs>
+    <uvs>TN02</uvs>
+    <uvs>TN03</uvs>
+    <uvs>TN04</uvs>
+    <uvs>TN08</uvs>
+    <uvs>TN20</uvs>
+    <uvs>TN22</uvs>
+    <uvs>TR91</uvs>
+    <uvs>TS01</uvs>
+    <uvs>TX</uvs>
+    <uvs>UB04</uvs>
+    <uvs>UR03</uvs>
+    <uvs>UR05</uvs>
   </formation>
 </xml>

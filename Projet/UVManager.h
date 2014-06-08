@@ -13,7 +13,6 @@
 #include "Manager.h"
 #include "CreditsManager.h"
 #include "CategorieManager.h"
-#include "FormationManager.h"
 #include "UV.h"
 
 class UVManager
@@ -24,7 +23,7 @@ private:
 public:
     UVManager(): uvs() {}
 
-    void load(const CreditsManager& credman,const CategorieManager& catman,FormationManager& forman);
+    void load(const CreditsManager& credman,const CategorieManager& catman);
     void save();
 
     UV& getUV(const QString& code) { return uvs.get(code); }
