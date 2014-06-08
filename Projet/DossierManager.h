@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file DossierManager.h
 /// \brief Manager des Dossiers
 /// \author Erwan Normand
@@ -14,6 +14,8 @@
 #include "Factory.h"
 #include "FormationManager.h"
 #include "PeriodeManager.h"
+#include "UVManager.h"
+#include "NoteManager.h"
 #include "Dossier.h"
 
 class DossierManager : public Manager
@@ -24,7 +26,7 @@ private:
 public:
     DossierManager(): dossiers() {}
 
-    void load(QString& fichier, const FormationManager& forman, const PeriodeManager& periodeman);
+    void load(QString& fichier, const FormationManager& forman, const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman);
     void save(QString& fichier, QString& login);
 
     Dossier& getDossier(const QString& login) { return dossiers.get(login); }

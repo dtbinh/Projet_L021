@@ -1,11 +1,13 @@
-#include "DossierManager.h"
+﻿#include "DossierManager.h"
 
 using namespace std;
 
-void DossierManager::load(QString& fichier,const FormationManager& forman,const PeriodeManager& periodeman)
+void DossierManager::load(QString& fichier,const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
 {
     std::vector<const Formation*> tempformations;
     std::vector<const Inscription*> tempinscriptions;
+    Factory<UV> tempuvs;
+    std::map<QString,Note> tempnotes;
     QString tempForma="NULL"; QString tempInscri="NULL";
     QDomDocument doc = load_xml(fichier);
 
@@ -16,7 +18,7 @@ void DossierManager::load(QString& fichier,const FormationManager& forman,const 
     {
         if(racine.tagName() == "dossier")
         {
-            QString tempNom, tempPrenom,tempFormation,tempUv,tempNote;
+            QString tempNom, tempPrenom,tempFormation,tempUv,tempNote,code;
             QDomElement unElement = racine.firstChildElement();
 
             while(!unElement.isNull())
@@ -38,31 +40,32 @@ void DossierManager::load(QString& fichier,const FormationManager& forman,const 
                     while(!filsElement.isNull())
                     {
                     if(filsElement.tagName()=="code"){
+                        code=filsElement.text();
+                    }
+                    else if(filsElement.tagName()=="semestre"){
                         tempInscri=filsElement.text();
-                        cout<<tempInscri.toStdString()<<endl;
                     }
                     else if(filsElement.tagName() =="formation"){
                         tempFormation=filsElement.text();
-                        //cout<<"Formation : " <<tempFormation.toStdString()<<endl;
                     }
                     else if(filsElement.tagName() == "uv"){
                         QDomElement filsUV=filsElement.firstChildElement();
                         while(!filsUV.isNull()){
                             if(filsUV.tagName()=="codeUV"){
                                 tempUv=filsUV.text();
-                                cout<<tempUv.toStdString()<<endl;
+                                tempuvs.ajouter(tempUv,uvman.getUV(tempUv));
                             }
                             if(filsUV.tagName()=="note"){
                                 tempNote=filsUV.text();
-                                cout<<tempNote.toStdString()<<endl;
+                                tempnotes[tempUv]=notman.getNote(tempNote);
                             }
                             filsUV=filsUV.nextSiblingElement();
                         }
                     }
                     filsElement= filsElement.nextSiblingElement();
                     }
-                    //Inscription temp(periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
-                    //tempinscriptions.push_back(&temp);
+                    Inscription temp (code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
+                    tempinscriptions.push_back(&temp); // Probleme ici ca ecrase les inscriptions precedentes
                 }
                 unElement = unElement.nextSiblingElement();
 
@@ -71,14 +74,21 @@ void DossierManager::load(QString& fichier,const FormationManager& forman,const 
             if (tempForma!="NULL"){
                 for (unsigned int i = 0; i < tempformations.size(); i++)
                 {
-                   // this->getDossier(login).ajouterFormation(*tempformations[i]);
+                   this->getDossier(login).ajouterFormation(*tempformations[i]);
                 }
                 tempformations.clear();
                 tempForma="NULL";
             }
             if (tempInscri!="NULL"){
                 for(unsigned int i=0; i < tempinscriptions.size(); i++){
-                    //this->getDossier(login).ajouterInscription(*tempinscriptions[i]);
+                    this->getDossier(login).ajouterInscription(tempinscriptions[i]->getCode(),tempinscriptions[i]->getPeriode(),
+                                                                                                    tempinscriptions[i]->getFormation());
+                    for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
+                    {
+                        this->getDossier(login).getInscription(tempinscriptions[i]->getCode()).ajouterUV(it->second.getCode());
+                        this->getDossier(login).getInscription(tempinscriptions[i]->getCode()).
+                        modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
+                    }
                 }
                 tempinscriptions.clear();
                 tempInscri="NULL";
@@ -118,8 +128,12 @@ void DossierManager::save(QString& fichier,QString& login)
         dossier.appendChild(inscription);
         QDomElement codeinscription=doc.createElement("code");
         inscription.appendChild(codeinscription);
+        QDomText codeText = doc.createTextNode(it->second.getCode());
+        codeinscription.appendChild(codeText);
+        QDomElement semestreinscription=doc.createElement("semestre");
+        inscription.appendChild(semestreinscription);
         QDomText inscriptionText = doc.createTextNode(it->second.getPeriode().getCode());
-        codeinscription.appendChild(inscriptionText);
+        semestreinscription.appendChild(inscriptionText);
         QDomElement formation = doc.createElement("formation");
         inscription.appendChild(formation);
         QDomText formationText=doc.createTextNode(it->second.getFormation().getCode());

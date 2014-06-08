@@ -15,7 +15,6 @@ SOURCES += \
     DossierManager.cpp \
     NoteManager.cpp \
     Manager.cpp \
-    Application.cpp
 
 HEADERS += \
     Dossier.h \
@@ -36,4 +35,3 @@ HEADERS += \
     NoteManager.h \
     Factory.h \
     Manager.h \
-    Application.h
