@@ -24,8 +24,8 @@ private:
 public:
     CreditsManager(): credits() {}
 
-    void load(const CategorieManager& catman);
-    void save();
+    void load(const QString& fichier, const CategorieManager& catman);
+    void save(const QString& fichier);
 
     Credits& getCredits(const QString& code) { return credits.get(code); }
     const Credits& getCredits(const QString& code) const { return credits.get(code); }

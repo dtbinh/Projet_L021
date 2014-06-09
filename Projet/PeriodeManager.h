@@ -22,8 +22,8 @@ private:
 public:
     PeriodeManager(): periodes() {}
 
-    void load();
-    void save();
+    void load(const QString& fichier);
+    void save(const QString& fichier);
 
     Periode& getPeriode(const QString& code) { return periodes.get(code); }
     const Periode& getPeriode(const QString& code) const { return periodes.get(code); }

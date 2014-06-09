@@ -22,8 +22,8 @@ private:
 public:
     CategorieManager(): categories() {}
 
-    void load();
-    void save();
+    void load(const QString& fichier);
+    void save(const QString& fichier);
 
     Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }

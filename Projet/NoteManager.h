@@ -22,8 +22,10 @@ private:
 
 public:
     NoteManager(): notes() {}
-    void load();
-    void save();
+
+    void load(const QString& fichier);
+    void save(const QString& fichier);
+
     Note& getNote(const QString& note) { return notes.get(note); }
     const Note& getNote(const QString& note) const { return notes.get(note); }
     void ajouterNote(const QString& note, const QString& mention) { notes.ajouter(note, Note(note, mention)); }

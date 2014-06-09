@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void PeriodeManager::load()
+void PeriodeManager::load(const QString& fichier)
 {
-    QDomDocument doc = load_xml("periode_utc.xml");
+    QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -37,7 +37,7 @@ void PeriodeManager::load()
     }
 }
 
-void PeriodeManager::save()
+void PeriodeManager::save(const QString& fichier)
 {
     QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
@@ -56,7 +56,7 @@ void PeriodeManager::save()
         QDomText anneeText = doc.createTextNode(QString::number(it->second.getAnnee()));
         annee.appendChild(anneeText);
     }
-    QFile file( "periode_utc.xml" );
+    QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;

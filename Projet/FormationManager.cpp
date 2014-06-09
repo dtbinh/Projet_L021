@@ -1,8 +1,8 @@
-﻿#include "FormationManager.h"
+#include "FormationManager.h"
 
 using namespace std;
 
-void FormationManager::load(const CreditsManager& credman,QString& fichier)
+void FormationManager::load(const QString& fichier, const CreditsManager& credman)
 {
     std::vector<const Credits*> tempcredits;
     QString tempCred="NULL";
@@ -50,7 +50,7 @@ void FormationManager::load(const CreditsManager& credman,QString& fichier)
     }
 }
 
-void FormationManager::load(const CreditsManager& credman,const UVManager& uvman,QString& fichier,const FormationManager& filman)
+void FormationManager::load(const QString& fichier, const CreditsManager& credman, const UVManager& uvman, const FormationManager& filman)
 {
     std::vector<const Credits*> tempcredits;
     std::vector<const UV*> tempuvs;
@@ -126,7 +126,8 @@ void FormationManager::load(const CreditsManager& credman,const UVManager& uvman
     }
 }
 
-void FormationManager::save(QString& fichier){
+void FormationManager::save(const QString& fichier)
+{
     QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);

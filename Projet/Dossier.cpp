@@ -18,6 +18,8 @@ void Dossier::setLogin()
     else {
         login = nom + prenom;
     }
+
+    //login.toLower();
 }
 
 void Dossier::afficher()
