@@ -58,8 +58,8 @@ int main()
         dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF17"));
         dosman.getDossier("enormand").getInscription("GI02").modifierNote("LO21", notman.getNote("A"));
         dosman.getDossier("enormand").afficher();
-*/
-        /*dosman.getDossier("enormand").ajouterInscription("GI01", periodeman.getPeriode("A2013"), forman.getFormation("GI"));
+*//*
+        dosman.getDossier("enormand").ajouterInscription("GI01", periodeman.getPeriode("A2013"), forman.getFormation("GI"));
         dosman.getDossier("enormand").getInscription("GI01").ajouterUV(uvman.getUV("IA02"));
         dosman.getDossier("enormand").getInscription("GI01").ajouterUV(uvman.getUV("LA13"));
         dosman.getDossier("enormand").getInscription("GI01").retirerUV("LA13");

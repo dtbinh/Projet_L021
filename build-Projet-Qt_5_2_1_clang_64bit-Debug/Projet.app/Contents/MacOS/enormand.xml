@@ -8,6 +8,14 @@
       <semestre>P2014</semestre>
       <formation>GI</formation>
       <uv>
+        <codeUV>IA02</codeUV>
+        <note>EC</note>
+      </uv>
+      <uv>
+        <codeUV>LA13</codeUV>
+        <note>A</note>
+      </uv>
+      <uv>
         <codeUV>LO21</codeUV>
         <note>A</note>
       </uv>
