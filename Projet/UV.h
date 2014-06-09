@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file UV.h
 /// \brief Les UVs sont les matières de l'UTC.
 /// \author Nicolas Szewe, Erwan Normand
@@ -14,22 +14,6 @@
 #include <algorithm>
 #include "Categorie.h"
 #include "Credits.h"
-
-///
-/// \enum Choix
-/// \brief Différents choix pour une complétion
-///
-enum Choix {
-    Confirmer,Refuser,Retarder,Avancer
-};
-
-///
-/// \enum Preference
-/// \brief Un étudiant peut donner une préférence quand à la volonté de faire une UV ou non
-///
-enum Preference{
-    Exigence,Refus,NSP
-};
 
 class UV
 {
