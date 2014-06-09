@@ -16,7 +16,9 @@ SOURCES += \
     NoteManager.cpp \
     Manager.cpp \
     Completion.cpp \
-    Solution.cpp
+    Solution.cpp \
+    Application.cpp
+    Application.cpp
 
 HEADERS += \
     Dossier.h \

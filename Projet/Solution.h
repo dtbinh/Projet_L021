@@ -9,6 +9,8 @@
 
 class Solution
 {
+    QString code;
+    Factory<Inscription> strategie;
 public:
     Solution();
 };

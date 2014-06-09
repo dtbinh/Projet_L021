@@ -10,6 +10,7 @@
 #include "UVManager.h"
 #include "PeriodeManager.h"
 #include "FormationManager.h"
+#include "Completion.h"
 
 using namespace std;
 
@@ -54,6 +55,7 @@ int main()
         dosman.getDossier("enormand").ajouterInscription("GI01", periodeman.getPeriode("A2013"), forman.getFormation("GI"));
 */
 
+        Completion compman=Completion(uvman);
         credman.save("credit_utc.xml");
         forman.save(temp);
         filman.save(tempfi);

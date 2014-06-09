@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml>
+<credit_utc.xml>
   <credits>
     <code>CS_4</code>
     <nombre>4</nombre>
@@ -100,4 +100,4 @@
     <nombre>24</nombre>
     <categorie>TSH</categorie>
   </credits>
-</xml>
+</credit_utc.xml>
