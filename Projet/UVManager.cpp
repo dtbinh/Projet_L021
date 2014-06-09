@@ -47,7 +47,7 @@ void UVManager::load(const QString& fichier, const CreditsManager& credman,const
 
 void UVManager::save(const QString& fichier)
 {
-    QDomDocument doc = save_xml();
+    QDomDocument doc = create_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 

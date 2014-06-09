@@ -20,10 +20,10 @@ private:
     Factory<Categorie> categories;
 
 public:
-    CategorieManager(): categories() {}
+    CategorieManager(const QString& f = ""): Manager(f), categories() {}
 
-    void load(const QString& fichier);
-    void save(const QString& fichier);
+    void load();
+    void save();
 
     Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }

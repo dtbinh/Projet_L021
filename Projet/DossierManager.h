@@ -24,9 +24,9 @@ private:
     Factory<Dossier> dossiers;
 
 public:
-    DossierManager(): dossiers() {}
+    DossierManager(const QString& f = ""): Manager(f), dossiers() {}
 
-    void load(const QString& fichier, const FormationManager& forman, const PeriodeManager& periodeman,const UVManager& uvman, const NoteManager& notman);
+    void load(const QString& fichier, const FormationManager& forman, const PeriodeManager& periodeman, const UVManager& uvman, const NoteManager& notman);
     void save(const QString& fichier, const QString& login);
 
     Dossier& getDossier(const QString& login) { return dossiers.get(login); }

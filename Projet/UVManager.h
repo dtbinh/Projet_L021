@@ -22,7 +22,7 @@ private:
     Factory<UV> uvs;
 
 public:
-    UVManager(): uvs() {}
+    UVManager(const QString& f = ""): Manager(f), uvs() {}
 
     void load(const QString& fichier, const CreditsManager& credman,const CategorieManager& catman);
     void save(const QString& fichier);

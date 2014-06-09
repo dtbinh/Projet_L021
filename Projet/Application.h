@@ -13,15 +13,14 @@
 #include "FormationManager.h"
 #include "NoteManager.h"
 
-class Application
+class Application : Manager
 {
 private:
     NoteManager notman;
     CategorieManager catman;
-    Factory<QString> fichiers;
 
 public:
-    Application(): notman(), catman(), fichiers() {}
+    Application(const QString& f = ""): Manager(f), notman(), catman() {}
 
     void load();
     void save();

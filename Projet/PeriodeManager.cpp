@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void PeriodeManager::load(const QString& fichier)
+void PeriodeManager::load()
 {
     QDomDocument doc = load_xml(fichier);
 
@@ -37,9 +37,9 @@ void PeriodeManager::load(const QString& fichier)
     }
 }
 
-void PeriodeManager::save(const QString& fichier)
+void PeriodeManager::save()
 {
-    QDomDocument doc = save_xml();
+    QDomDocument doc = create_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 

@@ -21,10 +21,10 @@ private:
     Factory<Note> notes;
 
 public:
-    NoteManager(): notes() {}
+    NoteManager(const QString& f = ""): Manager(f), notes() {}
 
-    void load(const QString& fichier);
-    void save(const QString& fichier);
+    void load();
+    void save();
 
     Note& getNote(const QString& note) { return notes.get(note); }
     const Note& getNote(const QString& note) const { return notes.get(note); }

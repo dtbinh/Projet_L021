@@ -35,8 +35,8 @@ int main()
         //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
         //set formation , set credits et set uvs à définir //pas utile avec les méthodes ajouter et retirer
 
-        PeriodeManager periodeman;
-        periodeman.load("periode_utc.xml");
+        PeriodeManager periodeman("periode_utc.xml");
+        periodeman.load();
 
         DossierManager dosman;
         QString fichier="enormand.xml";
@@ -64,7 +64,7 @@ int main()
         forman.save(temp);
         filman.save(tempfi);
         uvman.save("uv_utc.xml");
-        periodeman.save("periode_utc.xml");
+        periodeman.save();
         QString templogin="enormand";
         QString templogin2="agermain";
         dosman.save(fichier,templogin);

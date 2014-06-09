@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void NoteManager::load(const QString& fichier)
+void NoteManager::load()
 {
     QDomDocument doc = load_xml(fichier);
 
@@ -37,9 +37,9 @@ void NoteManager::load(const QString& fichier)
 }
 
 
-void NoteManager::save(const QString& fichier)
+void NoteManager::save()
 {
-    QDomDocument doc = save_xml();
+    QDomDocument doc = create_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 
@@ -56,6 +56,7 @@ void NoteManager::save(const QString& fichier)
         QDomText mentionText = doc.createTextNode(it->second.getMention());
         mention.appendChild(mentionText);
     }
+
     QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);

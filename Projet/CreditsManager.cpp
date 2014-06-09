@@ -45,8 +45,8 @@ void CreditsManager::load(const QString& fichier, const CategorieManager& catman
 
 void CreditsManager::save(const QString& fichier)
 {
-    QDomDocument doc = save_xml();
-    QDomElement root = doc.createElement(fichier);
+    QDomDocument doc = create_xml();
+    QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 
     for (map<QString,Credits>::const_iterator it = credits.begin(); it != credits.end(); it++)
@@ -67,7 +67,7 @@ void CreditsManager::save(const QString& fichier)
         QDomText categorieText = doc.createTextNode(it->second.getCategorie().getCode());
         categorie.appendChild(categorieText);
     }
-    QFile file( "credit_utc.xml" );
+    QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void CategorieManager::load(const QString& fichier)
+void CategorieManager::load()
 {
     QDomDocument doc = load_xml(fichier);
 
@@ -36,9 +36,9 @@ void CategorieManager::load(const QString& fichier)
     }
 }
 
-void CategorieManager::save(const QString &fichier)
+void CategorieManager::save()
 {
-    QDomDocument doc = save_xml();
+    QDomDocument doc = create_xml();
     QDomElement root = doc.createElement(fichier);
     doc.appendChild(root);
 

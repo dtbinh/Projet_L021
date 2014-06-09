@@ -15,7 +15,7 @@ QDomDocument Manager::load_xml(const QString& fichier)
     return doc;
 }
 
-QDomDocument Manager::save_xml()
+QDomDocument Manager::create_xml()
 {
     QDomDocument doc;
     QDomNode xmlNode = doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\"");
@@ -23,4 +23,16 @@ QDomDocument Manager::save_xml()
     doc.insertBefore(xmlNode, doc.firstChild());
 
     return doc;
+}
+
+void save_xml(const QString& fichier, const QDomDocument& document)
+{
+    QFile file(fichier);
+    if (!file.open(QIODevice::WriteOnly)) {
+        throw Exception("Impossible d'ouvrir le fichier " + fichier + ".");
+    }
+
+    QTextStream ts(&file);
+    int indent = 2;
+    document.save(ts, indent);
 }

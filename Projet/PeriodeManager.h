@@ -20,10 +20,10 @@ private:
     Factory<Periode> periodes;
 
 public:
-    PeriodeManager(): periodes() {}
+    PeriodeManager(const QString& f = ""): Manager(f), periodes() {}
 
-    void load(const QString& fichier);
-    void save(const QString& fichier);
+    void load();
+    void save();
 
     Periode& getPeriode(const QString& code) { return periodes.get(code); }
     const Periode& getPeriode(const QString& code) const { return periodes.get(code); }

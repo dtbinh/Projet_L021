@@ -100,7 +100,7 @@ void DossierManager::load(const QString& fichier, const FormationManager& forman
 
 void DossierManager::save(const QString& fichier, const QString& login)
 {
-    QDomDocument doc = save_xml();
+    QDomDocument doc = create_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
     QDomElement dossier = doc.createElement("dossier");

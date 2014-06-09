@@ -7,10 +7,21 @@
 
 class Manager
 {
-public:
-    Manager() {}
+protected:
+    QString fichier;
+
     QDomDocument load_xml(const QString& fichier);
-    QDomDocument save_xml();
+    QDomDocument create_xml();
+    void save_xml(const QString& fichier, const QDomDocument& document);
+
+public:
+    Manager(const QString& f = ""): fichier(f) {}
+
+    //void load(const QString& f = "") = 0;
+    //void save(const QString& f = "") = 0;
+
+    const QString& getFichier() { return fichier; }
+    void setFichier(const QString& f) { fichier = f; }
 };
 
 #endif // COMPOSANT_H
