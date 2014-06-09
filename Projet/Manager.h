@@ -1,4 +1,4 @@
-﻿#ifndef COMPOSANT_H
+#ifndef COMPOSANT_H
 #define COMPOSANT_H
 
 #include <QString>
@@ -9,7 +9,7 @@ class Manager
 {
 public:
     Manager() {}
-    QDomDocument load_xml(const QString& file);
+    QDomDocument load_xml(const QString& fichier);
     QDomDocument save_xml();
 };
 

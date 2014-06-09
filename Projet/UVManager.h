@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file UvManager.h
 /// \brief Manager des UVs
 /// \author Nicolas Szewe, Erwan Normand
@@ -24,8 +24,8 @@ private:
 public:
     UVManager(): uvs() {}
 
-    void load(const CreditsManager& credman,const CategorieManager& catman);
-    void save();
+    void load(const QString& fichier, const CreditsManager& credman,const CategorieManager& catman);
+    void save(const QString& fichier);
 
     UV& getUV(const QString& code) { return uvs.get(code); }
     const UV& getUV(const QString& code) const { return uvs.get(code); }

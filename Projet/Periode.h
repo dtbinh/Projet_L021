@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Periode.h
 /// \brief Une formation est découpée en plusieurs périodes.
 /// \author Erwan Normand
@@ -25,6 +25,9 @@ public:
     const QString& getCode() const { return code; }
     const QString& getNom() const { return nom; }
     unsigned int getAnnee() const { return annee; }
+
+    void setNom(const QString& n) { nom = n; }
+    void setAnnee(unsigned int a) { annee = a; }
 
     void afficher() const;
 };

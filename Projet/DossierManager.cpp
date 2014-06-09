@@ -1,8 +1,8 @@
-﻿#include "DossierManager.h"
+#include "DossierManager.h"
 
 using namespace std;
 
-void DossierManager::load(QString& fichier,const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
+void DossierManager::load(const QString& fichier, const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
 {
     std::vector<const Formation*> tempformations;
     std::vector<const Inscription*> tempinscriptions;
@@ -98,7 +98,7 @@ void DossierManager::load(QString& fichier,const FormationManager& forman,const 
     }
 }
 
-void DossierManager::save(QString& fichier,QString& login)
+void DossierManager::save(const QString& fichier, const QString& login)
 {
     QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");

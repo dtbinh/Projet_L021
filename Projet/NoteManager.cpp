@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void NoteManager::load()
+void NoteManager::load(const QString& fichier)
 {
-    QDomDocument doc = load_xml("note_utc.xml");
+    QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -37,8 +37,8 @@ void NoteManager::load()
 }
 
 
-void NoteManager::save(){
-
+void NoteManager::save(const QString& fichier)
+{
     QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
@@ -56,7 +56,7 @@ void NoteManager::save(){
         QDomText mentionText = doc.createTextNode(it->second.getMention());
         mention.appendChild(mentionText);
     }
-    QFile file( "note_utc.xml" );
+    QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;

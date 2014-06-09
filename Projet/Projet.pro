@@ -35,3 +35,4 @@ HEADERS += \
     NoteManager.h \
     Factory.h \
     Manager.h \
+    Application.h

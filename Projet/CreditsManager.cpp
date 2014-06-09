@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void CreditsManager::load(const CategorieManager& catman)
+void CreditsManager::load(const QString& fichier, const CategorieManager& catman)
 {
-    QDomDocument doc = load_xml("credit_utc.xml");
+    QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -43,10 +43,10 @@ void CreditsManager::load(const CategorieManager& catman)
     }
 }
 
-void CreditsManager::save()
+void CreditsManager::save(const QString& fichier)
 {
     QDomDocument doc = save_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomElement root = doc.createElement(fichier);
     doc.appendChild(root);
 
     for (map<QString,Credits>::const_iterator it = credits.begin(); it != credits.end(); it++)

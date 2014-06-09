@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void CategorieManager::load()
+void CategorieManager::load(const QString& fichier)
 {
-    QDomDocument doc = load_xml("categorie_utc.xml");
+    QDomDocument doc = load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -36,10 +36,10 @@ void CategorieManager::load()
     }
 }
 
-void CategorieManager::save()
+void CategorieManager::save(const QString &fichier)
 {
     QDomDocument doc = save_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomElement root = doc.createElement(fichier);
     doc.appendChild(root);
 
     for (map<QString,Categorie>::const_iterator it = categories.begin(); it != categories.end(); it++)
@@ -55,7 +55,7 @@ void CategorieManager::save()
         QDomText nomText = doc.createTextNode(it->second.getNom());
         nom.appendChild(nomText);
     }
-    QFile file( "categorie_utc.xml" );
+    QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;

@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file FormationManager.h
 /// \brief Manager des Formations.
 /// \author Nicolas Szewe, Erwan Normand
@@ -25,9 +25,9 @@ private:
 public:
     FormationManager(): formations() {}
 
-    void load(const CreditsManager& credman,QString& fichier);
-    void load(const CreditsManager& credman,const UVManager& uvman,QString& fichier,const FormationManager& filman);
-    void save(QString& fichier);
+    void load(const QString& fichier, const CreditsManager& credman);
+    void load(const QString& fichier, const CreditsManager& credman,const UVManager& uvman,const FormationManager& filman);
+    void save(const QString& fichier);
 
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }

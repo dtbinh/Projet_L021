@@ -1,10 +1,10 @@
-﻿#include "UVManager.h"
+#include "UVManager.h"
 
 using namespace std;
 
-void UVManager::load(const CreditsManager& credman,const CategorieManager& catman)
+void UVManager::load(const QString& fichier, const CreditsManager& credman,const CategorieManager& catman)
 {
-    QDomDocument doc = load_xml("uv_utc.xml");
+    QDomDocument doc = load_xml(fichier);
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
@@ -45,7 +45,7 @@ void UVManager::load(const CreditsManager& credman,const CategorieManager& catma
   }
 }
 
-void UVManager::save()
+void UVManager::save(const QString& fichier)
 {
     QDomDocument doc = save_xml();
     QDomElement root = doc.createElement("xml");
@@ -76,7 +76,7 @@ void UVManager::save()
         categorie.appendChild(categorieText);
 
     }
-    QFile file( "uv_utc.xml" );
+    QFile file(fichier);
     file.open(QIODevice::WriteOnly);
     QTextStream ts(&file);
     int indent = 2;
