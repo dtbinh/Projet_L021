@@ -17,21 +17,18 @@ int main()
 {
     try
     {
-        Application app;
+        Application app("configuration.xml");
         app.load();
 
-        CreditsManager credman;
-        credman.load("credit_utc.xml", app.getCategorieManager());
-
         UVManager uvman;
-        uvman.load("uv_utc.xml", credman, app.getCategorieManager());
+        uvman.load("uv_utc.xml", app.getCreditsManager(), app.getCategorieManager());
 
         FormationManager forman;
         FormationManager filman;
         QString tempfi = "filiere_utc.xml";
         QString temp = "formation_utc.xml";
-        filman.load(tempfi, credman);
-        forman.load(temp, credman, uvman, filman);
+        filman.load(tempfi, app.getCreditsManager());
+        forman.load(temp, app.getCreditsManager(), uvman, filman);
         //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
         //set formation , set credits et set uvs à définir //pas utile avec les méthodes ajouter et retirer
 
@@ -42,7 +39,7 @@ int main()
         QString fichier="enormand.xml";
         dosman.load(fichier, forman, periodeman, uvman, app.getNoteManager());
         QString fichier2="agermain.xml";
-        dosman.load(fichier2,forman,periodeman,uvman, app.getNoteManager());
+        dosman.load(fichier2, forman, periodeman,uvman, app.getNoteManager());
 
         /*dosman.getDossier("enormand").ajouterInscription("GI02", periodeman.getPeriode("P2014"), forman.getFormation("GI"));
         dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF16"));
@@ -60,7 +57,8 @@ int main()
         dosman.getDossier("enormand").getInscription("GI01").modifierNote("LA13", notman.getNote("A"));
         dosman.getDossier("enormand").afficher();*/
 
-        credman.save("credit_utc.xml");
+
+        app.save();
         forman.save(temp);
         filman.save(tempfi);
         uvman.save("uv_utc.xml");

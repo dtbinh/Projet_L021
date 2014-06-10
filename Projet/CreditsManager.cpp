@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void CreditsManager::load(const QString& fichier, const CategorieManager& catman)
+void CreditsManager::load(const CategorieManager& catman)
 {
     QDomDocument doc = load_xml(fichier);
 
@@ -43,7 +43,7 @@ void CreditsManager::load(const QString& fichier, const CategorieManager& catman
     }
 }
 
-void CreditsManager::save(const QString& fichier)
+void CreditsManager::save()
 {
     QDomDocument doc = create_xml();
     QDomElement root = doc.createElement("xml");
