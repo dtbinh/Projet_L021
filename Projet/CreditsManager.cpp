@@ -4,7 +4,7 @@ using namespace std;
 
 void CreditsManager::load(const CategorieManager& catman)
 {
-    QDomDocument doc = load_xml(fichier);
+    QDomDocument doc = this->load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -45,7 +45,7 @@ void CreditsManager::load(const CategorieManager& catman)
 
 void CreditsManager::save()
 {
-    QDomDocument doc = create_xml();
+    QDomDocument doc = this->create_xml();
     QDomElement root = doc.createElement("xml");
     doc.appendChild(root);
 

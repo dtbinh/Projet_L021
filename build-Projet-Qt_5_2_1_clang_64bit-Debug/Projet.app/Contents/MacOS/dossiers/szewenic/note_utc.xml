@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notes>
+  <note>
+    <code>A</code>
+    <mention>Mention</mention>
+  </note>
+  <note>
+    <code>ABS</code>
+    <mention>Absent</mention>
+  </note>
+  <note>
+    <code>B</code>
+    <mention>Bien</mention>
+  </note>
+  <note>
+    <code>C</code>
+    <mention>Suffisant</mention>
+  </note>
+  <note>
+    <code>D</code>
+    <mention>Passable</mention>
+  </note>
+  <note>
+    <code>E</code>
+    <mention>Juste</mention>
+  </note>
+  <note>
+    <code>EC</code>
+    <mention>En cours</mention>
+  </note>
+  <note>
+    <code>F</code>
+    <mention>Très Insuffisant</mention>
+  </note>
+  <note>
+    <code>FX</code>
+    <mention>Insuffisant</mention>
+  </note>
+  <note>
+    <code>RES</code>
+    <mention>Reserve</mention>
+  </note>
+</notes>

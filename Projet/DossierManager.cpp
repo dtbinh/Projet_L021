@@ -9,7 +9,7 @@ void DossierManager::load(const QString& fichier, const FormationManager& forman
     Factory<UV> tempuvs;
     std::map<QString,Note> tempnotes;
     QString tempForma="NULL"; QString tempInscri="NULL";
-    QDomDocument doc = load_xml(fichier);
+    QDomDocument doc = this->load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -108,7 +108,7 @@ void DossierManager::save()
 
 void DossierManager::save(const QString& login)
 {
-    QDomDocument doc = create_xml();
+    QDomDocument doc = this->create_xml();
     QDomElement root = doc.createElement("dossiers");
     doc.appendChild(root);
     QDomElement dossier = doc.createElement("dossier");

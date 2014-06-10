@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml>
+<periodes>
   <periode>
     <nom>Automne</nom>
     <annee>2001</annee>
@@ -112,4 +112,4 @@
     <nom>Printemps</nom>
     <annee>2014</annee>
   </periode>
-</xml>
+</periodes>

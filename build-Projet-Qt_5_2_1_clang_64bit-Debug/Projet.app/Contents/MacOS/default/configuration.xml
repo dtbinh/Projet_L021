@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <manager>
-	<nom>notman</nom>
+	<nom>note</nom>
     <fichier>note_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>catman</nom>
+	<nom>categorie</nom>
     <fichier>categorie_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>credman</nom>
+	<nom>credits</nom>
     <fichier>credits_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>uvman</nom>
+	<nom>uv</nom>
     <fichier>uv_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>filman</nom>
+	<nom>filiere</nom>
     <fichier>filiere_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>forman</nom>
+	<nom>formation</nom>
     <fichier>formation_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>periodeman</nom>
+	<nom>periode</nom>
     <fichier>periode_utc.xml</fichier>
-  </manager>  
-  <manager>
-	<nom>dosman</nom>
-    <fichier>enormand.xml</fichier>
   </manager>
 </configuration>

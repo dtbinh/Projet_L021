@@ -23,6 +23,7 @@
 class Application : Manager
 {
 private:
+    QString dossier;
     NoteManager notman;
     CategorieManager catman;
     CreditsManager credman;
@@ -35,9 +36,9 @@ private:
     void loadConfiguration();
 
 public:
-    Application(const QString& f = ""): Manager(f), notman(), catman(), uvman(), forman(), filman(), periodeman() {}
+    Application(const QString& f = "");
 
-    void load();
+    void load(const QString& f = "");
     void save();
 
     NoteManager& getNoteManager() { return notman; }

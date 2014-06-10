@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml>
+<categories>
   <categorie>
     <code>CS</code>
     <nom>Connaissances Scientifiques</nom>
@@ -16,4 +16,4 @@
     <code>TSH</code>
     <nom>Technlogie des Sciences Humaines</nom>
   </categorie>
-</xml>
+</categories>

@@ -4,7 +4,7 @@ using namespace std;
 
 void UVManager::load(const CreditsManager& credman,const CategorieManager& catman)
 {
-    QDomDocument doc = load_xml(fichier);
+    QDomDocument doc = this->load_xml(fichier);
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 

@@ -4,7 +4,7 @@ using namespace std;
 
 void NoteManager::load()
 {
-    QDomDocument doc = load_xml(fichier);
+    QDomDocument doc = this->load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -39,7 +39,7 @@ void NoteManager::load()
 
 void NoteManager::save()
 {
-    QDomDocument doc = create_xml();
+    QDomDocument doc = this->create_xml();
     QDomElement root = doc.createElement("notes");
     doc.appendChild(root);
 

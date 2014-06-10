@@ -2,9 +2,16 @@
 
 using namespace std;
 
+Application::Application(const QString& f): Manager(f), notman(), catman(), uvman(), forman(), filman(), periodeman()
+{
+    QFileInfo infos(f);
+
+    dossier = infos.path();
+}
+
 void Application::loadConfiguration()
 {
-    QDomDocument doc = load_xml(fichier);
+    QDomDocument doc = this->load_xml(fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -22,7 +29,7 @@ void Application::loadConfiguration()
                     manager_nom = element.text();
                 }
                 else if (element.tagName() == "fichier") {
-                    manager_fichier = element.text();
+                    manager_fichier = dossier + "/" + element.text();
                 }
 
                 element = element.nextSiblingElement();
@@ -55,8 +62,12 @@ void Application::loadConfiguration()
     }
 }
 
-void Application::load()
+void Application::load(const QString& f)
 {
+    if (f != "") {
+        this->setFichier(f);
+    }
+
     loadConfiguration();
 
     notman.load();

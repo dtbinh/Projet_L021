@@ -1,0 +1,1101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uvs>
+  <uv>
+    <code>AP</code>
+    <nom>Atelier Projet</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>API06</code>
+    <nom>Analyse De Donnees Et Data Mining (Apprentissage)</nom>
+    <credit>CS_4</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>API07</code>
+    <nom>Architecture Des Applications Internet, Programmation Web Et Securite (Apprentissage)</nom>
+    <credit>TM_Demi</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>API08</code>
+    <nom>Ihm Et Multimédia (Apprentissage)</nom>
+    <credit>TM_4</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>API09</code>
+    <nom>Méthodes Et Outils Pour L'Optimisation Et La Simulation (Apprentissage)</nom>
+    <credit>CS_4</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>API10</code>
+    <nom>Méthodes De Vérification Et Validation De Logiciel Et Programmation Sous Linux (Apprentissage)</nom>
+    <credit>TM_Demi</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>AR03</code>
+    <nom>Art Et Technologies Contemporaines</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>BA01</code>
+    <nom>Equipements Techniques Du Batiment</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>BA02</code>
+    <nom>Gestion Technique Du Patrimoine Immobilier</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>BA04</code>
+    <nom>Conversion Et Gestion Des Energies Renouvelables</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>BA07</code>
+    <nom>Modes Opératoires De La Construction</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>BA09</code>
+    <nom>Introduction Au Calcul Des Structures Du Batiment</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>BI01</code>
+    <nom>Modeles Pour La Bioinformatique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>BL01</code>
+    <nom>Sciences Biologiques Pour L'Ingénieur</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>BL09</code>
+    <nom>Biophysique Des Systèmes Biologiques</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>BL10</code>
+    <nom>Structures Et Physicochimie Des Molécules Biologiques</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>BL22</code>
+    <nom>Microbiologie Et Biologie Moléculaire</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>BL30</code>
+    <nom>Physiologie Des Systèmes Intégrés</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>BM01</code>
+    <nom>Introduction à L'Instrumentation Biomédicale</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>BT02</code>
+    <nom>Opérations Agro-Industrielles</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>C2I1</code>
+    <nom>Certificat Informatique Et Internet Niveau 1</nom>
+    <credit>TM_4</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>CM01</code>
+    <nom>Physique De La Matière</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>CM11</code>
+    <nom>Chimie Générale</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>CM12</code>
+    <nom>Chimie Physique Minérale</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>CM13</code>
+    <nom>Chimie Des Substances Organiques Et Biologiques</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>CM15</code>
+    <nom>Systemes Colloidaux - Applications Agroalimentaires</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>CM70</code>
+    <nom>Travaux Pratiques De Gp (1)</nom>
+    <credit>TM_Demi</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>DD02</code>
+    <nom>Introduction A L'Eco-Conception Et A L'Analyse De Cycle De Vie</nom>
+    <credit>TM_Demi</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>DI01</code>
+    <nom>Initiation Au Design Industriel</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>DI02</code>
+    <nom>Initiation Au Design Graphique</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>EI03</code>
+    <nom>Communication Interculturelle En Entreprises, Organisations Transnationales</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>EI04</code>
+    <nom>Intelligence économique : Stratégie D'Entreprise, Démarche Et Outils</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>EI05</code>
+    <nom>Science, Technologie Et Société Dans L'Union Européenne</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>EL01</code>
+    <nom>Phénomènes Electromagnétiques</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>EL02</code>
+    <nom>électricité Industrielle Appliquée</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>EN21</code>
+    <nom>Bases De L'électronique Analogique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>FQ01</code>
+    <nom>économie Globale Et Maitrise De La Qualité</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>GE10</code>
+    <nom>économie Politique</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE12</code>
+    <nom>Géographie Et économie Des Territoires</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE13</code>
+    <nom>Les Risques Entre Technique Et Societe</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE15</code>
+    <nom>Initiation A La Création Et Gestion D'Entreprises Innovantes</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE20</code>
+    <nom>économie Industrielle</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE21</code>
+    <nom>économie Et Gestion De L'Innovation Et Du Numérique</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE22</code>
+    <nom>économie Internationale</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE23</code>
+    <nom>Transferts De Technologies Et Développements</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE24</code>
+    <nom>Recherche Developpement : Ingenieur Et Investisseurs</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE25</code>
+    <nom>Gestion Et Organisation De La Production</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE26</code>
+    <nom>Management Stratégique Des Ressources Humaines</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE28</code>
+    <nom>économie Et Droit De La Propriété Intellectuelle (Industrielle Et Artistique) Dans Une économie Reposant Sur La Connaissance</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE29</code>
+    <nom>Gestion Et Management International De L'Entreprise</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE36</code>
+    <nom>Marketing</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>GE37</code>
+    <nom>Gestion De Projet</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>GE90</code>
+    <nom>Organisation, Innovation Et International</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>HE01</code>
+    <nom>épistémologie Et Histoire Des Sciences</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>HE03</code>
+    <nom>Logique : Histoire Et Formalisme</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>HE05</code>
+    <nom>Culture Et Histoire Des Techniques</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>IA02</code>
+    <nom>Résolution De Problèmes Et Programmation Logique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>IC01</code>
+    <nom>Histoire Et Prospective Des Industries Culturelles</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>IC03</code>
+    <nom>Le Numérique : Des Formats Aux Chaines De Production</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>IC05</code>
+    <nom>Technologies Pour La Documentation Et L'Indexation Dans L'Hypermédia</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>IC07</code>
+    <nom>Techniques Et Technologies Du Musical Et Du Sonore</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA00</code>
+    <nom>Allemand Initiation</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA01</code>
+    <nom>Allemand Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA02</code>
+    <nom>Allemand Niveau II</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA03</code>
+    <nom>Allemand Niveau III</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA04</code>
+    <nom>Pratique De La Communication En Allemand</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA11</code>
+    <nom>Anglais Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA12</code>
+    <nom>Anglais Niveau II</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA13</code>
+    <nom>Anglais Niveau III</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA14</code>
+    <nom>Civilisation Du Monde Anglophone</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA15</code>
+    <nom>Anglais Professionnel - Niveau V</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA20</code>
+    <nom>Espagnol Initiation</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA21</code>
+    <nom>Espagnol Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA22</code>
+    <nom>Espagnol Niveau II</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA23</code>
+    <nom>Espagnol Niveau III</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA24</code>
+    <nom>Le Monde Hispanique Contemporain : L'Amérique Latine (Niveau IV)</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA91</code>
+    <nom>Francais Langue étrangère Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA92</code>
+    <nom>Francais Langue étrangère Niveau II</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA93</code>
+    <nom>Francais Langue étrangère Niveau III</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LA94</code>
+    <nom>Francais Langue étrangère Niveau IV</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LB04</code>
+    <nom>Interculturalité Franco-Allemande</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LB14</code>
+    <nom>Interculturalité Appliquée Aux Pays Anglophones</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LB24</code>
+    <nom>Le Monde Hispanique (Niveau IV): L'Espagne</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LC14</code>
+    <nom>Communication Scientifique Et Technique En Anglais</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG30</code>
+    <nom>Japonais Initiation</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG31</code>
+    <nom>Japonais Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG40</code>
+    <nom>Portugais Initiation</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG41</code>
+    <nom>Portugais Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG42</code>
+    <nom>Portugais Niveau II</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG50</code>
+    <nom>Italien Initiation</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG51</code>
+    <nom>Italien Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG52</code>
+    <nom>Italien Niveau II</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG60</code>
+    <nom>Chinois Initiation</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LG61</code>
+    <nom>Chinois Niveau I</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>LO01</code>
+    <nom>Bases De La Programmation</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>LO21</code>
+    <nom>Programmation Et Conception Orientees Objet</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>LO22</code>
+    <nom>Genie Logiciel</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>MQ01</code>
+    <nom>éléments De Resistance Des Matériaux</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MQ03</code>
+    <nom>Mécanique Des Vibrations I</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MQ17</code>
+    <nom>Introduction Aux Propriétés Mécaniques Et à L'Ingénierie Des Matériaux</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MQ18</code>
+    <nom>Cinématique Et Dynamique Des Systèmes</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT10</code>
+    <nom>Structures,Calcul Formel Et Algorithmes</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT12</code>
+    <nom>Methodes Mathematiques Pour L'Analyse Du Signal Et De L'Image</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT22</code>
+    <nom>Fonctions De Plusieurs Variables Réelles Et Applications</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT23</code>
+    <nom>Algèbre Linéaire Et Applications</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT34</code>
+    <nom>Analyse 2 : Mesures, Intégrations, Probabilités</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT37</code>
+    <nom>Logiques, Quelques Approfondissements Mathématiques Et Philosophiques</nom>
+    <credit>CS_Demi</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT38</code>
+    <nom>Probabilités</nom>
+    <credit>CS_Demi</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT90</code>
+    <nom>Fonctions D'Une Variable Reelle 1</nom>
+    <credit>CS_4</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT91</code>
+    <nom>Fonctions D'Une Variable Reelle 2</nom>
+    <credit>CS_Demi</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>MT94</code>
+    <nom>Introduction Aux Mathematiques Appliquées</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>MU01</code>
+    <nom>Pratique Instrumentale D'Ensemble</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>MU02</code>
+    <nom>Pratique Instrumentale De Haut Niveau</nom>
+    <credit>TSH_Double</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>MU03</code>
+    <nom>Pratique Collective Des Musiques Contemporaines</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>NF01</code>
+    <nom>Algorithmique Et Programmation</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NF02</code>
+    <nom>Du Circuit Intégré Au Microprocesseur</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NF04</code>
+    <nom>Modélisation Numérique Des Problèmes De L'Ingénieur</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>NF15</code>
+    <nom>Microprocesseurs, Interfaces Et Logiciels De Bases</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NF16</code>
+    <nom>Algorithmique Et Structures De Données</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>NF17</code>
+    <nom>Conception De Bases De Données</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NF22</code>
+    <nom>Micro-Ordinateurs Et Applications</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NF92</code>
+    <nom>Traitement Automatique De L'Information</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NP90</code>
+    <nom>Nano-Projets</nom>
+    <credit>TM_2</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>NX17</code>
+    <nom>Introduction Aux Bases De Donnees</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>PH01</code>
+    <nom>Introduction à La Philosophie</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>PH09</code>
+    <nom>éthiques : Approche Pluridisciplinaire</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>PR</code>
+    <nom>Réalisation De Projet</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>PS04</code>
+    <nom>Thermodynamique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>PS09</code>
+    <nom>Acoustique Appliquée</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>PS90</code>
+    <nom>Introduction A La Mesure</nom>
+    <credit>TM_Demi</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>PS91</code>
+    <nom>Mecanique Physique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>PS92</code>
+    <nom>Dynamique Des Systemes Et Des Solides</nom>
+    <credit>CS_Demi</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>PS93</code>
+    <nom>Optique Geometrique</nom>
+    <credit>CS_Demi</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>PS94</code>
+    <nom>Electricite</nom>
+    <credit>CS_Demi</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>RO03</code>
+    <nom>Recherche Opérationnelle, Optimisation Combinatoire</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>RR01</code>
+    <nom>Cinétique Chimique Et Réacteurs Homogènes</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>SA11</code>
+    <nom>Pratiques Théatrales</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SC01</code>
+    <nom>Séminaire Interdisciplinaire De Sciences Et Technologies Cognitives</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SC11</code>
+    <nom>Théorie Des Sciences Cognitives : Computation Et énaction</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SC12</code>
+    <nom>Technologie, Cognition, Perception</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SC21</code>
+    <nom>Linguistique Et Philosophie Du Langage</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SC22</code>
+    <nom>Sociologie Cognitive, Lien Social Et Techniques</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI01</code>
+    <nom>Science Et Debat Public</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI02</code>
+    <nom>Communication Professionnelle De L'Ingénieur</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI05</code>
+    <nom>Theories De La Communication</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI06</code>
+    <nom>La Documentattion Cross-Media Pour Les Entreprises Et Les Collectivites Locales</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI07</code>
+    <nom>Medias Classiques Et Medias Numeriques</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI11</code>
+    <nom>Expression Orale- Parole Publique</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI14</code>
+    <nom>Parole Publique En Anglais</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI20</code>
+    <nom>Rhetorique Et Arts Du Discours</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI22</code>
+    <nom>Signes Et Contenus Numeriques</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI24</code>
+    <nom>études Des écritures Numériques Ordinaires</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI28</code>
+    <nom>écriture Interactive Et Multimédia</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SI90</code>
+    <nom>Séminaire De Communication Des Connaissances Technologiques</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SL</code>
+    <nom>Suivi Linguistique</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SO04</code>
+    <nom>Initiation Au Droit</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SO05</code>
+    <nom>Sociologie, Organisations Et Dynamiques Des Collectifs</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SP01</code>
+    <nom>Un Corps Pour Comprendre Et Apprendre</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SP02</code>
+    <nom>Conduire Un Projet Sportif</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>SR02</code>
+    <nom>Systèmes D'Exploitation : Des Concepts à La Programmation</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>SY01</code>
+    <nom>éléments De Probabilités</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>SY02</code>
+    <nom>Méthodes Statistiques Pour L'Ingénieur</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>SY04</code>
+    <nom>Systèmes Asservis Linéaires : Analyse Et Commande</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>SY14</code>
+    <nom>éléments D'Automatique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>TF01</code>
+    <nom>Mécanique Des Fluides Incompressibles</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>TF06</code>
+    <nom>Transfert De Chaleur</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>TF14</code>
+    <nom>Les Opérations De Transfert De Matière</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN01</code>
+    <nom>éléments De Dessin Technique</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN02</code>
+    <nom>Introduction A La Conception Mécanique</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN03</code>
+    <nom>Fabrication Mécanique</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN04</code>
+    <nom>Réalisation</nom>
+    <credit>TM_4</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN06</code>
+    <nom>Transmission Des Efforts En Mécanique</nom>
+    <credit>CS_Classique</credit>
+    <categorie>CS</categorie>
+  </uv>
+  <uv>
+    <code>TN08</code>
+    <nom>Dessin De Communication</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN16</code>
+    <nom>étude Interculturelle</nom>
+    <credit>TSH_Classique</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>TN20</code>
+    <nom>Cao : Modélisation Géométrique</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TN22</code>
+    <nom>éléments De Bureau D'études</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TO01</code>
+    <nom>Module De Preparation Au Toeic</nom>
+    <credit>TSH_Demi</credit>
+    <categorie>TSH</categorie>
+  </uv>
+  <uv>
+    <code>TR91</code>
+    <nom>Techniques De Recherche D'Information Pour L'Ingenieur</nom>
+    <credit>TM_2</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TS01</code>
+    <nom>Maitrise Des Risques</nom>
+    <credit>TM_Classique</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>TX</code>
+    <nom>étude Expérimentale</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>UB04</code>
+    <nom>Ambiances Et Environnement Lumineux</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>UR03</code>
+    <nom>Cartographie Sémiologie Graphique Et Cao/Dao</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+  <uv>
+    <code>UR05</code>
+    <nom>Aménagement Et Environnement</nom>
+    <credit>TM_5</credit>
+    <categorie>TM</categorie>
+  </uv>
+</uvs>

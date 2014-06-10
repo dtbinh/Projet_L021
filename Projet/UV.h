@@ -65,17 +65,24 @@ public:
     const QString& getCode() const { return code; }
 
     ///
+    /// \fn setCode
+    /// \param c Le nouveau code pour l'UV
+    /// \brief Fonction pour modifier le code d'une uv
+    ///
+    void setCode(const QString& c) { code = c; }
+
+    ///
     /// \fn getNom
     /// \return string Le nom de l'UV
     ///
     const QString& getNom() const { return nom; }
 
     ///
-    /// \fn setCode
-    /// \param c Le nouveau code pour l'UV
-    /// \brief Fonction pour modifier le code d'une uv
+    /// \fn setNom
+    /// \param c Le nouveau nom pour l'UV
+    /// \brief Fonction pour modifier le nom d'une uv
     ///
-    void setCode(const QString& c) { code = c; }
+    void setNom(const QString& n) { nom = n; }
 
     ///
     /// \fn getCategorie

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml>
+<formations>
   <formation>
     <code>GB</code>
     <nom>Genie Biologique</nom>
@@ -301,4 +301,4 @@
     <uvs>UR03</uvs>
     <uvs>UR05</uvs>
   </formation>
-</xml>
+</formations>

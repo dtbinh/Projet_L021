@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xml>
+<dossiers>
   <dossier>
     <nom>normand</nom>
     <prenom>erwan</prenom>
@@ -9,7 +9,7 @@
       <formation>GI</formation>
       <uv>
         <codeUV>LO21</codeUV>
-        <note>A</note>
+        <note>C</note>
       </uv>
       <uv>
         <codeUV>NF17</codeUV>
@@ -17,4 +17,4 @@
       </uv>
     </inscription>
   </dossier>
-</xml>
+</dossiers>
