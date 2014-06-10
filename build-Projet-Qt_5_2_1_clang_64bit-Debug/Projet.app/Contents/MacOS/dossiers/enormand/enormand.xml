@@ -4,6 +4,19 @@
     <nom>normand</nom>
     <prenom>erwan</prenom>
     <inscription>
+      <code>GI01</code>
+      <semestre>A2013</semestre>
+      <formation>GI</formation>
+      <uv>
+        <codeUV>LO21</codeUV>
+        <note>A</note>
+      </uv>
+      <uv>
+        <codeUV>NF17</codeUV>
+        <note>EC</note>
+      </uv>
+    </inscription>
+    <inscription>
       <code>GI02</code>
       <semestre>P2014</semestre>
       <formation>GI</formation>

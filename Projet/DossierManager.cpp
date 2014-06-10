@@ -1,11 +1,11 @@
-#include "DossierManager.h"
+﻿#include "DossierManager.h"
 
 using namespace std;
 
 void DossierManager::load(const QString& fichier, const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
 {
     std::vector<const Formation*> tempformations;
-    std::vector<const Inscription*> tempinscriptions;
+    std::vector<Inscription> tempinscriptions;
     Factory<UV> tempuvs;
     std::map<QString,Note> tempnotes;
     QString tempForma="NULL"; QString tempInscri="NULL";
@@ -65,7 +65,7 @@ void DossierManager::load(const QString& fichier, const FormationManager& forman
                     filsElement= filsElement.nextSiblingElement();
                     }
                     Inscription temp (code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
-                    tempinscriptions.push_back(&temp); // Probleme ici ca ecrase les inscriptions precedentes
+                    tempinscriptions.push_back(temp); // Probleme ici ca ecrase les inscriptions precedentes
                 }
                 unElement = unElement.nextSiblingElement();
 
@@ -81,12 +81,12 @@ void DossierManager::load(const QString& fichier, const FormationManager& forman
             }
             if (tempInscri!="NULL"){
                 for(unsigned int i=0; i < tempinscriptions.size(); i++){
-                    this->getDossier(login).ajouterInscription(tempinscriptions[i]->getCode(),tempinscriptions[i]->getPeriode(),
-                                                                                                    tempinscriptions[i]->getFormation());
+                    this->getDossier(login).ajouterInscription(tempinscriptions[i].getCode(),tempinscriptions[i].getPeriode(),
+                                                                                                    tempinscriptions[i].getFormation());
                     for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
                     {
-                        this->getDossier(login).getInscription(tempinscriptions[i]->getCode()).ajouterUV(it->second.getCode());
-                        this->getDossier(login).getInscription(tempinscriptions[i]->getCode()).
+                        this->getDossier(login).getInscription(tempinscriptions[i].getCode()).ajouterUV(it->second.getCode());
+                        this->getDossier(login).getInscription(tempinscriptions[i].getCode()).
                         modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
                     }
                 }
