@@ -27,7 +27,8 @@ public:
     DossierManager(const QString& f = ""): Manager(f), dossiers() {}
 
     void load(const QString& fichier, const FormationManager& forman, const PeriodeManager& periodeman, const UVManager& uvman, const NoteManager& notman);
-    void save(const QString& fichier, const QString& login);
+    void save();
+    void save(const QString& login);
 
     Dossier& getDossier(const QString& login) { return dossiers.get(login); }
     const Dossier& getDossier(const QString& login) const { return dossiers.get(login); }

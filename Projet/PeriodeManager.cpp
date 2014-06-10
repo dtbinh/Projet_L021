@@ -40,7 +40,7 @@ void PeriodeManager::load()
 void PeriodeManager::save()
 {
     QDomDocument doc = create_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomElement root = doc.createElement("periodes");
     doc.appendChild(root);
 
     for (map<QString,Periode>::const_iterator it = periodes.begin(); it != periodes.end(); it++)
@@ -56,9 +56,6 @@ void PeriodeManager::save()
         QDomText anneeText = doc.createTextNode(QString::number(it->second.getAnnee()));
         annee.appendChild(anneeText);
     }
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+
+    this->save_xml(fichier, doc);
 }

@@ -26,7 +26,7 @@ private:
     const Periode* periode;
     const Formation* formation;
     Factory<UV> uvs;
-    std::map<QString,Note> notes;
+    Factory<Note> notes;
 
 public:
    Inscription(const QString& c = "", const Periode& p = Periode(), const Formation& f = Formation()): code(c), periode(&p), formation(&f), uvs(), notes() {}
@@ -35,7 +35,7 @@ public:
    const Periode& getPeriode() const { return *periode; }
    const Formation& getFormation() const { return *formation; }
    const Factory<UV>& getUVs() const { return uvs; }
-   const std::map<QString,Note>& getNotes() const { return notes; }
+   const Factory<Note>& getNotes() const { return notes; }
 
    void setCode(const QString& c) { code = c; }
    void setPeriode(const Periode& p) { periode = &p; }
@@ -47,7 +47,7 @@ public:
    void ajouterUV(const QString& code, const QString& nom, const Categorie& cat);
    void retirerUV(const QString& code);
 
-   void modifierNote(const QString& code, const Note& n) { notes[uvs.get(code).getCode()] = n; }
+   void modifierNote(const QString& code, const Note& n) { notes.get(code) = n; }
    
    void afficher();
 };

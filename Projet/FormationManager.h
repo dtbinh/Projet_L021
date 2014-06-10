@@ -25,9 +25,9 @@ private:
 public:
     FormationManager(const QString& f = ""): Manager(f), formations() {}
 
-    void load(const QString& fichier, const CreditsManager& credman);
-    void load(const QString& fichier, const CreditsManager& credman,const UVManager& uvman,const FormationManager& filman);
-    void save(const QString& fichier);
+    void load(const CreditsManager& credman);
+    void load(const CreditsManager& credman, const UVManager& uvman, const FormationManager& filman);
+    void save();
 
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }

@@ -25,7 +25,7 @@ QDomDocument Manager::create_xml()
     return doc;
 }
 
-void save_xml(const QString& fichier, const QDomDocument& document)
+void Manager::save_xml(const QString& fichier, const QDomDocument& document)
 {
     QFile file(fichier);
     if (!file.open(QIODevice::WriteOnly)) {

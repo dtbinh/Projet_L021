@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void FormationManager::load(const QString& fichier, const CreditsManager& credman)
+void FormationManager::load(const CreditsManager& credman)
 {
     std::vector<const Credits*> tempcredits;
     QString tempCred="NULL";
@@ -50,7 +50,7 @@ void FormationManager::load(const QString& fichier, const CreditsManager& credma
     }
 }
 
-void FormationManager::load(const QString& fichier, const CreditsManager& credman, const UVManager& uvman, const FormationManager& filman)
+void FormationManager::load(const CreditsManager& credman, const UVManager& uvman, const FormationManager& filman)
 {
     std::vector<const Credits*> tempcredits;
     std::vector<const UV*> tempuvs;
@@ -126,10 +126,10 @@ void FormationManager::load(const QString& fichier, const CreditsManager& credma
     }
 }
 
-void FormationManager::save(const QString& fichier)
+void FormationManager::save()
 {
     QDomDocument doc = create_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomElement root = doc.createElement("formations");
     doc.appendChild(root);
 
     for (map<QString,Formation>::const_iterator it = formations.begin(); it != formations.end(); it++)
@@ -166,9 +166,6 @@ void FormationManager::save(const QString& fichier)
             uv.appendChild(UVText);
         }
     }
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+
+    this->save_xml(fichier, doc);
 }

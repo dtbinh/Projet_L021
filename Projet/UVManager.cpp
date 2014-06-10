@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void UVManager::load(const QString& fichier, const CreditsManager& credman,const CategorieManager& catman)
+void UVManager::load(const CreditsManager& credman,const CategorieManager& catman)
 {
     QDomDocument doc = load_xml(fichier);
     QDomElement racine = doc.documentElement();
@@ -45,10 +45,10 @@ void UVManager::load(const QString& fichier, const CreditsManager& credman,const
   }
 }
 
-void UVManager::save(const QString& fichier)
+void UVManager::save()
 {
-    QDomDocument doc = create_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomDocument doc = this->create_xml();
+    QDomElement root = doc.createElement("uvs");
     doc.appendChild(root);
 
     for (map<QString,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)
@@ -74,11 +74,7 @@ void UVManager::save(const QString& fichier)
         uv.appendChild(categorie);
         QDomText categorieText = doc.createTextNode(it->second.getCategorie().getCode());
         categorie.appendChild(categorieText);
-
     }
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+
+    this->save_xml(fichier, doc);
 }

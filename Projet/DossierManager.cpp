@@ -98,10 +98,18 @@ void DossierManager::load(const QString& fichier, const FormationManager& forman
     }
 }
 
-void DossierManager::save(const QString& fichier, const QString& login)
+void DossierManager::save()
+{
+    for(map<QString,Dossier>::const_iterator it = dossiers.begin(); it != dossiers.end(); ++it)
+    {
+        save(it->second.getLogin());
+    }
+}
+
+void DossierManager::save(const QString& login)
 {
     QDomDocument doc = create_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomElement root = doc.createElement("dossiers");
     doc.appendChild(root);
     QDomElement dossier = doc.createElement("dossier");
     root.appendChild(dossier);
@@ -149,13 +157,11 @@ void DossierManager::save(const QString& fichier, const QString& login)
             codeuv.appendChild(uvText);
             QDomElement note=doc.createElement("note");
             uv.appendChild(note);
-            QDomText notetext=doc.createTextNode(it->second.getNotes().find(ituv->second.getCode())->second.getNote());
+            QDomText notetext=doc.createTextNode(it->second.getNotes().get(ituv->second.getCode()).getNote());
             note.appendChild(notetext);
          }
     }
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+
+    QString fichier = login + ".xml";
+    this->save_xml(fichier, doc);
 }

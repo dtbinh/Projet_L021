@@ -28,14 +28,26 @@ void Application::loadConfiguration()
                 element = element.nextSiblingElement();
             }
 
-            if (manager_nom == "notman") {
+            if (manager_nom == "note") {
                 notman.setFichier(manager_fichier);
             }
-            else if (manager_nom == "catman") {
+            else if (manager_nom == "categorie") {
                 catman.setFichier(manager_fichier);
             }
-            else if (manager_nom == "credman") {
+            else if (manager_nom == "credits") {
                 credman.setFichier(manager_fichier);
+            }
+            else if (manager_nom == "uv") {
+                uvman.setFichier(manager_fichier);
+            }
+            else if (manager_nom == "formation") {
+                forman.setFichier(manager_fichier);
+            }
+            else if (manager_nom == "filiere") {
+                filman.setFichier(manager_fichier);
+            }
+            else if (manager_nom == "periode") {
+                periodeman.setFichier(manager_fichier);
             }
         }
 
@@ -50,6 +62,10 @@ void Application::load()
     notman.load();
     catman.load();
     credman.load(catman);
+    uvman.load(credman, catman);
+    filman.load(credman);
+    forman.load(credman, uvman, filman);
+    periodeman.load();
 }
 
 void Application::save()
@@ -57,4 +73,8 @@ void Application::save()
     notman.save();
     catman.save();
     credman.save();
+    uvman.save();
+    filman.save();
+    forman.save();
+    periodeman.save();
 }

@@ -39,7 +39,7 @@ void CategorieManager::load()
 void CategorieManager::save()
 {
     QDomDocument doc = create_xml();
-    QDomElement root = doc.createElement(fichier);
+    QDomElement root = doc.createElement("categories");
     doc.appendChild(root);
 
     for (map<QString,Categorie>::const_iterator it = categories.begin(); it != categories.end(); it++)
@@ -55,9 +55,6 @@ void CategorieManager::save()
         QDomText nomText = doc.createTextNode(it->second.getNom());
         nom.appendChild(nomText);
     }
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+
+    this->save_xml(fichier, doc);
 }

@@ -40,7 +40,7 @@ void NoteManager::load()
 void NoteManager::save()
 {
     QDomDocument doc = create_xml();
-    QDomElement root = doc.createElement("xml");
+    QDomElement root = doc.createElement("notes");
     doc.appendChild(root);
 
     for (map<QString,Note>::const_iterator it = notes.begin(); it != notes.end(); it++)
@@ -57,10 +57,6 @@ void NoteManager::save()
         mention.appendChild(mentionText);
     }
 
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+    this->save_xml(fichier, doc);
 }
 

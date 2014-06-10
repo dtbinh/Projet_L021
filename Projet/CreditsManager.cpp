@@ -67,11 +67,8 @@ void CreditsManager::save()
         QDomText categorieText = doc.createTextNode(it->second.getCategorie().getCode());
         categorie.appendChild(categorieText);
     }
-    QFile file(fichier);
-    file.open(QIODevice::WriteOnly);
-    QTextStream ts(&file);
-    int indent = 2;
-    doc.save(ts, indent);
+
+    this->save_xml(fichier, doc);
 }
 
 
