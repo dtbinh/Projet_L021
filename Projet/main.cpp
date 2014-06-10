@@ -27,6 +27,7 @@ int main()
         UVManager uvman;
         uvman.load("uv_utc.xml", credman, app.getCategorieManager());
 
+
         FormationManager forman;
         FormationManager filman;
         QString tempfi = "filiere_utc.xml";
@@ -34,7 +35,6 @@ int main()
         filman.load(tempfi, credman);
         forman.load(temp, credman, uvman, filman);
         //forman.getFormation("GI").setCode("GQ"); Commande qui ne marche pas pour le moment
-        //set formation , set credits et set uvs à définir //pas utile avec les méthodes ajouter et retirer
 
         PeriodeManager periodeman;
         periodeman.load("periode_utc.xml");
@@ -45,15 +45,6 @@ int main()
         QString fichier2="agermain.xml";
         dosman.load(fichier2,forman,periodeman,uvman, app.getNoteManager());
 
-        /*dosman.getDossier("enormand").ajouterInscription("GI02", periodeman.getPeriode("P2014"), forman.getFormation("GI"));
-        dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF16"));
-        dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("LO21"));
-        dosman.getDossier("enormand").getInscription("GI02").retirerUV("NF16");
-        dosman.getDossier("enormand").getInscription("GI02").ajouterUV(uvman.getUV("NF17"));
-        dosman.getDossier("enormand").getInscription("GI02").modifierNote("LO21", notman.getNote("A"));
-        dosman.getDossier("enormand").afficher();
-        dosman.getDossier("enormand").ajouterInscription("GI01", periodeman.getPeriode("A2013"), forman.getFormation("GI"));
-*/
 
         Completion compman=Completion(uvman);
         credman.save("credit_utc.xml");
