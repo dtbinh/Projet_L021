@@ -35,7 +35,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_2">
            <item>
-            <widget class="QToolButton" name="toolButton">
+            <widget class="QToolButton" name="VersAccueil">
              <property name="text">
               <string>...</string>
              </property>

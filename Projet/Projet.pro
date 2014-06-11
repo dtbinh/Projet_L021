@@ -19,7 +19,7 @@ SOURCES += \
     Completion.cpp \
     Solution.cpp \
     Application.cpp \
-    Acceuil.cpp
+    Accueil.cpp
     Application.cpp
 
 HEADERS += \
@@ -44,7 +44,7 @@ HEADERS += \
     Application.h \
     Completion.h \
     Solution.h \
-    Acceuil.h
+    Accueil.h
 
 FORMS += \
-    Acceuil.ui
+    Accueil.ui
