@@ -17,9 +17,6 @@ protected:
 public:
     Manager(const QString& f = ""): fichier(f) {}
 
-    //void load(const QString& f = "") = 0;
-    //void save(const QString& f = "") = 0;
-
     const QString& getFichier() { return fichier; }
     void setFichier(const QString& f) { fichier = f; }
 };

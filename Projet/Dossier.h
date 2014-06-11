@@ -11,11 +11,16 @@
 #include <QString>
 #include <vector>
 #include <algorithm>
+#include "Manager.h"
 #include "Factory.h"
+#include "FormationManager.h"
+#include "NoteManager.h"
+#include "PeriodeManager.h"
+#include "UVManager.h"
 #include "Formation.h"
 #include "Inscription.h"
 
-class Dossier
+class Dossier : public Manager
 {
 private:
     QString nom;
@@ -33,8 +38,9 @@ public :
     /// \param p Prenom de l'étudiant
     /// \brief La fonction calcule automatiquement le login de l'étudiant
     ///
-    Dossier(const QString& n = "", const QString& p = ""): nom(n), prenom(p), formations(), inscriptions() {
+    Dossier(const QString& n = "", const QString& p = ""): Manager(), nom(n), prenom(p), formations(), inscriptions() {
         setLogin();
+        //this->setFichier(getLogin() + ".xml");
     }
 
     ~Dossier() {}
@@ -61,22 +67,23 @@ public :
     ///
     const QString& getLogin() const { return login; }
 
-
     const Factory<Formation>& getFormations() const { return formations; }
+    const Factory<Inscription>& getInscriptions() const { return inscriptions; }
 
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }
-    void ajouterFormation(const Formation& f) { formations.ajouter(f.getCode(), f); }
-    void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }
-    void retirerFormation(const QString& code) { formations.retirer(code); }
-
-
-    const Factory<Inscription>& getInscriptions() const { return inscriptions; }
-
     Inscription& getInscription(const QString& code) { return inscriptions.get(code); }
     const Inscription& getInscription(const QString& code) const { return inscriptions.get(code); }
+
+    void ajouterFormation(const Formation& f) { formations.ajouter(f.getCode(), f); }
+    void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }
     void ajouterInscription(const QString& code, const Periode& periode, const Formation& formation) { inscriptions.ajouter(code, Inscription(code, periode, formation)); }
+
+    void retirerFormation(const QString& code) { formations.retirer(code); }
     void retirerInscription(const QString& code) { inscriptions.retirer(code); }
+
+    void load(const FormationManager& forman, const PeriodeManager& periodeman, const UVManager& uvman, const NoteManager& notman);
+    void save();
 
     ///
     /// \fn affichage

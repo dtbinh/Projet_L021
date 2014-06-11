@@ -70,5 +70,3 @@ void CreditsManager::save()
 
     this->save_xml(fichier, doc);
 }
-
-

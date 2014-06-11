@@ -2,16 +2,17 @@
 
 using namespace std;
 
-Application::Application(const QString& f): Manager(f), notman(), catman(), uvman(), forman(), filman(), periodeman()
+Application::Application(const QString& login): Manager(), dossier_fichier(""), notman(), catman(), uvman(), forman(), filman(), periodeman(), dossier()
 {
-    QFileInfo infos(f);
-
-    dossier = infos.path();
+    this->setFichier("configuration.xml");
+    if (login != "") {
+        setDossier(login);
+    }
 }
 
 void Application::loadConfiguration()
 {
-    QDomDocument doc = this->load_xml(fichier);
+    QDomDocument doc = this->load_xml(dossier_fichier + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -29,7 +30,7 @@ void Application::loadConfiguration()
                     manager_nom = element.text();
                 }
                 else if (element.tagName() == "fichier") {
-                    manager_fichier = dossier + "/" + element.text();
+                    manager_fichier = dossier_fichier + "/" + element.text();
                 }
 
                 element = element.nextSiblingElement();
@@ -56,16 +57,19 @@ void Application::loadConfiguration()
             else if (manager_nom == "periode") {
                 periodeman.setFichier(manager_fichier);
             }
+            else if (manager_nom == "dossier") {
+                dossier.setFichier(manager_fichier);
+            }
         }
 
         racine = racine.nextSiblingElement();
     }
 }
 
-void Application::load(const QString& f)
+void Application::load(const QString& login)
 {
-    if (f != "") {
-        this->setFichier(f);
+    if (login != "") {
+        setDossier(login);
     }
 
     loadConfiguration();
@@ -77,6 +81,7 @@ void Application::load(const QString& f)
     filman.load(credman);
     forman.load(credman, uvman, filman);
     periodeman.load();
+    dossier.load(forman, periodeman, uvman, notman);
 }
 
 void Application::save()
@@ -88,4 +93,5 @@ void Application::save()
     filman.save();
     forman.save();
     periodeman.save();
+    dossier.save();
 }

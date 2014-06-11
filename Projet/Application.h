@@ -13,7 +13,7 @@
 #include "Factory.h"
 #include "CreditsManager.h"
 #include "CategorieManager.h"
-#include "DossierManager.h"
+#include "Dossier.h"
 #include "FormationManager.h"
 #include "Inscription.h"
 #include "NoteManager.h"
@@ -23,7 +23,7 @@
 class Application : Manager
 {
 private:
-    QString dossier;
+    QString dossier_fichier;
     NoteManager notman;
     CategorieManager catman;
     CreditsManager credman;
@@ -31,7 +31,7 @@ private:
     FormationManager forman; // A factoriser dans un Factory
     FormationManager filman;
     PeriodeManager periodeman;
-    //DossierManager dosman;
+    Dossier dossier;
 
     void loadConfiguration();
 
@@ -62,8 +62,8 @@ public:
     PeriodeManager& getPeriodeManager() { return periodeman; }
     const PeriodeManager& getPeriodeManager() const { return periodeman; }
 
-    /*DossierManager& getDossierManager() { return dosman; }
-    const DossierManager& getDossierManager() const { return dosman; }*/
+    Dossier& getDossier() { return dossier; }
+    const Dossier& getDossier() const { return dossier; }
 
 
     void setNoteManager(const NoteManager& n) { notman = n; }
@@ -73,7 +73,7 @@ public:
     void setFormationManager(const FormationManager& f) { forman = f; }
     void setFiliereManager(const FormationManager& f) { filman = f; }
     void setPeriodeManager(const PeriodeManager& p) { periodeman = p; }
-    //void setDossierManager(const DossierManager& d) { dosman = d; }
+    void setDossier(const QString& login) { dossier_fichier = "dossiers/" + login; }
 };
 
 #endif // APPLICATION_H
