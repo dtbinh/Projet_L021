@@ -1,12 +1,19 @@
-#include <iostream>
+﻿#include <iostream>
 #include <QString>
+#include <QApplication>
+#include <QString>
+#include <QFileDialog>
 #include "Application.h"
 #include "Exception.h"
+#include "Acceuil.h"
 
 using namespace std;
 
-int main()
-{
+
+int main(int argc, char *argv[]){
+    QApplication app(argc, argv);
+    MainWindow test;
+    test.show();
     try
     {
         Application app("dossiers/enormand/configuration.xml");
@@ -28,6 +35,6 @@ int main()
         cerr << e.what() << endl;
     }
 
-    return 0;
+    return app.exec();
 }
 

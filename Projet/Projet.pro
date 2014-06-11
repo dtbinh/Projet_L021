@@ -1,4 +1,5 @@
 QT += xml
+QT += widgets
 
 SOURCES += \
     main.cpp \
@@ -17,7 +18,8 @@ SOURCES += \
     Manager.cpp \
     Completion.cpp \
     Solution.cpp \
-    Application.cpp
+    Application.cpp \
+    Acceuil.cpp
     Application.cpp
 
 HEADERS += \
@@ -41,4 +43,8 @@ HEADERS += \
     Manager.h \
     Application.h \
     Completion.h \
-    Solution.h
+    Solution.h \
+    Acceuil.h
+
+FORMS += \
+    Acceuil.ui
