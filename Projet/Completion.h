@@ -28,6 +28,7 @@ public:
     void ajouterSolution(const QString& code) { solutions.ajouter(code, Solution()); }
     void retirerSolution(const QString& code) { solutions.retirer(code); }
 
+    const std::map<QString,QString>& getPreferences() const { return preferences; }
     void ajouterPreference(const UVManager& uvman,const QString& codeuv, const QString& pref){
         preferences[uvman.getUV(codeuv).getCode()]=pref;}
     void retirerPreference(const UVManager& uvman,const QString& codeuv){ preferences.erase(uvman.getUV(codeuv).getCode());}
@@ -35,7 +36,7 @@ public:
             preferences[uvman.getUV(codeuv).getCode()]=pref; }
 
     void loadPreference(const UVManager& uvman); // A appeler lors de la création d'une completion
-    void savePreference(); //A Appeler a chaque ajout ou modification?
+    void savePreference();
        };
 
 #endif // COMPLETION_H

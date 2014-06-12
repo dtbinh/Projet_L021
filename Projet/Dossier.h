@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file Dossier.h
 /// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Nicolas Szewe, Erwan Normand
@@ -70,7 +70,7 @@ public :
     void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }
     void retirerFormation(const QString& code) { formations.retirer(code); }
 
-
+    const Factory<Credits> getCredits() const ;
     const Factory<Inscription>& getInscriptions() const { return inscriptions; }
 
     Inscription& getInscription(const QString& code) { return inscriptions.get(code); }

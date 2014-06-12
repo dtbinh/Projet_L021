@@ -1,6 +1,22 @@
-#include "Dossier.h"
+﻿#include "Dossier.h"
 
 using namespace std;
+
+const Factory<Credits> Dossier::getCredits() const {
+    for (map<QString,Inscription>::const_iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
+    {
+        for (map<QString,UV>::const_iterator ituv = it->second.getUVs().begin(); ituv != it->second.getUVs().end(); ituv++)
+        {
+         QString N=it->second.getNotes().get(ituv->second.getCode()).getNote();
+         if(N=="A" || N=="B" || N=="C" || N=="D" || N=="E" ){
+            cout<<"Bravo monsieur"<<endl;
+         }
+         else
+            cout<<"YOU FAIL !!!!"<<endl;
+        }
+    }
+}
+
 
 void Dossier::setLogin()
 {

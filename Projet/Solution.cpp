@@ -1,5 +1,6 @@
-#include "Solution.h"
+﻿#include "Solution.h"
 
-Solution::Solution()
+Solution::Solution(const Dossier& D)
 {
+
 }

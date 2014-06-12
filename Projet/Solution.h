@@ -12,7 +12,7 @@ class Solution
     QString code;
     Factory<Inscription> strategie;
 public:
-    Solution();
+    Solution(const Dossier& D);
 };
 
 #endif // SOLUTION_H
