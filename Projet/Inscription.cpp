@@ -19,16 +19,3 @@ void Inscription::retirerUV(const QString& code)
     uvs.retirer(code);
     notes.retirer(code);
 }
-
-void Inscription::afficher()
-{
-    cout << code.toStdString() << " " << periode->getCode().toStdString() << endl;
-    //<< " " << formation->getCode().toStdString() << endl;
-
-    cout << "UVs : ";
-    for (map<QString,UV>::const_iterator it = uvs.begin(); it != uvs.end(); it++)
-    {
-        cout << it->second.getCode().toStdString() << " " << notes.get(it->second.getCode()).getNote().toStdString() << "  ";
-    }
-    cout << endl;
-}

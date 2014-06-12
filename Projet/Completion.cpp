@@ -1,4 +1,4 @@
-﻿#include "Completion.h"
+#include "Completion.h"
 #include <string>
 #include <iostream>
 
@@ -8,66 +8,58 @@ Completion::Completion(const UVManager& uvman) : solutions() {
     this->loadPreference(uvman);
 }
 
-void Completion::loadPreference(const UVManager& uvman){
-        QFile file("dossiers/enormand/preferences.xml");
-        if (!file.open(QFile::ReadOnly | QFile::Text)) {
-            throw Exception("Impossible d'ouvrir le fichier " + fichier + ".");
-        }
+void Completion::loadPreference(const UVManager& uvman)
+{
+    QDomDocument doc = this->chargerXml("dossiers/enormand/preferences.xml");
 
-        QDomDocument doc;
-        doc.setContent(&file, false);
-        QDomElement racine = doc.documentElement();
-        racine = racine.firstChildElement();
+    QDomElement racine = doc.documentElement();
+    racine = racine.firstChildElement();
 
-        while(!racine.isNull())
+    while(!racine.isNull())
+    {
+        if(racine.tagName() == "preference")
         {
-            if(racine.tagName() == "preference")
+            QString tempCode, tempPref;
+            QDomElement unElement = racine.firstChildElement();
+
+            while(!unElement.isNull())
             {
-                QString tempCode, tempPref;
-                QDomElement unElement = racine.firstChildElement();
-
-                while(!unElement.isNull())
+                if(unElement.tagName() == "code")
                 {
-                    if(unElement.tagName() == "code")
-                    {
-                        tempCode = unElement.text();
-                    }
-                    else if(unElement.tagName() == "pref")
-                    {
-                        tempPref = unElement.text();
-                    }
-                    unElement = unElement.nextSiblingElement();
+                    tempCode = unElement.text();
                 }
-                this->ajouterPreference(uvman,tempCode,tempPref);
+                else if(unElement.tagName() == "pref")
+                {
+                    tempPref = unElement.text();
+                }
+                unElement = unElement.nextSiblingElement();
             }
-
-            racine = racine.nextSiblingElement();
+            this->ajouterPreference(uvman,tempCode,tempPref);
         }
+
+        racine = racine.nextSiblingElement();
+    }
 }
 
-void Completion::savePreference(){
-        QDomDocument doc = this->create_xml();
-        QDomElement root = doc.createElement("preferences");
-        doc.appendChild(root);
-        for (map<QString,QString>::const_iterator it = preferences.begin(); it != preferences.end(); it++)
-        {
-            QDomElement preference = doc.createElement("preference");
-            root.appendChild(preference);
-            QDomElement code = doc.createElement("code");
-            preference.appendChild(code);
-            QDomText codeText = doc.createTextNode(it->first);
-            code.appendChild(codeText);
-            QDomElement pref = doc.createElement("pref");
-            preference.appendChild(pref);
-            QDomText prefText = doc.createTextNode(it->second);
-            pref.appendChild(prefText);
-        }
+void Completion::savePreference()
+{
+    QDomDocument doc = this->creerXml();
+    QDomElement root = doc.createElement("preferences");
+    doc.appendChild(root);
 
-        QFile file("dossiers/enormand/preferences.xml");
-        if (!file.open(QIODevice::WriteOnly)) {
-            throw Exception("Impossible d'ouvrir le fichier " + fichier + ".");
-        }
-        QTextStream ts(&file);
-        int indent = 2;
-        doc.save(ts, indent);
+    for (map<QString,QString>::const_iterator it = preferences.begin(); it != preferences.end(); it++)
+    {
+        QDomElement preference = doc.createElement("preference");
+        root.appendChild(preference);
+        QDomElement code = doc.createElement("code");
+        preference.appendChild(code);
+        QDomText codeText = doc.createTextNode(it->first);
+        code.appendChild(codeText);
+        QDomElement pref = doc.createElement("pref");
+        preference.appendChild(pref);
+        QDomText prefText = doc.createTextNode(it->second);
+        pref.appendChild(prefText);
     }
+
+    this->sauvegarderXml("dossiers/enormand/preferences.xml", doc);
+}

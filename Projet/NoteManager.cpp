@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void NoteManager::load()
+void NoteManager::charger()
 {
-    QDomDocument doc = this->load_xml(fichier);
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -37,9 +37,9 @@ void NoteManager::load()
 }
 
 
-void NoteManager::save()
+void NoteManager::sauvegarder()
 {
-    QDomDocument doc = this->create_xml();
+    QDomDocument doc = this->creerXml();
     QDomElement root = doc.createElement("notes");
     doc.appendChild(root);
 
@@ -57,6 +57,6 @@ void NoteManager::save()
         mention.appendChild(mentionText);
     }
 
-    this->save_xml(fichier, doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }
 

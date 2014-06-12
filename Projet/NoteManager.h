@@ -23,8 +23,11 @@ private:
 public:
     NoteManager(const QString& f = ""): Manager(f), notes() {}
 
-    void load();
-    void save();
+    void charger();
+    void sauvegarder();
+
+    bool estVide() const { return notes.estVide(); }
+    void vider() { notes.vider(); }
 
     Note& getNote(const QString& note) { return notes.get(note); }
     const Note& getNote(const QString& note) const { return notes.get(note); }

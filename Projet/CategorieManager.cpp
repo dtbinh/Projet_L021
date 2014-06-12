@@ -2,9 +2,9 @@
 
 using namespace std;
 
-void CategorieManager::load()
+void CategorieManager::charger()
 {
-    QDomDocument doc = this->load_xml(fichier);
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -36,9 +36,9 @@ void CategorieManager::load()
     }
 }
 
-void CategorieManager::save()
+void CategorieManager::sauvegarder()
 {
-    QDomDocument doc = this->create_xml();
+    QDomDocument doc = this->creerXml();
     QDomElement root = doc.createElement("categories");
     doc.appendChild(root);
 
@@ -56,5 +56,5 @@ void CategorieManager::save()
         nom.appendChild(nomText);
     }
 
-    this->save_xml(fichier, doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }

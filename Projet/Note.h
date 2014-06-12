@@ -25,8 +25,6 @@ public:
 
     void setNote(const QString& n) { note = n; }
     void setMention(const QString& m) {mention = m; }
-
-    void afficher() const { std::cout << note.toStdString() << " " << mention.toStdString() << std::endl; }
 };
 
 #endif // NOTE_H

@@ -1,4 +1,4 @@
-﻿#ifndef COMPLETION_H
+#ifndef COMPLETION_H
 #define COMPLETION_H
 
 #include <QString>
@@ -15,7 +15,7 @@ enum Choix {
     Confirmer,Refuser,Retarder,Avancer
 };
 
-class Completion :public Manager
+class Completion : public Manager
 {
 Factory<Solution> solutions;
 std::map <QString,Choix> choix;//Associe au code d'une solution, un choix

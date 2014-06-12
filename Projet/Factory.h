@@ -32,6 +32,9 @@ public:
 
     void ajouter(const QString& code, const T& t = T()) { tab[code] = t; }
     void retirer(const QString& code) { tab.erase(code); }
+
+    bool estVide() const { return tab.size() == 0; }
+    void vider() { tab.clear(); }
 };
 
 template<class T>
