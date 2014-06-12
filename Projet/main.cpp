@@ -5,15 +5,16 @@
 #include <QFileDialog>
 #include "Application.h"
 #include "Exception.h"
-#include "Acceuil.h"
+#include "Accueil.h"
+#include "Completion.h"
 
 using namespace std;
 
 
 int main(int argc, char *argv[]){
-    QApplication app(argc, argv);
-    MainWindow test;
-    test.show();
+    //QApplication app(argc, argv);
+    //MainWindow test;
+    //test.show();
     try
     {
         Application app("dossiers/enormand/configuration.xml");
@@ -28,6 +29,10 @@ int main(int argc, char *argv[]){
         //app.getNoteManager().getNote("A").setMention("Mention");
         //app.getUVManager().getUV("LO21").setNom(app.getUVManager().getUV("LO21").getNom() + " (une UV qu'elle est bien !)");
 
+        Completion comp(app.getUVManager());
+
+
+        comp.savePreference();
         app.save();
         dosman.save();
 
@@ -35,6 +40,6 @@ int main(int argc, char *argv[]){
         cerr << e.what() << endl;
     }
 
-    return app.exec();
+    //return app.exec();
 }
 

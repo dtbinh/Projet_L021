@@ -1,5 +1,4 @@
 ﻿#include "Accueil.h"
-#include "ui_accueil.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
