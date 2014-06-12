@@ -6,7 +6,7 @@ void FormationManager::charger(const CreditsManager& credman)
 {
     std::vector<const Credits*> tempcredits;
     QString tempCred="NULL";
-    QDomDocument doc = this->charger_xml(fichier);
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -56,7 +56,7 @@ void FormationManager::charger(const CreditsManager& credman, const UVManager& u
     std::vector<const UV*> tempuvs;
     std::vector<const Formation*> tempspecialites;
     QString tempCred="NULL"; QString tempSpec="NULL"; QString tempUvs="NULL";
-    QDomDocument doc = this->charger_xml(fichier);
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -128,7 +128,7 @@ void FormationManager::charger(const CreditsManager& credman, const UVManager& u
 
 void FormationManager::sauvegarder()
 {
-    QDomDocument doc = this->creer_xml();
+    QDomDocument doc = this->creerXml();
     QDomElement root = doc.createElement("formations");
     doc.appendChild(root);
 
@@ -167,5 +167,5 @@ void FormationManager::sauvegarder()
         }
     }
 
-    this->sauvegarder_xml(fichier, doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }

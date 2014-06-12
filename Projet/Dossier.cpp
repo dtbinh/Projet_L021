@@ -26,9 +26,8 @@ void Dossier::setLogin()
 
 void Dossier::charger(const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
 {
-    QDomDocument doc = this->charger_xml(fichier);
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
     QDomElement racine = doc.documentElement();
-    racine = racine.firstChildElement();
 
     std::vector<const Formation*> tempformations;
     std::vector<Inscription> tempinscriptions;
@@ -36,102 +35,98 @@ void Dossier::charger(const FormationManager& forman,const PeriodeManager& perio
     std::map<QString,Note> tempnotes;
     QString tempForma = "NULL", tempInscri = "NULL";
 
-    while(!racine.isNull())
+    if(racine.tagName() == "dossier")
     {
-        if(racine.tagName() == "dossier")
+        QString tempNom, tempPrenom, tempFormation, tempUv, tempNote, code;
+        QDomElement unElement = racine.firstChildElement();
+
+        while(!unElement.isNull())
         {
-            QString tempNom, tempPrenom, tempFormation, tempUv, tempNote, code;
-            QDomElement unElement = racine.firstChildElement();
-
-            while(!unElement.isNull())
+            if(unElement.tagName() == "nom")
             {
-                if(unElement.tagName() == "nom")
+                tempNom = unElement.text();
+            }
+            else if(unElement.tagName() == "prenom")
+            {
+                tempPrenom = unElement.text();
+            }
+            else if(unElement.tagName() == "formations")
+            {
+                tempForma = unElement.text();
+                tempformations.push_back(&forman.getFormation(tempForma));
+            }
+            else if(unElement.tagName() == "inscription")
+            {
+                QDomElement filsElement = unElement.firstChildElement();
+                while(!filsElement.isNull())
                 {
-                    tempNom = unElement.text();
-                }
-                else if(unElement.tagName() == "prenom")
-                {
-                    tempPrenom = unElement.text();
-                }
-                else if(unElement.tagName() == "formations")
-                {
-                    tempForma = unElement.text();
-                    tempformations.push_back(&forman.getFormation(tempForma));
-                }
-                else if(unElement.tagName() == "inscription")
-                {
-                    QDomElement filsElement = unElement.firstChildElement();
-                    while(!filsElement.isNull())
+                    if(filsElement.tagName()=="code"){
+                        code = filsElement.text();
+                    }
+                    else if(filsElement.tagName()=="semestre"){
+                        tempInscri = filsElement.text();
+                    }
+                    else if(filsElement.tagName() =="formation"){
+                        tempFormation = filsElement.text();
+                    }
+                    else if(filsElement.tagName() == "uv")
                     {
-                        if(filsElement.tagName()=="code"){
-                            code = filsElement.text();
-                        }
-                        else if(filsElement.tagName()=="semestre"){
-                            tempInscri = filsElement.text();
-                        }
-                        else if(filsElement.tagName() =="formation"){
-                            tempFormation = filsElement.text();
-                        }
-                        else if(filsElement.tagName() == "uv")
+                        QDomElement filsUV = filsElement.firstChildElement();
+                        while(!filsUV.isNull())
                         {
-                            QDomElement filsUV = filsElement.firstChildElement();
-                            while(!filsUV.isNull())
-                            {
-                                if(filsUV.tagName() == "codeUV"){
-                                    tempUv = filsUV.text();
-                                    tempuvs.ajouter(tempUv,uvman.getUV(tempUv));
-                                }
-                                if(filsUV.tagName() == "note"){
-                                    tempNote = filsUV.text();
-                                    tempnotes[tempUv] = notman.getNote(tempNote);
-                                }
-                                filsUV = filsUV.nextSiblingElement();
+                            if(filsUV.tagName() == "codeUV"){
+                                tempUv = filsUV.text();
+                                tempuvs.ajouter(tempUv,uvman.getUV(tempUv));
                             }
+                            if(filsUV.tagName() == "note"){
+                                tempNote = filsUV.text();
+                                tempnotes[tempUv] = notman.getNote(tempNote);
+                            }
+                            filsUV = filsUV.nextSiblingElement();
                         }
-                    filsElement = filsElement.nextSiblingElement();
                     }
-                    Inscription temp(code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
-                    tempinscriptions.push_back(temp);
+                filsElement = filsElement.nextSiblingElement();
                 }
-                unElement = unElement.nextSiblingElement();
+                Inscription temp(code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
+                tempinscriptions.push_back(temp);
             }
-
-            this->setLogin();
-            this->setNom(tempNom);
-            this->setPrenom(tempPrenom);
-            this->setLogin();
-            if (tempForma != "NULL")
-            {
-                for (unsigned int i = 0; i < tempformations.size(); i++)
-                {
-                   ajouterFormation(*tempformations[i]);
-                }
-                tempformations.clear();
-                tempForma = "NULL";
-            }
-            if (tempInscri!="NULL")
-            {
-                for(unsigned int i=0; i < tempinscriptions.size(); i++)
-                {
-                    ajouterInscription(tempinscriptions[i].getCode(),tempinscriptions[i].getPeriode(),tempinscriptions[i].getFormation());
-                    for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
-                    {
-                        getInscription(tempinscriptions[i].getCode()).ajouterUV(it->second.getCode());
-                        getInscription(tempinscriptions[i].getCode()).
-                        modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
-                    }
-                }
-                tempinscriptions.clear();
-                tempInscri="NULL";
-             }
+            unElement = unElement.nextSiblingElement();
         }
-        racine = racine.nextSiblingElement();
+
+        this->setLogin();
+        this->setNom(tempNom);
+        this->setPrenom(tempPrenom);
+        this->setLogin();
+        if (tempForma != "NULL")
+        {
+            for (unsigned int i = 0; i < tempformations.size(); i++)
+            {
+               ajouterFormation(*tempformations[i]);
+            }
+            tempformations.clear();
+            tempForma = "NULL";
+        }
+        if (tempInscri!="NULL")
+        {
+            for(unsigned int i=0; i < tempinscriptions.size(); i++)
+            {
+                ajouterInscription(tempinscriptions[i].getCode(),tempinscriptions[i].getPeriode(),tempinscriptions[i].getFormation());
+                for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
+                {
+                    getInscription(tempinscriptions[i].getCode()).ajouterUV(it->second.getCode());
+                    getInscription(tempinscriptions[i].getCode()).
+                    modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
+                }
+            }
+            tempinscriptions.clear();
+            tempInscri="NULL";
+         }
     }
 }
 
 void Dossier::sauvegarder()
 {
-    QDomDocument doc = this->creer_xml();
+    QDomDocument doc = this->creerXml();
 
     QDomElement root = doc.createElement("dossier");
     doc.appendChild(root);
@@ -195,7 +190,7 @@ void Dossier::sauvegarder()
          }
     }
 
-    this->sauvegarder_xml(fichier, doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }
 
 void Dossier::vider()
@@ -205,4 +200,6 @@ void Dossier::vider()
     nom = "";
     prenom = "";
     login = "";
+    chemin_fichier = "";
+    fichier = "";
 }

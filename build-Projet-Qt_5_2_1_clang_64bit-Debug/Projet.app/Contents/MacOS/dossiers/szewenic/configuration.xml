@@ -28,4 +28,8 @@
 	<nom>periode</nom>
     <fichier>periode_utc.xml</fichier>
   </manager>
+    <manager>
+	<nom>dossier</nom>
+    <fichier>szewenic.xml</fichier>
+  </manager>
 </configuration>

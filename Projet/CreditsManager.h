@@ -22,7 +22,7 @@ private:
     Factory<Credits> credits;
 
 public:
-    CreditsManager(const QString& f = ""): Manager(f), credits() {}
+    CreditsManager(const QString& cf = "",const QString& f = ""): Manager(cf, f), credits() {}
 
     void charger(const CategorieManager& catman);
     void sauvegarder();

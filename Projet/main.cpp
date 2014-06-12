@@ -1,5 +1,6 @@
 #include <iostream>
 #include <QString>
+#include "Dossier.h"
 #include "Application.h"
 #include "Exception.h"
 
@@ -10,9 +11,10 @@ int main()
     try
     {
         Application app("dossiers", "dossiers/default", "configuration.xml");
-        /*app.charger("enormand");
 
         // Quelques essais en guise d'exemple
+        app.charger("enormand");
+
         app.getDossier().ajouterInscription("GI01", app.getPeriodeManager().getPeriode("A2013"), app.getFormationManager().getFormation("GI"));
         app.getDossier().getInscription("GI01").ajouterUV(app.getUVManager().getUV("NF16"));
         app.getDossier().getInscription("GI01").modifierNote("NF16", app.getNoteManager().getNote("C"));
@@ -21,7 +23,7 @@ int main()
         //app.getUVManager().getUV("LO21").setNom(app.getUVManager().getUV("LO21").getNom() + " (une UV qu'elle est bien !)");
 
         app.sauvegarder();
-        app.fermer();*/
+        app.fermer();
 
         // Les modifications sur la note A et sur l'UV LO21 ne me concernait que enormand, pas szewenic
         /*app.charger("szewenic");
@@ -38,6 +40,15 @@ int main()
         app.getDossier().ajouterInscription("TC04", app.getPeriodeManager().getPeriode("P2013"), app.getFormationManager().getFormation("TC"));
         app.getDossier().getInscription("TC04").ajouterUV(app.getUVManager().getUV("SY02"));
         app.getDossier().getInscription("TC04").modifierNote("SY02", app.getNoteManager().getNote("B"));
+
+        app.sauvegarder();
+        app.fermer();
+
+
+        app.charger("agermain");
+        app.getDossier().ajouterInscription("GP01", app.getPeriodeManager().getPeriode("A2014"), app.getFormationManager().getFormation("GP"));
+        app.getDossier().getInscription("GP01").ajouterUV(app.getUVManager().getUV("TF06"));
+        app.getDossier().getInscription("GP01").modifierNote("TF06", app.getNoteManager().getNote("A"));
 
         app.sauvegarder();
         app.fermer();

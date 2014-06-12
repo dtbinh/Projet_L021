@@ -20,7 +20,7 @@ private:
     Factory<Categorie> categories;
 
 public:
-    CategorieManager(const QString& f = ""): Manager(f), categories() {}
+    CategorieManager(const QString& cf = "",const QString& f = ""): Manager(cf, f), categories() {}
 
     void charger();
     void sauvegarder();

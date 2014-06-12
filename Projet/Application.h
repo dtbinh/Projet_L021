@@ -24,10 +24,8 @@ class Application : Manager
 {
 private:
     QString chemin_dossiers; // Le chemin du dossier de stockage des xml des Dossiers
-    QString chemin_dossier; // Le chemin du dossier de stockage des xml du Dossier chargé
-    //QString fichier; // Le nom du fichier de configration du Dossier chargé (hérité de Manager)
-    QString chemin_default; // Le chemin du dossier de stockage des xml par défault
-    QString fichier_default; // Le nom du fichier de configuration par défault
+    //QString chemin_fichier; // Le chemin du dossier de stockage des xml par défault (hérité de Manager)
+    //QString fichier; // Le nom du fichier de configuration par défault (hérité de Manager)
     NoteManager notman;
     CategorieManager catman;
     CreditsManager credman;
@@ -43,8 +41,10 @@ private:
     void chargerConfiguration();
     void sauvegarderConfiguration();
 
+    void ajouterManagerXml(QDomDocument& doc, QDomElement& root, const QString& n, const QString& f) const;
+
 public:
-    Application(const QString& cdos, const QString& cdef, const QString& f): Manager(f), chemin_dossiers(cdos), chemin_dossier(), chemin_default(cdef), fichier_default(f),
+    Application(const QString& cd, const QString& chemin_default, const QString& f): Manager(chemin_default, f), chemin_dossiers(cd),
         notman(), catman(), credman(), uvman(), forman(), filman(), periodeman(), dossier() {}
 
     ~Application() { fermer(); }

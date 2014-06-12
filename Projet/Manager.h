@@ -8,16 +8,19 @@
 class Manager
 {
 protected:
-    QString fichier;
+    QString chemin_fichier; // Le chemin vers dossier de stockage du fichier
+    QString fichier; // Le nom du fichier
 
-    QDomDocument charger_xml(const QString& fichier);
-    QDomDocument creer_xml();
-    void sauvegarder_xml(const QString& fichier, const QDomDocument& document);
+    QDomDocument chargerXml(const QString& fichier);
+    QDomDocument creerXml();
+    void sauvegarderXml(const QString& fichier, const QDomDocument& document);
 
 public:
-    Manager(const QString& f = ""): fichier(f) {}
+    Manager(const QString& cf = "", const QString& f = ""): chemin_fichier(cf), fichier(f) {}
 
-    const QString& getFichier() { return fichier; }
+    const QString& getCheminFichier() const { return chemin_fichier; }
+    const QString& getFichier() const { return fichier; }
+    void setCheminFichier(const QString& cf) { chemin_fichier = cf; }
     void setFichier(const QString& f) { fichier = f; }
 };
 

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-QDomDocument Manager::charger_xml(const QString& fichier)
+QDomDocument Manager::chargerXml(const QString& fichier)
 {
     QFile file(fichier);
     if (!file.open(QFile::ReadOnly | QFile::Text)) {
@@ -15,7 +15,7 @@ QDomDocument Manager::charger_xml(const QString& fichier)
     return doc;
 }
 
-QDomDocument Manager::creer_xml()
+QDomDocument Manager::creerXml()
 {
     QDomDocument doc;
     QDomNode xmlNode = doc.createProcessingInstruction("xml","version=\"1.0\" encoding=\"UTF-8\"");
@@ -25,7 +25,7 @@ QDomDocument Manager::creer_xml()
     return doc;
 }
 
-void Manager::sauvegarder_xml(const QString& fichier, const QDomDocument& document)
+void Manager::sauvegarderXml(const QString& fichier, const QDomDocument& document)
 {
     QFile file(fichier);
     if (!file.open(QIODevice::WriteOnly)) {

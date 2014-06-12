@@ -4,7 +4,7 @@ using namespace std;
 
 void PeriodeManager::charger()
 {
-    QDomDocument doc = this->charger_xml(fichier);
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -39,7 +39,7 @@ void PeriodeManager::charger()
 
 void PeriodeManager::sauvegarder()
 {
-    QDomDocument doc = this->creer_xml();
+    QDomDocument doc = this->creerXml();
     QDomElement root = doc.createElement("periodes");
     doc.appendChild(root);
 
@@ -57,5 +57,5 @@ void PeriodeManager::sauvegarder()
         annee.appendChild(anneeText);
     }
 
-    this->sauvegarder_xml(fichier, doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }

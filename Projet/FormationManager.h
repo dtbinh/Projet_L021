@@ -23,7 +23,7 @@ private:
     Factory<Formation> formations;
 
 public:
-    FormationManager(const QString& f = ""): Manager(f), formations() {}
+    FormationManager(const QString& cf = "", const QString& f = ""): Manager(cf, f), formations() {}
 
     void charger(const CreditsManager& credman);
     void charger(const CreditsManager& credman, const UVManager& uvman, const FormationManager& filman);

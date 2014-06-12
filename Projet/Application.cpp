@@ -4,7 +4,7 @@ using namespace std;
 
 void Application::chargerConfiguration()
 {
-    QDomDocument doc = this->charger_xml(chemin_dossier + "/" + fichier);
+    QDomDocument doc = this->chargerXml(dossier.getCheminFichier() + "/" + fichier);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -22,34 +22,42 @@ void Application::chargerConfiguration()
                     manager_nom = element.text();
                 }
                 else if (element.tagName() == "fichier") {
-                    manager_fichier = chemin_dossier + "/" + element.text();
+                    manager_fichier = element.text();
                 }
 
                 element = element.nextSiblingElement();
             }
 
             if (manager_nom == "note") {
+                notman.setCheminFichier(dossier.getCheminFichier());
                 notman.setFichier(manager_fichier);
             }
             else if (manager_nom == "categorie") {
+                catman.setCheminFichier(dossier.getCheminFichier());
                 catman.setFichier(manager_fichier);
             }
             else if (manager_nom == "periode") {
+                periodeman.setCheminFichier(dossier.getCheminFichier());
                 periodeman.setFichier(manager_fichier);
             }
             else if (manager_nom == "credits") {
+                credman.setCheminFichier(dossier.getCheminFichier());
                 credman.setFichier(manager_fichier);
             }
             else if (manager_nom == "uv") {
+                uvman.setCheminFichier(dossier.getCheminFichier());
                 uvman.setFichier(manager_fichier);
             }
             else if (manager_nom == "formation") {
+                forman.setCheminFichier(dossier.getCheminFichier());
                 forman.setFichier(manager_fichier);
             }
             else if (manager_nom == "filiere") {
+                filman.setCheminFichier(dossier.getCheminFichier());
                 filman.setFichier(manager_fichier);
             }
             else if (manager_nom == "dossier") {
+                dossier.setCheminFichier(dossier.getCheminFichier());
                 dossier.setFichier(manager_fichier);
             }
         }
@@ -69,23 +77,20 @@ void Application::chargerConfiguration()
 
 void Application::sauvegarderConfiguration()
 {
-    QDomDocument doc = this->creer_xml();
+    QDomDocument doc = this->creerXml();
     QDomElement root = doc.createElement("configuration");
     doc.appendChild(root);
 
-    //struct managers { QString nom, fichier; }
+    ajouterManagerXml(doc, root, "note", notman.getFichier());
+    ajouterManagerXml(doc, root, "categorie", catman.getFichier());
+    ajouterManagerXml(doc, root, "credits", credman.getFichier());
+    ajouterManagerXml(doc, root, "uv", uvman.getFichier());
+    ajouterManagerXml(doc, root, "filiere", filman.getFichier());
+    ajouterManagerXml(doc, root, "formation", forman.getFichier());
+    ajouterManagerXml(doc, root, "periode", periodeman.getFichier());
+    ajouterManagerXml(doc, root, "dossier", dossier.getFichier());
 
-    //for(vector)
-    /*QDomElement manager = doc.createElement("manager");
-    root.appendChild(manager);
-    QDomElement nom = doc.createElement("nom");
-    manager.appendChild(nom);
-    nom.appendChild(doc.createTextNode(managers[i].nom));
-    QDomElement fichier = doc.createElement("nom");
-    manager.appendChild(fichier);
-    fichier.appendChild(doc.createTextNode(managers[i].fichier));*/
-
-    this->sauvegarder_xml(chemin_dossier + "/" + fichier, doc);
+    this->sauvegarderXml(dossier.getCheminFichier() + "/" + fichier, doc);
 }
 
 void Application::nouveau(const QString& nom, const QString& prenom)
@@ -96,7 +101,7 @@ void Application::nouveau(const QString& nom, const QString& prenom)
 
     dossier.setNom(nom);
     dossier.setPrenom(prenom);
-    chemin_dossier = chemin_dossiers + "/" + dossier.getLogin();
+    QString chemin_dossier = chemin_dossiers + "/" + dossier.getLogin();
 
     QDir dos(chemin_dossier);
     if (dos.exists()) {
@@ -104,22 +109,23 @@ void Application::nouveau(const QString& nom, const QString& prenom)
         throw Exception("Le dossier " + chemin_dossier + " existe déjà.");
     }
 
-    dos.setPath(chemin_default);
+    dos.setPath(chemin_fichier);
     if (!dos.exists()) {
         fermer();
-        throw Exception("Le dossier " + chemin_default + " n'existe pas.");
+        throw Exception("Le dossier " + chemin_fichier + " n'existe pas.");
     }
 
     dos = dos.current();
     dos.mkdir(chemin_dossier);
 
-    dos.setPath(chemin_default);
+    dos.setPath(chemin_fichier);
     QFileInfoList fichdef = dos.entryInfoList();
     for (int i = 0; i < fichdef.size(); ++i) {
         QFile::copy(fichdef[i].filePath(), chemin_dossier + "/" + fichdef[i].fileName());
     }
 
-    dossier.setFichier(chemin_dossier + "/" + dossier.getLogin() + ".xml");
+    dossier.setCheminFichier(chemin_dossier);
+    dossier.setFichier(dossier.getLogin() + ".xml");
     dossier.sauvegarder(); // Création du fichier
 
     chargerConfiguration();
@@ -132,7 +138,8 @@ void Application::charger(const QString& login)
         fermer();
     }
 
-    chemin_dossier = chemin_dossiers + "/" + login;
+    dossier.setCheminFichier(chemin_dossiers + "/" + login);
+    dossier.setFichier(login + ".xml");
     chargerConfiguration();
 }
 
@@ -142,7 +149,7 @@ void Application::sauvegarder()
         throw Exception("Impossible de sauvegarder, aucun Dossier n'est chargé.");
     }
 
-    //sauvegarderConfiguration();
+    sauvegarderConfiguration();
 
     notman.sauvegarder();
     catman.sauvegarder();
@@ -164,11 +171,23 @@ void Application::fermer()
     periodeman.vider();
     catman.vider();
     notman.vider();
-
-    chemin_dossier = "";
 }
 
 bool Application::estFerme() const
 {
     return notman.estVide() && catman.estVide() && credman.estVide() && uvman.estVide() && forman.estVide() && filman.estVide() && periodeman.estVide() && dossier.estVide();
+}
+
+void Application::ajouterManagerXml(QDomDocument& doc, QDomElement& root, const QString& n, const QString& f) const
+{
+    QDomElement manager = doc.createElement("manager");
+    root.appendChild(manager);
+
+    QDomElement nom = doc.createElement("nom");
+    manager.appendChild(nom);
+    nom.appendChild(doc.createTextNode(n));
+
+    QDomElement fichier = doc.createElement("fichier");
+    manager.appendChild(fichier);
+    fichier.appendChild(doc.createTextNode(f));
 }
