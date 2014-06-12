@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file UV.h
 /// \brief Les UVs sont les matières de l'UTC.
 /// \author Nicolas Szewe, Erwan Normand
@@ -41,6 +41,8 @@ public:
     /// \brief Constructeur de recopie de la classe UV
     ///
     UV(const UV& u);
+
+    ~UV();//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 
     ///
     /// \fn getCode
@@ -120,14 +122,6 @@ public:
     /// \brief Retire des crédits d'une UV
     ///
     void retireCredits(const Credits& c) { cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
-
-    ///
-    /// \fn affichageUV
-    /// \brief Fonction d'affichage d'une UV
-    ///
-    void affichage();
-
-    ~UV();//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
 };
 
 #endif // UV_PROFIL_H

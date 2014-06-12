@@ -24,8 +24,11 @@ private:
 public:
     UVManager(const QString& f = ""): Manager(f), uvs() {}
 
-    void load(const CreditsManager& credman,const CategorieManager& catman);
-    void save();
+    void charger(const CreditsManager& credman,const CategorieManager& catman);
+    void sauvegarder();
+
+    bool estVide() const { return uvs.estVide(); }
+    void vider() { uvs.vider(); }
 
     UV& getUV(const QString& code) { return uvs.get(code); }
     const UV& getUV(const QString& code) const { return uvs.get(code); }

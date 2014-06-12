@@ -54,8 +54,6 @@ public:
     /// \brief Modifie le nom de la Categorie.
     ///
     void setNom(const QString& n) { nom = n; }
-
-    void afficher() const { std::cout << code.toStdString() << " : " << nom.toStdString() << std::endl; }
 };
 
 #endif // CATEGORIE_H

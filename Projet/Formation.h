@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Formation.h
 /// \brief Un etudiant peut suivre différentes formations.
 /// \author Erwan Normand
@@ -41,8 +41,6 @@ public:
     void retirerSpecialite(const Formation& f) { specialites.erase(remove(specialites.begin(), specialites.end(), &f), specialites.end()); }
     void ajouterUV(const UV& u) { uvs.push_back(&u); }
     void retirerUV(const UV& u) { uvs.erase(remove(uvs.begin(), uvs.end(), &u), uvs.end()); }
-
-    void afficher() const;
 };
 
 #endif // FORMATION_H

@@ -24,8 +24,11 @@ private:
 public:
     CreditsManager(const QString& f = ""): Manager(f), credits() {}
 
-    void load(const CategorieManager& catman);
-    void save();
+    void charger(const CategorieManager& catman);
+    void sauvegarder();
+
+    bool estVide() const { return credits.estVide(); }
+    void vider() { credits.vider(); }
 
     Credits& getCredits(const QString& code) { return credits.get(code); }
     const Credits& getCredits(const QString& code) const { return credits.get(code); }

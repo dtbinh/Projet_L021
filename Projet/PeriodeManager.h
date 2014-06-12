@@ -22,8 +22,11 @@ private:
 public:
     PeriodeManager(const QString& f = ""): Manager(f), periodes() {}
 
-    void load();
-    void save();
+    void charger();
+    void sauvegarder();
+
+    bool estVide() const { return periodes.estVide(); }
+    void vider() { periodes.vider(); }
 
     Periode& getPeriode(const QString& code) { return periodes.get(code); }
     const Periode& getPeriode(const QString& code) const { return periodes.get(code); }

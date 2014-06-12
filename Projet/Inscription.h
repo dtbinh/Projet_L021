@@ -48,8 +48,6 @@ public:
    void retirerUV(const QString& code);
 
    void modifierNote(const QString& code, const Note& n) { notes.get(code) = n; }
-   
-   void afficher();
 };
 
 #endif // INSCRIPTION_H

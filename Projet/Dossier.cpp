@@ -24,9 +24,9 @@ void Dossier::setLogin()
     //login.toLower();
 }
 
-void Dossier::load(const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
+void Dossier::charger(const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
 {
-    QDomDocument doc = this->load_xml(fichier);
+    QDomDocument doc = this->charger_xml(fichier);
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
@@ -129,23 +129,20 @@ void Dossier::load(const FormationManager& forman,const PeriodeManager& periodem
     }
 }
 
-void Dossier::save()
+void Dossier::sauvegarder()
 {
-    QDomDocument doc = this->create_xml();
+    QDomDocument doc = this->creer_xml();
 
-    QDomElement root = doc.createElement("dossiers");
+    QDomElement root = doc.createElement("dossier");
     doc.appendChild(root);
 
-    QDomElement dossier = doc.createElement("dossier");
-    root.appendChild(dossier);
-
     QDomElement nom = doc.createElement("nom");
-    dossier.appendChild(nom);
+    root.appendChild(nom);
     QDomText nomText = doc.createTextNode(this->getNom());
     nom.appendChild(nomText);
 
     QDomElement prenom = doc.createElement("prenom");
-    dossier.appendChild(prenom);
+    root.appendChild(prenom);
     QDomText prenomText = doc.createTextNode(this->getPrenom());
     prenom.appendChild(prenomText);
 
@@ -153,7 +150,7 @@ void Dossier::save()
     for(map<QString,Formation>::const_iterator it = tempformation.begin(); it != tempformation.end(); it++)
     {
         QDomElement formation = doc.createElement("formations");
-        dossier.appendChild(formation);
+        root.appendChild(formation);
         QDomText formationText = doc.createTextNode(it->second.getCode());
         formation.appendChild(formationText);
     }
@@ -162,7 +159,7 @@ void Dossier::save()
     for(map<QString,Inscription>::const_iterator it = tempinscription.begin(); it != tempinscription.end(); it++)
     {
         QDomElement inscription = doc.createElement("inscription");
-        dossier.appendChild(inscription);
+        root.appendChild(inscription);
 
         QDomElement codeinscription=doc.createElement("code");
         inscription.appendChild(codeinscription);
@@ -198,21 +195,14 @@ void Dossier::save()
          }
     }
 
-    this->save_xml(fichier, doc);
+    this->sauvegarder_xml(fichier, doc);
 }
 
-void Dossier::afficher()
-{    
-    cout << "Dossier de " << nom.toStdString( )<< " " << prenom.toStdString() << " login : " << login.toStdString() << endl;
-
-    for (map<QString,Formation>::const_iterator it = formations.begin(); it != formations.end(); it++)
-    {
-        cout << it->second.getCode().toStdString() << " "<< it->second.getNom().toStdString() << " ";
-    }
-    cout << endl;
-
-    for (map<QString,Inscription>::iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
-    {
-        it->second.afficher(); // La méthode afficher de Inscription doit être const pour utiliser des const_iterator
-    }
+void Dossier::vider()
+{
+    formations.vider();
+    inscriptions.vider();
+    nom = "";
+    prenom = "";
+    login = "";
 }

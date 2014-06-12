@@ -40,7 +40,6 @@ public :
     ///
     Dossier(const QString& n = "", const QString& p = ""): Manager(), nom(n), prenom(p), formations(), inscriptions() {
         setLogin();
-        //this->setFichier(getLogin() + ".xml");
     }
 
     ~Dossier() {}
@@ -82,14 +81,11 @@ public :
     void retirerFormation(const QString& code) { formations.retirer(code); }
     void retirerInscription(const QString& code) { inscriptions.retirer(code); }
 
-    void load(const FormationManager& forman, const PeriodeManager& periodeman, const UVManager& uvman, const NoteManager& notman);
-    void save();
+    void charger(const FormationManager& forman, const PeriodeManager& periodeman, const UVManager& uvman, const NoteManager& notman);
+    void sauvegarder();
 
-    ///
-    /// \fn affichage
-    /// \brief Simple fonction d'affichage
-    ///
-    void afficher();
+    bool estVide() const { return formations.estVide() && inscriptions.estVide() && nom == "" && prenom == "" && login == ""; }
+    void vider();
 };
 
 #endif // DOSSIER_H

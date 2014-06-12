@@ -22,8 +22,11 @@ private:
 public:
     CategorieManager(const QString& f = ""): Manager(f), categories() {}
 
-    void load();
-    void save();
+    void charger();
+    void sauvegarder();
+
+    bool estVide() const { return categories.estVide(); }
+    void vider() { categories.vider(); }
 
     Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
