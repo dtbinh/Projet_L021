@@ -13,7 +13,7 @@
 #include "Factory.h"
 #include "CreditsManager.h"
 #include "CategorieManager.h"
-#include "DossierManager.h"
+#include "Dossier.h"
 #include "FormationManager.h"
 #include "Inscription.h"
 #include "NoteManager.h"
@@ -23,7 +23,9 @@
 class Application : Manager
 {
 private:
-    QString dossier;
+    QString chemin_dossiers; // Le chemin du dossier de stockage des xml des Dossiers
+    //QString chemin_fichier; // Le chemin du dossier de stockage des xml par défault (hérité de Manager)
+    //QString fichier; // Le nom du fichier de configuration par défault (hérité de Manager)
     NoteManager notman;
     CategorieManager catman;
     CreditsManager credman;
@@ -31,15 +33,28 @@ private:
     FormationManager forman; // A factoriser dans un Factory
     FormationManager filman;
     PeriodeManager periodeman;
-    //DossierManager dosman;
+    Dossier dossier;
 
-    void loadConfiguration();
+    //void setDossier(const Dossier& d) { dossier = &d; }
+
+    void initialiser();
+    void chargerConfiguration();
+    void sauvegarderConfiguration();
+
+    void ajouterManagerXml(QDomDocument& doc, QDomElement& root, const QString& n, const QString& f) const;
 
 public:
-    Application(const QString& f = "");
+    Application(const QString& cd, const QString& chemin_default, const QString& f): Manager(chemin_default, f), chemin_dossiers(cd),
+        notman(), catman(), credman(), uvman(), forman(), filman(), periodeman(), dossier() {}
 
-    void load(const QString& f = "");
-    void save();
+    ~Application() { fermer(); }
+
+    void nouveau(const QString& nom, const QString& prenom);
+    void charger(const QString& f = "");
+    void sauvegarder();
+    void fermer();
+
+    bool estFerme() const;
 
     NoteManager& getNoteManager() { return notman; }
     const NoteManager& getNoteManager() const { return notman; }
@@ -62,18 +77,16 @@ public:
     PeriodeManager& getPeriodeManager() { return periodeman; }
     const PeriodeManager& getPeriodeManager() const { return periodeman; }
 
-    /*DossierManager& getDossierManager() { return dosman; }
-    const DossierManager& getDossierManager() const { return dosman; }*/
+    Dossier& getDossier() { return dossier; }
+    const Dossier& getDossier() const { return dossier; }
 
-
-    void setNoteManager(const NoteManager& n) { notman = n; }
-    void setCategorieManager(const CategorieManager& c) { catman = c; }
-    void setCreditsManager(const CreditsManager& uv) { credman = uv; }
-    void setUVManager(const UVManager& uv) { uvman = uv; }
-    void setFormationManager(const FormationManager& f) { forman = f; }
-    void setFiliereManager(const FormationManager& f) { filman = f; }
-    void setPeriodeManager(const PeriodeManager& p) { periodeman = p; }
-    //void setDossierManager(const DossierManager& d) { dosman = d; }
+    /*void setNoteManager(const NoteManager& n) { notman = &n; }
+    void setCategorieManager(const CategorieManager& c) { catman = &c; }
+    void setCreditsManager(const CreditsManager& uv) { credman = &uv; }
+    void setUVManager(const UVManager& uv) { uvman = &uv; }
+    void setFormationManager(const FormationManager& f) { forman = &f; }
+    void setFiliereManager(const FormationManager& f) { filman = &f; }
+    void setPeriodeManager(const PeriodeManager& p) { periodeman = &p; }*/
 };
 
 #endif // APPLICATION_H

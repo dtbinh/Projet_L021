@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
   <manager>
-	<nom>note</nom>
+    <nom>note</nom>
     <fichier>note_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>categorie</nom>
+    <nom>categorie</nom>
     <fichier>categorie_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>credits</nom>
+    <nom>credits</nom>
     <fichier>credits_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>uv</nom>
+    <nom>uv</nom>
     <fichier>uv_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>filiere</nom>
+    <nom>filiere</nom>
     <fichier>filiere_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>formation</nom>
+    <nom>formation</nom>
     <fichier>formation_utc.xml</fichier>
   </manager>
   <manager>
-	<nom>periode</nom>
+    <nom>periode</nom>
     <fichier>periode_utc.xml</fichier>
-  </manager>  
+  </manager>
   <manager>
-	<nom>dossier</nom>
+    <nom>dossier</nom>
     <fichier>enormand.xml</fichier>
   </manager>
 </configuration>

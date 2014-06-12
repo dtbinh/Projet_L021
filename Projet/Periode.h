@@ -28,8 +28,6 @@ public:
 
     void setNom(const QString& n) { nom = n; }
     void setAnnee(unsigned int a) { annee = a; }
-
-    void afficher() const;
 };
 
 #endif // PERIODE_H

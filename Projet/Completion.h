@@ -15,7 +15,7 @@ enum Choix {
     Confirmer,Refuser,Retarder,Avancer
 };
 
-class Completion :public Manager
+class Completion : public Manager
 {
 Factory<Solution> solutions;
 std::map <QString,Choix> choix;//Associe au code d'une solution, un choix
@@ -25,7 +25,7 @@ public:
     Completion(const UVManager& uvman);
     Solution& getSolution(const QString& code) { return solutions.get(code); }
     const Solution& getSolution(const QString& code) const { return solutions.get(code); }
-    void ajouterSolution(const QString& code) { solutions.ajouter(code, Solution()); }
+    //void ajouterSolution(const QString& code,const Dossier& D) { solutions.ajouter(code,Solution(D)); }
     void retirerSolution(const QString& code) { solutions.retirer(code); }
 
     const std::map<QString,QString>& getPreferences() const { return preferences; }

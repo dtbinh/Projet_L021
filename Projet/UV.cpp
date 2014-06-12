@@ -2,21 +2,6 @@
 
 using namespace std;
 
-void UV::affichage()
-{
-    cout<<code.toStdString()<<"---"<<nom.toStdString()<<endl;
-    cout<<"Categorie : "<<categorie->getCode().toStdString()<<endl;
-    cout<<"Credits : ";
-    for(unsigned int i=0;i<cred.size();i++)
-        cout<<cred[i]->getNombre()<<" "<<cred[i]->getCategorie().getCode().toStdString()<<"     ";
-    cout<<endl;
-        /*cout<<"Prerequis : ";
-        for(unsigned int i=0;i<prerequis.size();i++)
-        cout<<" "<<prerequis[i]->getCode().toStdString();
-    cout<<endl;*/ //Affichage que l'on remettra plus tard
-    cout<<endl;
-}
-
 UV::UV(const UV& u)
 {
     code = u.code;

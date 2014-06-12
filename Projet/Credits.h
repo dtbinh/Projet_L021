@@ -69,8 +69,6 @@ public :
     /// \brief Modifie la catégorie des crédits.
     ///
     void setCategorie(const Categorie& c) { categorie = &c; }
-
-    void afficher() const { std::cout << nom.toStdString() << " : " << nombre << " " << categorie->getCode().toStdString() << std::endl; }
 };
 
 #endif // CREDIT_H

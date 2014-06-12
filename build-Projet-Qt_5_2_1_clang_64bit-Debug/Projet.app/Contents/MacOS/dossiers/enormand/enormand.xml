@@ -1,33 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dossiers>
-  <dossier>
-    <nom>normand</nom>
-    <prenom>erwan</prenom>
-    <inscription>
-      <code>GI01</code>
-      <semestre>A2013</semestre>
-      <formation>GI</formation>
-      <uv>
-        <codeUV>LO21</codeUV>
-        <note>A</note>
-      </uv>
-      <uv>
-        <codeUV>NF17</codeUV>
-        <note>EC</note>
-      </uv>
-    </inscription>
-    <inscription>
-      <code>GI02</code>
-      <semestre>P2014</semestre>
-      <formation>GI</formation>
-      <uv>
-        <codeUV>LO21</codeUV>
-        <note>C</note>
-      </uv>
-      <uv>
-        <codeUV>NF17</codeUV>
-        <note>EC</note>
-      </uv>
-    </inscription>
-  </dossier>
-</dossiers>
+<dossier>
+  <nom>normand</nom>
+  <prenom>erwan</prenom>
+  <inscription>
+    <code>GI01</code>
+    <semestre>A2013</semestre>
+    <formation>GI</formation>
+    <uv>
+      <codeUV>NF16</codeUV>
+      <note>C</note>
+    </uv>
+  </inscription>
+  <inscription>
+    <code>GI02</code>
+    <semestre>P2014</semestre>
+    <formation>GI</formation>
+    <uv>
+      <codeUV>LO21</codeUV>
+      <note>C</note>
+    </uv>
+    <uv>
+      <codeUV>NF17</codeUV>
+      <note>EC</note>
+    </uv>
+  </inscription>
+</dossier>
