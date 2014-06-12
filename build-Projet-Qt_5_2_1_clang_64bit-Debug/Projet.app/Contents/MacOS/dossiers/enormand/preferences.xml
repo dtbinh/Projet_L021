@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+  <preference>
+    <code>LO21</code>
+    <pref>Exigence</pref>
+  </preference>
+  <preference>
+    <code>NF17</code>
+    <pref>Refus</pref>
+  </preference>
+</preferences>
