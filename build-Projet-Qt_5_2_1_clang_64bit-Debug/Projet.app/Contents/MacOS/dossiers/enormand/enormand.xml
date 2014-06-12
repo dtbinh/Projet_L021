@@ -7,8 +7,16 @@
     <semestre>A2013</semestre>
     <formation>GI</formation>
     <uv>
+      <codeUV>IA02</codeUV>
+      <note>B</note>
+    </uv>
+    <uv>
       <codeUV>NF16</codeUV>
       <note>C</note>
+    </uv>
+    <uv>
+      <codeUV>NF17</codeUV>
+      <note>B</note>
     </uv>
   </inscription>
   <inscription>
@@ -16,12 +24,16 @@
     <semestre>P2014</semestre>
     <formation>GI</formation>
     <uv>
-      <codeUV>LO21</codeUV>
+      <codeUV>LA13</codeUV>
       <note>C</note>
     </uv>
     <uv>
-      <codeUV>NF17</codeUV>
-      <note>EC</note>
+      <codeUV>LO21</codeUV>
+      <note>FX</note>
+    </uv>
+    <uv>
+      <codeUV>SI11</codeUV>
+      <note>A</note>
     </uv>
   </inscription>
 </dossier>

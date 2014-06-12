@@ -9,7 +9,19 @@ const Factory<Credits> Dossier::getCredits() const {
         {
          QString N=it->second.getNotes().get(ituv->second.getCode()).getNote();
          if(N=="A" || N=="B" || N=="C" || N=="D" || N=="E" ){
-            cout<<"Bravo monsieur"<<endl;
+            if(ituv->second.getCategorie().getCode()=="CS"){
+                cout<<"Validation d'une CS"<<endl;
+            }
+            else if (ituv->second.getCategorie().getCode()=="TM"){
+                cout<<"Validation d'une TM"<<endl;
+            }
+            else if(ituv->second.getCategorie().getCode()=="TSH"){
+                cout<<"Validation d'une TSH"<<endl;
+            }
+            else if(ituv->second.getCategorie().getCode()=="SP"){
+                cout<<"Validation d'une SP"<<endl;
+            }
+
          }
          else
             cout<<"YOU FAIL !!!!"<<endl;
@@ -100,15 +112,21 @@ void Dossier::charger(const FormationManager& forman,const PeriodeManager& perio
                             }
                             filsUV = filsUV.nextSiblingElement();
                         }
+
                     }
                 filsElement = filsElement.nextSiblingElement();
                 }
                 Inscription temp(code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
+                for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
+                {
+                    temp.ajouterUV(it->second.getCode());
+                    temp.modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
+                }
+                tempuvs.vider();
                 tempinscriptions.push_back(temp);
             }
             unElement = unElement.nextSiblingElement();
         }
-
         this->setLogin();
         this->setNom(tempNom);
         this->setPrenom(tempPrenom);
@@ -127,18 +145,21 @@ void Dossier::charger(const FormationManager& forman,const PeriodeManager& perio
             for(unsigned int i=0; i < tempinscriptions.size(); i++)
             {
                 ajouterInscription(tempinscriptions[i].getCode(),tempinscriptions[i].getPeriode(),tempinscriptions[i].getFormation());
+                tempuvs=tempinscriptions[i].getUVs();
                 for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
                 {
-                    getInscription(tempinscriptions[i].getCode()).ajouterUV(it->second.getCode());
+                    getInscription(tempinscriptions[i].getCode()).ajouterUV(uvman.getUV(it->second.getCode()));
                     getInscription(tempinscriptions[i].getCode()).
-                    modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
+                            modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
                 }
             }
+            tempuvs.vider();
             tempinscriptions.clear();
             tempInscri="NULL";
          }
     }
 }
+
 
 void Dossier::sauvegarder()
 {
