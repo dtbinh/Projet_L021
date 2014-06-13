@@ -18,7 +18,6 @@ class CategorieManager : public Manager
 {
 private:
     Factory<Categorie> categories;
-    //class iterator;
 
 public:
     CategorieManager(const QString& cf = "",const QString& f = ""): Manager(cf, f), categories() {}
@@ -33,22 +32,11 @@ public:
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
     void ajouterCategorie(const QString& code, const QString& nom) { categories.ajouter(code, Categorie(code, nom)); }
     void retirerCategorie(const QString& code) { categories.retirer(code); }
-};
 
-
-/*class CategorieManager::iterator
-{
-private:
-    Factory<Categorie>* categories;
-    Categorie* index;
-
-    iterator(Categorie* i, Factory<Categorie>* cat): index(i), categories(cat) {}
-    friend class CategorieManager;
-
-public:
-    iterator(): index(), categories() {}
-
-    Categorie operator*() { return *index; }*/
+    typename std::map<QString,Categorie>::const_iterator begin() const { return categories.begin(); }
+    typename std::map<QString,Categorie>::const_iterator end() const { return categories.end(); }
+    typename std::map<QString,Categorie>::iterator begin() { return categories.begin(); }
+    typename std::map<QString,Categorie>::iterator end() { return categories.end(); }
 };
 
 #endif // CATEGORIEMANAGER_H

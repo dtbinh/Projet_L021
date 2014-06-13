@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
 {
     QApplication qapp(argc, argv);
     Application app("dossiers", "dossiers/default", "configuration.xml");
+    app.charger("enormand");
 
     MainWindow mw(&app);
     mw.show();
