@@ -72,7 +72,7 @@ public :
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }
 
-    const Factory<Credits> getCredits() const ;
+    const std::vector<Credits> getCredits(const CategorieManager& catman) const ;
 
     Inscription& getInscription(const QString& code) { return inscriptions.get(code); }
     const Inscription& getInscription(const QString& code) const { return inscriptions.get(code); }

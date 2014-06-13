@@ -7,6 +7,7 @@
 #include "Exception.h"
 #include "Accueil.h"
 #include "Completion.h"
+#include "Solution.h"
 
 using namespace std;
 
@@ -21,12 +22,13 @@ int main(int argc, char *argv[])
 
         // Quelques essais en guise d'exemple
             app.charger("enormand");
-            app.getDossier().getCredits();
 
             //app.getNoteManager().getNote("A").setMention("Mention");
             //app.getUVManager().getUV("LO21").setNom(app.getUVManager().getUV("LO21").getNom() + " (une UV qu'elle est bien !)");
 
             Completion comp(app.getUVManager());
+            Solution("test",app.getDossier(),app.getCategorieManager());
+            // comp.ajouterSolution("Test",app.getDossier(),app.getCategorieManager());
             comp.savePreference();
 
         app.sauvegarder();

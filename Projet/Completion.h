@@ -3,7 +3,7 @@
 
 #include <QString>
 #include <QtXml>
-#include "Manager.h"
+#include "Application.h"
 #include "Factory.h"
 #include "Solution.h"
 
@@ -25,7 +25,7 @@ public:
     Completion(const UVManager& uvman);
     Solution& getSolution(const QString& code) { return solutions.get(code); }
     const Solution& getSolution(const QString& code) const { return solutions.get(code); }
-    //void ajouterSolution(const QString& code,const Dossier& D) { solutions.ajouter(code,Solution(D)); }
+    void ajouterSolution(const QString& code,const Dossier& D,const CategorieManager& catman) { solutions.ajouter(code,Solution(code,D,catman)); }
     void retirerSolution(const QString& code) { solutions.retirer(code); }
 
     const std::map<QString,QString>& getPreferences() const { return preferences; }

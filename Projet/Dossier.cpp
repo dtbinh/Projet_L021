@@ -2,7 +2,11 @@
 
 using namespace std;
 
-const Factory<Credits> Dossier::getCredits() const {
+const std::vector<Credits> Dossier::getCredits(const CategorieManager& catman) const {
+    Credits CS_Actuel("CS_Actuel",0,catman.getCategorie("CS"));
+    Credits TM_Actuel("TM_Actuel",0,catman.getCategorie("TM"));
+    Credits TSH_Actuel("TSH_Actuel",0,catman.getCategorie("TSH"));
+    Credits SP_Actuel("SP_Actuel",0,catman.getCategorie("SP"));
     for (map<QString,Inscription>::const_iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
     {
         for (map<QString,UV>::const_iterator ituv = it->second.getUVs().begin(); ituv != it->second.getUVs().end(); ituv++)
@@ -10,23 +14,36 @@ const Factory<Credits> Dossier::getCredits() const {
          QString N=it->second.getNotes().get(ituv->second.getCode()).getNote();
          if(N=="A" || N=="B" || N=="C" || N=="D" || N=="E" ){
             if(ituv->second.getCategorie().getCode()=="CS"){
-                cout<<"Validation d'une CS"<<endl;
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    CS_Actuel.setNombre(CS_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
             }
             else if (ituv->second.getCategorie().getCode()=="TM"){
-                cout<<"Validation d'une TM"<<endl;
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    TM_Actuel.setNombre(TM_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
+
             }
             else if(ituv->second.getCategorie().getCode()=="TSH"){
-                cout<<"Validation d'une TSH"<<endl;
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    TSH_Actuel.setNombre(TSH_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
             }
             else if(ituv->second.getCategorie().getCode()=="SP"){
-                cout<<"Validation d'une SP"<<endl;
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    SP_Actuel.setNombre(SP_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
             }
 
          }
-         else
-            cout<<"YOU FAIL !!!!"<<endl;
-        }
+       }
     }
+    std::vector<Credits> tempcred;
+    tempcred.push_back(TM_Actuel);
+    tempcred.push_back(TSH_Actuel);
+    tempcred.push_back(CS_Actuel);
+    tempcred.push_back(SP_Actuel);
+    return tempcred;
 }
 
 
