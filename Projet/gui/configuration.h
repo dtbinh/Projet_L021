@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QStandardItemModel>
 #include <QStandardItem>
+#include <QComboBox>
 #include "applicationcomposant.h"
 
 namespace Ui {
@@ -21,7 +22,12 @@ public:
 private:
     Ui::Configuration *ui;
 
-    QStandardItemModel *categorieModele();
+    void remplirCategorie();
+    void remplirCredits();
+    void remplirFormation();
+    void remplirNote();
+    void remplirPeriode();
+    void remplirUV();
 };
 
 #endif // CONFIGURATION_H

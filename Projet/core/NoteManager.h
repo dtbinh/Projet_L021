@@ -29,6 +29,7 @@ public:
     bool estVide() const { return notes.estVide(); }
     void vider() { notes.vider(); }
 
+    const Factory<Note>& getNotes() const { return notes; }
     Note& getNote(const QString& note) { return notes.get(note); }
     const Note& getNote(const QString& note) const { return notes.get(note); }
     void ajouterNote(const QString& note, const QString& mention) { notes.ajouter(note, Note(note, mention)); }

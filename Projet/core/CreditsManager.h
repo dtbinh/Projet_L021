@@ -30,6 +30,7 @@ public:
     bool estVide() const { return credits.estVide(); }
     void vider() { credits.vider(); }
 
+    const Factory<Credits>& getCredits() const { return credits; }
     Credits& getCredits(const QString& code) { return credits.get(code); }
     const Credits& getCredits(const QString& code) const { return credits.get(code); }
     void ajouterCredits(const QString& code, int nombre, const Categorie& cat) { credits.ajouter(code, Credits(code, nombre, cat)); }

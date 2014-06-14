@@ -33,7 +33,7 @@ void MainWindow::on_menuBoutonDossiers_clicked()
 
 void MainWindow::on_menuBoutonConfiguration_clicked()
 {
-    ui->titre->setText("Configuration de l'UT");
+    ui->titre->setText("Configuration");
     accueil->setHidden(true);
     configuration->setHidden(false);
 }

@@ -28,15 +28,11 @@ public:
     bool estVide() const { return categories.estVide(); }
     void vider() { categories.vider(); }
 
+    const Factory<Categorie>& getCategories() const { return categories; }
     Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
     void ajouterCategorie(const QString& code, const QString& nom) { categories.ajouter(code, Categorie(code, nom)); }
     void retirerCategorie(const QString& code) { categories.retirer(code); }
-
-    typename std::map<QString,Categorie>::const_iterator begin() const { return categories.begin(); }
-    typename std::map<QString,Categorie>::const_iterator end() const { return categories.end(); }
-    typename std::map<QString,Categorie>::iterator begin() { return categories.begin(); }
-    typename std::map<QString,Categorie>::iterator end() { return categories.end(); }
 };
 
 #endif // CATEGORIEMANAGER_H

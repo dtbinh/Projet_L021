@@ -30,6 +30,7 @@ public:
     bool estVide() const { return uvs.estVide(); }
     void vider() { uvs.vider(); }
 
+    const Factory<UV>& getUVs() const { return uvs; }
     UV& getUV(const QString& code) { return uvs.get(code); }
     const UV& getUV(const QString& code) const { return uvs.get(code); }
     void ajouterUV(const QString& code, const QString& nom, const Categorie& cat) { uvs.ajouter(code, UV(code, nom,cat)); }
