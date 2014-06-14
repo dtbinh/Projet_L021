@@ -18,7 +18,7 @@
     <item>
      <layout class="QVBoxLayout" name="verticalLayout">
       <item>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="menuAccueil">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Maximum">
           <horstretch>0</horstretch>

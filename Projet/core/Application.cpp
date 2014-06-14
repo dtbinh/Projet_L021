@@ -2,6 +2,18 @@
 
 using namespace std;
 
+const QStringList& Application::listeConfigurations() const
+{
+    QDir qd(chemin_fichier);
+    return qd.entryList();
+}
+
+const QStringList& Application::listeDossiers() const
+{
+    QDir qd(chemin_dossiers);
+    return qd.entryList();
+}
+
 void Application::chargerConfiguration()
 {
     QDomDocument doc = this->chargerXml(dossier.getCheminFichier() + "/" + fichier);
@@ -163,6 +175,8 @@ void Application::sauvegarder()
 
 void Application::fermer()
 {
+    sauvegarder();
+
     dossier.vider();
     forman.vider();
     filman.vider();

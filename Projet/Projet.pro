@@ -19,9 +19,10 @@ SOURCES += \
     core/UV.cpp \
     core/UVManager.cpp \
     gui/mainwindow.cpp \
-    gui/accueil.cpp \
-    gui/configuration.cpp \
-    gui/panneauaction.cpp
+    gui/panneauaction.cpp \
+    gui/fenaccueil.cpp \
+    gui/fendossier.cpp \
+    gui/fenconfiguration.cpp
 
 HEADERS += \
     core/Application.h \
@@ -45,16 +46,18 @@ HEADERS += \
     core/UV.h \
     core/UVManager.h \
     gui/mainwindow.h \
-    gui/accueil.h \
-    gui/configuration.h \
     gui/applicationcomposant.h \
     gui/panneauaction.h \
-    core/Observateur.h
+    core/Observateur.h \
+    gui/fenaccueil.h \
+    gui/fendossier.h \
+    gui/fenconfiguration.h
 
 FORMS += \
     gui/mainwindow.ui \
-    gui/accueil.ui \
-    gui/configuration.ui \
-    gui/panneauaction.ui
+    gui/panneauaction.ui \
+    gui/fenaccueil.ui \
+    gui/fendossier.ui \
+    gui/fenconfiguration.ui
 
 OTHER_FILES +=

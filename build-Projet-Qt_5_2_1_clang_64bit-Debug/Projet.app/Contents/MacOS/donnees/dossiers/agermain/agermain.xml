@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dossier>
+  <nom>germain</nom>
+  <prenom>audrey</prenom>
+  <inscription>
+    <code>GP01</code>
+    <semestre>A2014</semestre>
+    <formation>GP</formation>
+    <uv>
+      <codeUV>TF06</codeUV>
+      <note>A</note>
+    </uv>
+  </inscription>
+  <inscription>
+    <code>TC04</code>
+    <semestre>P2013</semestre>
+    <formation>TC</formation>
+    <uv>
+      <codeUV>SY02</codeUV>
+      <note>B</note>
+    </uv>
+  </inscription>
+</dossier>

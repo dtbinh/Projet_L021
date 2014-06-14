@@ -7,8 +7,16 @@
     <semestre>A2013</semestre>
     <formation>GI</formation>
     <uv>
+      <codeUV>LO21</codeUV>
+      <note>C</note>
+    </uv>
+    <uv>
       <codeUV>NF16</codeUV>
       <note>C</note>
+    </uv>
+    <uv>
+      <codeUV>NF17</codeUV>
+      <note>EC</note>
     </uv>
   </inscription>
   <inscription>
@@ -17,6 +25,10 @@
     <formation>GI</formation>
     <uv>
       <codeUV>LO21</codeUV>
+      <note>C</note>
+    </uv>
+    <uv>
+      <codeUV>NF16</codeUV>
       <note>C</note>
     </uv>
     <uv>

@@ -3,8 +3,9 @@
 
 #include <QMainWindow>
 #include "applicationcomposant.h"
-#include "accueil.h"
-#include "configuration.h"
+#include "fenaccueil.h"
+#include "fenconfiguration.h"
+#include "fendossier.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,13 +20,15 @@ public:
     ~MainWindow();
 
 private slots:
+    void on_menuAccueil_clicked();
     void on_menuDossiers_clicked();
     void on_menuConfiguration_clicked();
 
 private:
     Ui::MainWindow *ui;
-    Accueil *accueil;
-    Configuration *configuration;
+    FenAccueil* fenaccueil;
+    FenConfiguration* fenconfiguration;
+    FenDossier* fendossier;
 };
 
 #endif // MAINWINDOW_H

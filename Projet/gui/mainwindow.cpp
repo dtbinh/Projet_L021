@@ -8,11 +8,13 @@ MainWindow::MainWindow(Application *a, QWidget *parent) :
 {
     ui->setupUi(this);
 
-    accueil = new Accueil(app);
-    configuration = new Configuration(app);
+    fenaccueil = new FenAccueil(app);
+    fendossier = new FenDossier(app);
+    fenconfiguration = new FenConfiguration(app);
 
-    ui->contenu->addWidget(accueil);
-    ui->contenu->addWidget(configuration);
+    ui->contenu->addWidget(fenaccueil);
+    ui->contenu->addWidget(fendossier);
+    ui->contenu->addWidget(fenconfiguration);
 
     on_menuDossiers_clicked();
 }
@@ -20,23 +22,40 @@ MainWindow::MainWindow(Application *a, QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete accueil;
-    delete configuration;
+}
+
+void MainWindow::on_menuAccueil_clicked()
+{
+    ui->titre->setText("Accueil");
+
+    fenaccueil->setVisible(true);
+    fendossier->setHidden(true);
+    fenconfiguration->setHidden(true);
+
+    ui->menuDossiers->setChecked(false);
+    ui->menuConfiguration->setChecked(false);
 }
 
 void MainWindow::on_menuDossiers_clicked()
 {
     ui->titre->setText("Dossiers");
 
-    accueil->setVisible(true);
-    configuration->setHidden(true);
-    //ui->menuBoutonDossiers->setStyleSheet("background-color: yellow;");
+    fenaccueil->setHidden(true);
+    fendossier->setVisible(true);
+    fenconfiguration->setHidden(true);
+
+    ui->menuAccueil->setChecked(false);
+    ui->menuConfiguration->setChecked(false);
 }
 
 void MainWindow::on_menuConfiguration_clicked()
 {
     ui->titre->setText("Configuration");
 
-    accueil->setHidden(true);
-    configuration->setVisible(true);
+    fenaccueil->setHidden(true);
+    fendossier->setHidden(true);
+    fenconfiguration->setVisible(true);
+
+    ui->menuAccueil->setChecked(false);
+    ui->menuDossiers->setChecked(false);
 }

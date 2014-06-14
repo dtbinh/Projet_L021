@@ -9,6 +9,7 @@
 #define APPLICATION_H
 
 #include <QtXml>
+#include <QDir>
 #include "Manager.h"
 #include "Factory.h"
 #include "CreditsManager.h"
@@ -55,6 +56,9 @@ public:
     void fermer();
 
     bool estFerme() const;
+
+    const QStringList& listeConfigurations() const;
+    const QStringList& listeDossiers() const;
 
     NoteManager& getNoteManager() { return notman; }
     const NoteManager& getNoteManager() const { return notman; }
