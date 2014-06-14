@@ -30,14 +30,15 @@ PanneauAction::PanneauAction(Application *a, Observateur* obs, QWidget *parent):
 
     connect(categorieModifier, SIGNAL(clicked()), this, SLOT(categorieModifier_clicked()));
     connect(creditsModifier, SIGNAL(clicked()), this, SLOT(creditsModifier_clicked()));
+    connect(formationModifier, SIGNAL(clicked()), this, SLOT(formationModifier_clicked()));
+    connect(periodeModifier, SIGNAL(clicked()), this, SLOT(periodeModifier_clicked()));
+    connect(noteModifier, SIGNAL(clicked()), this, SLOT(noteModifier_clicked()));
+    connect(uvModifier, SIGNAL(clicked()), this, SLOT(uvModifier_clicked()));
 }
 
 PanneauAction::~PanneauAction()
 {
     delete ui;
-    delete categorieCode;
-    delete categorieNom;
-    delete categorieModifier;
 }
 
 void PanneauAction::setPanneau(const QString& panneau, const QString &c)
@@ -47,22 +48,59 @@ void PanneauAction::setPanneau(const QString& panneau, const QString &c)
 
     if (panneau == "categorie")
     {
-        Categorie& categorie = app->getCategorieManager().getCategorie(code);
+        const Categorie& categorie = app->getCategorieManager().getCategorie(code);
         categorieCode->setText(code);
         categorieNom->setText(categorie.getNom());
 
-        ui->titre->setText("Edition");
+        ui->titre->setText("Edition catégorie");
         panneaux["categorie"]->setVisible(true);
     }
     else if (panneau == "credits")
     {
-        Credits& credits = app->getCreditsManager().getCredits(code);
+        const Credits& credits = app->getCreditsManager().getCredits(code);
         creditsCode->setText(code);
         creditsNombre->setValue(credits.getNombre());
 
-        ui->titre->setText("Edition");
+        ui->titre->setText("Edition crédits");
         panneaux["credits"]->setVisible(true);
     }
+    else if (panneau == "formation")
+    {
+        const Formation& formation = app->getFormationManager().getFormation(code);
+        formationCode->setText(code);
+        formationNom->setText(formation.getNom());
+
+        ui->titre->setText("Edition formation");
+        panneaux["formation"]->setVisible(true);
+    }
+    else if (panneau == "periode")
+    {
+        const Periode& periode = app->getPeriodeManager().getPeriode(code);
+        periodeNom->setText(periode.getNom());
+        periodeAnnee->setValue(periode.getAnnee());
+
+        ui->titre->setText("Edition période");
+        panneaux["periode"]->setVisible(true);
+    }
+    else if (panneau == "note")
+    {
+        const Note& note = app->getNoteManager().getNote(code);
+        noteNote->setText(code);
+        noteMention->setText(note.getMention());
+
+        ui->titre->setText("Edition note");
+        panneaux["note"]->setVisible(true);
+    }
+    else if (panneau == "uv")
+    {
+        const UV& uv = app->getUVManager().getUV(code);
+        uvCode->setText(code);
+        uvNom->setText(uv.getNom());
+
+        ui->titre->setText("Edition UV");
+        panneaux["uv"]->setVisible(true);
+    }
+
 }
 
 void PanneauAction::cacherPanneaux()
@@ -92,6 +130,43 @@ void PanneauAction::creditsModifier_clicked()
 
     observateur->notification("remplirCredits");
     observateur->notification("remplirFormation");
+    observateur->notification("remplirUV");
+}
+
+void PanneauAction::formationModifier_clicked()
+{
+    Formation& formation = app->getFormationManager().getFormation(code);
+    formation.setCode(formationCode->text());
+    formation.setNom(formationNom->text());
+
+    observateur->notification("remplirFormation");
+}
+
+void PanneauAction::periodeModifier_clicked()
+{
+    Periode& periode = app->getPeriodeManager().getPeriode(code);
+    periode.setNom(periodeNom->text());
+    periode.setAnnee(periodeAnnee->value());
+
+    observateur->notification("remplirPeriode");
+}
+
+void PanneauAction::noteModifier_clicked()
+{
+    Note& note = app->getNoteManager().getNote(code);
+    note.setNote(noteNote->text());
+    note.setMention(noteMention->text());
+
+    observateur->notification("remplirNote");
+    observateur->notification("remplirUV");
+}
+
+void PanneauAction::uvModifier_clicked()
+{
+    UV& uv = app->getUVManager().getUV(code);
+    uv.setCode(uvCode->text());
+    uv.setNom(uvNom->text());
+
     observateur->notification("remplirUV");
 }
 
@@ -135,6 +210,63 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
 
         layout->addLayout(form);
         layout->addWidget(creditsModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "formation")
+    {
+        formationCode = new QLineEdit;
+        formationNom = new QLineEdit;
+
+        form->addRow("Code", formationCode);
+        form->addRow("Nom", formationNom);
+
+        formationModifier = new QPushButton("Editer");
+        formationModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(formationModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "periode")
+    {
+        periodeNom = new QLineEdit;
+        periodeAnnee = new QSpinBox;
+        periodeAnnee->setRange(1800,2200);
+
+        form->addRow("Nom", periodeNom);
+        form->addRow("Année", periodeAnnee);
+
+        periodeModifier = new QPushButton("Editer");
+        periodeModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(periodeModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "note")
+    {
+        noteNote = new QLineEdit;
+        noteMention = new QLineEdit;
+
+        form->addRow("Note", noteNote);
+        form->addRow("Mention", noteMention);
+
+        noteModifier = new QPushButton("Editer");
+        noteModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(noteModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "uv")
+    {
+        uvCode = new QLineEdit;
+        uvNom = new QLineEdit;
+
+        form->addRow("Code", uvCode);
+        form->addRow("Nom", uvNom);
+
+        uvModifier = new QPushButton("Editer");
+        uvModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(uvModifier, 0, Qt::AlignRight);
     }
 
     widget->setLayout(layout);
