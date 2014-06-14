@@ -19,17 +19,21 @@ int main(int argc, char *argv[])
     try
     {
         Application app("dossiers", "dossiers/default", "configuration.xml");
-
-        // Quelques essais en guise d'exemple
             app.charger("enormand");
-
             //app.getNoteManager().getNote("A").setMention("Mention");
             //app.getUVManager().getUV("LO21").setNom(app.getUVManager().getUV("LO21").getNom() + " (une UV qu'elle est bien !)");
 
-            Completion comp(app.getUVManager());
-            Solution("test",app.getDossier(),app.getCategorieManager());
-            // comp.ajouterSolution("Test",app.getDossier(),app.getCategorieManager());
-            comp.savePreference();
+            Completion compa(app.getUVManager()); // Charge les preferences. Plus tard, chargera les completions existantes
+            //compa.ajouterPreference("IA02","Exigence");
+            //compa.ajouterPreference("LO21","Refus");
+            //compa.ajouterPreference("SR02","Exigence");
+            //compa.ajouterPreference("IA02","Refus");
+            compa.ajouterPreference("RO03","Exigence");
+            compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),true);
+            compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),false);
+            compa.savePreference();
+            //compa.affichageSolution();
+
 
         app.sauvegarder();
         app.fermer();

@@ -1,14 +1,30 @@
-#include "Completion.h"
+﻿#include "Completion.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-Completion::Completion(const UVManager& uvman) : solutions() {
-    this->loadPreference(uvman);
+void Completion::ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,bool activation){
+    solutions.push_back(Solution(D,catman,this->preferences,uvman,activation));
+    unsigned int i = solutions.size()-1;
+    solutions[i].affichage();
+    cout<<"Souhaitez vous l'accepter?"<<endl;
+    solutions[i].setChoix("Accepter");
 }
 
-void Completion::loadPreference(const UVManager& uvman)
+Completion::Completion(const UVManager& uvman) : solutions() {
+    this->loadPreference();
+    //this->loadSolution(); Chargement des solutions déja existante et de leur état.
+}
+
+void Completion::affichageSolution(){
+    for (unsigned int i=0; i<solutions.size();i++){
+        cout<<"SOlUTION : "<<endl;
+        solutions[i].affichage();
+    }
+}
+
+void Completion::loadPreference()
 {
     QDomDocument doc = this->chargerXml("dossiers/enormand/preferences.xml");
 
@@ -20,9 +36,9 @@ void Completion::loadPreference(const UVManager& uvman)
         if(racine.tagName() == "preference")
         {
             QString tempCode, tempPref;
-            QDomElement unElement = racine.firstChildElement();
+            QDomElement unElement=racine.firstChildElement();
 
-            while(!unElement.isNull())
+           while(!unElement.isNull())
             {
                 if(unElement.tagName() == "code")
                 {
@@ -34,12 +50,12 @@ void Completion::loadPreference(const UVManager& uvman)
                 }
                 unElement = unElement.nextSiblingElement();
             }
-            this->ajouterPreference(uvman,tempCode,tempPref);
+            this->ajouterPreference(tempCode,tempPref);
         }
 
         racine = racine.nextSiblingElement();
-    }
-}
+    }}
+
 
 void Completion::savePreference()
 {

@@ -4,15 +4,21 @@
 #include <QString>
 #include <QtXml>
 #include "Application.h"
+#include "Factory.h"
 #include "Dossier.h"
 
 class Solution
 {
-    QString code;
-    Factory<Inscription> strategie;
+    QString choix;
+    std::vector<UV> strategie;
 public:
-    Solution(const QString& c,const Dossier& D,const CategorieManager& catman);
-    Solution();
+    Solution(const Dossier& D,const CategorieManager& catman,std::map <QString,QString> preferences,const UVManager& uvman,bool activation);
+    Solution(){}
+    const QString& getChoix()const {return choix;}
+    void setChoix(QString c) {choix=c;}
+    const std::vector<UV>& getStrategie() const {return strategie;}
+    void affichage()const;
+
 };
 
 #endif // SOLUTION_H
