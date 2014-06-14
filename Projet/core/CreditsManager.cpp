@@ -13,7 +13,7 @@ void CreditsManager::charger(const CategorieManager& catman)
     {
         if(racine.tagName() == "credits")
         {
-            QString strNom,cat;
+            QString strCode,cat;
             int nombr;
             QDomElement unElement = racine.firstChildElement();
 
@@ -21,7 +21,7 @@ void CreditsManager::charger(const CategorieManager& catman)
             {
                 if(unElement.tagName() == "code")
                 {
-                    strNom = unElement.text();
+                    strCode = unElement.text();
                 }
                 else if(unElement.tagName() == "nombre")
                 {
@@ -35,7 +35,7 @@ void CreditsManager::charger(const CategorieManager& catman)
             }
 
             const Categorie& categorie = catman.getCategorie(cat);
-            this->ajouterCredits(strNom, nombr, categorie);
+            this->ajouterCredits(strCode, nombr, categorie);
         }
 
         racine = racine.nextSiblingElement();
@@ -52,10 +52,10 @@ void CreditsManager::sauvegarder()
     {
         QDomElement credits = doc.createElement("credits");
         root.appendChild(credits);
-        QDomElement nom = doc.createElement("code");
-        credits.appendChild(nom);
-        QDomText nomText = doc.createTextNode(it->second.getNom());
-        nom.appendChild(nomText);
+        QDomElement code = doc.createElement("code");
+        credits.appendChild(code);
+        QDomText nomText = doc.createTextNode(it->second.getCode());
+        code.appendChild(nomText);
         QDomElement nombre = doc.createElement("nombre");
         credits.appendChild(nombre);
         QString tempNombre=QString::number(it->second.getNombre());

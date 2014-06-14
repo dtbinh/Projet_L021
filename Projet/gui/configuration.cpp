@@ -90,13 +90,13 @@ void Configuration::remplirCredits()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Nom" << "Nombre" << "Catégorie";
+    header_labels << "Code" << "Nombre" << "Catégorie";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
     for (map<QString,Credits>::const_iterator it = app->getCreditsManager().getCredits().begin(); it != app->getCreditsManager().getCredits().end(); it++)
     {
-        model->setItem(i,0,new QStandardItem(it->second.getNom()));
+        model->setItem(i,0,new QStandardItem(it->second.getCode()));
         model->setItem(i,1,new QStandardItem(QString::number(it->second.getNombre())));
         model->setItem(i,2,new QStandardItem(it->second.getCategorie().getCode()));
         i++;
@@ -122,7 +122,7 @@ void Configuration::remplirFormation()
 
         QStringList credits;
         for (vector<const Credits*>::const_iterator it2 = it->second.getCredits().begin(); it2 != it->second.getCredits().end(); it2++) {
-            credits << (*it2)->getNom();
+            credits << (*it2)->getCode();
         }
         model->setItem(i,2,new QStandardItem(credits.join(", ")));
 
@@ -203,7 +203,7 @@ void Configuration::remplirUV()
 
         QStringList credits;
         for (vector<const Credits*>::const_iterator it2 = it->second.getCredits().begin(); it2 != it->second.getCredits().end(); it2++) {
-            credits << (*it2)->getNom();
+            credits << (*it2)->getCode();
         }
         model->setItem(i,3,new QStandardItem(credits.join(", ")));
 

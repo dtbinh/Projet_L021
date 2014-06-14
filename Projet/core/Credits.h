@@ -18,7 +18,7 @@
 ///
 class Credits
 {
-    QString nom;
+    QString code;
     int nombre;
     const Categorie* categorie;
 
@@ -26,23 +26,23 @@ public :
     ///
     /// \fn Credits(const QString c, int n, const Categorie& c)
     /// \brief Constructeur.
-    /// \param n Le nombre de crédits.
+    /// \param nb Le nombre de crédits.
     /// \param cat Une référence d'une Categorie.
     ///
-    Credits(const QString& n = "", int nb = 0, const Categorie& c = Categorie()): nom(n), nombre(nb), categorie(&c) {}
+    Credits(const QString& c = "", int nb = 0, const Categorie& cat = Categorie()): code(c), nombre(nb), categorie(&cat) {}
 
     ///
     /// \fn setNom()
     /// \brief Retourne le nom des crédits.
     /// \return const QString& Le nom.
     ///
-    const QString& getNom() const { return nom; }
+    const QString& getCode() const { return code; }
 
     ///
     /// \fn setNom(const QString& n)
     /// \brief Modifie le nom des crédits.
     ///
-    void setNom(const QString& n) { nom = n; }
+    void setCode(const QString& n) { code = n; }
 
     ///
     /// \fn getNombre()

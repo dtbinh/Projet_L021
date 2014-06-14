@@ -25,7 +25,7 @@ void UVManager::charger(const CreditsManager& credman,const CategorieManager& ca
                 {
                     nom = unElement.text();
                 }
-                else if(unElement.tagName()=="credit")
+                else if(unElement.tagName()=="credits")
                 {
                     cred=unElement.text();
                 }
@@ -65,9 +65,9 @@ void UVManager::sauvegarder()
         nom.appendChild(nomText);
         std::vector<const Credits*> tempcredits= it->second.getCredits();
         for(unsigned int i=0;i<tempcredits.size();++i){
-            QDomElement credits = doc.createElement("credit");
+            QDomElement credits = doc.createElement("credits");
             uv.appendChild(credits);
-            QDomText creditText = doc.createTextNode(tempcredits[i]->getNom());
+            QDomText creditText = doc.createTextNode(tempcredits[i]->getCode());
             credits.appendChild(creditText);
         }
         QDomElement categorie = doc.createElement("categorie");

@@ -124,7 +124,7 @@ void PanneauAction::categorieModifier_clicked()
 void PanneauAction::creditsModifier_clicked()
 {
     Credits& credits = app->getCreditsManager().getCredits(code);
-    credits.setNom(creditsCode->text());
+    credits.setCode(creditsCode->text());
     credits.setNombre(creditsNombre->value());
     credits.setCategorie(app->getCategorieManager().getCategorie(creditsCategorie->currentText()));
 

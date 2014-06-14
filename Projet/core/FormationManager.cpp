@@ -39,7 +39,7 @@ void FormationManager::charger(const CreditsManager& credman)
             if (tempCred!="NULL"){
                 for (unsigned int i = 0; i < tempcredits.size(); i++)
                 {
-                    this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempcredits[i]->getNom()));
+                    this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempcredits[i]->getCode()));
                 }
                 tempCred="NULL";
                 tempcredits.clear();
@@ -99,7 +99,7 @@ void FormationManager::charger(const CreditsManager& credman, const UVManager& u
             if (tempCred!="NULL"){
                 for (unsigned int i = 0; i < tempcredits.size(); i++)
                 {
-                    this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempcredits[i]->getNom()));
+                    this->getFormation(tempCode).ajouterCredits(credman.getCredits(tempcredits[i]->getCode()));
                 }
                 tempCred="NULL";
                 tempcredits.clear();
@@ -148,7 +148,7 @@ void FormationManager::sauvegarder()
         for(unsigned int i=0;i<tempcredits.size();++i){
             QDomElement credits = doc.createElement("credits");
             formation.appendChild(credits);
-            QDomText creditText = doc.createTextNode(tempcredits[i]->getNom());
+            QDomText creditText = doc.createTextNode(tempcredits[i]->getCode());
             credits.appendChild(creditText);
         }
         std::vector<const Formation*> tempspecialite= it->second.getSpecialites();
