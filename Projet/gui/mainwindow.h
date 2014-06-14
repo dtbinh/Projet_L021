@@ -5,13 +5,12 @@
 #include "applicationcomposant.h"
 #include "accueil.h"
 #include "configuration.h"
-//#include "menuconfiguration.h"
 
 namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public applicationcomposant
+class MainWindow : public QMainWindow, public ApplicationComposant
 {
     Q_OBJECT
 
@@ -20,14 +19,13 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_menuBoutonDossiers_clicked();
-    void on_menuBoutonConfiguration_clicked();
+    void on_menuDossiers_clicked();
+    void on_menuConfiguration_clicked();
 
 private:
     Ui::MainWindow *ui;
     Accueil *accueil;
     Configuration *configuration;
-    //MenuConfiguration *menuconfiguration;
 };
 
 #endif // MAINWINDOW_H

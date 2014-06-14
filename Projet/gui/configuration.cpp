@@ -5,10 +5,21 @@ using namespace std;
 
 Configuration::Configuration(Application *a, QWidget *parent) :
     QWidget(parent),
-    applicationcomposant(a),
+    ApplicationComposant(a),
+    Observateur(),
     ui(new Ui::Configuration)
 {
     ui->setupUi(this);
+
+    panneauAction = new PanneauAction(app, this);
+    ui->contenu->addWidget(panneauAction);
+    panneauAction->setHidden(true);
+
+    QSizePolicy sp(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    sp.setHorizontalStretch(3);
+    ui->tabWidget->setSizePolicy(sp);
+    sp.setHorizontalStretch(1);
+    panneauAction->setSizePolicy(sp);
 
     remplirCategorie();
     remplirCredits();
@@ -21,6 +32,36 @@ Configuration::Configuration(Application *a, QWidget *parent) :
 Configuration::~Configuration()
 {
     delete ui;
+    delete panneauAction;
+}
+
+void Configuration::notification(const QString& quoi)
+{
+    if (quoi == "remplirCategorie") {
+        remplirCategorie();
+    }
+    else if (quoi == "remplirCredits") {
+        remplirCredits();
+    }
+    else if (quoi == "remplirFormation") {
+        remplirFormation();
+    }
+    else if (quoi == "remplirNote") {
+        remplirNote();
+    }
+    else if (quoi == "remplirPeriode") {
+        remplirPeriode();
+    }
+    else if (quoi == "remplirUV") {
+        remplirUV();
+    }
+}
+
+void Configuration::setPanneau(const QString& panneau, const QModelIndex& index)
+{
+    QVariant code = index.sibling(index.row(),0).data();
+    panneauAction->setPanneau(panneau, code.toString());
+    panneauAction->setVisible(true);
 }
 
 void Configuration::remplirCategorie()
@@ -28,7 +69,7 @@ void Configuration::remplirCategorie()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Code" << "Nom" << "Actions";
+    header_labels << "Code" << "Nom";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -39,8 +80,9 @@ void Configuration::remplirCategorie()
         i++;
     }
 
-    ui->categories->setModel(model);
-    ui->categories->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    delete ui->categorie->model();
+    ui->categorie->setModel(model);
+    ui->categorie->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void Configuration::remplirCredits()
@@ -48,7 +90,7 @@ void Configuration::remplirCredits()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Nom" << "Nombre" << "Catégorie" << "Actions";
+    header_labels << "Nom" << "Nombre" << "Catégorie";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -69,7 +111,7 @@ void Configuration::remplirFormation()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Code" << "Nom" << "Crédits" << "Spécialités" << "UVs" << "Actions";
+    header_labels << "Code" << "Nom" << "Crédits" << "Spécialités" << "UVs";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -99,8 +141,8 @@ void Configuration::remplirFormation()
         i++;
     }
 
-    ui->formations->setModel(model);
-    ui->formations->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->formation->setModel(model);
+    ui->formation->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void Configuration::remplirNote()
@@ -108,7 +150,7 @@ void Configuration::remplirNote()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Note" << "Mention" << "Actions";
+    header_labels << "Note" << "Mention";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -119,8 +161,8 @@ void Configuration::remplirNote()
         i++;
     }
 
-    ui->notes->setModel(model);
-    ui->notes->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->note->setModel(model);
+    ui->note->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void Configuration::remplirPeriode()
@@ -128,7 +170,7 @@ void Configuration::remplirPeriode()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Code" << "Nom" << "Année" << "Actions";
+    header_labels << "Code" << "Nom" << "Année";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -140,8 +182,8 @@ void Configuration::remplirPeriode()
         i++;
     }
 
-    ui->periodes->setModel(model);
-    ui->periodes->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->periode->setModel(model);
+    ui->periode->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void Configuration::remplirUV()
@@ -149,7 +191,7 @@ void Configuration::remplirUV()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Code" << "Nom" << "Catégorie" << "Crédits" << "Prérequis" << "Actions";
+    header_labels << "Code" << "Nom" << "Catégorie" << "Crédits" << "Prérequis";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -174,6 +216,6 @@ void Configuration::remplirUV()
         i++;
     }
 
-    ui->uvs->setModel(model);
-    ui->uvs->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->uv->setModel(model);
+    ui->uv->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }

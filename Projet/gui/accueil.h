@@ -8,7 +8,7 @@ namespace Ui {
 class Accueil;
 }
 
-class Accueil : public QWidget, public applicationcomposant
+class Accueil : public QWidget, public ApplicationComposant
 {
     Q_OBJECT
 

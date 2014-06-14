@@ -20,7 +20,8 @@ SOURCES += \
     core/UVManager.cpp \
     gui/mainwindow.cpp \
     gui/accueil.cpp \
-    gui/configuration.cpp
+    gui/configuration.cpp \
+    gui/panneauaction.cpp
 
 HEADERS += \
     core/Application.h \
@@ -46,11 +47,14 @@ HEADERS += \
     gui/mainwindow.h \
     gui/accueil.h \
     gui/configuration.h \
-    gui/applicationcomposant.h
+    gui/applicationcomposant.h \
+    gui/panneauaction.h \
+    core/Observateur.h
 
 FORMS += \
     gui/mainwindow.ui \
     gui/accueil.ui \
-    gui/configuration.ui
+    gui/configuration.ui \
+    gui/panneauaction.ui
 
 OTHER_FILES +=

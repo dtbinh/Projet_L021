@@ -3,7 +3,7 @@
 
 Accueil::Accueil(Application *a, QWidget *parent) :
     QWidget(parent),
-    applicationcomposant(a),
+    ApplicationComposant(a),
     ui(new Ui::Accueil)
 {
     ui->setupUi(this);

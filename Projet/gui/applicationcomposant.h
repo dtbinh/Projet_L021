@@ -4,10 +4,10 @@
 #include <map>
 #include "core/Application.h"
 
-class applicationcomposant
+class ApplicationComposant
 {
 public:
-    applicationcomposant(Application* a): app(a) {}
+    ApplicationComposant(Application* a): app(a) {}
 
 protected:
     Application* app;

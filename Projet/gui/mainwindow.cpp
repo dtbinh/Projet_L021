@@ -3,17 +3,18 @@
 
 MainWindow::MainWindow(Application *a, QWidget *parent) :
     QMainWindow(parent),
-    applicationcomposant(a),
+    ApplicationComposant(a),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     accueil = new Accueil(app);
     configuration = new Configuration(app);
 
     ui->contenu->addWidget(accueil);
     ui->contenu->addWidget(configuration);
 
-    on_menuBoutonDossiers_clicked();
+    on_menuDossiers_clicked();
 }
 
 MainWindow::~MainWindow()
@@ -23,17 +24,19 @@ MainWindow::~MainWindow()
     delete configuration;
 }
 
-void MainWindow::on_menuBoutonDossiers_clicked()
+void MainWindow::on_menuDossiers_clicked()
 {
     ui->titre->setText("Dossiers");
-    accueil->setHidden(false);
+
+    accueil->setVisible(true);
     configuration->setHidden(true);
     //ui->menuBoutonDossiers->setStyleSheet("background-color: yellow;");
 }
 
-void MainWindow::on_menuBoutonConfiguration_clicked()
+void MainWindow::on_menuConfiguration_clicked()
 {
     ui->titre->setText("Configuration");
+
     accueil->setHidden(true);
-    configuration->setHidden(false);
+    configuration->setVisible(true);
 }
