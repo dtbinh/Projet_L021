@@ -28,6 +28,7 @@ public:
     bool estVide() const { return periodes.estVide(); }
     void vider() { periodes.vider(); }
 
+    const Factory<Periode>& getPeriodes() const { return periodes; }
     Periode& getPeriode(const QString& code) { return periodes.get(code); }
     const Periode& getPeriode(const QString& code) const { return periodes.get(code); }
     void ajouterPeriode(const QString& nom, unsigned int annee) { Periode p(nom, annee); periodes.ajouter(p.getCode(), p); }

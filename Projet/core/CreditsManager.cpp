@@ -25,8 +25,7 @@ void CreditsManager::charger(const CategorieManager& catman)
                 }
                 else if(unElement.tagName() == "nombre")
                 {
-                    QString nombretemp = unElement.text();
-                    nombr = nombretemp.toInt();
+                    nombr = unElement.text().toInt();
                 }
                 else if(unElement.tagName() == "categorie")
                 {

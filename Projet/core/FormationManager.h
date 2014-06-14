@@ -32,6 +32,7 @@ public:
     bool estVide() const { return formations.estVide(); }
     void vider() { formations.vider(); }
 
+    const Factory<Formation>& getFormations() const { return formations; }
     Formation& getFormation(const QString& code) { return formations.get(code); }
     const Formation& getFormation(const QString& code) const { return formations.get(code); }
     void ajouterFormation(const QString& code, const QString& nom) { formations.ajouter(code, Formation(code, nom)); }

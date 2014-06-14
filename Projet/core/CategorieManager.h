@@ -28,6 +28,7 @@ public:
     bool estVide() const { return categories.estVide(); }
     void vider() { categories.vider(); }
 
+    const Factory<Categorie>& getCategories() const { return categories; }
     Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
     void ajouterCategorie(const QString& code, const QString& nom) { categories.ajouter(code, Categorie(code, nom)); }
