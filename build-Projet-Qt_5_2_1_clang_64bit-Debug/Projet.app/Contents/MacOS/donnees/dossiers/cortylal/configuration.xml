@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <manager>
+    <nom>note</nom>
+    <fichier>note_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>categorie</nom>
+    <fichier>categorie_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>credits</nom>
+    <fichier>credits_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>uv</nom>
+    <fichier>uv_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>filiere</nom>
+    <fichier>filiere_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>formation</nom>
+    <fichier>formation_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>periode</nom>
+    <fichier>periode_utc.xml</fichier>
+  </manager>
+  <manager>
+    <nom>dossier</nom>
+    <fichier>cortylal.xml</fichier>
+  </manager>
+  <manager>
+    <nom>completion</nom>
+    <fichier>completion.xml</fichier>
+  </manager>
+</configuration>

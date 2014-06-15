@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<categories>
+  <categorie>
+    <code>CS</code>
+    <nom>Connaissances Scientifiques</nom>
+  </categorie>
+  <categorie>
+    <code>SP</code>
+    <nom>Stages Professionnel</nom>
+  </categorie>
+  <categorie>
+    <code>TM</code>
+    <nom>Technique et Methodes</nom>
+  </categorie>
+  <categorie>
+    <code>TSH</code>
+    <nom>Technlogie des Sciences Humaines</nom>
+  </categorie>
+</categories>
