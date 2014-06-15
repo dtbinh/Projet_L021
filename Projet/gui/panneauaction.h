@@ -22,7 +22,7 @@ public:
     explicit PanneauAction(Application* a, Observer* obs, QWidget *parent = 0);
     ~PanneauAction();
 
-    void setPanneau(const QString& panneau, const QString& c);
+    void setPanneau(const QString& panneau, const QString &quoi, const QString& c = "");
 
 private slots:
     void categorieModifier_clicked();
@@ -36,6 +36,7 @@ private:
     Ui::PanneauAction *ui;
     Observer* fenconfiguration;
     QString code;
+    QString quoi;
 
     QMap<QString, QWidget*> panneaux;
 

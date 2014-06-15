@@ -41,66 +41,144 @@ PanneauAction::~PanneauAction()
     delete ui;
 }
 
-void PanneauAction::setPanneau(const QString& panneau, const QString &c)
+void PanneauAction::setPanneau(const QString& panneau, const QString& q, const QString &c)
 {
     code = c;
+    quoi = q;
     cacherPanneaux();
 
     if (panneau == "categorie")
     {
-        const Categorie& categorie = app->getCategorieManager().getCategorie(code);
-        categorieCode->setText(code);
-        categorieNom->setText(categorie.getNom());
+        if (quoi == "editer")
+        {
+            const Categorie& categorie = app->getCategorieManager().getCategorie(code);
+            categorieCode->setText(code);
+            categorieNom->setText(categorie.getNom());
 
-        ui->titre->setText("Edition catégorie");
-        panneaux["categorie"]->setVisible(true);
+            ui->titre->setText("Edition catégorie");
+            categorieModifier->setText("Editer");
+            panneaux["categorie"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            categorieCode->setText("");
+            categorieNom->setText("");
+
+            ui->titre->setText("Ajout catégorie");
+            categorieModifier->setText("Ajouter");
+            panneaux["categorie"]->setVisible(true);
+        }
     }
     else if (panneau == "credits")
     {
-        const Credits& credits = app->getCreditsManager().getCredits(code);
-        creditsCode->setText(code);
-        creditsNombre->setValue(credits.getNombre());
+        if (quoi == "editer")
+        {
+            const Credits& credits = app->getCreditsManager().getCredits(code);
+            creditsCode->setText(code);
+            creditsNombre->setValue(credits.getNombre());
 
-        ui->titre->setText("Edition crédits");
-        panneaux["credits"]->setVisible(true);
+            ui->titre->setText("Edition crédits");
+            creditsModifier->setText("Editer");
+            panneaux["credits"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            creditsCode->setText(code);
+            creditsNombre->setValue(0);
+
+            ui->titre->setText("Ajout crédits");
+            creditsModifier->setText("Ajouter");
+            panneaux["credits"]->setVisible(true);
+        }
     }
     else if (panneau == "formation")
     {
-        const Formation& formation = app->getFormationManager().getFormation(code);
-        formationCode->setText(code);
-        formationNom->setText(formation.getNom());
+        if (quoi == "editer")
+        {
+            const Formation& formation = app->getFormationManager().getFormation(code);
+            formationCode->setText(code);
+            formationNom->setText(formation.getNom());
 
-        ui->titre->setText("Edition formation");
-        panneaux["formation"]->setVisible(true);
+            ui->titre->setText("Edition formation");
+            formationModifier->setText("Editer");
+            panneaux["formation"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            formationCode->setText("");
+            formationNom->setText("");
+
+            ui->titre->setText("Ajout formation");
+            formationModifier->setText("Ajouter");
+            panneaux["formation"]->setVisible(true);
+        }
     }
     else if (panneau == "periode")
     {
-        const Periode& periode = app->getPeriodeManager().getPeriode(code);
-        periodeNom->setText(periode.getNom());
-        periodeAnnee->setValue(periode.getAnnee());
+        if (quoi == "editer")
+        {
+            const Periode& periode = app->getPeriodeManager().getPeriode(code);
+            periodeNom->setText(periode.getNom());
+            periodeAnnee->setValue(periode.getAnnee());
 
-        ui->titre->setText("Edition période");
-        panneaux["periode"]->setVisible(true);
+            ui->titre->setText("Edition période");
+            creditsModifier->setText("Editer");
+            panneaux["periode"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            periodeNom->setText("");
+            periodeAnnee->setValue(2015);
+
+            ui->titre->setText("Ajout période");
+            periodeModifier->setText("Ajouter");
+            panneaux["periode"]->setVisible(true);
+        }
     }
     else if (panneau == "note")
     {
-        const Note& note = app->getNoteManager().getNote(code);
-        noteNote->setText(code);
-        noteMention->setText(note.getMention());
+        if (quoi == "editer")
+        {
+            const Note& note = app->getNoteManager().getNote(code);
+            noteNote->setText(code);
+            noteMention->setText(note.getMention());
 
-        ui->titre->setText("Edition note");
-        panneaux["note"]->setVisible(true);
+            ui->titre->setText("Edition note");
+            noteModifier->setText("Editer");
+            panneaux["note"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            noteNote->setText("");
+            noteMention->setText("");
+
+            ui->titre->setText("Ajout note");
+            noteModifier->setText("Ajouter");
+            panneaux["note"]->setVisible(true);
+        }
     }
     else if (panneau == "uv")
     {
-        const UV& uv = app->getUVManager().getUV(code);
-        uvCode->setText(code);
-        uvNom->setText(uv.getNom());
+        if (quoi == "editer")
+        {
+            const UV& uv = app->getUVManager().getUV(code);
+            uvCode->setText(code);
+            uvNom->setText(uv.getNom());
 
-        ui->titre->setText("Edition UV");
-        panneaux["uv"]->setVisible(true);
+            ui->titre->setText("Edition UV");
+            uvModifier->setText("Editer");
+            panneaux["uv"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            uvCode->setText("");
+            uvNom->setText("");
+
+            ui->titre->setText("Ajout UV");
+            uvModifier->setText("Ajouter");
+            panneaux["uv"]->setVisible(true);
+        }
     }
-
 }
 
 void PanneauAction::cacherPanneaux()
@@ -112,9 +190,16 @@ void PanneauAction::cacherPanneaux()
 
 void PanneauAction::categorieModifier_clicked()
 {
-    Categorie& categorie = app->getCategorieManager().getCategorie(code);
-    //categorie.setCode(categoriCode->text());
-    categorie.setNom(categorieNom->text());
+    if (quoi == "editer")
+    {
+        Categorie& categorie = app->getCategorieManager().getCategorie(code);
+        //categorie.setCode(categorieCode->text());
+        categorie.setNom(categorieNom->text());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getCategorieManager().ajouterCategorie(categorieCode->text(), categorieNom->text());
+    }
 
     QStringList notif;
     notif << "remplir" << "categorie";
@@ -127,10 +212,17 @@ void PanneauAction::categorieModifier_clicked()
 
 void PanneauAction::creditsModifier_clicked()
 {
-    Credits& credits = app->getCreditsManager().getCredits(code);
-    credits.setNombre(creditsNombre->value());
-    credits.setCategorie(app->getCategorieManager().getCategorie(creditsCategorie->currentText()));
-    //credits.setCode(creditsCode->text());
+    if (quoi == "editer")
+    {
+        Credits& credits = app->getCreditsManager().getCredits(code);
+        credits.setNombre(creditsNombre->value());
+        credits.setCategorie(app->getCategorieManager().getCategorie(creditsCategorie->currentText()));
+        //credits.setCode(creditsCode->text());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getCreditsManager().ajouterCredits(creditsCode->text(), creditsNombre->value(), app->getCategorieManager().getCategorie(creditsCategorie->currentText()));
+    }
 
     QStringList notif;
     notif << "remplir" << "credits";
@@ -143,9 +235,16 @@ void PanneauAction::creditsModifier_clicked()
 
 void PanneauAction::formationModifier_clicked()
 {
-    Formation& formation = app->getFormationManager().getFormation(code);
-    //formation.setCode(formationCode->text());
-    formation.setNom(formationNom->text());
+    if (quoi == "editer")
+    {
+        Formation& formation = app->getFormationManager().getFormation(code);
+        //formation.setCode(formationCode->text());
+        formation.setNom(formationNom->text());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getFormationManager().ajouterFormation(formationCode->text(), formationNom->text());
+    }
 
     QStringList notif;
     notif << "remplir" << "formation";
@@ -154,9 +253,16 @@ void PanneauAction::formationModifier_clicked()
 
 void PanneauAction::periodeModifier_clicked()
 {
-    //Periode& periode = app->getPeriodeManager().getPeriode(code);
-    //periode.setNom(periodeNom->text());
-    //periode.setAnnee(periodeAnnee->value());
+    if (quoi == "editer")
+    {
+        //Periode& periode = app->getPeriodeManager().getPeriode(code);
+        //periode.setNom(periodeNom->text());
+        //periode.setAnnee(periodeAnnee->value());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getPeriodeManager().ajouterPeriode(periodeNom->text(), periodeAnnee->value());
+    }
 
     QStringList notif;
     notif << "remplir" << "periode";
@@ -165,9 +271,16 @@ void PanneauAction::periodeModifier_clicked()
 
 void PanneauAction::noteModifier_clicked()
 {
-    Note& note = app->getNoteManager().getNote(code);
-    //note.setNote(noteNote->text());
-    note.setMention(noteMention->text());
+    if (quoi == "editer")
+    {
+        Note& note = app->getNoteManager().getNote(code);
+        //note.setNote(noteNote->text());
+        note.setMention(noteMention->text());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getNoteManager().ajouterNote(noteNote->text(), noteMention->text());
+    }
 
     QStringList notif;
     notif << "remplir" << "note";
@@ -178,9 +291,17 @@ void PanneauAction::noteModifier_clicked()
 
 void PanneauAction::uvModifier_clicked()
 {
-    UV& uv = app->getUVManager().getUV(code);
-    //uv.setCode(uvCode->text());
-    uv.setNom(uvNom->text());
+    if (quoi == "editer")
+    {
+        UV& uv = app->getUVManager().getUV(code);
+        //uv.setCode(uvCode->text());
+        uv.setCategorie(app->getCategorieManager().getCategorie(uvCategorie->currentText()));
+        uv.setNom(uvNom->text());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getUVManager().ajouterUV(categorieCode->text(), categorieNom->text(), app->getCategorieManager().getCategorie(uvCategorie->currentText()));
+    }
 
     QStringList notif;
     notif << "remplir" << "uv";
@@ -196,7 +317,6 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
     if (panneau == "categorie")
     {
         categorieCode = new QLineEdit;
-        categorieCode->setReadOnly(true);
         categorieNom = new QLineEdit;
 
         form->addRow("Code", categorieCode);
@@ -276,9 +396,16 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
     {
         uvCode = new QLineEdit;
         uvNom = new QLineEdit;
+        uvCategorie = new QComboBox;
+
+        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
+        {
+            uvCategorie->addItem(it->second.getCode());
+        }
 
         form->addRow("Code", uvCode);
         form->addRow("Nom", uvNom);
+        form->addRow("Catégorie", uvCategorie);
 
         uvModifier = new QPushButton("Editer");
         uvModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
@@ -287,6 +414,7 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         layout->addWidget(uvModifier, 0, Qt::AlignRight);
     }
 
+    delete widget->layout();
     widget->setLayout(layout);
     return widget;
 }

@@ -24,12 +24,19 @@ public:
     void notification(const QStringList& quoi);
 
 private slots:
-    void on_categorie_clicked(const QModelIndex& index) { setPanneau("categorie", index); }
-    void on_credits_clicked(const QModelIndex& index) { setPanneau("credits", index); }
-    void on_formation_clicked(const QModelIndex& index) { setPanneau("formation", index); }
-    void on_note_clicked(const QModelIndex& index) { setPanneau("note", index); }
-    void on_periode_clicked(const QModelIndex& index) { setPanneau("periode", index); }
-    void on_uv_clicked(const QModelIndex& index) { setPanneau("uv", index); }
+    void on_categorie_clicked(const QModelIndex& index) { setPanneau("categorie", "editer", index); }
+    void on_credits_clicked(const QModelIndex& index) { setPanneau("credits", "editer", index); }
+    void on_formation_clicked(const QModelIndex& index) { setPanneau("formation", "editer", index); }
+    void on_note_clicked(const QModelIndex& index) { setPanneau("note", "editer", index); }
+    void on_periode_clicked(const QModelIndex& index) { setPanneau("periode", "editer", index); }
+    void on_uv_clicked(const QModelIndex& index) { setPanneau("uv", "editer", index); }
+
+    void on_ajouterCategorie_clicked() { setPanneau("categorie", "ajouter"); }
+    void on_ajouterCredits_clicked() { setPanneau("credits", "ajouter"); }
+    void on_ajouterFormation_clicked() { setPanneau("formation", "ajouter"); }
+    void on_ajouterNote_clicked() { setPanneau("note", "ajouter"); }
+    void on_ajouterPeriode_clicked() { setPanneau("periode", "ajouter"); }
+    void on_ajouterUV_clicked() { setPanneau("uv", "ajouter"); }
 
 private:
     Ui::FenConfiguration *ui;
@@ -42,7 +49,7 @@ private:
     void remplirPeriode();
     void remplirUV();
 
-    void setPanneau(const QString& panneau, const QModelIndex& index);
+    void setPanneau(const QString& panneau, const QString& quoi, const QModelIndex& index = QModelIndex());
 };
 
 #endif // FENCONFIGURATION_H

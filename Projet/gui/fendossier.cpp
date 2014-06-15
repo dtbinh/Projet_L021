@@ -64,7 +64,7 @@ void FenDossier::remplirInscriptions()
 
         for(QMap<int,QStringList>::const_iterator itcat = uvs_categories.begin(); itcat != uvs_categories.end(); ++itcat)
         {
-            model->setItem(i,itcat.key(),new QStandardItem(itcat.value().join(" | ")));
+            model->setItem(i,itcat.key(),new QStandardItem(itcat.value().join(", ")));
         }
 
         i++;

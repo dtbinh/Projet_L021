@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     Application app("donnees/dossiers", "donnees/default", "configuration.xml");
 
     /*app.charger("enormand");
-    Completion compa(app.getUVManager());
+    Completion compa("donnees/dossiers/enormand", "completion.xml", app.getUVManager());
     compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),true);
     compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),false);*/
 
