@@ -20,9 +20,9 @@ FenDossier::~FenDossier()
 
 void FenDossier::on_inscriptions_clicked(const QModelIndex& index)
 {
-    QVariant code = index.sibling(index.row(),0).data();
+    QString code = index.sibling(index.row(),1).data().toString().split(" ").at(0);
     QStringList notif;
-    notif << "editer" << "inscription" << code.toString();
+    notif << "editer" << "inscription" << code;
     mainwindow->notification(notif);
 }
 
@@ -52,8 +52,8 @@ void FenDossier::remplirInscriptions()
     for (map<QString,Inscription>::const_iterator it = app->getDossier().getInscriptions().begin(); it != app->getDossier().getInscriptions().end(); it++)
     {
         const Inscription& inscription = it->second;
-        model->setItem(i,1,new QStandardItem(inscription.getCode()));
         model->setItem(i,0,new QStandardItem(inscription.getPeriode().getCode()));
+        model->setItem(i,1,new QStandardItem(inscription.getCode() + " (" + inscription.getFormation().getCode() + ")"));
 
         QMap<int,QStringList> uvs_categories;
         for (map<QString,UV>::const_iterator ituv = inscription.getUVs().begin(); ituv != inscription.getUVs().end(); ++ituv)

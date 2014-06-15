@@ -44,7 +44,7 @@ PanneauAction::~PanneauAction()
     delete ui;
 }
 
-void PanneauAction::setPanneau(const QString& panneau, const QString& q, const QString &c)
+void PanneauAction::setPanneau(const QString& q, const QString& panneau, const QString &c)
 {
     code = c;
     quoi = q;
@@ -203,12 +203,18 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
         {
             inscriptionPeriode->addItem(it->second.getCode());
         }
+        inscriptionFormation->clear();
+        for (map<QString,Formation>::const_iterator it = app->getFormationManager().getFormations().begin(); it != app->getFormationManager().getFormations().end(); it++)
+        {
+            inscriptionFormation->addItem(it->second.getCode());
+        }
 
         if (quoi == "editer")
         {
             const Inscription& inscription = app->getDossier().getInscription(code);
             inscriptionCode->setText(code);
             inscriptionPeriode->setCurrentText(inscription.getPeriode().getCode());
+            inscriptionFormation->setCurrentText(inscription.getFormation().getCode());
 
             ui->titre->setText("Edition inscription");
             inscriptionModifier->setText("Editer");
@@ -359,10 +365,11 @@ void PanneauAction::inscriptionModifier_clicked()
         Inscription& inscription = app->getDossier().getInscription(code);
         //inscription.setCode(inscriptionCode->text());
         inscription.setPeriode(app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()));
+        inscription.setFormation(app->getFormationManager().getFormation(inscriptionFormation->currentText()));
     }
     else if (quoi == "ajouter")
     {
-        app->getDossier().ajouterInscription(inscriptionCode->text(), app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()), Formation());
+        app->getDossier().ajouterInscription(inscriptionCode->text(), app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()), app->getFormationManager().getFormation(inscriptionFormation->currentText()));
     }
 
     QStringList notif;
@@ -469,9 +476,11 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
     {
         inscriptionCode = new QLineEdit;
         inscriptionPeriode = new QComboBox;
+        inscriptionFormation = new QComboBox;
 
         form->addRow("Code", inscriptionCode);
         form->addRow("Période", inscriptionPeriode);
+        form->addRow("Formation", inscriptionFormation);
 
         inscriptionModifier = new QPushButton("Editer");
         inscriptionModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);

@@ -108,12 +108,12 @@ void MainWindow::notification(const QStringList &quoi)
     }
     else if(quoi[0] == "editer")
     {
-        panneauAction->setPanneau(quoi[1], quoi[0], quoi[2]);
+        panneauAction->setPanneau(quoi[0], quoi[1], quoi[2]);
         panneauAction->setVisible(true);
     }
     else if(quoi[0] == "ajouter")
     {
-        panneauAction->setPanneau(quoi[1], quoi[0]);
+        panneauAction->setPanneau(quoi[0], quoi[1]);
         panneauAction->setVisible(true);
     }
     else if(quoi[0] == "remplir")

@@ -22,7 +22,7 @@ public:
     explicit PanneauAction(Application* a, Observer* obs, QWidget *parent = 0);
     ~PanneauAction();
 
-    void setPanneau(const QString& panneau, const QString &quoi, const QString& c = "");
+    void setPanneau(const QString &q, const QString& panneau, const QString& c = "");
 
 private slots:
     void categorieModifier_clicked();
@@ -69,6 +69,7 @@ private:
 
     QLineEdit* inscriptionCode;
     QComboBox* inscriptionPeriode;
+    QComboBox* inscriptionFormation;
     QPushButton* inscriptionModifier;
 
     QWidget *creerPanneau(const QString& panneau);
