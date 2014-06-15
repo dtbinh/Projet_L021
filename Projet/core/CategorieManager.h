@@ -15,12 +15,20 @@
 #include "Observer.h"
 #include "Categorie.h"
 
+///
+/// \class CategorieManager
+/// \brief Le manager des Categorie
+///
 class CategorieManager : public Manager
 {
 private:
     Factory<Categorie> categories;
 
 public:
+    ///
+    /// \fn CategorieManager
+    /// \brief Constructeur du manager de Categorie. Initialise la map categories.
+    ///
     CategorieManager(const QString& cf = "",const QString& f = ""): Manager(cf, f), categories() {}
 
     void charger();

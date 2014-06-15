@@ -11,6 +11,9 @@
 #include <iostream>
 #include <QString>
 
+///
+/// \class Note
+/// \brief Note correspond à un résultat d'un étudiant à une UV.
 class Note
 {
 private:

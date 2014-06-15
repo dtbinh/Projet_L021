@@ -20,6 +20,10 @@
 #include "Formation.h"
 #include "Inscription.h"
 
+///
+/// \class Dossier
+/// \brief Un dossier appartient à un étudiant et décrit l'ensemble de son parcours scolaire
+///
 class Dossier : public Manager
 {
 private:

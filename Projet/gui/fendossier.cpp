@@ -1,4 +1,4 @@
-#include "fendossier.h"
+﻿#include "fendossier.h"
 #include "ui_fendossier.h"
 
 using namespace std;
@@ -58,7 +58,6 @@ void FenDossier::remplirInscriptions()
                     credits += QString::number((*itcred)->getNombre());
                 }
             }
-
             uvs_categories[j] << uv.getCode() + " " + credits + " " + inscription.getNotes().get(uv.getCode()).getNote();
         }
 
