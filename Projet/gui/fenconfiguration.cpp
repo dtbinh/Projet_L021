@@ -3,23 +3,14 @@
 
 using namespace std;
 
-FenConfiguration::FenConfiguration(Application *a, QWidget *parent) :
+FenConfiguration::FenConfiguration(Application *a, Observer* obs, QWidget *parent) :
     QWidget(parent),
     ApplicationComposant(a),
     Observer(),
-    ui(new Ui::FenConfiguration)
+    ui(new Ui::FenConfiguration),
+    mainwindow(obs)
 {
     ui->setupUi(this);
-
-    panneauAction = new PanneauAction(app, this);
-    ui->contenu->addWidget(panneauAction);
-    panneauAction->setHidden(true);
-
-    QSizePolicy sp(QSizePolicy::Preferred, QSizePolicy::Preferred);
-    sp.setHorizontalStretch(3);
-    ui->tabWidget->setSizePolicy(sp);
-    sp.setHorizontalStretch(1);
-    panneauAction->setSizePolicy(sp);
 
     remplirCategorie();
     remplirCredits();
@@ -56,7 +47,7 @@ void FenConfiguration::notification(const QStringList &quoi)
         else if (quoi[1] == "uv") {
             remplirUV();
         }
-    }
+        }
     else if (quoi[0] == "remplir")
     {
         remplirCategorie();
@@ -65,22 +56,23 @@ void FenConfiguration::notification(const QStringList &quoi)
         remplirNote();
         remplirPeriode();
         remplirUV();
-        panneauAction->setHidden(true);
     }
 }
 
-void FenConfiguration::setPanneau(const QString& panneau, const QString &quoi, const QModelIndex& index)
+void FenConfiguration::setPanneau(const QString &quoi, const QString& panneau, const QModelIndex& index)
 {
     if (quoi == "editer")
     {
         QVariant code = index.sibling(index.row(),0).data();
-        panneauAction->setPanneau(panneau, quoi, code.toString());
-        panneauAction->setVisible(true);
+        QStringList notif;
+        notif << quoi << panneau << code.toString();
+        mainwindow->notification(notif);
     }
     else if (quoi == "ajouter")
     {
-        panneauAction->setPanneau(panneau, quoi);
-        panneauAction->setVisible(true);
+        QStringList notif;
+        notif << quoi << panneau;
+        mainwindow->notification(notif);
     }
 }
 

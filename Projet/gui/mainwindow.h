@@ -32,6 +32,7 @@ private:
     FenAccueil* fenaccueil;
     FenConfiguration* fenconfiguration;
     FenDossier* fendossier;
+    PanneauAction *panneauAction;
 };
 
 #endif // MAINWINDOW_H

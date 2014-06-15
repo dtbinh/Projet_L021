@@ -19,6 +19,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     panneaux["periode"] = creerPanneau("periode");
     panneaux["note"] = creerPanneau("note");
     panneaux["uv"] = creerPanneau("uv");
+    panneaux["inscription"] = creerPanneau("inscription");
 
     cacherPanneaux();
     ui->contenu->addWidget(panneaux["categorie"]);
@@ -27,6 +28,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     ui->contenu->addWidget(panneaux["periode"]);
     ui->contenu->addWidget(panneaux["note"]);
     ui->contenu->addWidget(panneaux["uv"]);
+    ui->contenu->addWidget(panneaux["inscription"]);
 
     connect(categorieModifier, SIGNAL(clicked()), this, SLOT(categorieModifier_clicked()));
     connect(creditsModifier, SIGNAL(clicked()), this, SLOT(creditsModifier_clicked()));
@@ -34,6 +36,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     connect(periodeModifier, SIGNAL(clicked()), this, SLOT(periodeModifier_clicked()));
     connect(noteModifier, SIGNAL(clicked()), this, SLOT(noteModifier_clicked()));
     connect(uvModifier, SIGNAL(clicked()), this, SLOT(uvModifier_clicked()));
+    connect(inscriptionModifier, SIGNAL(clicked()), this, SLOT(inscriptionModifier_clicked()));
 }
 
 PanneauAction::~PanneauAction()
@@ -193,6 +196,33 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
             panneaux["uv"]->setVisible(true);
         }
     }
+    else if (panneau == "inscription")
+    {
+        inscriptionPeriode->clear();
+        for (map<QString,Periode>::const_iterator it = app->getPeriodeManager().getPeriodes().begin(); it != app->getPeriodeManager().getPeriodes().end(); it++)
+        {
+            inscriptionPeriode->addItem(it->second.getCode());
+        }
+
+        if (quoi == "editer")
+        {
+            const Inscription& inscription = app->getDossier().getInscription(code);
+            inscriptionCode->setText(code);
+            inscriptionPeriode->setCurrentText(inscription.getPeriode().getCode());
+
+            ui->titre->setText("Edition inscription");
+            inscriptionModifier->setText("Editer");
+            panneaux["inscription"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            inscriptionCode->setText("");
+
+            ui->titre->setText("Ajout inscription");
+            inscriptionModifier->setText("Ajouter");
+            panneaux["inscription"]->setVisible(true);
+        }
+    }
 }
 
 void PanneauAction::cacherPanneaux()
@@ -322,6 +352,24 @@ void PanneauAction::uvModifier_clicked()
     fenconfiguration->notification(notif);
 }
 
+void PanneauAction::inscriptionModifier_clicked()
+{
+    if (quoi == "editer")
+    {
+        Inscription& inscription = app->getDossier().getInscription(code);
+        //inscription.setCode(inscriptionCode->text());
+        inscription.setPeriode(app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()));
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getDossier().ajouterInscription(inscriptionCode->text(), app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()), Formation());
+    }
+
+    QStringList notif;
+    notif << "remplir" << "inscription";
+    fenconfiguration->notification(notif);
+}
+
 QWidget* PanneauAction::creerPanneau(const QString& panneau)
 {
     QWidget* widget = new QWidget;
@@ -416,6 +464,20 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
 
         layout->addLayout(form);
         layout->addWidget(uvModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "inscription")
+    {
+        inscriptionCode = new QLineEdit;
+        inscriptionPeriode = new QComboBox;
+
+        form->addRow("Code", inscriptionCode);
+        form->addRow("Période", inscriptionPeriode);
+
+        inscriptionModifier = new QPushButton("Editer");
+        inscriptionModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(inscriptionModifier, 0, Qt::AlignRight);
     }
 
     widget->setLayout(layout);
