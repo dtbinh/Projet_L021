@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file Exception.h
 /// \brief Implémentation concrète de l'exception.
-/// \author Erwan Normand
-/// \date 06 juin 2014
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef EXCEPTION_H

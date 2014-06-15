@@ -1,41 +1,45 @@
+﻿///
+/// \file Completion.h
+/// \brief Completion automatique.
+/// \author Erwan Normand, Nicolas Szewe
+/// \date 15 juin 2014
+///
+
 #ifndef COMPLETION_H
 #define COMPLETION_H
 
 #include <QString>
 #include <QtXml>
-#include "Manager.h"
+#include "Application.h"
 #include "Factory.h"
 #include "Solution.h"
-
-///
-/// \enum Choix
-/// \brief Différents choix pour une complétion
-///
-enum Choix {
-    Confirmer,Refuser,Retarder,Avancer
-};
+#include "Manager.h"
+#include "Dossier.h"
 
 class Completion : public Manager
 {
-Factory<Solution> solutions;
-std::map <QString,Choix> choix;//Associe au code d'une solution, un choix
+std::vector<Solution> solutions;
 std::map<QString,QString> preferences; // Associe au code d'une UV une préference
 
 public:
     Completion(const UVManager& uvman);
-    Solution& getSolution(const QString& code) { return solutions.get(code); }
-    const Solution& getSolution(const QString& code) const { return solutions.get(code); }
-    void ajouterSolution(const QString& code) { solutions.ajouter(code, Solution()); }
-    void retirerSolution(const QString& code) { solutions.retirer(code); }
+    Completion();
+    void ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,const NoteManager& notman,bool activation);
+    //void retirerSolution(const QString& code) {solutions.erase(find(code));}
 
-    void ajouterPreference(const UVManager& uvman,const QString& codeuv, const QString& pref){
-        preferences[uvman.getUV(codeuv).getCode()]=pref;}
-    void retirerPreference(const UVManager& uvman,const QString& codeuv){ preferences.erase(uvman.getUV(codeuv).getCode());}
+    void sauvegarderSolution();
+    void chargerSolution(const UVManager& uvman);
+    void affichageSolution();
+
+    const std::map<QString,QString>& getPreferences() const { return preferences; }
+    void ajouterPreference(const QString& codeuv, const QString& pref){
+        preferences[codeuv]=pref;}
+    void retirerPreference(const QString& codeuv){ preferences.erase(codeuv);}
     void setPreference(const UVManager& uvman,const QString& codeuv, const QString& pref){
             preferences[uvman.getUV(codeuv).getCode()]=pref; }
 
-    void loadPreference(const UVManager& uvman); // A appeler lors de la création d'une completion
-    void savePreference(); //A Appeler a chaque ajout ou modification?
+    void chargerPreference(); // A appeler lors de la création d'une completion
+    void sauvegarderPreference();
        };
 
 #endif // COMPLETION_H

@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file UV.h
 /// \brief Les UVs sont les matières de l'UTC.
-/// \author Nicolas Szewe, Erwan Normand
-/// \date 27 mai 2014
+/// \author Erwan Normand, Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef UV_PROFIL_H
@@ -21,32 +21,29 @@ private :
     QString code, nom;
     const Categorie* categorie;
     std::vector<const Credits*> cred;
-    std::vector<const UV*> prerequis;
 
 public:
     ///
-    /// \fn UV(const string& c,const string& n, const string& d,const Categorie& categ)
+    /// \fn UV
     /// \param c Le code d'une UV
     /// \param n le nom d'une UV
-    /// \param d La description d'une UV
-    /// \param categ La catégorie de l'UV
-    /// \brief Le constructeur initialise un vecteur pour les crédits et les prérequis d'une UV
+    /// \param categ Reference sur une categorie déja existante
+    /// \brief Le constructeur d'une UV. Il initialise un vecteur pour les crédits d'une UV
     ///
     UV(const QString& c = "", const QString& n = "", const Categorie& cat = Categorie())
-        : code(c), nom(n), categorie(&cat), cred(), prerequis() {}
+        : code(c), nom(n), categorie(&cat), cred() {}
 
     ///
-    /// \fn UV(const UV& u)
+    /// \fn UV
     /// \param u Une référence vers l'UV à copier
     /// \brief Constructeur de recopie de la classe UV
     ///
     UV(const UV& u);
 
-    ~UV();//A Redefinir pour qu'il detruisent les allocations et qu'ils s'enlevent des prerequis des autres
-
     ///
     /// \fn getCode
-    /// \return string Le code de l'UV
+    /// \brief Pour acceder au code d'une UV
+    /// \return const QString& -> Le code de l'UV
     ///
     const QString& getCode() const { return code; }
 
@@ -59,7 +56,8 @@ public:
 
     ///
     /// \fn getNom
-    /// \return string Le nom de l'UV
+    /// \brief Pour acceder au nom d'une UV
+    /// \return const QString& -> Le nom de l'UV
     ///
     const QString& getNom() const { return nom; }
 
@@ -72,54 +70,36 @@ public:
 
     ///
     /// \fn getCategorie
-    /// \return Categorie La categorie auquel appartient l'UV
+    /// \brief Pour acceder à la catégorie d'une UV
+    /// \return const Categorie& -> Référence vers la categorie auquel appartient l'UV
     ///
     const Categorie& getCategorie() const { return *categorie; }
 
     ///
     /// \fn setCategorie(const Categorie& cat)
-    /// \param cat Le nouveau code pour l'UV
+    /// \param cat Référence vers une categorie existante qui sera la nouvelle categorie pour l'UV
     /// \brief Modifie la catégorie de l'UV.
     ///
     void setCategorie(const Categorie& cat) { categorie = &cat; }
 
     ///
     /// \fn getCredits
-    /// \return Les différents crédits que possédent l'UV
+    /// \brief Retourne les différents crédits que possédent l'UV
+    /// \return const std::vector<const Credits*>& -> L'ensemble des crédits que possédent une UV
     ///
     const std::vector<const Credits*>& getCredits() const { return cred; }
 
     ///
-    /// \fn getPrerequis
-    /// \return Les différents prérequis que possédent l'UV
-    ///
-    const std::vector<const UV*>& getPrerequis() const { return prerequis ; }
-
-    ///
-    /// \fn ajoutPrerequis
-    /// \param u Une référence sur l'UV a ajouter en prérequis
-    /// \brief Un simple push_back dans le conteneur vecteur Prerequis pour ajouter l'UV dans les prérequis
-    ///
-    void ajoutPrerequis(const UV& u) { prerequis.push_back(&u); }
-
-    ///
-    /// \fn retirePrerequis
-    /// \param u Une référence sur l'UV a retirer en prérequis
-    /// \brief Utilise remove sur le conteneur vecteur prerequis pour retirer l'uv des prérequis
-    ///
-    void retirePrerequis(const UV& u) { prerequis.erase(remove(prerequis.begin(), prerequis.end(), &u), prerequis.end()); }
-
-    ///
     /// \fn ajoutCredits
-    /// \param c Une référence sur un objet de la classe crédit
-    /// \brief Utilise la fonction push_back sur le conteneur vecteur cred pour ajouter un type de crédit
+    /// \param c Une référence sur un objet de la classe crédit déja existant.
+    /// \brief Ajoute des crédits à l'ensemble des crédits de l'UV
     ///
     void ajoutCredits(const Credits& c) { cred.push_back(&c); }
 
     ///
     /// \fn retireCredits
-    /// \param c Une rérence sur un objet de la classe crédit
-    /// \brief Retire des crédits d'une UV
+    /// \param c Une rérence sur un objet de la classe crédit déja existant.
+    /// \brief Retire des crédits à l'ensemble des crédits d'une UV
     ///
     void retireCredits(const Credits& c) { cred.erase(remove(cred.begin(), cred.end(), &c), cred.end()); }
 };

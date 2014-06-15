@@ -1,6 +1,51 @@
-#include "Dossier.h"
+﻿#include "Dossier.h"
 
 using namespace std;
+
+const std::vector<Credits> Dossier::getCredits(const CategorieManager& catman) const {
+    Credits CS_Actuel("CS_Actuel",0,catman.getCategorie("CS"));
+    Credits TM_Actuel("TM_Actuel",0,catman.getCategorie("TM"));
+    Credits TSH_Actuel("TSH_Actuel",0,catman.getCategorie("TSH"));
+    Credits SP_Actuel("SP_Actuel",0,catman.getCategorie("SP"));
+    for (map<QString,Inscription>::const_iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
+    {
+        for (map<QString,UV>::const_iterator ituv = it->second.getUVs().begin(); ituv != it->second.getUVs().end(); ituv++)
+        {
+         QString N=it->second.getNotes().get(ituv->second.getCode()).getNote();
+         if(N=="A" || N=="B" || N=="C" || N=="D" || N=="E" ){
+            if(ituv->second.getCategorie().getCode()=="CS"){
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    CS_Actuel.setNombre(CS_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
+            }
+            else if (ituv->second.getCategorie().getCode()=="TM"){
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    TM_Actuel.setNombre(TM_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
+
+            }
+            else if(ituv->second.getCategorie().getCode()=="TSH"){
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    TSH_Actuel.setNombre(TSH_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
+            }
+            else if(ituv->second.getCategorie().getCode()=="SP"){
+                for(unsigned int i=0;i<ituv->second.getCredits().size();i++){
+                    SP_Actuel.setNombre(SP_Actuel.getNombre()+ituv->second.getCredits()[i]->getNombre());
+                }
+            }
+
+         }
+       }
+    }
+    std::vector<Credits> tempcred;
+    tempcred.push_back(TM_Actuel);
+    tempcred.push_back(TSH_Actuel);
+    tempcred.push_back(CS_Actuel);
+    tempcred.push_back(SP_Actuel);
+    return tempcred;
+}
+
 
 void Dossier::setLogin()
 {
@@ -84,15 +129,21 @@ void Dossier::charger(const FormationManager& forman, const PeriodeManager& peri
                             }
                             filsUV = filsUV.nextSiblingElement();
                         }
+
                     }
                 filsElement = filsElement.nextSiblingElement();
                 }
                 Inscription temp(code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
+                for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
+                {
+                    temp.ajouterUV(it->second);
+                    temp.modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
+                }
+                tempuvs.vider();
                 tempinscriptions.push_back(temp);
             }
             unElement = unElement.nextSiblingElement();
         }
-
         this->setLogin();
         this->setNom(tempNom);
         this->setPrenom(tempPrenom);
@@ -111,18 +162,21 @@ void Dossier::charger(const FormationManager& forman, const PeriodeManager& peri
             for(unsigned int i=0; i < tempinscriptions.size(); i++)
             {
                 ajouterInscription(tempinscriptions[i].getCode(),tempinscriptions[i].getPeriode(),tempinscriptions[i].getFormation());
+                tempuvs=tempinscriptions[i].getUVs();
                 for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
                 {
-                    getInscription(tempinscriptions[i].getCode()).ajouterUV(it->second.getCode());
+                    getInscription(tempinscriptions[i].getCode()).ajouterUV(uvman.getUV(it->second.getCode()));
                     getInscription(tempinscriptions[i].getCode()).
-                    modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
+                            modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
                 }
             }
+            tempuvs.vider();
             tempinscriptions.clear();
             tempInscri="NULL";
          }
     }
 }
+
 
 void Dossier::sauvegarder()
 {

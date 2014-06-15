@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <preferences>
   <preference>
+    <code>IA02</code>
+    <pref>Refus</pref>
+  </preference>
+  <preference>
     <code>LO21</code>
+    <pref>Refus</pref>
+  </preference>
+  <preference>
+    <code>RO03</code>
     <pref>Exigence</pref>
   </preference>
   <preference>
-    <code>NF17</code>
-    <pref>Refus</pref>
+    <code>SR02</code>
+    <pref>Exigence</pref>
   </preference>
 </preferences>

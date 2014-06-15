@@ -1,3 +1,10 @@
+﻿///
+/// \file Manager.h
+/// \brief Un manager pour gérer nos managers d'items
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
+///
+
 #ifndef COMPOSANT_H
 #define COMPOSANT_H
 

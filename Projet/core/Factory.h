@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file Factory.h
 /// \brief Classe template pour gérer les objets.
-/// \author Erwan Normand
-/// \date 07 juin 2014
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef FACTORY_H

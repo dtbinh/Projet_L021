@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file CategorieManager.h
 /// \brief Manager des Categories.
-/// \author Erwan Normand
-/// \date 05 juin 2014
+/// \author Erwan Normand, Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef CATEGORIEMANAGER_H

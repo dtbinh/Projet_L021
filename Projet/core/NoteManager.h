@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file NoteManager.h
 /// \brief Manager des Notes.
-/// \author Erwan Normand
-/// \date 07 juin 2014
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef NOTEMANAGER_H
