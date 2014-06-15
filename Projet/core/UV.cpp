@@ -1,4 +1,4 @@
-﻿#include "UV.h"
+#include "UV.h"
 
 using namespace std;
 
@@ -10,10 +10,4 @@ UV::UV(const UV& u)
     for(unsigned int i = 0; i < u.cred.size(); i++) {
             cred.push_back(u.cred[i]);
     }
-}
-
-UV::~UV()
-{
-    code="NULL";
-    nom="NULL";
 }

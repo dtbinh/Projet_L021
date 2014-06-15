@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
     compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),true);
     compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),false);*/
 
-
     MainWindow mw(&app);
     mw.show();
     return qapp.exec();

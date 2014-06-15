@@ -1,4 +1,4 @@
-﻿#include "Application.h"
+#include "Application.h"
 
 using namespace std;
 
@@ -73,6 +73,9 @@ void Application::chargerConfiguration()
             else if (manager_nom == "filiere") {
                 filman.setCheminFichier(dossier.getCheminFichier());
                 filman.setFichier(manager_fichier);
+            }
+            else if (manager_nom == "completion") {
+
             }
             else if (manager_nom == "dossier") {
                 dossier.setCheminFichier(dossier.getCheminFichier());

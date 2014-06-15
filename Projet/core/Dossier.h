@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Dossier.h
 /// \brief Un dossier représente le parcours d'un étudiant.
 /// \author Erwan Normand,Nicolas Szewe
@@ -183,7 +183,7 @@ public :
     /// \param catman Le manager de Categorie
     /// \return const std::vector<Credits> Un vecteur avec les différents crédits que vous avez. (Un element du vecteur correspond à la somme des crédits de une categorie)
     ///
-    const std::vector<Credits> getCredits(const CategorieManager& catman) const ;
+    Factory<Credits> getCredits(const CategorieManager& catman) const;
 
     ///
     /// \fn estVide

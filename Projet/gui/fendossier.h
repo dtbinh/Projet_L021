@@ -24,6 +24,8 @@ private:
     Ui::FenDossier *ui;
 
     void remplirInscriptions();
+    void remplirCreditsFormations();
+    QWidget* creerCreditsFormation(const Formation& formation);
 };
 
 #endif // FENDOSSIER_H

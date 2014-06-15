@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Completion.h
 /// \brief Completion automatique.
 /// \author Erwan Normand, Nicolas Szewe

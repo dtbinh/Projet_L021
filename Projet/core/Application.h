@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Application.h
 /// \brief L'application, gestionnaire des managers.
 /// \author Erwan Normand, Nicolas Szewe

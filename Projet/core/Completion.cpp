@@ -1,4 +1,4 @@
-﻿#include "Completion.h"
+#include "Completion.h"
 #include <string>
 #include <iostream>
 

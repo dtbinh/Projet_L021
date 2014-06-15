@@ -1,12 +1,14 @@
-﻿#include "Dossier.h"
+#include "Dossier.h"
 
 using namespace std;
 
-const std::vector<Credits> Dossier::getCredits(const CategorieManager& catman) const {
+Factory<Credits> Dossier::getCredits(const CategorieManager& catman) const
+{
     Credits CS_Actuel("CS_Actuel",0,catman.getCategorie("CS"));
     Credits TM_Actuel("TM_Actuel",0,catman.getCategorie("TM"));
     Credits TSH_Actuel("TSH_Actuel",0,catman.getCategorie("TSH"));
     Credits SP_Actuel("SP_Actuel",0,catman.getCategorie("SP"));
+
     for (map<QString,Inscription>::const_iterator it = inscriptions.begin(); it != inscriptions.end(); it++)
     {
         for (map<QString,UV>::const_iterator ituv = it->second.getUVs().begin(); ituv != it->second.getUVs().end(); ituv++)
@@ -38,11 +40,12 @@ const std::vector<Credits> Dossier::getCredits(const CategorieManager& catman) c
          }
        }
     }
-    std::vector<Credits> tempcred;
-    tempcred.push_back(TM_Actuel);
-    tempcred.push_back(TSH_Actuel);
-    tempcred.push_back(CS_Actuel);
-    tempcred.push_back(SP_Actuel);
+
+    Factory<Credits> tempcred;
+    tempcred.ajouter(CS_Actuel.getCategorie().getCode(), CS_Actuel);
+    tempcred.ajouter(TM_Actuel.getCategorie().getCode(), TM_Actuel);
+    tempcred.ajouter(TSH_Actuel.getCategorie().getCode(), TSH_Actuel);
+    tempcred.ajouter(SP_Actuel.getCategorie().getCode(), SP_Actuel);
     return tempcred;
 }
 
