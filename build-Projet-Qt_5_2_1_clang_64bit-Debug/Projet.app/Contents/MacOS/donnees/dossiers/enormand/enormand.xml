@@ -2,6 +2,8 @@
 <dossier>
   <nom>normand</nom>
   <prenom>erwan</prenom>
+  <formations>GI</formations>
+  <formations>TSH_Bran</formations>
   <inscription>
     <code>GI01</code>
     <semestre>A2013</semestre>

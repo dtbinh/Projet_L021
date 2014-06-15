@@ -1,4 +1,4 @@
-#include "UVManager.h"
+﻿#include "UVManager.h"
 
 using namespace std;
 
@@ -13,7 +13,7 @@ void UVManager::charger(const CreditsManager& credman,const CategorieManager& ca
         if(racine.tagName() == "uv")
        {
             QDomElement unElement = racine.firstChildElement();
-            QString strCode,cat,nom,cred,forma;
+            QString strCode,cat,nom,cred;
 
             while(!unElement.isNull())
             {
@@ -38,8 +38,7 @@ void UVManager::charger(const CreditsManager& credman,const CategorieManager& ca
             }
             this->ajouterUV(strCode,nom,catman.getCategorie(cat));
             this->getUV(strCode).ajoutCredits(credman.getCredits(cred));
-            if(cat=="TSH"){
-            }
+
         }
         racine = racine.nextSiblingElement();
   }

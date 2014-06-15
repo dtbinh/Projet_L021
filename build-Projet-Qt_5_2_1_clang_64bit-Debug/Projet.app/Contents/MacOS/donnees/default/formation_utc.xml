@@ -1,5 +1,293 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <formations>
+    <formation>
+        <code>TSH_Bran</code>
+        <nom>Technologie Science Humaine Branche </nom>
+        <credits>TSH_Branche</credits>
+        <uvs>DI01</uvs>
+        <uvs>DI02</uvs>
+        <uvs>EI03</uvs>
+        <uvs>EI04</uvs>
+        <uvs>EI05</uvs>
+        <uvs>GE10</uvs>
+        <uvs>GE12</uvs>
+        <uvs>GE13</uvs>
+        <uvs>GE15</uvs>
+        <uvs>GE20</uvs>
+        <uvs>GE21</uvs>
+        <uvs>GE22</uvs>
+        <uvs>GE23</uvs>
+        <uvs>GE24</uvs>
+        <uvs>GE25</uvs>
+        <uvs>GE26</uvs>
+        <uvs>GE28</uvs>
+        <uvs>GE29</uvs>
+        <uvs>GE36</uvs>
+        <uvs>GE90</uvs>
+        <uvs>HE01</uvs>
+        <uvs>HE03</uvs>
+        <uvs>HE05</uvs>
+        <uvs>IC01</uvs>
+        <uvs>IC03</uvs>
+        <uvs>IC05</uvs>
+        <uvs>IC07</uvs>
+        <uvs>LA00</uvs>
+        <uvs>LA01</uvs>
+        <uvs>LA02</uvs>
+        <uvs>LA03</uvs>
+        <uvs>LA04</uvs>
+        <uvs>LA11</uvs>
+        <uvs>LA12</uvs>
+        <uvs>LA13</uvs>
+        <uvs>LA14</uvs>
+        <uvs>LA15</uvs>
+        <uvs>LA20</uvs>
+        <uvs>LA21</uvs>
+        <uvs>LA22</uvs>
+        <uvs>LA23</uvs>
+        <uvs>LA24</uvs>
+        <uvs>LA91</uvs>
+        <uvs>LA92</uvs>
+        <uvs>LA93</uvs>
+        <uvs>LA94</uvs>
+        <uvs>LB04</uvs>
+        <uvs>LB14</uvs>
+        <uvs>LB24</uvs>
+        <uvs>LC14</uvs>
+        <uvs>LG30</uvs>
+        <uvs>LG31</uvs>
+        <uvs>LG40</uvs>
+        <uvs>LG41</uvs>
+        <uvs>LG42</uvs>
+        <uvs>LG50</uvs>
+        <uvs>LG51</uvs>
+        <uvs>LG52</uvs>
+        <uvs>LG60</uvs>
+        <uvs>LG61</uvs>
+        <uvs>MU01</uvs>
+        <uvs>MU02</uvs>
+        <uvs>MU03</uvs>
+        <uvs>PH01</uvs>
+        <uvs>PH09</uvs>
+        <uvs>SA11</uvs>
+        <uvs>SC01</uvs>
+        <uvs>SC11</uvs>
+        <uvs>SC12</uvs>
+        <uvs>SC21</uvs>
+        <uvs>SC22</uvs>
+        <uvs>SI01</uvs>
+        <uvs>SI02</uvs>
+        <uvs>SI05</uvs>
+        <uvs>SI06</uvs>
+        <uvs>SI07</uvs>
+        <uvs>SI11</uvs>
+        <uvs>SI14</uvs>
+        <uvs>SI20</uvs>
+        <uvs>SI22</uvs>
+        <uvs>SI24</uvs>
+        <uvs>SI28</uvs>
+        <uvs>SI90</uvs>
+        <uvs>SL</uvs>
+        <uvs>SO04</uvs>
+        <uvs>SO05</uvs>
+        <uvs>SP01</uvs>
+        <uvs>SP02</uvs>
+        <uvs>SR02</uvs>
+        <uvs>TN16</uvs>
+        <uvs>TO01</uvs>
+    </formation>
+    <formation>
+        <code>TSH_Tronc</code>
+        <nom>Technologie Science Humaine Tronc commun </nom>
+        <credits>TSH_TC</credits>
+        <uvs>DI01</uvs>
+        <uvs>DI02</uvs>
+        <uvs>EI03</uvs>
+        <uvs>EI04</uvs>
+        <uvs>EI05</uvs>
+        <uvs>GE10</uvs>
+        <uvs>GE12</uvs>
+        <uvs>GE13</uvs>
+        <uvs>GE15</uvs>
+        <uvs>GE20</uvs>
+        <uvs>GE21</uvs>
+        <uvs>GE22</uvs>
+        <uvs>GE23</uvs>
+        <uvs>GE24</uvs>
+        <uvs>GE25</uvs>
+        <uvs>GE26</uvs>
+        <uvs>GE28</uvs>
+        <uvs>GE29</uvs>
+        <uvs>GE36</uvs>
+        <uvs>GE90</uvs>
+        <uvs>HE01</uvs>
+        <uvs>HE03</uvs>
+        <uvs>HE05</uvs>
+        <uvs>IC01</uvs>
+        <uvs>IC03</uvs>
+        <uvs>IC05</uvs>
+        <uvs>IC07</uvs>
+        <uvs>LA00</uvs>
+        <uvs>LA01</uvs>
+        <uvs>LA02</uvs>
+        <uvs>LA03</uvs>
+        <uvs>LA04</uvs>
+        <uvs>LA11</uvs>
+        <uvs>LA12</uvs>
+        <uvs>LA13</uvs>
+        <uvs>LA14</uvs>
+        <uvs>LA15</uvs>
+        <uvs>LA20</uvs>
+        <uvs>LA21</uvs>
+        <uvs>LA22</uvs>
+        <uvs>LA23</uvs>
+        <uvs>LA24</uvs>
+        <uvs>LA91</uvs>
+        <uvs>LA92</uvs>
+        <uvs>LA93</uvs>
+        <uvs>LA94</uvs>
+        <uvs>LB04</uvs>
+        <uvs>LB14</uvs>
+        <uvs>LB24</uvs>
+        <uvs>LC14</uvs>
+        <uvs>LG30</uvs>
+        <uvs>LG31</uvs>
+        <uvs>LG40</uvs>
+        <uvs>LG41</uvs>
+        <uvs>LG42</uvs>
+        <uvs>LG50</uvs>
+        <uvs>LG51</uvs>
+        <uvs>LG52</uvs>
+        <uvs>LG60</uvs>
+        <uvs>LG61</uvs>
+        <uvs>MU01</uvs>
+        <uvs>MU02</uvs>
+        <uvs>MU03</uvs>
+        <uvs>PH01</uvs>
+        <uvs>PH09</uvs>
+        <uvs>SA11</uvs>
+        <uvs>SC01</uvs>
+        <uvs>SC11</uvs>
+        <uvs>SC12</uvs>
+        <uvs>SC21</uvs>
+        <uvs>SC22</uvs>
+        <uvs>SI01</uvs>
+        <uvs>SI02</uvs>
+        <uvs>SI05</uvs>
+        <uvs>SI06</uvs>
+        <uvs>SI07</uvs>
+        <uvs>SI11</uvs>
+        <uvs>SI14</uvs>
+        <uvs>SI20</uvs>
+        <uvs>SI22</uvs>
+        <uvs>SI24</uvs>
+        <uvs>SI28</uvs>
+        <uvs>SI90</uvs>
+        <uvs>SL</uvs>
+        <uvs>SO04</uvs>
+        <uvs>SO05</uvs>
+        <uvs>SP01</uvs>
+        <uvs>SP02</uvs>
+        <uvs>SR02</uvs>
+        <uvs>TN16</uvs>
+        <uvs>TO01</uvs>
+    </formation>
+    <formation>
+        <code>TSH_HU</code>
+        <nom>Technologie Science Humaine Hutech</nom>
+        <credits>TSH_HUTECH</credits>
+        <uvs>DI01</uvs>
+        <uvs>DI02</uvs>
+        <uvs>EI03</uvs>
+        <uvs>EI04</uvs>
+        <uvs>EI05</uvs>
+        <uvs>GE10</uvs>
+        <uvs>GE12</uvs>
+        <uvs>GE13</uvs>
+        <uvs>GE15</uvs>
+        <uvs>GE20</uvs>
+        <uvs>GE21</uvs>
+        <uvs>GE22</uvs>
+        <uvs>GE23</uvs>
+        <uvs>GE24</uvs>
+        <uvs>GE25</uvs>
+        <uvs>GE26</uvs>
+        <uvs>GE28</uvs>
+        <uvs>GE29</uvs>
+        <uvs>GE36</uvs>
+        <uvs>GE90</uvs>
+        <uvs>HE01</uvs>
+        <uvs>HE03</uvs>
+        <uvs>HE05</uvs>
+        <uvs>IC01</uvs>
+        <uvs>IC03</uvs>
+        <uvs>IC05</uvs>
+        <uvs>IC07</uvs>
+        <uvs>LA00</uvs>
+        <uvs>LA01</uvs>
+        <uvs>LA02</uvs>
+        <uvs>LA03</uvs>
+        <uvs>LA04</uvs>
+        <uvs>LA11</uvs>
+        <uvs>LA12</uvs>
+        <uvs>LA13</uvs>
+        <uvs>LA14</uvs>
+        <uvs>LA15</uvs>
+        <uvs>LA20</uvs>
+        <uvs>LA21</uvs>
+        <uvs>LA22</uvs>
+        <uvs>LA23</uvs>
+        <uvs>LA24</uvs>
+        <uvs>LA91</uvs>
+        <uvs>LA92</uvs>
+        <uvs>LA93</uvs>
+        <uvs>LA94</uvs>
+        <uvs>LB04</uvs>
+        <uvs>LB14</uvs>
+        <uvs>LB24</uvs>
+        <uvs>LC14</uvs>
+        <uvs>LG30</uvs>
+        <uvs>LG31</uvs>
+        <uvs>LG40</uvs>
+        <uvs>LG41</uvs>
+        <uvs>LG42</uvs>
+        <uvs>LG50</uvs>
+        <uvs>LG51</uvs>
+        <uvs>LG52</uvs>
+        <uvs>LG60</uvs>
+        <uvs>LG61</uvs>
+        <uvs>MU01</uvs>
+        <uvs>MU02</uvs>
+        <uvs>MU03</uvs>
+        <uvs>PH01</uvs>
+        <uvs>PH09</uvs>
+        <uvs>SA11</uvs>
+        <uvs>SC01</uvs>
+        <uvs>SC11</uvs>
+        <uvs>SC12</uvs>
+        <uvs>SC21</uvs>
+        <uvs>SC22</uvs>
+        <uvs>SI01</uvs>
+        <uvs>SI02</uvs>
+        <uvs>SI05</uvs>
+        <uvs>SI06</uvs>
+        <uvs>SI07</uvs>
+        <uvs>SI11</uvs>
+        <uvs>SI14</uvs>
+        <uvs>SI20</uvs>
+        <uvs>SI22</uvs>
+        <uvs>SI24</uvs>
+        <uvs>SI28</uvs>
+        <uvs>SI90</uvs>
+        <uvs>SL</uvs>
+        <uvs>SO04</uvs>
+        <uvs>SO05</uvs>
+        <uvs>SP01</uvs>
+        <uvs>SP02</uvs>
+        <uvs>SR02</uvs>
+        <uvs>TN16</uvs>
+        <uvs>TO01</uvs>
+    </formation>
   <formation>
     <code>GB</code>
     <nom>Genie Biologique</nom>
@@ -13,6 +301,8 @@
     <specialites>CIB</specialites>
     <specialites>MPI</specialites>
     <uvs>BL30</uvs>
+    <uvs>TN09</uvs>
+    <uvs>TN10</uvs>
   </formation>
   <formation>
     <code>GI</code>
@@ -48,6 +338,8 @@
     <uvs>API09</uvs>
     <uvs>API10</uvs>
     <uvs>BI01</uvs>
+    <uvs>TN09</uvs>
+    <uvs>TN10</uvs>
   </formation>
   <formation>
     <code>GM</code>
@@ -87,6 +379,8 @@
     <uvs>TN20</uvs>
     <uvs>TN22</uvs>
     <uvs>TX</uvs>
+    <uvs>TN09</uvs>
+    <uvs>TN10</uvs>
   </formation>
   <formation>
     <code>GP</code>
@@ -116,6 +410,8 @@
     <uvs>TS01</uvs>
     <uvs>TX</uvs>
     <uvs>BA04</uvs>
+    <uvs>TN09</uvs>
+    <uvs>TN10</uvs>
   </formation>
   <formation>
     <code>GSM</code>
@@ -150,6 +446,8 @@
     <uvs>TN20</uvs>
     <uvs>TN22</uvs>
     <uvs>TX</uvs>
+    <uvs>TN09</uvs>
+    <uvs>TN10</uvs>
   </formation>
   <formation>
     <code>GSU</code>
@@ -183,6 +481,8 @@
     <uvs>BA02</uvs>
     <uvs>BA04</uvs>
     <uvs>BA09</uvs>
+    <uvs>TN09</uvs>
+    <uvs>TN10</uvs>
   </formation>
   <formation>
     <code>HUTECH</code>
@@ -215,6 +515,8 @@
     <uvs>MT34</uvs>
     <uvs>MT37</uvs>
     <uvs>MT38</uvs>
+    <uvs>TN05</uvs>
+    <uvs>TN07</uvs>
   </formation>
   <formation>
     <code>TC</code>
@@ -300,5 +602,7 @@
     <uvs>UB04</uvs>
     <uvs>UR03</uvs>
     <uvs>UR05</uvs>
+    <uvs>TN05</uvs>
+    <uvs>TN07</uvs>
   </formation>
 </formations>

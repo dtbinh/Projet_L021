@@ -77,9 +77,14 @@
   </credits>
   <credits>
     <code>TSH_Branche</code>
-    <nombre>24</nombre>
+    <nombre>28</nombre>
     <categorie>TSH</categorie>
   </credits>
+  <credits>
+      <code>TSH_HUTECH</code>
+      <nombre>44</nombre>
+      <categorie>TSH</categorie>
+ </credits>
   <credits>
     <code>TSH_Classique</code>
     <nombre>4</nombre>

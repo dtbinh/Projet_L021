@@ -1098,4 +1098,29 @@
     <credits>TM_5</credits>
     <categorie>TM</categorie>
   </uv>
+  <uv>
+      <code>TN05</code>
+      <nom>Stage Technique</nom>
+      <credits>SP_TC</credits>
+      <categorie>SP</categorie>
+  </uv>
+  <uv>
+      <code>TN07</code>
+      <nom>Stage Interculturelle</nom>
+      <credits>SP_TC</credits>
+      <categorie>SP</categorie>
+  </uv>
+  <uv>
+      <code>TN09</code>
+      <nom>Stage Assistant Ingénieur</nom>
+      <credits>SP_StageBranche</credits>
+      <categorie>SP</categorie>
+  </uv>
+  <uv>
+      <code>TN10</code>
+      <nom>Stage de Fin d'étude'</nom>
+      <credits>SP_StageBranche</credits>
+      <categorie>SP</categorie>
+  </uv>
+  
 </uvs>
