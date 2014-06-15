@@ -12,8 +12,8 @@ int main(int argc, char *argv[])
     Application app("dossiers", "dossiers/default", "configuration.xml");
     app.charger("enormand");
     Completion compa(app.getUVManager());
-    //compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),true);
-    //compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),false);
+    compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),true);
+    compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),false);
 
 
     //MainWindow mw(&app);
