@@ -14,9 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
-   <property name="spacing">
-    <number>20</number>
-   </property>
    <item>
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
@@ -70,25 +67,81 @@
     </layout>
    </item>
    <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
-      <widget class="QLabel" name="label">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">font: 16pt;</string>
-       </property>
-       <property name="text">
-        <string>Etat des crédits</string>
-       </property>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt;</string>
+         </property>
+         <property name="text">
+          <string>Formations</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTableView" name="inscriptions_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
+         </property>
+         <property name="alternatingRowColors">
+          <bool>false</bool>
+         </property>
+         <property name="selectionMode">
+          <enum>QAbstractItemView::SingleSelection</enum>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <attribute name="verticalHeaderVisible">
+          <bool>false</bool>
+         </attribute>
+        </widget>
+       </item>
+       <item alignment="Qt::AlignRight">
+        <widget class="QPushButton" name="ajouterInscription_2">
+         <property name="text">
+          <string>Nouvelle formation</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
-      <layout class="QHBoxLayout" name="formations"/>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Maximum">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font: 16pt;</string>
+         </property>
+         <property name="text">
+          <string>Etat des crédits</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="formations" native="true"/>
+       </item>
+      </layout>
      </item>
     </layout>
    </item>

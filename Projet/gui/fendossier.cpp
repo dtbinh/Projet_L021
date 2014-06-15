@@ -95,11 +95,17 @@ void FenDossier::remplirInscriptions()
 
 void FenDossier::remplirCreditsFormations()
 {
+    QGridLayout* layout = new QGridLayout;
+    unsigned int i;
     for (map<QString,Formation>::const_iterator it = app->getDossier().getFormations().begin(); it != app->getDossier().getFormations().end(); it++)
     {
         QWidget* credits_formation = creerCreditsFormation(it->second);
-        ui->formations->addWidget(credits_formation);
+        layout->addWidget(credits_formation,i/2,i%2);
+        i++;
     }
+
+    delete ui->formations->layout();
+    ui->formations->setLayout(layout);
 }
 
 QWidget* FenDossier::creerCreditsFormation(const Formation& formation)
