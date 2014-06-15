@@ -1,4 +1,11 @@
-﻿#ifndef SOLUTION_H
+﻿///
+/// \file Solution.h
+/// \brief Objet Solution, construit une completion automatique
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
+///
+
+#ifndef SOLUTION_H
 #define SOLUTION_H
 
 #include <QString>

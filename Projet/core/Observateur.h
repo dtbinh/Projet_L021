@@ -1,3 +1,10 @@
+﻿///
+/// \file Observateur.h
+/// \brief Observateur
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
+///
+
 #ifndef OBSERVATEUR_H
 #define OBSERVATEUR_H
 

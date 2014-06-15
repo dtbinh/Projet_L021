@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file UV.h
 /// \brief Les UVs sont les matières de l'UTC.
-/// \author Nicolas Szewe, Erwan Normand
-/// \date 27 mai 2014
+/// \author Erwan Normand, Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef UV_PROFIL_H

@@ -1,4 +1,11 @@
-﻿#ifndef COMPLETION_H
+﻿///
+/// \file Completion.h
+/// \brief Completion automatique.
+/// \author Erwan Normand, Nicolas Szewe
+/// \date 15 juin 2014
+///
+
+#ifndef COMPLETION_H
 #define COMPLETION_H
 
 #include <QString>

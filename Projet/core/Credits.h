@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file Credits.h
-/// \brief Les UVs et les formations possèdent des crédits ECTS dans différentes catégories. Les crédits des formations sont à valider, ceux des UVs en rapportent.
-/// \author Nicolas Szewe, Erwan Normand
-/// \date 05 juin 2014
+/// \brief Les UVs et les formations possèdent des crédits ECTS dans différentes catégories.
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef CREDIT_H
@@ -14,7 +14,7 @@
 
 ///
 /// \class Credits
-/// \brief Credits correspond à un nombre de crédits dans une catégorie.
+/// \brief Les Credits associent à un nombre de crédits,une catégorie.
 ///
 class Credits
 {
@@ -25,21 +25,24 @@ class Credits
 public :
     ///
     /// \fn Credits(const QString c, int n, const Categorie& c)
-    /// \brief Constructeur.
-    /// \param n Le nombre de crédits.
+    /// \brief Constructeur de la classe Credits.
+    /// \brief Tous les parametres peuvent ne pas être donnée pour rendre ce constructeur, constructeur par défault
+    /// \param n Le nom des crédits pour identification ultérieure.
+    /// \param nb Le nombre de credits.
     /// \param cat Une référence d'une Categorie.
     ///
     Credits(const QString& n = "", int nb = 0, const Categorie& c = Categorie()): nom(n), nombre(nb), categorie(&c) {}
 
     ///
-    /// \fn setNom()
-    /// \brief Retourne le nom des crédits.
-    /// \return const QString& Le nom.
+    /// \fn getNom()
+    /// \brief Retourne une référence vers le nom des crédits.
+    /// \return const QString& -> Le nom.
     ///
     const QString& getNom() const { return nom; }
 
     ///
     /// \fn setNom(const QString& n)
+    /// \param n Le nouveau nom des crédits
     /// \brief Modifie le nom des crédits.
     ///
     void setNom(const QString& n) { nom = n; }
@@ -47,13 +50,14 @@ public :
     ///
     /// \fn getNombre()
     /// \brief Retourne le nombre de crédits.
-    /// \return int Le nombre.
+    /// \return int -> Le nombre.
     ///
     int getNombre() const { return nombre; }
 
     ///
     /// \fn setNombre(int nb)
-    /// \brief Modifie le nombre des crédits.
+    /// \brief Modifie le nombre des crédits
+    /// \param nb Le nouveau nombre de crédits
     ///
     void setNombre(int nb) { nombre = nb; }
 
@@ -66,7 +70,8 @@ public :
 
     ///
     /// \fn setCategorie(const Categorie& c)
-    /// \brief Modifie la catégorie des crédits.
+    /// \brief Remplace la référénce de categorie par la nouvelle.
+    /// \param c La nouvelle référence sur categorie
     ///
     void setCategorie(const Categorie& c) { categorie = &c; }
 };

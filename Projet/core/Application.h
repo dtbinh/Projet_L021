@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file Application.h
 /// \brief L'application, gestionnaire des managers.
-/// \author Erwan Normand
-/// \date 10 juin 2014
+/// \author Erwan Normand, Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef APPLICATION_H

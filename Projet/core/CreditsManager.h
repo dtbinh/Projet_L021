@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file CreditManager.h
 /// \brief Manager des Credits.
-/// \author Nicolas Szewe, Erwan Normand
-/// \date 04 juin 2014
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef CREDITMANAGER_H

@@ -1,8 +1,8 @@
-///
+﻿///
 /// \file PeriodeManager.h
 /// \brief Manager des Periodes
-/// \author Nicolas Szewe, Erwan Normand
-/// \date 05 juin 2014
+/// \author Erwan Normand,Nicolas Szewe
+/// \date 15 juin 2014
 ///
 
 #ifndef PERIODEMANAGER_H
