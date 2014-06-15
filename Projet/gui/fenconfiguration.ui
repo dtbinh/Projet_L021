@@ -64,7 +64,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="ajouterCategorie">
            <property name="text">
             <string>Ajouter une catégorie</string>
            </property>
@@ -133,7 +133,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="ajouterCredits">
            <property name="text">
             <string>Ajouter des crédits</string>
            </property>
@@ -175,7 +175,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="ajouterFormation">
            <property name="text">
             <string>Ajouter une formation</string>
            </property>
@@ -217,7 +217,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="ajouterNote">
            <property name="text">
             <string>Ajouter une note</string>
            </property>
@@ -259,7 +259,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="pushButton_5">
+          <widget class="QPushButton" name="ajouterPeriode">
            <property name="text">
             <string>Ajouter une période</string>
            </property>
@@ -301,7 +301,7 @@
           </widget>
          </item>
          <item alignment="Qt::AlignRight">
-          <widget class="QPushButton" name="pushButton_6">
+          <widget class="QPushButton" name="ajouterUV">
            <property name="text">
             <string>Ajouter une UV</string>
            </property>

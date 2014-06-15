@@ -69,11 +69,19 @@ void FenConfiguration::notification(const QStringList &quoi)
     }
 }
 
-void FenConfiguration::setPanneau(const QString& panneau, const QModelIndex& index)
+void FenConfiguration::setPanneau(const QString& panneau, const QString &quoi, const QModelIndex& index)
 {
-    QVariant code = index.sibling(index.row(),0).data();
-    panneauAction->setPanneau(panneau, code.toString());
-    panneauAction->setVisible(true);
+    if (quoi == "editer")
+    {
+        QVariant code = index.sibling(index.row(),0).data();
+        panneauAction->setPanneau(panneau, quoi, code.toString());
+        panneauAction->setVisible(true);
+    }
+    else if (quoi == "ajouter")
+    {
+        panneauAction->setPanneau(panneau, quoi);
+        panneauAction->setVisible(true);
+    }
 }
 
 void FenConfiguration::remplirCategorie()

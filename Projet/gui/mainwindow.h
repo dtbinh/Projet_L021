@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <map>
 #include "applicationcomposant.h"
 #include "core/Observer.h"
 #include "fenaccueil.h"

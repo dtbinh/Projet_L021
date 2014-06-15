@@ -1,6 +1,9 @@
 ﻿#include "Solution.h"
 
-void Solution::affichage() const{
+using namespace std;
+
+void Solution::affichage() const
+{
     for(unsigned int i=0; i < strategie.size();i++){
         std::cout<<strategie[i].getCategorie().getCode().toStdString()<<" : "<<strategie[i].getCode().toStdString()<<std::endl;
     }
@@ -13,7 +16,7 @@ Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QSt
     Credits TM_Besoin("TM_Besoin",0,catman.getCategorie("TM"));
     Credits TSH_Besoin("TSH_Besoin",0,catman.getCategorie("TSH"));
     Credits SP_Besoin("SP_Besoin",0,catman.getCategorie("SP"));
-    std::vector<Credits> cred_doss=D.getCredits(catman);
+    Factory<Credits> cred_doss=D.getCredits(catman);
     Factory <Formation> form=D.getFormations();
     for (std::map<QString,Formation>::const_iterator f=form.begin(); f!=form.end();f++){
         const std::vector<const Credits*> cred_forma=f->second.getCredits();
@@ -35,19 +38,19 @@ Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QSt
                 }
     }
 
-    for (unsigned int i=0;i<cred_doss.size();i++)
-{
-        if(cred_doss[i].getCategorie().getCode()=="CS"){
-            CS_Besoin.setNombre(CS_Besoin.getNombre()-cred_doss[i].getNombre());
+    for(map<QString,Credits>::const_iterator it = cred_doss.begin(); it != cred_doss.end(); ++it)
+    {
+        if(it->second.getCategorie().getCode()=="CS"){
+            CS_Besoin.setNombre(CS_Besoin.getNombre()-it->second.getNombre());
         }
-        else if (cred_doss[i].getCategorie().getCode()=="TM"){
-            TM_Besoin.setNombre(TM_Besoin.getNombre()-cred_doss[i].getNombre());
+        else if (it->second.getCategorie().getCode()=="TM"){
+            TM_Besoin.setNombre(TM_Besoin.getNombre()-it->second.getNombre());
         }
-        else if(cred_doss[i].getCategorie().getCode()=="TSH"){
-            TSH_Besoin.setNombre(TSH_Besoin.getNombre()-cred_doss[i].getNombre());
+        else if(it->second.getCategorie().getCode()=="TSH"){
+            TSH_Besoin.setNombre(TSH_Besoin.getNombre()-it->second.getNombre());
         }
-        else if(cred_doss[i].getCategorie().getCode()=="SP"){
-            SP_Besoin.setNombre(SP_Besoin.getNombre()-cred_doss[i].getNombre());
+        else if(it->second.getCategorie().getCode()=="SP"){
+            SP_Besoin.setNombre(SP_Besoin.getNombre()-it->second.getNombre());
         }
 }
    std::cout<<"IL te reste a valider  : "<<std::endl;
@@ -125,7 +128,7 @@ Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QSt
              else if(uvbranche[i]->getCategorie().getCode()=="TSH"){
                  for(unsigned int j=0;j<uvbranche[i]->getCredits().size();j++){
                         if(uvbranche[i]->getCredits()[j]->getCategorie().getCode()=="TSH"){
-                             strategie.push_back(uvbranche[i]);
+                             strategie.push_back(*uvbranche[i]);
                              TSH_Besoin.setNombre(TSH_Besoin.getNombre()-uvbranche[i]->getCredits()[j]->getNombre());
                 }}}
             else if(uvbranche[i]->getCategorie().getCode()=="TM" && TM_Besoin.getNombre() >0){
@@ -137,7 +140,7 @@ Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QSt
             else if(uvbranche[i]->getCategorie().getCode()=="SP" && SP_Besoin.getNombre() >0){
                  for(unsigned int j=0;j<uvbranche[i]->getCredits().size();j++){
                         if(uvbranche[i]->getCredits()[j]->getCategorie().getCode()=="SP"){
-                             strategie.push_back(uvbranche[i]);
+                             strategie.push_back(*uvbranche[i]);
                              SP_Besoin.setNombre(SP_Besoin.getNombre()-uvbranche[i]->getCredits()[j]->getNombre());
                }} }
 

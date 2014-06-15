@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+using namespace std;
+
 MainWindow::MainWindow(Application *a, QWidget *parent) :
     QMainWindow(parent),
     ApplicationComposant(a),
@@ -36,6 +38,7 @@ void MainWindow::on_menuAccueil_clicked()
     fendossier->setHidden(true);
     fenconfiguration->setHidden(true);
 
+    ui->menuAccueil->setChecked(true);
     ui->menuDossiers->setChecked(false);
     ui->menuConfiguration->setChecked(false);
 }
@@ -49,6 +52,7 @@ void MainWindow::on_menuDossiers_clicked()
     fenconfiguration->setHidden(true);
 
     ui->menuAccueil->setChecked(false);
+    ui->menuDossiers->setChecked(true);
     ui->menuConfiguration->setChecked(false);
 }
 
@@ -62,6 +66,7 @@ void MainWindow::on_menuConfiguration_clicked()
 
     ui->menuAccueil->setChecked(false);
     ui->menuDossiers->setChecked(false);
+    ui->menuConfiguration->setChecked(true);
 }
 
 void MainWindow::notification(const QStringList &quoi)
