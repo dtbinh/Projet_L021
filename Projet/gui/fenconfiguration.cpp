@@ -207,7 +207,7 @@ void FenConfiguration::remplirUV()
     QStandardItemModel* model = new QStandardItemModel();
 
     QStringList header_labels;
-    header_labels << "Code" << "Nom" << "Catégorie" << "Crédits" << "Prérequis";
+    header_labels << "Code" << "Nom" << "Catégorie" << "Crédits";
     model->setHorizontalHeaderLabels(header_labels);
 
     unsigned int i = 0;
@@ -222,12 +222,6 @@ void FenConfiguration::remplirUV()
             credits << (*it2)->getCode();
         }
         model->setItem(i,3,new QStandardItem(credits.join(", ")));
-
-        QStringList prerequis;
-        for (vector<const UV*>::const_iterator it2 = it->second.getPrerequis().begin(); it2 != it->second.getPrerequis().end(); it2++) {
-            prerequis << (*it2)->getCode();
-        }
-        model->setItem(i,4,new QStandardItem(prerequis.join(", ")));
 
         i++;
     }

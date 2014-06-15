@@ -40,11 +40,13 @@ void FenDossier::remplirInscriptions()
         for (map<QString,UV>::const_iterator ituv = inscription.getUVs().begin(); ituv != inscription.getUVs().end(); ++ituv)
         {
             const UV& uv = ituv->second;
-            /*int j = header_labels.indexOf(uv.getCategorie().getCode());
+            QString categorie = uv.getCategorie().getCode();
+            int j = header_labels.indexOf(categorie);
             if (j == -1) {
-                header_labels << uv.getCategorie().getCode();
-            }*/
-            model->setItem(i,2,new QStandardItem(uv.getCode() + " " + inscription.getNotes().get(uv.getCode()).getNote()));
+                //header_labels << categorie;
+            }
+
+            model->setItem(i,2,new QStandardItem(text + uv.getCode() + " " + inscription.getNotes().get(uv.getCode()).getNote()));
         }
 
         i++;
