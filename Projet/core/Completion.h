@@ -22,8 +22,9 @@
 ///
 class Completion : public Manager
 {
-std::vector<Solution> solutions;
-std::map<QString,QString> preferences; // Associe au code d'une UV une préference
+    QString fichier_preferences;
+    std::vector<Solution> solutions;
+    std::map<QString,QString> preferences; // Associe au code d'une UV une préference
 
 public:
     ///
@@ -31,7 +32,7 @@ public:
     /// \brief Constructeur du completion
     /// \param uvman Manager des uvs
     ///
-    Completion(const UVManager& uvman);
+    Completion(const QString& cf,const QString& f, const UVManager& uvman);
 
     ///
     /// \fn Completion
@@ -100,7 +101,7 @@ public:
     /// \param pref La nouvelle préférence
     ///
     void setPreference(const UVManager& uvman,const QString& codeuv, const QString& pref){
-            preferences[uvman.getUV(codeuv).getCode()]=pref; }
+        preferences[uvman.getUV(codeuv).getCode()]=pref; }
 
     ///
     /// \fn chargerPreference
@@ -112,6 +113,6 @@ public:
     /// \brief Sauvegarder dans un fichier xml des préférences
     ///
     void sauvegarderPreference();
-       };
+};
 
 #endif // COMPLETION_H

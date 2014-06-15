@@ -1,11 +1,19 @@
-﻿#include "Completion.h"
+#include "Completion.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-void Completion::chargerSolution(const UVManager& uvman){
-    QDomDocument doc = this->chargerXml("dossiers/enormand/completion.xml");
+Completion::Completion(const QString &cf, const QString &f, const UVManager& uvman) : Manager(cf,f), solutions()
+{
+    fichier_preferences = "preferences.xml";
+    this->chargerPreference();
+    //this->chargerSolution(uvman);
+}
+
+void Completion::chargerSolution(const UVManager& uvman)
+{
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
 
@@ -38,7 +46,8 @@ void Completion::chargerSolution(const UVManager& uvman){
 
 }}
 
-void Completion::sauvegarderSolution(){
+void Completion::sauvegarderSolution()
+{
     QDomDocument doc = this->creerXml();
     QDomElement root = doc.createElement("Solutions");
     doc.appendChild(root);
@@ -57,7 +66,7 @@ void Completion::sauvegarderSolution(){
     solution.appendChild(choix);
     QDomText textchoix=doc.createTextNode(solutions[i].getChoix());
     choix.appendChild(textchoix);
-    this->sauvegarderXml("dossiers/enormand/completion.xml", doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }}
 
 void Completion::ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,const NoteManager& notman,bool activation){
@@ -71,11 +80,6 @@ void Completion::ajouterSolution(const Dossier& D,const CategorieManager& catman
     }
 }
 
-Completion::Completion(const UVManager& uvman) : solutions() {
-    this->chargerPreference();
-    this->chargerSolution(uvman);
-}
-
 void Completion::affichageSolution(){
     for (unsigned int i=0; i<solutions.size();i++){
         cout<<"SOlUTION : "<<endl;
@@ -85,7 +89,7 @@ void Completion::affichageSolution(){
 
 void Completion::chargerPreference()
 {
-    QDomDocument doc = this->chargerXml("dossiers/enormand/preferences.xml");
+    QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier_preferences);
 
     QDomElement racine = doc.documentElement();
     racine = racine.firstChildElement();
@@ -136,5 +140,5 @@ void Completion::sauvegarderPreference()
         pref.appendChild(prefText);
     }
 
-    this->sauvegarderXml("dossiers/enormand/preferences.xml", doc);
+    this->sauvegarderXml(chemin_fichier + "/" + fichier_preferences, doc);
 }

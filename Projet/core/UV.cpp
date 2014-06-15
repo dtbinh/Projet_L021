@@ -1,4 +1,4 @@
-﻿#include "UV.h"
+#include "UV.h"
 
 using namespace std;
 
