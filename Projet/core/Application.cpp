@@ -72,10 +72,12 @@ void Application::chargerConfiguration()
             }
             else if (manager_nom == "filiere") {
                 filman.setCheminFichier(dossier.getCheminFichier());
+                cout<<filman.getCheminFichier().toStdString()<<endl;
                 filman.setFichier(manager_fichier);
             }
             else if (manager_nom == "completion") {
-                compman.setCheminFichier(compman.getCheminFichier());
+                compman.setCheminFichier(dossier.getCheminFichier());
+                cout<<compman.getCheminFichier().toStdString()<<endl;
                 compman.setFichier(manager_fichier);
 
             }

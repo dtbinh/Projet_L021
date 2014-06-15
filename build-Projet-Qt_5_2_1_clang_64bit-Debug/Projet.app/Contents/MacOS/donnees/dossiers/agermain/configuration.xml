@@ -31,5 +31,9 @@
   <manager>
     <nom>dossier</nom>
     <fichier>agermain.xml</fichier>
+    </manager>
+ <manager>
+     <nom>completion</nom>
+     <fichier>completion.xml</fichier>
   </manager>
 </configuration>

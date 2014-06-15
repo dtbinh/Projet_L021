@@ -32,4 +32,8 @@
     <nom>dossier</nom>
     <fichier>enormand.xml</fichier>
   </manager>
+  <manager>
+    <nom>completion</nom>
+    <fichier>completion.xml</fichier>
+  </manager>
 </configuration>
