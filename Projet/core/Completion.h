@@ -10,7 +10,6 @@
 
 #include <QString>
 #include <QtXml>
-#include "Application.h"
 #include "Factory.h"
 #include "Solution.h"
 #include "Manager.h"
@@ -27,6 +26,9 @@ class Completion : public Manager
     std::map<QString,QString> preferences; // Associe au code d'une UV une préference
 
 public:
+    bool estVide() const { if (solutions.size()==0) return true;else return false; }
+    bool estVide2() const {return preferences.size()==0;}
+    void vider() { solutions.clear(); preferences.clear();}
     ///
     /// \fn Completion
     /// \brief Constructeur du completion
@@ -38,7 +40,7 @@ public:
     /// \fn Completion
     /// \brief Constructeur par défault
     ///
-    Completion();
+    Completion(){fichier_preferences = "preferences.xml";}
 
     ///
     /// \fn ajouterSolution

@@ -1,4 +1,4 @@
-///
+﻿///
 /// \file Credits.h
 /// \brief Les UVs et les formations possèdent des crédits ECTS dans différentes catégories.
 /// \author Erwan Normand,Nicolas Szewe
@@ -77,3 +77,4 @@ public :
 };
 
 #endif // CREDIT_H
+
