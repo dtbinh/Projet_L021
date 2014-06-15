@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Solution.h
 /// \brief Objet Solution, construit une completion automatique
 /// \author Erwan Normand,Nicolas Szewe
@@ -10,6 +10,7 @@
 
 #include <QString>
 #include <QtXml>
+#include <map>
 #include "Application.h"
 #include "Factory.h"
 #include "Dossier.h"
