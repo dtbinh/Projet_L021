@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-  <dossier>
-    <nom>szewe</nom>
-    <prenom>nicolas</prenom>
-    <inscription>
-      <code>GI01</code>
-      <semestre>A2013</semestre>
-      <formation>GI</formation>
-      <uv>
-        <codeUV>SR02</codeUV>
-        <note>A</note>
-      </uv>
-    </inscription>
-  </dossier>
+<dossier>
+  <nom>szewe</nom>
+  <prenom>nicolas</prenom>
+  <inscription>
+    <code>GI01</code>
+    <semestre>A2013</semestre>
+    <formation>GI</formation>
+    <uv>
+      <codeUV>SR02</codeUV>
+      <note>A</note>
+    </uv>
+  </inscription>
+</dossier>

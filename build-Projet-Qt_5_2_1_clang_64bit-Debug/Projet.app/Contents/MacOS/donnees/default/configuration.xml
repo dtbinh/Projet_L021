@@ -28,4 +28,9 @@
 	<nom>periode</nom>
     <fichier>periode_utc.xml</fichier>
   </manager>
+  <manager>
+      <nom>completion</nom>
+      <fichier>completion.xml</fichier>
+      </manager>
+  
 </configuration>

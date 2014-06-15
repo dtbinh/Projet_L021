@@ -7,13 +7,11 @@ SOURCES += \
     core/Completion.cpp \
     core/CreditsManager.cpp \
     core/Dossier.cpp \
-    core/Formation.cpp \
     core/FormationManager.cpp \
     core/Inscription.cpp \
     main.cpp \
     core/Manager.cpp \
     core/NoteManager.cpp \
-    core/Periode.cpp \
     core/PeriodeManager.cpp \
     core/Solution.cpp \
     core/UV.cpp \

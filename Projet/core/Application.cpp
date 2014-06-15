@@ -1,4 +1,4 @@
-#include "Application.h"
+﻿#include "Application.h"
 
 using namespace std;
 
@@ -72,9 +72,13 @@ void Application::chargerConfiguration()
             }
             else if (manager_nom == "filiere") {
                 filman.setCheminFichier(dossier.getCheminFichier());
+                cout<<filman.getCheminFichier().toStdString()<<endl;
                 filman.setFichier(manager_fichier);
             }
             else if (manager_nom == "completion") {
+                compman.setCheminFichier(dossier.getCheminFichier());
+                cout<<compman.getCheminFichier().toStdString()<<endl;
+                compman.setFichier(manager_fichier);
 
             }
             else if (manager_nom == "dossier") {
@@ -94,6 +98,9 @@ void Application::chargerConfiguration()
     filman.charger(credman);
     forman.charger(credman, uvman, filman);
     dossier.charger(forman, periodeman, uvman, notman);
+    compman.chargerSolution(uvman);
+    compman.chargerPreference();
+
 }
 
 void Application::sauvegarderConfiguration()
@@ -110,6 +117,7 @@ void Application::sauvegarderConfiguration()
     ajouterManagerXml(doc, root, "formation", forman.getFichier());
     ajouterManagerXml(doc, root, "periode", periodeman.getFichier());
     ajouterManagerXml(doc, root, "dossier", dossier.getFichier());
+    ajouterManagerXml(doc,root,"completion",compman.getFichier());
 
     this->sauvegarderXml(dossier.getCheminFichier() + "/" + fichier, doc);
 }
@@ -180,6 +188,8 @@ void Application::sauvegarder()
     filman.sauvegarder();
     forman.sauvegarder();
     dossier.sauvegarder();
+    compman.sauvegarderPreference();
+    compman.sauvegarderSolution();
 }
 
 void Application::fermer()
@@ -194,11 +204,12 @@ void Application::fermer()
     periodeman.vider();
     catman.vider();
     notman.vider();
+    compman.vider();
 }
 
 bool Application::estFerme() const
 {
-    return notman.estVide() && catman.estVide() && credman.estVide() && uvman.estVide() && forman.estVide() && filman.estVide() && periodeman.estVide() && dossier.estVide();
+    return notman.estVide() && catman.estVide() && credman.estVide() && uvman.estVide() && forman.estVide() && filman.estVide() &&compman.estVide2() && compman.estVide() &&periodeman.estVide() && dossier.estVide();
 }
 
 void Application::ajouterManagerXml(QDomDocument& doc, QDomElement& root, const QString& n, const QString& f) const

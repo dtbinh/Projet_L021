@@ -1,4 +1,4 @@
-#ifndef NOTIFIER_H
+﻿#ifndef NOTIFIER_H
 #define NOTIFIER_H
 
 #include "Observer.h"
