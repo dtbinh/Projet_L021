@@ -3,6 +3,7 @@
 #include "core/Exception.h"
 #include "gui/mainwindow.h"
 #include "core/Completion.h"
+
 using namespace std;
 
 int main(int argc, char *argv[])
