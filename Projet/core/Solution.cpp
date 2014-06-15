@@ -122,26 +122,26 @@ Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QSt
                             strategie.push_back(*uvbranche[i]);
                             CS_Besoin.setNombre(CS_Besoin.getNombre()-uvbranche[i]->getCredits()[j]->getNombre());
                }}}
-            /*else if(uvbranche[i]->getCategorie().getCode()=="TSH"){
+             else if(uvbranche[i]->getCategorie().getCode()=="TSH"){
                  for(unsigned int j=0;j<uvbranche[i]->getCredits().size();j++){
                         if(uvbranche[i]->getCredits()[j]->getCategorie().getCode()=="TSH"){
                              strategie.push_back(uvbranche[i]);
                              TSH_Besoin.setNombre(TSH_Besoin.getNombre()-uvbranche[i]->getCredits()[j]->getNombre());
-                }}}*/ //En attente du fichier de TSH ou je ne sais quoi
+                }}}
             else if(uvbranche[i]->getCategorie().getCode()=="TM" && TM_Besoin.getNombre() >0){
                  for(unsigned int j=0;j<uvbranche[i]->getCredits().size();j++){
                         if(uvbranche[i]->getCredits()[j]->getCategorie().getCode()=="TM"){
                              strategie.push_back(*uvbranche[i]);
                              TM_Besoin.setNombre(TM_Besoin.getNombre()-uvbranche[i]->getCredits()[j]->getNombre());
                }} }
-            /*else if(uvbranche[i]->getCategorie().getCode()=="SP" && SP_Besoin.getNombre() >0){
+            else if(uvbranche[i]->getCategorie().getCode()=="SP" && SP_Besoin.getNombre() >0){
                  for(unsigned int j=0;j<uvbranche[i]->getCredits().size();j++){
                         if(uvbranche[i]->getCredits()[j]->getCategorie().getCode()=="SP"){
                              strategie.push_back(uvbranche[i]);
                              SP_Besoin.setNombre(SP_Besoin.getNombre()-uvbranche[i]->getCredits()[j]->getNombre());
-               }} }*/ // SP Marche pas car il n'y a pas TN09 Et TN10 dans le fichier d'uv
+               }} }
 
-                  if (TM_Besoin.getNombre() <=0 && CS_Besoin.getNombre() <=0) //&& TSH_Besoin.getNombre() <=0 && SP_Besoin.getNombre() <=0)
+                  if (TM_Besoin.getNombre() <=0 && CS_Besoin.getNombre() <=0 && TSH_Besoin.getNombre() <=0 && SP_Besoin.getNombre() <=0)
                             i=uvbranche.size()-1; // Pour sortir plus vite si on a finis la completion
 
                 }
