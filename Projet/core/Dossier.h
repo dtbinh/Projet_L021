@@ -29,6 +29,10 @@ private:
     Factory<Formation> formations;
     Factory<Inscription> inscriptions;
 
+    ///
+    /// \fn setLogin
+    /// \brief Definit le login a partir du nom et du prenom
+    ///
     void setLogin();
 
 public :

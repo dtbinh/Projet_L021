@@ -136,7 +136,7 @@ void Dossier::charger(const FormationManager& forman,const PeriodeManager& perio
                 Inscription temp(code,periodeman.getPeriode(tempInscri),forman.getFormation(tempFormation));
                 for (map<QString,UV>::iterator it = tempuvs.begin(); it != tempuvs.end(); it++)
                 {
-                    temp.ajouterUV(it->second.getCode());
+                    temp.ajouterUV(it->second);
                     temp.modifierNote(it->second.getCode(),tempnotes.find(it->second.getCode())->second.getNote());
                 }
                 tempuvs.vider();
