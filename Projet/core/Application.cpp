@@ -17,7 +17,7 @@ QStringList Application::listeDossiers() const
     if (!dos.exists()) {
         throw Exception("Le dossier " + chemin_dossiers + " n'existe pas.");
     }
-    return dos.entryList();
+    return dos.entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 }
 
 void Application::chargerConfiguration()
@@ -72,12 +72,10 @@ void Application::chargerConfiguration()
             }
             else if (manager_nom == "filiere") {
                 filman.setCheminFichier(dossier.getCheminFichier());
-                cout<<filman.getCheminFichier().toStdString()<<endl;
                 filman.setFichier(manager_fichier);
             }
             else if (manager_nom == "completion") {
                 compman.setCheminFichier(dossier.getCheminFichier());
-                cout<<compman.getCheminFichier().toStdString()<<endl;
                 compman.setFichier(manager_fichier);
 
             }
