@@ -21,10 +21,10 @@ void Dossier::setLogin()
         login = nom + prenom;
     }
 
-    //login.toLower();
+    login = login.toLower();
 }
 
-void Dossier::charger(const FormationManager& forman,const PeriodeManager& periodeman,const UVManager& uvman,const NoteManager& notman)
+void Dossier::charger(const FormationManager& forman, const PeriodeManager& periodeman, const UVManager& uvman, const NoteManager& notman)
 {
     QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);
     QDomElement racine = doc.documentElement();

@@ -48,10 +48,11 @@ HEADERS += \
     gui/mainwindow.h \
     gui/applicationcomposant.h \
     gui/panneauaction.h \
-    core/Observateur.h \
     gui/fenaccueil.h \
     gui/fendossier.h \
-    gui/fenconfiguration.h
+    gui/fenconfiguration.h \
+    core/Observer.h \
+    core/Notifier.h
 
 FORMS += \
     gui/mainwindow.ui \

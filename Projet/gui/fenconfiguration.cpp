@@ -6,7 +6,7 @@ using namespace std;
 FenConfiguration::FenConfiguration(Application *a, QWidget *parent) :
     QWidget(parent),
     ApplicationComposant(a),
-    Observateur(),
+    Observer(),
     ui(new Ui::FenConfiguration)
 {
     ui->setupUi(this);
@@ -34,27 +34,30 @@ FenConfiguration::~FenConfiguration()
     delete ui;
 }
 
-void FenConfiguration::notification(const QString& quoi)
+void FenConfiguration::notification(const QStringList &quoi)
 {
-    if (quoi == "remplirCategorie") {
-        remplirCategorie();
+    if(quoi[0] == "remplir" && quoi.size() == 2)
+    {
+        if (quoi[1] == "categorie") {
+            remplirCategorie();
+        }
+        else if (quoi[1] == "credits") {
+            remplirCredits();
+        }
+        else if (quoi[1] == "formation") {
+            remplirFormation();
+        }
+        else if (quoi[1] == "note") {
+            remplirNote();
+        }
+        else if (quoi[1] == "periode") {
+            remplirPeriode();
+        }
+        else if (quoi[1] == "uv") {
+            remplirUV();
+        }
     }
-    else if (quoi == "remplirCredits") {
-        remplirCredits();
-    }
-    else if (quoi == "remplirFormation") {
-        remplirFormation();
-    }
-    else if (quoi == "remplirNote") {
-        remplirNote();
-    }
-    else if (quoi == "remplirPeriode") {
-        remplirPeriode();
-    }
-    else if (quoi == "remplirUV") {
-        remplirUV();
-    }
-    else if (quoi == "remplir")
+    else if (quoi[0] == "remplir")
     {
         remplirCategorie();
         remplirCredits();

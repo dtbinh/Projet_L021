@@ -4,7 +4,7 @@
 MainWindow::MainWindow(Application *a, QWidget *parent) :
     QMainWindow(parent),
     ApplicationComposant(a),
-    Observateur(),
+    Observer(),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
@@ -64,11 +64,24 @@ void MainWindow::on_menuConfiguration_clicked()
     ui->menuDossiers->setChecked(false);
 }
 
-void MainWindow::notification(const QString& quoi)
+void MainWindow::notification(const QStringList &quoi)
 {
-    app->charger(quoi);
+    if(quoi[0] == "nouveau")
+    {
+        QString nom = quoi[1];
+        QString prenom = quoi[2];
+        app->nouveau(nom, prenom);
+    }
+    else if (quoi[0] == "charger")
+    {
+        QString login = quoi[1];
+        app->charger(login);
+    }
 
-    fenconfiguration->notification("remplir");
+    QStringList notif;
+    notif << "remplir";
+    fenconfiguration->notification(notif);
+    fendossier->notification(notif);
 
     ui->menuDossiers->setDisabled(false);
     ui->menuConfiguration->setDisabled(false);

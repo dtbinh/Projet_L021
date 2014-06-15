@@ -3,11 +3,11 @@
 
 #include <QString>
 
-class Observateur
+class Observer
 {
 public:
-    Observateur() {}
-    virtual void notification(const QString& quoi) = 0;
+    Observer() {}
+    virtual void notification(const QStringList& quoi) = 0;
 };
 
 #endif // OBSERVATEUR_H

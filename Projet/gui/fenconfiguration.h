@@ -6,7 +6,7 @@
 #include <QStandardItem>
 #include <QComboBox>
 #include <QMessageBox>
-#include "core/Observateur.h"
+#include "core/Observer.h"
 #include "applicationcomposant.h"
 #include "panneauaction.h"
 
@@ -14,14 +14,14 @@ namespace Ui {
 class FenConfiguration;
 }
 
-class FenConfiguration : public QWidget, public ApplicationComposant, public Observateur
+class FenConfiguration : public QWidget, public ApplicationComposant, public Observer
 {
     Q_OBJECT
 
 public:
     explicit FenConfiguration(Application* a, QWidget *parent = 0);
     ~FenConfiguration();
-    void notification(const QString& quoi);
+    void notification(const QStringList& quoi);
 
 private slots:
     void on_categorie_clicked(const QModelIndex& index) { setPanneau("categorie", index); }

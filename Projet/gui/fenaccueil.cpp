@@ -1,23 +1,15 @@
 #include "fenaccueil.h"
 #include "ui_fenaccueil.h"
 
-FenAccueil::FenAccueil(Application *a, Observateur* obs, QWidget *parent) :
+FenAccueil::FenAccueil(Application *a, Observer* obs, QWidget *parent) :
     QWidget(parent),
     ApplicationComposant(a),
     ui(new Ui::FenAccueil),
-    observateur(obs)
+    mainwindow(obs)
 {
     ui->setupUi(this);
 
-    QStringList liste_dossiers = app->listeDossiers();
-    QStandardItemModel* model = new QStandardItemModel();
-
-    for (int i = 0; i < liste_dossiers.size(); i++)
-    {
-        model->setItem(i,0,new QStandardItem(liste_dossiers[i]));
-    }
-
-    ui->listeDossiers->setModel(model);
+    remplirListeDossiers();
 }
 
 FenAccueil::~FenAccueil()
@@ -28,5 +20,29 @@ FenAccueil::~FenAccueil()
 void FenAccueil::on_listeDossiers_doubleClicked(const QModelIndex &index)
 {
     QVariant login = index.data();
-    observateur->notification(login.toString());
+    QStringList notif;
+    notif << "charger" << login.toString();
+    mainwindow->notification(notif);
+}
+
+void FenAccueil::on_creer_clicked()
+{
+    if (ui->nomLabel->text() != "" && ui->prenomLabel->text() != "")
+    {
+        QStringList notif;
+        notif << "nouveau" << ui->nomLineEdit->text() << ui->prenomLineEdit->text();
+        mainwindow->notification(notif);
+    }
+}
+
+void FenAccueil::remplirListeDossiers()
+{
+    QStringList liste_dossiers = app->listeDossiers();
+    QStandardItemModel* model = new QStandardItemModel();
+
+    for (int i = 0; i < liste_dossiers.size(); i++) {
+        model->setItem(i,0,new QStandardItem(liste_dossiers[i]));
+    }
+
+    ui->listeDossiers->setModel(model);
 }

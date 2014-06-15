@@ -2,7 +2,7 @@
 #include "core/Application.h"
 #include "core/Exception.h"
 #include "gui/mainwindow.h"
-#include "core/Categorie.h"
+#include "core/CategorieManager.h"
 #include "core/Factory.h"
 
 using namespace std;

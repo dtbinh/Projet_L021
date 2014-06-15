@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "applicationcomposant.h"
-#include "core/Observateur.h"
+#include "core/Observer.h"
 #include "fenaccueil.h"
 #include "fenconfiguration.h"
 #include "fendossier.h"
@@ -12,7 +12,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow, public ApplicationComposant, public Observateur
+class MainWindow : public QMainWindow, public ApplicationComposant, public Observer
 {
     Q_OBJECT
 
@@ -24,7 +24,7 @@ private slots:
     void on_menuAccueil_clicked();
     void on_menuDossiers_clicked();
     void on_menuConfiguration_clicked();
-    void notification(const QString& quoi);
+    void notification(const QStringList& quoi);
 
 private:
     Ui::MainWindow *ui;

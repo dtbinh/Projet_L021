@@ -12,6 +12,7 @@
 #include <QtXml>
 #include "Manager.h"
 #include "Factory.h"
+#include "Observer.h"
 #include "Categorie.h"
 
 class CategorieManager : public Manager
@@ -31,8 +32,9 @@ public:
     const Factory<Categorie>& getCategories() const { return categories; }
     Categorie& getCategorie(const QString& code) { return categories.get(code); }
     const Categorie& getCategorie(const QString& code) const { return categories.get(code); }
-    void ajouterCategorie(const QString& code, const QString& nom) { categories.ajouter(code, Categorie(code, nom)); }
+    void ajouterCategorie(const QString& code, const QString& nom);
     void retirerCategorie(const QString& code) { categories.retirer(code); }
+    //void renomerCategorie(const QString& code, const QString& nouveau_code);
 };
 
 #endif // CATEGORIEMANAGER_H

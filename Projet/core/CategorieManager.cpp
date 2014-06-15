@@ -2,6 +2,21 @@
 
 using namespace std;
 
+/*void CategorieManager::renomerCategorie(const QString& code, const QString& nouveau_code)
+{
+    if (code != nouveau_code)
+    {
+        categories.get(code).setCode(nouveau_code);
+        categories.renomer(code, nouveau_code);
+    }
+}*/
+
+void CategorieManager::ajouterCategorie(const QString& code, const QString& nom)
+{
+    Categorie categorie = Categorie(code, nom);
+    categories.ajouter(code, categorie);
+}
+
 void CategorieManager::charger()
 {
     QDomDocument doc = this->chargerXml(chemin_fichier + "/" + fichier);

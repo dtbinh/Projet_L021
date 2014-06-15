@@ -12,7 +12,6 @@
 #include <map>
 #include <algorithm>
 #include "Exception.h"
-#include "Observateur.h"
 
 template<class T>
 class Factory
@@ -33,6 +32,7 @@ public:
 
     void ajouter(const QString& code, const T& t = T()) { tab[code] = t; }
     void retirer(const QString& code) { tab.erase(code); }
+    void renomer(const QString& code, const QString& nouveau_code);
 
     bool estVide() const { return tab.size() == 0; }
     void vider() { tab.clear(); }
@@ -56,6 +56,13 @@ const T& Factory<T>::get(const QString& code) const
         throw Exception("L'objet " + code + " n'existe pas.");
     }
     return it->second;
+}
+
+template<class T>
+void Factory<T>::renomer(const QString& code, const QString& nouveau_code)
+{
+    ajouter(nouveau_code, get(code));
+    retirer(code);
 }
 
 #endif // FACTORY_H

@@ -3,11 +3,11 @@
 
 using namespace std;
 
-PanneauAction::PanneauAction(Application *a, Observateur* obs, QWidget *parent):
+PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     QWidget(parent),
     ApplicationComposant(a),
     ui(new Ui::PanneauAction),
-    observateur(obs),
+    fenconfiguration(obs),
     code(""),
     panneaux()
 {
@@ -113,61 +113,78 @@ void PanneauAction::cacherPanneaux()
 void PanneauAction::categorieModifier_clicked()
 {
     Categorie& categorie = app->getCategorieManager().getCategorie(code);
-    categorie.setCode(categorieCode->text());
+    //categorie.setCode(categoriCode->text());
     categorie.setNom(categorieNom->text());
 
-    observateur->notification("remplirCategorie");
-    observateur->notification("remplirCredits");
-    observateur->notification("remplirFormation");
+    QStringList notif;
+    notif << "remplir" << "categorie";
+    fenconfiguration->notification(notif);
+    notif[1] = "credits";
+    fenconfiguration->notification(notif);
+    notif[1] = "formation";
+    fenconfiguration->notification(notif);
 }
 
 void PanneauAction::creditsModifier_clicked()
 {
     Credits& credits = app->getCreditsManager().getCredits(code);
-    credits.setCode(creditsCode->text());
     credits.setNombre(creditsNombre->value());
     credits.setCategorie(app->getCategorieManager().getCategorie(creditsCategorie->currentText()));
+    //credits.setCode(creditsCode->text());
 
-    observateur->notification("remplirCredits");
-    observateur->notification("remplirFormation");
-    observateur->notification("remplirUV");
+    QStringList notif;
+    notif << "remplir" << "credits";
+    fenconfiguration->notification(notif);
+    notif[1] = "formation";
+    fenconfiguration->notification(notif);
+    notif[1] = "uv";
+    fenconfiguration->notification(notif);
 }
 
 void PanneauAction::formationModifier_clicked()
 {
     Formation& formation = app->getFormationManager().getFormation(code);
-    formation.setCode(formationCode->text());
+    //formation.setCode(formationCode->text());
     formation.setNom(formationNom->text());
 
-    observateur->notification("remplirFormation");
+    QStringList notif;
+    notif << "remplir" << "formation";
+    fenconfiguration->notification(notif);
 }
 
 void PanneauAction::periodeModifier_clicked()
 {
-    Periode& periode = app->getPeriodeManager().getPeriode(code);
-    periode.setNom(periodeNom->text());
-    periode.setAnnee(periodeAnnee->value());
+    //Periode& periode = app->getPeriodeManager().getPeriode(code);
+    //periode.setNom(periodeNom->text());
+    //periode.setAnnee(periodeAnnee->value());
 
-    observateur->notification("remplirPeriode");
+    QStringList notif;
+    notif << "remplir" << "periode";
+    fenconfiguration->notification(notif);
 }
 
 void PanneauAction::noteModifier_clicked()
 {
     Note& note = app->getNoteManager().getNote(code);
-    note.setNote(noteNote->text());
+    //note.setNote(noteNote->text());
     note.setMention(noteMention->text());
 
-    observateur->notification("remplirNote");
-    observateur->notification("remplirUV");
+    QStringList notif;
+    notif << "remplir" << "note";
+    fenconfiguration->notification(notif);
+    notif[1] = "uv";
+    fenconfiguration->notification(notif);
 }
 
 void PanneauAction::uvModifier_clicked()
 {
     UV& uv = app->getUVManager().getUV(code);
-    uv.setCode(uvCode->text());
+    //uv.setCode(uvCode->text());
     uv.setNom(uvNom->text());
 
-    observateur->notification("remplirUV");
+    QStringList notif;
+    notif << "remplir" << "uv";
+    fenconfiguration->notification(notif);
 }
 
 QWidget* PanneauAction::creerPanneau(const QString& panneau)
@@ -179,6 +196,7 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
     if (panneau == "categorie")
     {
         categorieCode = new QLineEdit;
+        categorieCode->setReadOnly(true);
         categorieNom = new QLineEdit;
 
         form->addRow("Code", categorieCode);

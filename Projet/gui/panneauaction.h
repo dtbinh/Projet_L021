@@ -7,7 +7,7 @@
 #include <QSpinBox>
 #include <QComboBox>
 #include <QPushButton>
-#include "core/Observateur.h"
+#include "core/Observer.h"
 #include "applicationcomposant.h"
 
 namespace Ui {
@@ -19,7 +19,7 @@ class PanneauAction : public QWidget, public ApplicationComposant
     Q_OBJECT
 
 public:
-    explicit PanneauAction(Application* a, Observateur* obs, QWidget *parent = 0);
+    explicit PanneauAction(Application* a, Observer* obs, QWidget *parent = 0);
     ~PanneauAction();
 
     void setPanneau(const QString& panneau, const QString& c);
@@ -34,7 +34,7 @@ private slots:
 
 private:
     Ui::PanneauAction *ui;
-    Observateur* observateur;
+    Observer* fenconfiguration;
     QString code;
 
     QMap<QString, QWidget*> panneaux;
