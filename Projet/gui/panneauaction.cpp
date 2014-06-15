@@ -71,11 +71,18 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
     }
     else if (panneau == "credits")
     {
+        creditsCategorie->clear();
+        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
+        {
+            creditsCategorie->addItem(it->second.getCode());
+        }
+
         if (quoi == "editer")
         {
             const Credits& credits = app->getCreditsManager().getCredits(code);
             creditsCode->setText(code);
             creditsNombre->setValue(credits.getNombre());
+            creditsCategorie->setCurrentText(credits.getCategorie().getCode());
 
             ui->titre->setText("Edition crédits");
             creditsModifier->setText("Editer");
@@ -159,11 +166,18 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
     }
     else if (panneau == "uv")
     {
+        uvCategorie->clear();
+        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
+        {
+            uvCategorie->addItem(it->second.getCode());
+        }
+
         if (quoi == "editer")
         {
             const UV& uv = app->getUVManager().getUV(code);
             uvCode->setText(code);
             uvNom->setText(uv.getNom());
+            uvCategorie->setCurrentText(uv.getCategorie().getCode());
 
             ui->titre->setText("Edition UV");
             uvModifier->setText("Editer");
@@ -300,7 +314,7 @@ void PanneauAction::uvModifier_clicked()
     }
     else if (quoi == "ajouter")
     {
-        app->getUVManager().ajouterUV(categorieCode->text(), categorieNom->text(), app->getCategorieManager().getCategorie(uvCategorie->currentText()));
+        app->getUVManager().ajouterUV(uvCode->text(), uvNom->text(), app->getCategorieManager().getCategorie(uvCategorie->currentText()));
     }
 
     QStringList notif;
@@ -333,11 +347,6 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         creditsCode = new QLineEdit;
         creditsNombre = new QSpinBox;
         creditsCategorie = new QComboBox;
-
-        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
-        {
-            creditsCategorie->addItem(it->second.getCode());
-        }
 
         form->addRow("Code", creditsCode);
         form->addRow("Nombre", creditsNombre);
@@ -398,11 +407,6 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         uvNom = new QLineEdit;
         uvCategorie = new QComboBox;
 
-        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
-        {
-            uvCategorie->addItem(it->second.getCode());
-        }
-
         form->addRow("Code", uvCode);
         form->addRow("Nom", uvNom);
         form->addRow("Catégorie", uvCategorie);
@@ -414,7 +418,6 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         layout->addWidget(uvModifier, 0, Qt::AlignRight);
     }
 
-    delete widget->layout();
     widget->setLayout(layout);
     return widget;
 }
