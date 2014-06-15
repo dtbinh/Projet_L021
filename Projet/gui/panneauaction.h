@@ -31,6 +31,7 @@ private slots:
     void noteModifier_clicked();
     void periodeModifier_clicked();
     void uvModifier_clicked();
+    void inscriptionModifier_clicked();
 
 private:
     Ui::PanneauAction *ui;
@@ -65,6 +66,10 @@ private:
     QLineEdit* uvNom;
     QComboBox* uvCategorie;
     QPushButton* uvModifier;
+
+    QLineEdit* inscriptionCode;
+    QComboBox* inscriptionPeriode;
+    QPushButton* inscriptionModifier;
 
     QWidget *creerPanneau(const QString& panneau);
     void cacherPanneaux();

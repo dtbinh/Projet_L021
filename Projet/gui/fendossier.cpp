@@ -1,12 +1,14 @@
-﻿#include "fendossier.h"
+#include "fendossier.h"
 #include "ui_fendossier.h"
 
 using namespace std;
 
-FenDossier::FenDossier(Application *a, QWidget *parent) :
+FenDossier::FenDossier(Application *a, Observer *obs, QWidget *parent) :
     QWidget(parent),
     ApplicationComposant(a),
-    ui(new Ui::FenDossier)
+    Observer(),
+    ui(new Ui::FenDossier),
+    mainwindow(obs)
 {
     ui->setupUi(this);
 }
@@ -14,6 +16,21 @@ FenDossier::FenDossier(Application *a, QWidget *parent) :
 FenDossier::~FenDossier()
 {
     delete ui;
+}
+
+void FenDossier::on_inscriptions_clicked(const QModelIndex& index)
+{
+    QVariant code = index.sibling(index.row(),0).data();
+    QStringList notif;
+    notif << "editer" << "inscription" << code.toString();
+    mainwindow->notification(notif);
+}
+
+void FenDossier::on_ajouterInscription_clicked()
+{
+    QStringList notif;
+    notif << "ajouter" << "inscription";
+    mainwindow->notification(notif);
 }
 
 void FenDossier::notification(const QStringList &quoi)
@@ -35,8 +52,8 @@ void FenDossier::remplirInscriptions()
     for (map<QString,Inscription>::const_iterator it = app->getDossier().getInscriptions().begin(); it != app->getDossier().getInscriptions().end(); it++)
     {
         const Inscription& inscription = it->second;
-        model->setItem(i,0,new QStandardItem(inscription.getCode()));
-        model->setItem(i,1,new QStandardItem(inscription.getPeriode().getCode()));
+        model->setItem(i,1,new QStandardItem(inscription.getCode()));
+        model->setItem(i,0,new QStandardItem(inscription.getPeriode().getCode()));
 
         QMap<int,QStringList> uvs_categories;
         for (map<QString,UV>::const_iterator ituv = inscription.getUVs().begin(); ituv != inscription.getUVs().end(); ++ituv)

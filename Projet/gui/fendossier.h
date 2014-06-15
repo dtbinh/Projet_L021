@@ -16,12 +16,17 @@ class FenDossier : public QWidget, public ApplicationComposant, public Observer
     Q_OBJECT
 
 public:
-    explicit FenDossier(Application *a, QWidget *parent = 0);
+    explicit FenDossier(Application *a, Observer* obs, QWidget *parent = 0);
     ~FenDossier();
     void notification(const QStringList& quoi);
 
+private slots:
+    void on_inscriptions_clicked(const QModelIndex& index);
+    void on_ajouterInscription_clicked();
+
 private:
     Ui::FenDossier *ui;
+    Observer* mainwindow;
 
     void remplirInscriptions();
     void remplirCreditsFormations();

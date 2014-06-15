@@ -60,6 +60,13 @@
        </attribute>
       </widget>
      </item>
+     <item alignment="Qt::AlignRight">
+      <widget class="QPushButton" name="ajouterInscription">
+       <property name="text">
+        <string>Nouvelle inscription</string>
+       </property>
+      </widget>
+     </item>
     </layout>
    </item>
    <item>
@@ -81,7 +88,7 @@
       </widget>
      </item>
      <item>
-      <layout class="QVBoxLayout" name="formations"/>
+      <layout class="QHBoxLayout" name="formations"/>
      </item>
     </layout>
    </item>

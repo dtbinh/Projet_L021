@@ -109,7 +109,7 @@ public:
     /// \param code Ancien clé de l'element
     /// \param nouveau_code Nouvelle clé de l'element
     ///
-    void renommer(const QString& code, const QString& nouveau_code);
+    void renomer(const QString& code, const QString& nouveau_code);
 };
 
 template<class T>

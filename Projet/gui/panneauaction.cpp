@@ -19,6 +19,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     panneaux["periode"] = creerPanneau("periode");
     panneaux["note"] = creerPanneau("note");
     panneaux["uv"] = creerPanneau("uv");
+    panneaux["inscription"] = creerPanneau("inscription");
 
     cacherPanneaux();
     ui->contenu->addWidget(panneaux["categorie"]);
@@ -27,6 +28,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     ui->contenu->addWidget(panneaux["periode"]);
     ui->contenu->addWidget(panneaux["note"]);
     ui->contenu->addWidget(panneaux["uv"]);
+    ui->contenu->addWidget(panneaux["inscription"]);
 
     connect(categorieModifier, SIGNAL(clicked()), this, SLOT(categorieModifier_clicked()));
     connect(creditsModifier, SIGNAL(clicked()), this, SLOT(creditsModifier_clicked()));
@@ -34,6 +36,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     connect(periodeModifier, SIGNAL(clicked()), this, SLOT(periodeModifier_clicked()));
     connect(noteModifier, SIGNAL(clicked()), this, SLOT(noteModifier_clicked()));
     connect(uvModifier, SIGNAL(clicked()), this, SLOT(uvModifier_clicked()));
+    connect(inscriptionModifier, SIGNAL(clicked()), this, SLOT(inscriptionModifier_clicked()));
 }
 
 PanneauAction::~PanneauAction()
@@ -71,11 +74,18 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
     }
     else if (panneau == "credits")
     {
+        creditsCategorie->clear();
+        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
+        {
+            creditsCategorie->addItem(it->second.getCode());
+        }
+
         if (quoi == "editer")
         {
             const Credits& credits = app->getCreditsManager().getCredits(code);
             creditsCode->setText(code);
             creditsNombre->setValue(credits.getNombre());
+            creditsCategorie->setCurrentText(credits.getCategorie().getCode());
 
             ui->titre->setText("Edition crédits");
             creditsModifier->setText("Editer");
@@ -159,11 +169,18 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
     }
     else if (panneau == "uv")
     {
+        uvCategorie->clear();
+        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
+        {
+            uvCategorie->addItem(it->second.getCode());
+        }
+
         if (quoi == "editer")
         {
             const UV& uv = app->getUVManager().getUV(code);
             uvCode->setText(code);
             uvNom->setText(uv.getNom());
+            uvCategorie->setCurrentText(uv.getCategorie().getCode());
 
             ui->titre->setText("Edition UV");
             uvModifier->setText("Editer");
@@ -177,6 +194,33 @@ void PanneauAction::setPanneau(const QString& panneau, const QString& q, const Q
             ui->titre->setText("Ajout UV");
             uvModifier->setText("Ajouter");
             panneaux["uv"]->setVisible(true);
+        }
+    }
+    else if (panneau == "inscription")
+    {
+        inscriptionPeriode->clear();
+        for (map<QString,Periode>::const_iterator it = app->getPeriodeManager().getPeriodes().begin(); it != app->getPeriodeManager().getPeriodes().end(); it++)
+        {
+            inscriptionPeriode->addItem(it->second.getCode());
+        }
+
+        if (quoi == "editer")
+        {
+            const Inscription& inscription = app->getDossier().getInscription(code);
+            inscriptionCode->setText(code);
+            inscriptionPeriode->setCurrentText(inscription.getPeriode().getCode());
+
+            ui->titre->setText("Edition inscription");
+            inscriptionModifier->setText("Editer");
+            panneaux["inscription"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            inscriptionCode->setText("");
+
+            ui->titre->setText("Ajout inscription");
+            inscriptionModifier->setText("Ajouter");
+            panneaux["inscription"]->setVisible(true);
         }
     }
 }
@@ -300,11 +344,29 @@ void PanneauAction::uvModifier_clicked()
     }
     else if (quoi == "ajouter")
     {
-        app->getUVManager().ajouterUV(categorieCode->text(), categorieNom->text(), app->getCategorieManager().getCategorie(uvCategorie->currentText()));
+        app->getUVManager().ajouterUV(uvCode->text(), uvNom->text(), app->getCategorieManager().getCategorie(uvCategorie->currentText()));
     }
 
     QStringList notif;
     notif << "remplir" << "uv";
+    fenconfiguration->notification(notif);
+}
+
+void PanneauAction::inscriptionModifier_clicked()
+{
+    if (quoi == "editer")
+    {
+        Inscription& inscription = app->getDossier().getInscription(code);
+        //inscription.setCode(inscriptionCode->text());
+        inscription.setPeriode(app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()));
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getDossier().ajouterInscription(inscriptionCode->text(), app->getPeriodeManager().getPeriode(inscriptionPeriode->currentText()), Formation());
+    }
+
+    QStringList notif;
+    notif << "remplir" << "inscription";
     fenconfiguration->notification(notif);
 }
 
@@ -333,11 +395,6 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         creditsCode = new QLineEdit;
         creditsNombre = new QSpinBox;
         creditsCategorie = new QComboBox;
-
-        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
-        {
-            creditsCategorie->addItem(it->second.getCode());
-        }
 
         form->addRow("Code", creditsCode);
         form->addRow("Nombre", creditsNombre);
@@ -398,11 +455,6 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         uvNom = new QLineEdit;
         uvCategorie = new QComboBox;
 
-        for (map<QString,Categorie>::const_iterator it = app->getCategorieManager().getCategories().begin(); it != app->getCategorieManager().getCategories().end(); it++)
-        {
-            uvCategorie->addItem(it->second.getCode());
-        }
-
         form->addRow("Code", uvCode);
         form->addRow("Nom", uvNom);
         form->addRow("Catégorie", uvCategorie);
@@ -413,8 +465,21 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
         layout->addLayout(form);
         layout->addWidget(uvModifier, 0, Qt::AlignRight);
     }
+    else if (panneau == "inscription")
+    {
+        inscriptionCode = new QLineEdit;
+        inscriptionPeriode = new QComboBox;
 
-    delete widget->layout();
+        form->addRow("Code", inscriptionCode);
+        form->addRow("Période", inscriptionPeriode);
+
+        inscriptionModifier = new QPushButton("Editer");
+        inscriptionModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(inscriptionModifier, 0, Qt::AlignRight);
+    }
+
     widget->setLayout(layout);
     return widget;
 }

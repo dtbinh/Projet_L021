@@ -12,15 +12,25 @@ MainWindow::MainWindow(Application *a, QWidget *parent) :
     ui->setupUi(this);
 
     fenaccueil = new FenAccueil(app, this);
-    fendossier = new FenDossier(app);
-    fenconfiguration = new FenConfiguration(app);
+    fendossier = new FenDossier(app, this);
+    fenconfiguration = new FenConfiguration(app, this);
+    panneauAction = new PanneauAction(app, this);
+
+    QSizePolicy sp(QSizePolicy::Preferred, QSizePolicy::Preferred);
+    sp.setHorizontalStretch(3);
+    fendossier->setSizePolicy(sp);
+    fenconfiguration->setSizePolicy(sp);
+    sp.setHorizontalStretch(1);
+    panneauAction->setSizePolicy(sp);
 
     ui->contenu->addWidget(fenaccueil);
     ui->contenu->addWidget(fendossier);
     ui->contenu->addWidget(fenconfiguration);
+    ui->contenu->addWidget(panneauAction);
 
     ui->menuDossiers->setDisabled(true);
     ui->menuConfiguration->setDisabled(true);
+    panneauAction->setHidden(true);
 
     on_menuAccueil_clicked();
 }
@@ -37,6 +47,7 @@ void MainWindow::on_menuAccueil_clicked()
     fenaccueil->setVisible(true);
     fendossier->setHidden(true);
     fenconfiguration->setHidden(true);
+    panneauAction->setHidden(true);
 
     ui->menuAccueil->setChecked(true);
     ui->menuDossiers->setChecked(false);
@@ -71,24 +82,46 @@ void MainWindow::on_menuConfiguration_clicked()
 
 void MainWindow::notification(const QStringList &quoi)
 {
-    if(quoi[0] == "nouveau")
+    if(quoi[0] == "nouveau" || quoi[0] == "charger")
     {
-        QString nom = quoi[1];
-        QString prenom = quoi[2];
-        app->nouveau(nom, prenom);
+        if (quoi[0] == "nouveau")
+        {
+            QString nom = quoi[1];
+            QString prenom = quoi[2];
+            app->nouveau(nom, prenom);
+        }
+        else if (quoi[0] == "charger")
+        {
+            QString login = quoi[1];
+            app->charger(login);
+        }
+
+        QStringList notif;
+        notif << "remplir";
+        fenconfiguration->notification(notif);
+        fendossier->notification(notif);
+
+        panneauAction->setHidden(true);
+        ui->menuDossiers->setDisabled(false);
+        ui->menuConfiguration->setDisabled(false);
+        on_menuDossiers_clicked();
     }
-    else if (quoi[0] == "charger")
+    else if(quoi[0] == "editer")
     {
-        QString login = quoi[1];
-        app->charger(login);
+        panneauAction->setPanneau(quoi[1], quoi[0], quoi[2]);
+        panneauAction->setVisible(true);
     }
-
-    QStringList notif;
-    notif << "remplir";
-    fenconfiguration->notification(notif);
-    fendossier->notification(notif);
-
-    ui->menuDossiers->setDisabled(false);
-    ui->menuConfiguration->setDisabled(false);
-    on_menuDossiers_clicked();
+    else if(quoi[0] == "ajouter")
+    {
+        panneauAction->setPanneau(quoi[1], quoi[0]);
+        panneauAction->setVisible(true);
+    }
+    else if(quoi[0] == "remplir")
+    {
+        if (quoi[1] == "inscription") {
+            fendossier->notification(quoi);
+        } else {
+            fenconfiguration->notification(quoi);
+        }
+    }
 }
