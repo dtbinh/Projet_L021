@@ -57,8 +57,8 @@ public:
 
     bool estFerme() const;
 
-    const QStringList& listeConfigurations() const;
-    const QStringList& listeDossiers() const;
+    QStringList listeConfigurations() const;
+    QStringList listeDossiers() const;
 
     NoteManager& getNoteManager() { return notman; }
     const NoteManager& getNoteManager() const { return notman; }

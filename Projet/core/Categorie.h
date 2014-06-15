@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <QString>
+#include "Observateur.h"
 
 ///
 /// \class Categorie
@@ -19,6 +20,7 @@ class Categorie
 {
 private:
     QString code, nom;
+    Observateur* factory;
 
 public:
     ///
@@ -27,7 +29,7 @@ public:
     /// \param c Le code de la Categorie a créer.
     /// \param n Le nom de la Categorie a créer.
     ///
-    Categorie(const QString& c = "", const QString& n = ""): code(c), nom(n) {}
+    Categorie(const QString& c = "", const QString& n = ""): code(c), nom(n), factory(0) {}
 
     ///
     /// \fn getCode()
@@ -54,6 +56,8 @@ public:
     /// \brief Modifie le nom de la Categorie.
     ///
     void setNom(const QString& n) { nom = n; }
+
+    void setObservateur(Observateur* o) { factory = o; }
 };
 
 #endif // CATEGORIE_H

@@ -12,6 +12,7 @@
 #include <map>
 #include <algorithm>
 #include "Exception.h"
+#include "Observateur.h"
 
 template<class T>
 class Factory

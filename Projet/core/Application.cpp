@@ -2,16 +2,22 @@
 
 using namespace std;
 
-const QStringList& Application::listeConfigurations() const
+QStringList Application::listeConfigurations() const
 {
-    QDir qd(chemin_fichier);
-    return qd.entryList();
+    QDir dos(chemin_fichier);
+    if (!dos.exists()) {
+        throw Exception("Le dossier " + chemin_dossiers + " n'existe pas.");
+    }
+    return dos.entryList();
 }
 
-const QStringList& Application::listeDossiers() const
+QStringList Application::listeDossiers() const
 {
-    QDir qd(chemin_dossiers);
-    return qd.entryList();
+    QDir dos(chemin_dossiers);
+    if (!dos.exists()) {
+        throw Exception("Le dossier " + chemin_dossiers + " n'existe pas.");
+    }
+    return dos.entryList();
 }
 
 void Application::chargerConfiguration()
