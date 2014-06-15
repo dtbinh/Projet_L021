@@ -1,4 +1,4 @@
-#include <QApplication>
+﻿#include <QApplication>
 #include "core/Application.h"
 #include "core/Exception.h"
 #include "gui/mainwindow.h"
@@ -15,7 +15,6 @@ int main(int argc, char *argv[])
     Completion compa(app.getUVManager());
     compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),true);
     compa.ajouterSolution(app.getDossier(),app.getCategorieManager(),app.getUVManager(),app.getNoteManager(),false);*/
-
 
     MainWindow mw(&app);
     mw.show();

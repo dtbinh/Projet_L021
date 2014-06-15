@@ -1,4 +1,4 @@
-#include "fendossier.h"
+﻿#include "fendossier.h"
 #include "ui_fendossier.h"
 
 using namespace std;
@@ -46,7 +46,7 @@ void FenDossier::remplirInscriptions()
                 //header_labels << categorie;
             }
 
-            model->setItem(i,2,new QStandardItem(text + uv.getCode() + " " + inscription.getNotes().get(uv.getCode()).getNote()));
+            model->setItem(i,2,new QStandardItem(uv.getCode() + " " + inscription.getNotes().get(uv.getCode()).getNote()));
         }
 
         i++;

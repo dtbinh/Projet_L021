@@ -19,6 +19,10 @@
 #include "Note.h"
 #include "Categorie.h"
 
+///
+/// \class Inscription
+/// \brief Inscription décrit les choix des UVs ainsi que les résultats d'un etudiant
+///
 class Inscription
 {
 private:
@@ -131,9 +135,6 @@ public:
    /// \param n Nouvelle note pour l'UV concernée
    ///
    void modifierNote(const QString& code, const Note& n) { notes.get(code) = n; }
-
-
-
 
 
 };

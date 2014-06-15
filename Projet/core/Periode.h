@@ -13,6 +13,10 @@
 #include <sstream>
 #include "Exception.h"
 
+///
+/// \class Periode
+/// \brief Periode correspond à un semestre étudiant.
+///
 class Periode
 {
 private:

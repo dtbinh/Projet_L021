@@ -11,9 +11,3 @@ UV::UV(const UV& u)
             cred.push_back(u.cred[i]);
     }
 }
-
-UV::~UV()
-{
-    code="NULL";
-    nom="NULL";
-}

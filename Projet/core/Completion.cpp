@@ -23,7 +23,7 @@ void Completion::chargerSolution(const UVManager& uvman){
                 if(unElement.tagName() == "uv")
                 {
                         strCode = unElement.text();
-                        temp.ajouterStrategie(uvman.getUV(strCode));
+                        temp.ajouterUVStrategie(uvman.getUV(strCode));
                 }
                 else if (unElement.tagName()=="choix")
                     choix=unElement.text();

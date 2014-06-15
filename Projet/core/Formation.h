@@ -14,6 +14,10 @@
 #include "UV.h"
 #include "Credits.h"
 
+///
+/// \class Formation
+/// \brief Une formation est un ensemble d'UV et un ensemble de crédits. Une formation a aussi des spécialités qui sont elles mêmes des formations.
+///
 class Formation
 {
 private:

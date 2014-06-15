@@ -15,6 +15,10 @@
 #include "Categorie.h"
 #include "Credits.h"
 
+///
+/// \class UV
+/// \brief Une UV est un enseignment. Il posséde une catégorie et un ou plusieurs types de crédits.
+///
 class UV
 {
 private :
