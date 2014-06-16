@@ -25,12 +25,16 @@ private slots:
     void on_ajouterInscription_clicked();
     void on_formations_clicked(const QModelIndex& index);
     void on_ajouterFormation_clicked();
+    void on_genererCompletion_clicked();
+    voir on_ajouterPreference_clicked();
 
 private:
     Ui::FenDossier *ui;
     Observer* mainwindow;
 
     void remplirInscriptions();
+    void remplirCompletion();
+    void remplirPreferences();
     void remplirFormations();
     void remplirCreditsFormations();
     QWidget* creerCreditsFormation(const Formation& formation);

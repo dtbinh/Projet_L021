@@ -1,4 +1,4 @@
-﻿#include "fendossier.h"
+#include "fendossier.h"
 #include "ui_fendossier.h"
 
 using namespace std;
@@ -46,6 +46,13 @@ void FenDossier::on_ajouterFormation_clicked()
     QStringList notif;
     notif << "ajouter" << "formationDossier";
     mainwindow->notification(notif);
+}
+
+void FenDossier::on_genererCompletion_clicked()
+{
+    bool preferences = ui->preferencesCompletion->isChecked();
+    app->getCompletion().ajouterSolution(app->getDossier(),app->getCategorieManager(),app->getUVManager(),preferences);
+    remplirCompletion();
 }
 
 void FenDossier::notification(const QStringList &quoi)
@@ -107,6 +114,30 @@ void FenDossier::remplirInscriptions()
     delete ui->inscriptions->model();
     ui->inscriptions->setModel(model);
     ui->inscriptions->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
+void FenDossier::remplirCompletion()
+{
+    QStandardItemModel* model = new QStandardItemModel();
+
+    QStringList header_labels;
+    header_labels << "UV" << "Crédits";
+
+    Solution solution = app->getCompletion().getSolutions().back();
+
+    unsigned int i = 0;
+    for (vector<UV>::const_iterator it = solution.getStrategie().begin(); it != solution.getStrategie().end(); it++)
+    {
+        model->setItem(i,0,new QStandardItem(it->getCode()));
+        model->setItem(i,1,new QStandardItem(it->getCategorie().getCode()));
+        i++;
+    }
+
+    model->setHorizontalHeaderLabels(header_labels);
+
+    delete ui->completion->model();
+    ui->completion->setModel(model);
+    ui->completion->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void FenDossier::remplirFormations()

@@ -1,4 +1,4 @@
-﻿#include "Completion.h"
+#include "Completion.h"
 #include <string>
 #include <iostream>
 
@@ -70,13 +70,13 @@ void Completion::sauvegarderSolution()
 
 void Completion::ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,bool activation){
     solutions.push_back(Solution(D,catman,this->preferences,uvman,activation));
-    unsigned int i = solutions.size()-1;
+    /*unsigned int i = solutions.size()-1;
     solutions[i].affichage();
     cout<<"Souhaitez vous l'accepter?"<<endl;
     solutions[i].setChoix("Accepter");
     if (solutions[i].getChoix()=="Accepter"){
         sauvegarderSolution();
-    }
+    }*/
 }
 
 void Completion::affichageSolution(){

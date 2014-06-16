@@ -1,4 +1,4 @@
-﻿#include "Solution.h"
+#include "Solution.h"
 
 using namespace std;
 
@@ -53,12 +53,12 @@ Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QSt
             SP_Besoin.setNombre(SP_Besoin.getNombre()-it->second.getNombre());
         }
 }
-   std::cout<<"IL te reste a valider  : "<<std::endl;
+   /*std::cout<<"IL te reste a valider  : "<<std::endl;
     std::cout<<"Credit "<<CS_Besoin.getCategorie().getCode().toStdString()<<"  "<<CS_Besoin.getNombre()<<std::endl;
     std::cout<<"Credit "<<TM_Besoin.getCategorie().getCode().toStdString()<<"  "<<TM_Besoin.getNombre()<<std::endl;
     std::cout<<"Credit "<<TSH_Besoin.getCategorie().getCode().toStdString()<<"  "<<TSH_Besoin.getNombre()<<std::endl;
     std::cout<<"Credit "<<SP_Besoin.getCategorie().getCode().toStdString()<<"  "<<SP_Besoin.getNombre()<<std::endl;
-    std::cout<<std::endl<<std::endl;
+    std::cout<<std::endl<<std::endl;*/
 
     if (activation==true){
 

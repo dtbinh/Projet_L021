@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Completion.h
 /// \brief Completion automatique.
 /// \author Erwan Normand, Nicolas Szewe
@@ -41,6 +41,8 @@ public:
     /// \brief Constructeur par défault
     ///
     Completion(){fichier_preferences = "preferences.xml";}
+
+    const std::vector<Solution>& getSolutions() const { return solutions; }
 
     ///
     /// \fn ajouterSolution
