@@ -170,11 +170,6 @@
     <property name="title">
      <string>Fichier</string>
     </property>
-    <addaction name="actionNouveau_dossier"/>
-    <addaction name="actionCharger_dossier"/>
-    <addaction name="separator"/>
-    <addaction name="actionEnregistrer_dossier"/>
-    <addaction name="actionFermer_dossier"/>
     <addaction name="separator"/>
     <addaction name="action_Quitter"/>
    </widget>

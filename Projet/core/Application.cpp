@@ -1,6 +1,13 @@
-﻿#include "Application.h"
+#include "Application.h"
 
 using namespace std;
+
+Application::~Application()
+{
+    if (!estFerme()) {
+        fermer();
+    }
+}
 
 QStringList Application::listeConfigurations() const
 {

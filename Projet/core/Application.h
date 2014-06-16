@@ -1,4 +1,4 @@
-﻿///
+///
 /// \file Application.h
 /// \brief L'application, gestionnaire des managers.
 /// \author Erwan Normand, Nicolas Szewe
@@ -65,7 +65,7 @@ public:
     Application(const QString& cd, const QString& chemin_default, const QString& f): Manager(chemin_default, f), chemin_dossiers(cd),
         notman(), catman(), credman(), uvman(), forman(), filman(), periodeman(), dossier(),compman() {}
 
-    ~Application() { fermer(); }
+    ~Application();
 
     ///
     /// \fn nouveau
