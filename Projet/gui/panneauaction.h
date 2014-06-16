@@ -32,6 +32,7 @@ private slots:
     void periodeModifier_clicked();
     void uvModifier_clicked();
     void inscriptionModifier_clicked();
+    void formationDossierModifier_clicked();
 
 private:
     Ui::PanneauAction *ui;
@@ -71,6 +72,9 @@ private:
     QComboBox* inscriptionPeriode;
     QComboBox* inscriptionFormation;
     QPushButton* inscriptionModifier;
+
+    QComboBox* formationDossierCode;
+    QPushButton* formationDossierModifier;
 
     QWidget *creerPanneau(const QString& panneau);
     void cacherPanneaux();
