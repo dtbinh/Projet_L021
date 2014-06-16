@@ -116,8 +116,8 @@ void Completion::chargerPreference()
         }
 
         racine = racine.nextSiblingElement();
-    }}
-
+    }
+}
 
 void Completion::sauvegarderPreference()
 {

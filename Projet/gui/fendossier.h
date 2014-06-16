@@ -26,7 +26,8 @@ private slots:
     void on_formations_clicked(const QModelIndex& index);
     void on_ajouterFormation_clicked();
     void on_genererCompletion_clicked();
-    voir on_ajouterPreference_clicked();
+    void on_preferences_clicked(const QModelIndex& index);
+    void on_ajouterPreference_clicked();
 
 private:
     Ui::FenDossier *ui;

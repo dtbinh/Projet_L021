@@ -33,6 +33,7 @@ private slots:
     void uvModifier_clicked();
     void inscriptionModifier_clicked();
     void formationDossierModifier_clicked();
+    void preferenceModifier_clicked();
 
 private:
     Ui::PanneauAction *ui;
@@ -75,6 +76,10 @@ private:
 
     QComboBox* formationDossierCode;
     QPushButton* formationDossierModifier;
+
+    QComboBox* preferenceCode;
+    QComboBox* preferencePref;
+    QPushButton* preferenceModifier;
 
     QWidget *creerPanneau(const QString& panneau);
     void cacherPanneaux();

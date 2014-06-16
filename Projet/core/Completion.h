@@ -103,8 +103,8 @@ public:
     /// \param codeuv Le code de l'UV dont on doit modifier la préférence
     /// \param pref La nouvelle préférence
     ///
-    void setPreference(const UVManager& uvman,const QString& codeuv, const QString& pref){
-        preferences[uvman.getUV(codeuv).getCode()]=pref; }
+    void setPreference(const QString& codeuv, const QString& pref){
+        preferences[codeuv]=pref; }
 
     ///
     /// \fn chargerPreference

@@ -41,6 +41,14 @@ void FenDossier::on_formations_clicked(const QModelIndex& index)
     mainwindow->notification(notif);
 }
 
+void FenDossier::on_preferences_clicked(const QModelIndex& index)
+{
+    QString code = index.sibling(index.row(),0).data().toString();
+    QStringList notif;
+    notif << "editer" << "preference" << code;
+    mainwindow->notification(notif);
+}
+
 void FenDossier::on_ajouterFormation_clicked()
 {
     QStringList notif;
@@ -55,12 +63,20 @@ void FenDossier::on_genererCompletion_clicked()
     remplirCompletion();
 }
 
+void FenDossier::on_ajouterPreference_clicked()
+{
+    QStringList notif;
+    notif << "ajouter" << "preference";
+    mainwindow->notification(notif);
+}
+
 void FenDossier::notification(const QStringList &quoi)
 {
     if (quoi[0] == "remplir") {
         remplirInscriptions();
         remplirFormations();
         remplirCreditsFormations();
+        remplirPreferences();
     }
 }
 
@@ -129,7 +145,12 @@ void FenDossier::remplirCompletion()
     for (vector<UV>::const_iterator it = solution.getStrategie().begin(); it != solution.getStrategie().end(); it++)
     {
         model->setItem(i,0,new QStandardItem(it->getCode()));
-        model->setItem(i,1,new QStandardItem(it->getCategorie().getCode()));
+
+        QStringList credits;
+        for (vector<const Credits*>::const_iterator itcred = it->getCredits().begin(); itcred != it->getCredits().end(); ++itcred) {
+            credits << QString::number((*itcred)->getNombre()) + " " + (*itcred)->getCategorie().getCode();
+        }
+        model->setItem(i,1,new QStandardItem(credits.join(", ")));
         i++;
     }
 
@@ -138,6 +159,28 @@ void FenDossier::remplirCompletion()
     delete ui->completion->model();
     ui->completion->setModel(model);
     ui->completion->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
+void FenDossier::remplirPreferences()
+{
+    QStandardItemModel* model = new QStandardItemModel();
+
+    QStringList header_labels;
+    header_labels << "UV" << "Préférence";
+
+    unsigned int i = 0;
+    for (map<QString,QString>::const_iterator it = app->getCompletion().getPreferences().begin(); it != app->getCompletion().getPreferences().end(); it++)
+    {
+        model->setItem(i,0,new QStandardItem(it->first));
+        model->setItem(i,1,new QStandardItem(it->second));
+        i++;
+    }
+
+    model->setHorizontalHeaderLabels(header_labels);
+
+    delete ui->preferences->model();
+    ui->preferences->setModel(model);
+    ui->preferences->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
 void FenDossier::remplirFormations()

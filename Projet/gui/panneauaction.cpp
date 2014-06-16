@@ -21,6 +21,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     panneaux["uv"] = creerPanneau("uv");
     panneaux["inscription"] = creerPanneau("inscription");
     panneaux["formationDossier"] = creerPanneau("formationDossier");
+    panneaux["preference"] = creerPanneau("preference");
 
     cacherPanneaux();
     ui->contenu->addWidget(panneaux["categorie"]);
@@ -31,6 +32,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     ui->contenu->addWidget(panneaux["uv"]);
     ui->contenu->addWidget(panneaux["inscription"]);
     ui->contenu->addWidget(panneaux["formationDossier"]);
+    ui->contenu->addWidget(panneaux["preference"]);
 
     connect(categorieModifier, SIGNAL(clicked()), this, SLOT(categorieModifier_clicked()));
     connect(creditsModifier, SIGNAL(clicked()), this, SLOT(creditsModifier_clicked()));
@@ -40,6 +42,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     connect(uvModifier, SIGNAL(clicked()), this, SLOT(uvModifier_clicked()));
     connect(inscriptionModifier, SIGNAL(clicked()), this, SLOT(inscriptionModifier_clicked()));
     connect(formationDossierModifier, SIGNAL(clicked()), this, SLOT(formationDossierModifier_clicked()));
+    connect(preferenceModifier, SIGNAL(clicked()), this, SLOT(preferenceModifier_clicked()));
 }
 
 PanneauAction::~PanneauAction()
@@ -255,6 +258,30 @@ void PanneauAction::setPanneau(const QString& q, const QString& panneau, const Q
             panneaux["formationDossier"]->setVisible(true);
         }
     }
+    else if (panneau == "preference")
+    {
+        preferenceCode->clear();
+        for (map<QString,UV>::const_iterator it = app->getUVManager().getUVs().begin(); it != app->getUVManager().getUVs().end(); it++)
+        {
+            preferenceCode->addItem(it->second.getCode());
+        }
+
+        if (quoi == "editer")
+        {
+            preferenceCode->setCurrentText(app->getUVManager().getUV(code).getCode());
+            preferencePref->setCurrentText(app->getCompletion().getPreferences().find(code)->second); //écrit en "dur" dans creer
+
+            ui->titre->setText("Edition préférence");
+            preferenceModifier->setText("Editer");
+            panneaux["preference"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            ui->titre->setText("Ajout préférence");
+            preferenceModifier->setText("Ajouter");
+            panneaux["preference"]->setVisible(true);
+        }
+    }
 }
 
 void PanneauAction::cacherPanneaux()
@@ -419,6 +446,22 @@ void PanneauAction::formationDossierModifier_clicked()
     fenconfiguration->notification(notif);
 }
 
+void PanneauAction::preferenceModifier_clicked()
+{
+    if (quoi == "editer")
+    {
+        app->getCompletion().setPreference(preferenceCode->currentText(), preferencePref->currentText());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getCompletion().ajouterPreference(preferenceCode->currentText(), preferencePref->currentText());
+    }
+
+    QStringList notif;
+    notif << "remplir" << "preferences";
+    fenconfiguration->notification(notif);
+}
+
 QWidget* PanneauAction::creerPanneau(const QString& panneau)
 {
     QWidget* widget = new QWidget;
@@ -541,6 +584,22 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
 
         layout->addLayout(form);
         layout->addWidget(formationDossierModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "preference")
+    {
+        preferenceCode = new QComboBox;
+        preferencePref = new QComboBox;
+        preferencePref->addItem("Exigence");
+        preferencePref->addItem("Refus");
+
+        form->addRow("UV", preferenceCode);
+        form->addRow("Préférence", preferencePref);
+
+        preferenceModifier = new QPushButton("Editer");
+        preferenceModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(preferenceModifier, 0, Qt::AlignRight);
     }
 
     widget->setLayout(layout);
