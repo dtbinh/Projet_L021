@@ -20,6 +20,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     panneaux["note"] = creerPanneau("note");
     panneaux["uv"] = creerPanneau("uv");
     panneaux["inscription"] = creerPanneau("inscription");
+    panneaux["formationDossier"] = creerPanneau("formationDossier");
 
     cacherPanneaux();
     ui->contenu->addWidget(panneaux["categorie"]);
@@ -29,6 +30,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     ui->contenu->addWidget(panneaux["note"]);
     ui->contenu->addWidget(panneaux["uv"]);
     ui->contenu->addWidget(panneaux["inscription"]);
+    ui->contenu->addWidget(panneaux["formationDossier"]);
 
     connect(categorieModifier, SIGNAL(clicked()), this, SLOT(categorieModifier_clicked()));
     connect(creditsModifier, SIGNAL(clicked()), this, SLOT(creditsModifier_clicked()));
@@ -37,6 +39,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     connect(noteModifier, SIGNAL(clicked()), this, SLOT(noteModifier_clicked()));
     connect(uvModifier, SIGNAL(clicked()), this, SLOT(uvModifier_clicked()));
     connect(inscriptionModifier, SIGNAL(clicked()), this, SLOT(inscriptionModifier_clicked()));
+    connect(formationDossierModifier, SIGNAL(clicked()), this, SLOT(formationDossierModifier_clicked()));
 }
 
 PanneauAction::~PanneauAction()
@@ -229,6 +232,29 @@ void PanneauAction::setPanneau(const QString& q, const QString& panneau, const Q
             panneaux["inscription"]->setVisible(true);
         }
     }
+    else if (panneau == "formationDossier")
+    {
+        formationDossierCode->clear();
+        for (map<QString,Formation>::const_iterator it = app->getFormationManager().getFormations().begin(); it != app->getFormationManager().getFormations().end(); it++)
+        {
+            formationDossierCode->addItem(it->second.getCode());
+        }
+
+        if (quoi == "editer")
+        {
+            formationDossierCode->setCurrentText(app->getDossier().getFormation(code).getCode());
+
+            ui->titre->setText("Edition formation du dossier");
+            formationDossierModifier->setText("Editer");
+            panneaux["formationDossier"]->setVisible(true);
+        }
+        else if (quoi == "ajouter")
+        {
+            ui->titre->setText("Ajout formation au dossier");
+            formationDossierModifier->setText("Ajouter");
+            panneaux["formationDossier"]->setVisible(true);
+        }
+    }
 }
 
 void PanneauAction::cacherPanneaux()
@@ -377,6 +403,22 @@ void PanneauAction::inscriptionModifier_clicked()
     fenconfiguration->notification(notif);
 }
 
+void PanneauAction::formationDossierModifier_clicked()
+{
+    if (quoi == "editer")
+    {
+        app->getDossier().changerFormation(code, formationDossierCode->currentText());
+    }
+    else if (quoi == "ajouter")
+    {
+        app->getDossier().ajouterFormation(app->getFormationManager().getFormation(formationDossierCode->currentText()));
+    }
+
+    QStringList notif;
+    notif << "remplir" << "inscriptionDossier";
+    fenconfiguration->notification(notif);
+}
+
 QWidget* PanneauAction::creerPanneau(const QString& panneau)
 {
     QWidget* widget = new QWidget;
@@ -487,6 +529,18 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
 
         layout->addLayout(form);
         layout->addWidget(inscriptionModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "formationDossier")
+    {
+        formationDossierCode = new QComboBox;
+
+        form->addRow("Formation", formationDossierCode);
+
+        formationDossierModifier = new QPushButton("Editer");
+        formationDossierModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(formationDossierModifier, 0, Qt::AlignRight);
     }
 
     widget->setLayout(layout);

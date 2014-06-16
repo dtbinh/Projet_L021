@@ -201,6 +201,8 @@ public :
     /// \brief Permet de fermer un dossier
     ///
     void vider();
+
+    void changerFormation(const QString& code, const QString& nouveau_code) { formations.renomer(code, nouveau_code); }
 };
 
 #endif // DOSSIER_H

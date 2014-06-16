@@ -33,10 +33,26 @@ void FenDossier::on_ajouterInscription_clicked()
     mainwindow->notification(notif);
 }
 
+void FenDossier::on_formations_clicked(const QModelIndex& index)
+{
+    QString code = index.sibling(index.row(),0).data().toString();
+    QStringList notif;
+    notif << "editer" << "formationDossier" << code;
+    mainwindow->notification(notif);
+}
+
+void FenDossier::on_ajouterFormation_clicked()
+{
+    QStringList notif;
+    notif << "ajouter" << "formationDossier";
+    mainwindow->notification(notif);
+}
+
 void FenDossier::notification(const QStringList &quoi)
 {
     if (quoi[0] == "remplir") {
         remplirInscriptions();
+        remplirFormations();
         remplirCreditsFormations();
     }
 }
@@ -93,13 +109,42 @@ void FenDossier::remplirInscriptions()
     ui->inscriptions->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 }
 
+void FenDossier::remplirFormations()
+{
+    QStandardItemModel* model = new QStandardItemModel();
+
+    QStringList header_labels;
+    header_labels << "Code" << "Nom";
+
+    unsigned int i = 0;
+    for (map<QString,Formation>::const_iterator it = app->getDossier().getFormations().begin(); it != app->getDossier().getFormations().end(); it++)
+    {
+        const Formation& formation = it->second;
+        model->setItem(i,0,new QStandardItem(formation.getCode()));
+        model->setItem(i,1,new QStandardItem(formation.getNom()));
+        i++;
+    }
+
+    model->setHorizontalHeaderLabels(header_labels);
+
+    delete ui->formations->model();
+    ui->formations->setModel(model);
+    ui->formations->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+}
+
 void FenDossier::remplirCreditsFormations()
 {
+    QGridLayout* layout = new QGridLayout;
+    unsigned int i = 0;
     for (map<QString,Formation>::const_iterator it = app->getDossier().getFormations().begin(); it != app->getDossier().getFormations().end(); it++)
     {
         QWidget* credits_formation = creerCreditsFormation(it->second);
-        ui->formations->addWidget(credits_formation);
+        layout->addWidget(credits_formation,i/2,i%2);
+        i++;
     }
+
+    delete ui->creditsFormations->layout();
+    ui->creditsFormations->setLayout(layout);
 }
 
 QWidget* FenDossier::creerCreditsFormation(const Formation& formation)
