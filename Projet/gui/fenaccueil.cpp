@@ -1,4 +1,4 @@
-#include "fenaccueil.h"
+﻿#include "fenaccueil.h"
 #include "ui_fenaccueil.h"
 
 FenAccueil::FenAccueil(Application *a, Observer* obs, QWidget *parent) :

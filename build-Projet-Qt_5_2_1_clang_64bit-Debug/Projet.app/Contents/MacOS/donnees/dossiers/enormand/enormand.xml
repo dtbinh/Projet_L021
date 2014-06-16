@@ -20,22 +20,27 @@
       <codeUV>NF17</codeUV>
       <note>EC</note>
     </uv>
+    <uv>
+      <codeUV>SI11</codeUV>
+      <note>A</note>
+    </uv>
   </inscription>
   <inscription>
     <code>GI02</code>
     <semestre>P2014</semestre>
     <formation>GI</formation>
     <uv>
-      <codeUV>LO21</codeUV>
+      <codeUV>LO22</codeUV>
       <note>C</note>
     </uv>
     <uv>
-      <codeUV>NF16</codeUV>
-      <note>C</note>
+      <codeUV>TN09</codeUV>
+      <note>E</note>
     </uv>
-    <uv>
-      <codeUV>NF17</codeUV>
-      <note>EC</note>
-    </uv>
+  </inscription>
+  <inscription>
+    <code>GI03</code>
+    <semestre>A2014</semestre>
+    <formation>GI</formation>
   </inscription>
 </dossier>

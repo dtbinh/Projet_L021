@@ -1,4 +1,4 @@
-#include "fendossier.h"
+﻿#include "fendossier.h"
 #include "ui_fendossier.h"
 
 using namespace std;
@@ -81,8 +81,9 @@ void FenDossier::remplirInscriptions()
             if (j == -1)
             {
                 header_labels << categorie; //Ajout de la catégorie aux colonnes
-                j = header_labels.count();
-            }
+                j = header_labels.count()-1;
+
+               }
 
             QString credits = "";
             for (vector<const Credits*>::const_iterator itcred = uv.getCredits().begin(); itcred != uv.getCredits().end(); ++itcred)
@@ -101,7 +102,6 @@ void FenDossier::remplirInscriptions()
 
         i++;
     }
-
     model->setHorizontalHeaderLabels(header_labels);
 
     delete ui->inscriptions->model();
