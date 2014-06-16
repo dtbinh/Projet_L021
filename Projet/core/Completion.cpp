@@ -1,14 +1,13 @@
-#include "Completion.h"
+﻿#include "Completion.h"
 #include <string>
 #include <iostream>
 
 using namespace std;
 
-Completion::Completion(const QString &cf, const QString &f, const UVManager& uvman) : Manager(cf,f), solutions()
+Completion::Completion(const QString &cf, const QString &f) : Manager(cf,f), solutions()
 {
     fichier_preferences = "preferences.xml";
     this->chargerPreference();
-    //this->chargerSolution(uvman);
 }
 
 void Completion::chargerSolution(const UVManager& uvman)
@@ -69,8 +68,8 @@ void Completion::sauvegarderSolution()
     this->sauvegarderXml(chemin_fichier + "/" + fichier, doc);
 }}
 
-void Completion::ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,const NoteManager& notman,bool activation){
-    solutions.push_back(Solution(D,catman,this->preferences,uvman,notman,activation));
+void Completion::ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,bool activation){
+    solutions.push_back(Solution(D,catman,this->preferences,uvman,activation));
     unsigned int i = solutions.size()-1;
     solutions[i].affichage();
     cout<<"Souhaitez vous l'accepter?"<<endl;

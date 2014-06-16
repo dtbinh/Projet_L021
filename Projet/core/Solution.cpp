@@ -9,7 +9,7 @@ void Solution::affichage() const
     }
 }
 
-Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QString,QString> preferences,const UVManager& uvman,const NoteManager& notman,bool activation)
+Solution::Solution(const Dossier& D,const CategorieManager& catman, std::map<QString,QString> preferences,const UVManager& uvman,bool activation)
 {
     choix="Refus";
     Credits CS_Besoin("CS_Besoin",0,catman.getCategorie("CS"));

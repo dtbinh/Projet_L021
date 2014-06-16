@@ -34,7 +34,7 @@ public:
     /// \brief Constructeur du completion
     /// \param uvman Manager des uvs
     ///
-    Completion(const QString& cf,const QString& f, const UVManager& uvman);
+    Completion(const QString& cf,const QString& f);
 
     ///
     /// \fn Completion
@@ -48,10 +48,9 @@ public:
     /// \param D Reference vers le dossier sur lequel doit etre effectué la completion
     /// \param catman Reference sur le categorie manager
     /// \param uvman Reference sur l'UV Manager
-    /// \param notman Reference sur le Manag
     /// \param activation Booléen pour savoir si l'utilisateur veut activer ses préférences ou non
     ///
-    void ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,const NoteManager& notman,bool activation);
+    void ajouterSolution(const Dossier& D,const CategorieManager& catman,const UVManager& uvman,bool activation);
 
     ///
     /// \fn sauvegarderSolution

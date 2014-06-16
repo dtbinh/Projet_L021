@@ -33,7 +33,7 @@ public:
     /// \param notman Reference vers le manager des notes.
     /// \param activation Bool qui determine si les préferences doivent etre prise en compte ou non
     ///
-    Solution(const Dossier& D,const CategorieManager& catman,std::map <QString,QString> preferences,const UVManager& uvman,const NoteManager& notman,bool activation);
+    Solution(const Dossier& D,const CategorieManager& catman,std::map <QString,QString> preferences,const UVManager& uvman,bool activation);
 
     ///
     /// \fn Solution
