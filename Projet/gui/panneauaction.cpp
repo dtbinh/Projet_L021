@@ -7,7 +7,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     QWidget(parent),
     ApplicationComposant(a),
     ui(new Ui::PanneauAction),
-    fenconfiguration(obs),
+    mainwindows(obs),
     code(""),
     panneaux()
 {
@@ -22,6 +22,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     panneaux["inscription"] = creerPanneau("inscription");
     panneaux["formationDossier"] = creerPanneau("formationDossier");
     panneaux["preference"] = creerPanneau("preference");
+    panneaux["uvInscription"] = creerPanneau("uvInscription");
 
     cacherPanneaux();
     ui->contenu->addWidget(panneaux["categorie"]);
@@ -33,6 +34,7 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     ui->contenu->addWidget(panneaux["inscription"]);
     ui->contenu->addWidget(panneaux["formationDossier"]);
     ui->contenu->addWidget(panneaux["preference"]);
+    ui->contenu->addWidget(panneaux["uvInscription"]);
 
     connect(categorieModifier, SIGNAL(clicked()), this, SLOT(categorieModifier_clicked()));
     connect(creditsModifier, SIGNAL(clicked()), this, SLOT(creditsModifier_clicked()));
@@ -43,6 +45,8 @@ PanneauAction::PanneauAction(Application *a, Observer* obs, QWidget *parent):
     connect(inscriptionModifier, SIGNAL(clicked()), this, SLOT(inscriptionModifier_clicked()));
     connect(formationDossierModifier, SIGNAL(clicked()), this, SLOT(formationDossierModifier_clicked()));
     connect(preferenceModifier, SIGNAL(clicked()), this, SLOT(preferenceModifier_clicked()));
+    connect(uvInscriptionModifier, SIGNAL(clicked()), this, SLOT(uvInscriptionModifier_clicked()));
+
 }
 
 PanneauAction::~PanneauAction()
@@ -282,6 +286,33 @@ void PanneauAction::setPanneau(const QString& q, const QString& panneau, const Q
             panneaux["preference"]->setVisible(true);
         }
     }
+    else if (panneau == "uvInscription")
+    {
+        uvInscriptionCode->clear();
+        for (map<QString,UV>::const_iterator it = app->getUVManager().getUVs().begin(); it != app->getUVManager().getUVs().end(); it++)
+        {
+            uvInscriptionCode->addItem(it->second.getCode());
+        }
+
+        uvInscriptionNote->clear();
+        for (map<QString,Note>::const_iterator it = app->getNoteManager().getNotes().begin(); it != app->getNoteManager().getNotes().end(); it++)
+        {
+            uvInscriptionNote->addItem(it->second.getNote());
+        }
+
+        uvInscriptionInscription->clear();
+        for (map<QString,Inscription>::const_iterator it = app->getDossier().getInscriptions().begin(); it != app->getDossier().getInscriptions().end(); it++)
+        {
+            uvInscriptionInscription->addItem(it->second.getCode());
+        }
+
+        if (quoi == "ajouter")
+        {
+            ui->titre->setText("Ajout/Edition UV");
+            preferenceModifier->setText("Ajouter/Editer");
+            panneaux["uvInscription"]->setVisible(true);
+        }
+    }
 }
 
 void PanneauAction::cacherPanneaux()
@@ -306,11 +337,11 @@ void PanneauAction::categorieModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "categorie";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
     notif[1] = "credits";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
     notif[1] = "formation";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::creditsModifier_clicked()
@@ -329,11 +360,11 @@ void PanneauAction::creditsModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "credits";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
     notif[1] = "formation";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
     notif[1] = "uv";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::formationModifier_clicked()
@@ -351,7 +382,7 @@ void PanneauAction::formationModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "formation";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::periodeModifier_clicked()
@@ -369,7 +400,7 @@ void PanneauAction::periodeModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "periode";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::noteModifier_clicked()
@@ -387,9 +418,9 @@ void PanneauAction::noteModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "note";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
     notif[1] = "uv";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::uvModifier_clicked()
@@ -408,7 +439,7 @@ void PanneauAction::uvModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "uv";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::inscriptionModifier_clicked()
@@ -427,14 +458,15 @@ void PanneauAction::inscriptionModifier_clicked()
 
     QStringList notif;
     notif << "remplir" << "inscription";
-    fenconfiguration->notification(notif);
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::formationDossierModifier_clicked()
 {
     if (quoi == "editer")
     {
-        app->getDossier().changerFormation(code, formationDossierCode->currentText());
+        app->getDossier().getFormation(code) = app->getFormationManager().getFormation(code);
+        app->getDossier().changerCodeFormation(code, formationDossierCode->currentText());
     }
     else if (quoi == "ajouter")
     {
@@ -442,8 +474,8 @@ void PanneauAction::formationDossierModifier_clicked()
     }
 
     QStringList notif;
-    notif << "remplir" << "inscriptionDossier";
-    fenconfiguration->notification(notif);
+    notif << "remplir" << "formationDossier";
+    mainwindows->notification(notif);
 }
 
 void PanneauAction::preferenceModifier_clicked()
@@ -458,8 +490,21 @@ void PanneauAction::preferenceModifier_clicked()
     }
 
     QStringList notif;
-    notif << "remplir" << "preferences";
-    fenconfiguration->notification(notif);
+    notif << "remplir" << "preference";
+    mainwindows->notification(notif);
+}
+
+void PanneauAction::uvInscriptionModifier_clicked()
+{
+    if (quoi == "ajouter")
+    {
+        app->getDossier().getInscription(uvInscriptionInscription->currentText()).ajouterUV(app->getUVManager().getUV(uvInscriptionCode->currentText()));
+        app->getDossier().getInscription(uvInscriptionInscription->currentText()).modifierNote(uvInscriptionCode->currentText(), uvInscriptionNote->currentText());
+    }
+
+    QStringList notif;
+    notif << "remplir" << "inscription";
+    mainwindows->notification(notif);
 }
 
 QWidget* PanneauAction::creerPanneau(const QString& panneau)
@@ -600,6 +645,22 @@ QWidget* PanneauAction::creerPanneau(const QString& panneau)
 
         layout->addLayout(form);
         layout->addWidget(preferenceModifier, 0, Qt::AlignRight);
+    }
+    else if (panneau == "uvInscription")
+    {
+        uvInscriptionCode = new QComboBox;
+        uvInscriptionNote = new QComboBox;
+        uvInscriptionInscription = new QComboBox;
+
+        form->addRow("UV", uvInscriptionCode);
+        form->addRow("Note", uvInscriptionNote);
+        form->addRow("Inscription", uvInscriptionInscription);
+
+        uvInscriptionModifier = new QPushButton("Ajouter/Editer");
+        uvInscriptionModifier->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Maximum);
+
+        layout->addLayout(form);
+        layout->addWidget(uvInscriptionModifier, 0, Qt::AlignRight);
     }
 
     widget->setLayout(layout);

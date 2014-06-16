@@ -70,6 +70,13 @@ void FenDossier::on_ajouterPreference_clicked()
     mainwindow->notification(notif);
 }
 
+void FenDossier::on_ajouterUV_clicked()
+{
+    QStringList notif;
+    notif << "ajouter" << "uvInscription";
+    mainwindow->notification(notif);
+}
+
 void FenDossier::notification(const QStringList &quoi)
 {
     if (quoi[0] == "remplir") {
@@ -130,6 +137,7 @@ void FenDossier::remplirInscriptions()
     delete ui->inscriptions->model();
     ui->inscriptions->setModel(model);
     ui->inscriptions->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->inscriptions->resizeRowsToContents();
 }
 
 void FenDossier::remplirCompletion()
@@ -186,7 +194,6 @@ void FenDossier::remplirPreferences()
 void FenDossier::remplirFormations()
 {
     QStandardItemModel* model = new QStandardItemModel();
-
     QStringList header_labels;
     header_labels << "Code" << "Nom";
 
@@ -213,7 +220,7 @@ void FenDossier::remplirCreditsFormations()
     for (map<QString,Formation>::const_iterator it = app->getDossier().getFormations().begin(); it != app->getDossier().getFormations().end(); it++)
     {
         QWidget* credits_formation = creerCreditsFormation(it->second);
-        layout->addWidget(credits_formation,i/2,i%2);
+        layout->addWidget(credits_formation,i/3,i%3);
         i++;
     }
 

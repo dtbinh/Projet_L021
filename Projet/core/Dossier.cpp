@@ -261,7 +261,7 @@ void Dossier::vider()
     fichier = "";
 }
 
-void Dossier::changerFormation(const QString& code, const QString& nouveau_code)
+void Dossier::changerCodeFormation(const QString& code, const QString& nouveau_code)
 {
     formations.get(code).setCode(nouveau_code);
     formations.renomer(code, nouveau_code);

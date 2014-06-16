@@ -118,7 +118,7 @@ void MainWindow::notification(const QStringList &quoi)
     }
     else if(quoi[0] == "remplir")
     {
-        if (quoi[1] == "inscription" || quoi[1] == "formationDossier" || quoi[1] == "preferences") {
+        if (quoi[1] == "inscription" || quoi[1] == "formationDossier" || quoi[1] == "preference") {
             fendossier->notification(quoi);
         } else {
             fenconfiguration->notification(quoi);

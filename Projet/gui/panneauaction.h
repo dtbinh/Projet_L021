@@ -34,10 +34,11 @@ private slots:
     void inscriptionModifier_clicked();
     void formationDossierModifier_clicked();
     void preferenceModifier_clicked();
+    void uvInscriptionModifier_clicked();
 
 private:
     Ui::PanneauAction *ui;
-    Observer* fenconfiguration;
+    Observer* mainwindows;
     QString code;
     QString quoi;
 
@@ -80,6 +81,11 @@ private:
     QComboBox* preferenceCode;
     QComboBox* preferencePref;
     QPushButton* preferenceModifier;
+
+    QComboBox* uvInscriptionCode;
+    QComboBox* uvInscriptionNote;
+    QComboBox* uvInscriptionInscription;
+    QPushButton* uvInscriptionModifier;
 
     QWidget *creerPanneau(const QString& panneau);
     void cacherPanneaux();
