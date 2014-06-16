@@ -202,7 +202,7 @@ public :
     ///
     void vider();
 
-    void changerFormation(const QString& code, const QString& nouveau_code) { formations.renomer(code, nouveau_code); }
+    void changerFormation(const QString& code, const QString& nouveau_code);
 };
 
 #endif // DOSSIER_H

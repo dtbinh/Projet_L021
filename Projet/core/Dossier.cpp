@@ -260,3 +260,9 @@ void Dossier::vider()
     chemin_fichier = "";
     fichier = "";
 }
+
+void Dossier::changerFormation(const QString& code, const QString& nouveau_code)
+{
+    formations.get(code).setCode(nouveau_code);
+    formations.renomer(code, nouveau_code);
+}
